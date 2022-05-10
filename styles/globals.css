@@ -24,6 +24,7 @@ body {
   color: var(--white);
   overflow-x: hidden;
   background-color: var(--black);
+  cursor: none;
 }
 
 a {
@@ -36,8 +37,8 @@ a {
 }
 
 ::selection {
-  background-color: var(--black);
-  color: var(--white);
+  background-color: var(--white);
+  color: var(--black);
 }
 
 /* width */
@@ -75,9 +76,9 @@ img {
   pointer-events: none;
   left: -100px;
   top: 50%;
-  background-color: transparent;
+  background-color: #fff;
+  opacity: 0.2;
   z-index: 10000;
-  border: 3px solid var(--white);
   height: 35px;
   width: 35px;
   transition: all 200ms ease-out;
