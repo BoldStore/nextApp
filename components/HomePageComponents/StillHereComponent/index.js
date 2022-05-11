@@ -50,43 +50,33 @@ function StillHereComponent() {
       }}
     >
       <motion.h1
-        initial={{ scale: 0, rotate: 35 }}
-        whileInView={{ scale: 1, rotate: 0 }}
-        transition={{
-          delay: 0,
-          duration: 0.75,
-          type: "spring",
-          bounce: 0.4,
-        }}
-        className={styles.hugeHeading}
-      >
-        Woah...
-      </motion.h1>
-      <motion.h1
         className={styles.hugeHeading}
         initial={{ scale: 0, rotate: 15 }}
         whileInView={{ scale: 1, rotate: 0 }}
         transition={{
-          delay: 0.5,
+          delay: 0,
           duration: 1,
           type: "spring",
           bounce: 0.5,
         }}
+        viewport={{ once: true }}
       >
         You Still Here?
       </motion.h1>
+
       <motion.h1
         className={styles.midHeading}
-        initial={{ scale: 0, x: -50, rotate: 35 }}
-        whileInView={{ scale: 1, x: 0, rotate: 0 }}
+        initial={{ opacity: 0, scale: 0.5, rotate: 15 }}
+        whileInView={{ scale: 1, opacity: 1, rotate: 0 }}
         transition={{
-          delay: 1.25,
-          duration: 0.5,
+          delay: 1,
+          duration: 1,
           type: "spring",
-          bounce: 0.4,
+          bounce: 0.5,
         }}
+        viewport={{ once: true }}
       >
-        Lets Get in Touch!
+        Lets Get In Touch!
       </motion.h1>
     </div>
   );

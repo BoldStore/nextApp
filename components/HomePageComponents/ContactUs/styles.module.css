@@ -1,0 +1,11 @@
+.midHeading {
+  text-transform: uppercase;
+  font-family: "Raleway";
+  font-size: 5rem;
+  font-weight: 800;
+  color: #fff;
+}
+.container {
+  margin-top: 5rem;
+  padding: 5rem;
+}

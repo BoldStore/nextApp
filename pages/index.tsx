@@ -8,6 +8,7 @@ import MovingComponent from "../components/HomePageComponents/MovingComponent";
 import AppWalkthrough from "../components/HomePageComponents/AppWalkthrough";
 import WhatWeDoComponent from "../components/HomePageComponents/WhatWeDo";
 import StillHereComponent from "../components/HomePageComponents/StillHereComponent";
+import ContactUs from "../components/HomePageComponents/ContactUs";
 import { useEffect, useState } from "react";
 
 const Home: NextPage = () => {
@@ -44,6 +45,7 @@ const Home: NextPage = () => {
         <WhatWeDoComponent />
         <AppWalkthrough />
         <StillHereComponent />
+        <ContactUs />
       </div>
     </div>
   );
