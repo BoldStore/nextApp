@@ -5,15 +5,19 @@ import styles from "./styles.module.css";
 function MovingComponent() {
   var cursor;
   var cursor2;
+  var drag;
 
   const changeMouse = () => {
     cursor = document.getElementById("cursor");
     cursor2 = document.getElementById("cursor2");
+    drag = document.getElementById("drag");
     document.body.addEventListener("mousemove", function (e) {
       (cursor.style.opacity = 1),
+        (cursor2.style.opacity = 1),
         (cursor.style.backgroundColor = "transparent"),
-        (cursor.style.border = "2px solid #fff");
-      cursor2.style.backgroundColor = "#fff !important";
+        (drag.style.display = "none"),
+        (cursor.style.border = "2px solid #fff"),
+        (cursor2.style.backgroundColor = "#fff !important");
     });
   };
 

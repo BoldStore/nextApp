@@ -12,6 +12,7 @@ function Header() {
   const [hover, setHover] = useState(false);
   var cursor;
   var cursor2;
+  var drag;
   const router = useRouter();
 
   useEffect(() => {
@@ -36,9 +37,12 @@ function Header() {
     if (hover) {
       cursor = document.getElementById("cursor");
       cursor2 = document.getElementById("cursor2");
+      drag = document.getElementById("drag");
       document.body.addEventListener("mousemove", function (e) {
         (cursor.style.mixBlendMode = "difference"),
           (cursor.style.opacity = 1),
+          (cursor2.style.opacity = 1),
+          (drag.style.display = "none"),
           (cursor2.style.backgroundColor = "#000 !important");
       });
     }
