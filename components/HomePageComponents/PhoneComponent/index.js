@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "./styles.module.css";
 
-function PhoneComponent() {
+function PhoneComponent({ imgSrc, num, text }) {
   return (
     <div className={styles.imgFlex}>
       <div className={styles.circle}></div>
-      <img src={"/assets/startingScreen.png"} />
+      <img src={imgSrc} />
       <p>
-        01 <span style={{ opacity: 0.5 }}>Starting Screen</span>
+        {num} <span style={{ opacity: 0.5 }}>{text}</span>
       </p>
     </div>
   );

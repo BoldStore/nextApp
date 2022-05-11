@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 import PhoneComponent from "../PhoneComponent";
 
-function IntroComponent() {
+function WhatWeDoComponent() {
   var cursor;
   var cursor2;
 
@@ -25,22 +25,29 @@ function IntroComponent() {
       }}
     >
       <div className={styles.flexDiv}>
-        <PhoneComponent
-          imgSrc={"/assets/startingScreen.png"}
-          num={"01"}
-          text={"Starting Screen"}
-        />
         <div>
           <h1 className={styles.heading}>
-            <span style={{ color: "#808080" }}> The World's </span>First
-            <br /> One Click{" "}
-            <span style={{ color: "#808080" }}> MarketPlace.</span>
+            <span style={{ color: "#808080" }}> Why</span> Us?
           </h1>
-          <p className={styles.smallText}>Get Started </p>
+          <div className={styles.textDiv}>
+            <p className={styles.text}>
+              We{" "}
+              <span style={{ color: "#fff" }}>
+                convert all your posts into products{" "}
+              </span>
+              that customers can buy in one click!
+            </p>
+            <p className={styles.smallText}>Want To Know More?</p>
+          </div>
         </div>
+        <PhoneComponent
+          imgSrc={"/assets/connectInsta.png"}
+          num={"02"}
+          text={"Connecting Instagram"}
+        />
       </div>
     </div>
   );
 }
 
-export default IntroComponent;
+export default WhatWeDoComponent;

@@ -5,6 +5,7 @@ import styles from "../styles/Home.module.css";
 import Header from "../components/Header";
 import IntroComponent from "../components/HomePageComponents/IntroComponent";
 import MovingComponent from "../components/HomePageComponents/MovingComponent";
+import WhatWeDoComponent from "../components/HomePageComponents/WhatWeDo";
 import { useEffect, useState } from "react";
 
 const Home: NextPage = () => {
@@ -15,7 +16,9 @@ const Home: NextPage = () => {
     cursor2 = document.getElementById("cursor2");
     document.body.addEventListener("mousemove", function (e) {
       (cursor.style.opacity = 0.2),
-        (cursor2.style.backgroundColor = "#fff !important");
+        (cursor.style.border = "0px solid #fff"),
+        (cursor.style.backgroundColor = "#fff"),
+        (cursor2.style.backgroundColor = "#fff");
     });
   };
 
@@ -36,6 +39,7 @@ const Home: NextPage = () => {
       >
         <IntroComponent />
         <MovingComponent />
+        <WhatWeDoComponent />
       </div>
     </div>
   );
