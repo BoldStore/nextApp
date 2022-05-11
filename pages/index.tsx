@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Header from "../components/Header";
 import IntroComponent from "../components/HomePageComponents/IntroComponent";
+import MovingComponent from "../components/HomePageComponents/MovingComponent";
 import { useEffect, useState } from "react";
 
 const Home: NextPage = () => {
@@ -34,6 +35,7 @@ const Home: NextPage = () => {
         }}
       >
         <IntroComponent />
+        <MovingComponent />
       </div>
     </div>
   );
