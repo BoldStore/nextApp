@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Header from "../components/Header";
-import IntroComponent from "../components/IntroComponent";
+import IntroComponent from "../components/HomePageComponents/IntroComponent";
 import { useEffect, useState } from "react";
 
 const Home: NextPage = () => {

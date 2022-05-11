@@ -1,0 +1,13 @@
+.container {
+  padding: 5rem;
+}
+.heading {
+  font-size: 5rem;
+  color: var(--white);
+}
+
+.flexDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

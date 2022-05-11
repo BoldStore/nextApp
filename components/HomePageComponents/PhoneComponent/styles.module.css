@@ -1,0 +1,41 @@
+.imgFlex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.circle {
+  height: 500px;
+  width: 500px;
+  background-color: var(--white);
+  z-index: 0;
+  border-radius: 50%;
+  position: absolute;
+  opacity: 0.1;
+}
+
+.imgFlex img {
+  z-index: 10;
+  height: 800px;
+  animation: moveUpDown 3s linear infinite;
+  position: relative !important;
+  left: 0;
+  bottom: 0;
+}
+
+.imgFlex p {
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+@keyframes moveUpDown {
+  0%,
+  100% {
+    bottom: 0;
+  }
+  50% {
+    bottom: 20px;
+  }
+}
