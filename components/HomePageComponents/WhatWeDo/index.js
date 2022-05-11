@@ -26,6 +26,7 @@ function WhatWeDoComponent() {
       onMouseEnter={() => {
         changeMouse();
       }}
+      id="aboutus"
     >
       <div className={styles.flexDiv}>
         <div>

@@ -1,4 +1,3 @@
-import Card from "./Card";
 import styles from "./styles.module.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -47,10 +46,38 @@ function AppWalkthrough() {
     });
   };
 
+  const steps = [
+    {
+      num: "01",
+      imgSrc: "https://i.ibb.co/mbQPsLt/Group-19.png",
+      text: "Get started by signing up as a store in one click",
+    },
+    {
+      num: "02",
+      imgSrc: "https://i.ibb.co/bL13RVC/Group-20.png",
+      text: "Connect your instagram to convert all your posts into products!",
+    },
+    {
+      num: "03",
+      imgSrc: "https://i.ibb.co/7QDxS9w/Group-5.png",
+      text: "We create your store on our app , which goes hand in hand with your instagram!",
+    },
+    {
+      num: "04",
+      imgSrc: "https://i.ibb.co/MMMW9dt/Group-10.png",
+      text: "We strip out all important details like the price and size, from the caption of your post.",
+    },
+    {
+      num: "05",
+      imgSrc: "https://i.ibb.co/tLk0Yw7/Group-4.png",
+      text: "We give you your store's analytics!",
+    },
+  ];
+
   return (
     <div
       className={styles.wrapper}
-      id="projects"
+      id="app"
       onMouseEnter={() => {
         changeMouse();
       }}
@@ -66,20 +93,20 @@ function AppWalkthrough() {
         responsive={responsive}
         swipeable={true}
         draggable={true}
-        infinite={false}
+        infinite={true}
         autoPlay={false}
-        autoPlaySpeed={3000}
         keyBoardControl={true}
         partialVisible={true}
         minimumTouchDrag={0}
       >
-        <Phone2
-          imgSrc={"/assets/startingScreen.png"}
-          num={"01"}
-          text={"Starting Screen"}
-          left={true}
-          animationOff={true}
-        />
+        {steps.map((step, i) => (
+          <Phone2
+            key={i}
+            imgSrc={step.imgSrc}
+            num={step.num}
+            text={step.text}
+          />
+        ))}
       </Carousel>
     </div>
   );

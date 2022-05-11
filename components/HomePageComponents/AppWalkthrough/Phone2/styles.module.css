@@ -1,3 +1,18 @@
+.divFlex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 4rem;
+}
+
+.infoFlex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 300px;
+  margin-top: -4rem;
+}
+
 .imgFlex {
   display: flex;
   flex-direction: column;
@@ -19,25 +34,10 @@
 .imgFlex img {
   z-index: 10;
   height: 800px;
-  animation: moveUpDown 3s linear infinite;
-  position: relative !important;
-  left: 0;
-  bottom: 0;
 }
 
 .imgFlex p {
   font-size: 1.2rem;
   font-weight: 300;
   margin: 0;
-  margin-top: -3rem;
-}
-
-@keyframes moveUpDown {
-  0%,
-  100% {
-    bottom: 0;
-  }
-  50% {
-    bottom: 20px;
-  }
 }

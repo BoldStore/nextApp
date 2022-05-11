@@ -25,6 +25,7 @@ body {
   overflow-x: hidden;
   background-color: var(--black);
   cursor: none;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -113,7 +114,7 @@ img {
   align-items: center;
   font-weight: 300 !important;
   display: none;
-  transition: all 200ms ease-out;
+  transition: all 50ms ease-out;
   /* position: absolute; */
 }
 
