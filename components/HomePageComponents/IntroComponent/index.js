@@ -29,6 +29,7 @@ function IntroComponent() {
           imgSrc={"/assets/startingScreen.png"}
           num={"01"}
           text={"Starting Screen"}
+          left={true}
         />
         <div>
           <h1 className={styles.heading}>
