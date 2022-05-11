@@ -12,12 +12,11 @@ function MovingComponent() {
     cursor2 = document.getElementById("cursor2");
     drag = document.getElementById("drag");
     document.body.addEventListener("mousemove", function (e) {
-      (cursor.style.opacity = 1),
+      (cursor.style.mixBlendMode = "difference"),
+        (cursor.style.opacity = 1),
         (cursor2.style.opacity = 1),
-        (cursor.style.backgroundColor = "transparent"),
         (drag.style.display = "none"),
-        (cursor.style.border = "2px solid #fff"),
-        (cursor2.style.backgroundColor = "#fff !important");
+        (cursor2.style.backgroundColor = "#000 !important");
     });
   };
 
