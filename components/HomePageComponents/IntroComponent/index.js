@@ -7,10 +7,14 @@ function IntroComponent() {
     <div className={styles.container}>
       <div className={styles.flexDiv}>
         <PhoneComponent />
-        <h1 className={styles.heading}>
-          <span style={{ opacity: 0.5 }}> The World's </span>First
-          <br /> One Click <span style={{ opacity: 0.5 }}> MarketPlace.</span>
-        </h1>
+        <div>
+          <h1 className={styles.heading}>
+            <span style={{ color: "#808080" }}> The World's </span>First
+            <br /> One Click{" "}
+            <span style={{ color: "#808080" }}> MarketPlace.</span>
+          </h1>
+          <p className={styles.smallText}>Get Started </p>
+        </div>
       </div>
     </div>
   );

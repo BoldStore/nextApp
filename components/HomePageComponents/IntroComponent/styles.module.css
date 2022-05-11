@@ -4,10 +4,43 @@
 .heading {
   font-size: 5rem;
   color: var(--white);
+  margin: 0;
 }
 
 .flexDiv {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.smallText {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #808080;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  position: relative;
+  width: fit-content;
+}
+
+.smallText::after {
+  position: absolute;
+  bottom: -6px;
+  content: "";
+  display: block;
+  height: 1px;
+  width: 0;
+  position: absolute;
+  background: #fff;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.smallText:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.smallText:hover {
+  color: #fff;
+  transition-duration: 0.2s;
 }
