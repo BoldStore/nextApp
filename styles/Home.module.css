@@ -1,4 +1,6 @@
 .container {
   min-height: 100vh;
   min-width: 100vw;
+  color: var(--white);
+  margin-top: 6rem;
 }
