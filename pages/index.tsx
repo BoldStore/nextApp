@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Header from "../components/Header";
+import IntroComponent from "../components/IntroComponent";
 import { useEffect, useState } from "react";
 
 const Home: NextPage = () => {
@@ -32,8 +33,7 @@ const Home: NextPage = () => {
           changeMouse();
         }}
       >
-        {" "}
-        hi hello wohoooooo
+        <IntroComponent />
       </div>
     </div>
   );

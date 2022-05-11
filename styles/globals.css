@@ -105,3 +105,14 @@ img {
   color: var(--white);
   mix-blend-mode: exclusion;
 }
+
+@media only screen and (max-width: 1000px) {
+  .cursor,
+  .cursor2 {
+    display: none;
+  }
+  html,
+  body {
+    cursor: auto;
+  }
+}
