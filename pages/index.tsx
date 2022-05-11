@@ -5,6 +5,7 @@ import styles from "../styles/Home.module.css";
 import Header from "../components/Header";
 import IntroComponent from "../components/HomePageComponents/IntroComponent";
 import MovingComponent from "../components/HomePageComponents/MovingComponent";
+import AppWalkthrough from "../components/HomePageComponents/AppWalkthrough";
 import WhatWeDoComponent from "../components/HomePageComponents/WhatWeDo";
 import { useEffect, useState } from "react";
 
@@ -40,6 +41,7 @@ const Home: NextPage = () => {
         <IntroComponent />
         <MovingComponent />
         <WhatWeDoComponent />
+        <AppWalkthrough />
       </div>
     </div>
   );
