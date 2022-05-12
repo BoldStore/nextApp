@@ -22,3 +22,17 @@
   color: #fff;
   line-height: 1.3;
 }
+@media only screen and (max-width: 1000px) {
+  .container {
+    margin-top: 0px;
+    padding: 3rem;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  .hugeHeading,
+  .midHeading {
+    font-size: 3rem;
+    line-height: 1.2;
+  }
+}

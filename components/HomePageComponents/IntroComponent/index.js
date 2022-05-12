@@ -35,7 +35,7 @@ function IntroComponent() {
           text={"Starting Screen"}
           left={true}
         />
-        <motion.div>
+        <motion.div className={styles.wrapper}>
           <h1 className={styles.heading}>
             <span style={{ color: "#808080" }}> The World's </span>First
             <br /> One Click{" "}

@@ -23,6 +23,7 @@
   .wrapper h1 {
     font-size: 3rem;
     margin-left: 3rem;
+    line-height: 1.4;
   }
   .wrapper {
     margin-top: 5rem;

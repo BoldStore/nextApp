@@ -60,4 +60,7 @@
     text-align: center;
     margin-left: 3rem;
   }
+  .wrapper {
+    width: 100vw;
+  }
 }
