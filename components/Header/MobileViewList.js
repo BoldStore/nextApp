@@ -12,13 +12,14 @@ function MobileViewList() {
   return (
     <div style={{ backgroundColor: "#000" }}>
       <img
-        src={"https://i.ibb.co/2ZB8GSG/LogoFull.png"}
+        src={"https://i.ibb.co/Ct1jrgj/Logo2.png"}
         style={{
           width: "80%",
           display: "block",
           marginLeft: "auto",
           marginRight: "auto",
           position: "absolute",
+          left: "10%",
         }}
       />
       <div
