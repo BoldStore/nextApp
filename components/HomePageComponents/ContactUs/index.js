@@ -1,12 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.css";
 import PhoneComponent from "../PhoneComponent";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 function ContactUs() {
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const [email, setEmail] = useState("");
+  const [instaUsername, setInstaUsername] = useState("");
+
   var cursor;
   var cursor2;
   var drag;
+
+  const saveData = async () => {
+    setLoading(true);
+    const url =
+      "https://us-central1-bold-96a92.cloudfunctions.net/stores-addPotentialStore";
+    const response = await axios.post(url, {
+      insta_username: instaUsername,
+      email,
+    });
+
+    if (response.data?.success) {
+      setLoading(false);
+      setMessage(response.data.message);
+    } else {
+      setError(response.data?.message || "There was an error");
+    }
+  };
+
   const changeMouse = () => {
     cursor = document.getElementById("cursor");
     cursor2 = document.getElementById("cursor2");
@@ -20,6 +46,10 @@ function ContactUs() {
         (cursor2.style.backgroundColor = "#fff");
     });
   };
+
+  console.log(loading);
+  console.log(error);
+  console.log(message);
 
   return (
     <div
@@ -44,6 +74,10 @@ function ContactUs() {
               type="text"
               className={styles.input}
               placeholder={"username"}
+              value={instaUsername}
+              onChange={(e) => {
+                setInstaUsername(e.target.value);
+              }}
             />
           </div>
           <div className={styles.divInput}>
@@ -52,10 +86,16 @@ function ContactUs() {
               type="email"
               className={styles.input}
               placeholder={"Email"}
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
             />
           </div>
 
-          <p className={styles.btn}>Join The Waiting List</p>
+          <p className={styles.btn} onClick={saveData}>
+            {loading ? "Join The Waiting List" : "Loading"}
+          </p>
         </motion.div>
       </div>
     </div>
