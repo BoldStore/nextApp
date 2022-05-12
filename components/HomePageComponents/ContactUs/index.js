@@ -31,8 +31,8 @@ function ContactUs() {
       }
     );
 
+    setLoading(false);
     if (response.data?.success) {
-      setLoading(false);
       setMessage(response.data.message);
     } else {
       setError(response.data?.message || "There was an error");
