@@ -119,7 +119,7 @@ function AppWalkthrough() {
         keyBoardControl={true}
         partialVisible={true}
         minimumTouchDrag={0}
-        autoPlaySpeed={2000}
+        autoPlaySpeed={3000}
       >
         {steps.map((step, i) => (
           <Phone2
