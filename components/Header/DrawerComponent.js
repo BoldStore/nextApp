@@ -46,6 +46,7 @@ export default function TemporaryDrawer() {
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
+      style={{ backgroundColor: "#000" }}
     >
       <MobileViewList />
     </div>

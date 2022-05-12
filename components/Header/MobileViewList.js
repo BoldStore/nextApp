@@ -10,95 +10,43 @@ import MailIcon from "@mui/icons-material/Mail";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 function MobileViewList() {
   return (
-    <List>
-      <Link
-        passHref={true}
-        href="/#aboutme"
-        className={styles.headernav}
+    <div style={{ backgroundColor: "#000" }}>
+      <img
+        src={"https://i.ibb.co/2ZB8GSG/LogoFull.png"}
         style={{
-          color: "#000",
-          opacity: 0.5,
-          display: "flex",
-          alignItems: "center",
+          width: "80%",
+          display: "block",
+          marginLeft: "auto",
+          marginRight: "auto",
+          position: "absolute",
+        }}
+      />
+      <div
+        style={{
+          padding: "2rem",
+          paddingLeft: "1.2rem",
+          top: "20vh",
+          position: "absolute",
         }}
       >
-        <ListItem>
-          <ListItemText primary="About" />
-        </ListItem>
-      </Link>
-
-      <Link
-        passHref={true}
-        href="/#projects"
-        className={styles.headernav}
-        style={{
-          color: "#000",
-          opacity: 0.5,
-          display: "flex",
-          alignItems: "center",
-          textDecoration: "none",
-        }}
-      >
-        <ListItem>
-          <ListItemText primary="Projects" />
-        </ListItem>
-      </Link>
-
-      <Link
-        passHref={true}
-        href="/#achievments"
-        className={styles.headernav}
-        style={{
-          color: "#000",
-          opacity: 0.5,
-          display: "flex",
-          alignItems: "center",
-          textDecoration: "none",
-        }}
-      >
-        <ListItem>
-          <ListItemText primary="Experience" />
-        </ListItem>
-      </Link>
-      <Link
-        passHref={true}
-        href="/#contactme"
-        className={styles.headernav}
-        style={{
-          color: "#000",
-          opacity: 0.5,
-          display: "flex",
-          alignItems: "center",
-          textDecoration: "none",
-        }}
-      >
-        <ListItem>
-          <ListItemText primary="Contact" />
-        </ListItem>
-      </Link>
-
-      <div className={styles.rightContainer}>
-        <Link href="https://instagram.com/_drishti.makhijani">
-          <InstagramIcon
-            className={styles.navLinks2}
-            style={{ fontSize: "1.5rem" }}
-          />
+        <Link href="/">
+          <p className={styles.navLinks}>Home</p>
         </Link>
-        <Link href="https://www.linkedin.com/in/drishti-makhijani-3418661b4">
-          <LinkedInIcon
-            className={styles.navLinks2}
-            style={{ fontSize: "1.5rem" }}
-          />
+        <Link href="/#aboutus">
+          <p className={styles.navLinks}>About Us</p>
         </Link>
-        <Link href="mailto:drishtimakhijani01@gmail.com">
-          <MailIcon
-            className={styles.navLinks2}
-            style={{ fontSize: "1.5rem" }}
-          />
+        <Link href="/#app">
+          <p className={styles.navLinks}>Mobile App</p>
+        </Link>
+
+        <Link href="/#contactus">
+          <p className={styles.navLinks}>Contact Us</p>
+        </Link>
+        <Link href="https://www.instagram.com/boldstore.in">
+          <p className={styles.navLinks}>Instagram</p>
         </Link>
       </div>
-      <hr style={{ color: "#636262", width: "90%", opacity: 0.2 }} />
-    </List>
+    </div>
   );
 }
 

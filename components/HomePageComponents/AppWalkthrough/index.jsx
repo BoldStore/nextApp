@@ -2,7 +2,7 @@ import styles from "./styles.module.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Phone2 from "./Phone2";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function AppWalkthrough() {
   var cursor;
@@ -13,12 +13,12 @@ function AppWalkthrough() {
 
   const responsive = {
     desktop: {
-      breakpoint: { max: 3000, min: 500 },
+      breakpoint: { max: 3000, min: 1500 },
       items: 3,
       slidesToSlide: 1, // optional, default to 1.
     },
     tablet: {
-      breakpoint: { max: 1024, min: 600 },
+      breakpoint: { max: 1500, min: 600 },
       items: 2,
       slidesToSlide: 1, // optional, default to 1.
     },
@@ -86,6 +86,14 @@ function AppWalkthrough() {
       }
     });
   }
+
+  useEffect(() => {
+    if (process.browser) {
+      if (window.innerWidth < 1000) {
+        setMobile(true);
+      }
+    }
+  }, []);
 
   return (
     <div

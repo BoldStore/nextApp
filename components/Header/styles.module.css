@@ -74,4 +74,14 @@
     margin-left: 15px;
     margin-top: 15px;
   }
+
+  .container h1 {
+    padding-left: 2rem;
+  }
+  .menu {
+    padding-right: 2rem;
+  }
+  .navLinks {
+    margin-bottom: 2rem;
+  }
 }
