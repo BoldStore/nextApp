@@ -1,5 +1,6 @@
 .container {
   background-color: var(--black);
+  margin-bottom: 5rem;
 }
 .specialText {
   color: #000;

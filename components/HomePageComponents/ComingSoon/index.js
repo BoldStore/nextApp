@@ -27,14 +27,15 @@ function ComingSoon() {
         changeMouse();
       }}
     >
-      <Marquee speed={150} pauseOnClick={true} gradient={false}>
+      <Marquee speed={150} pauseOnClick={false} gradient={false}>
         <p className={styles.specialText}>Coming Sooner Than You Think.</p>
       </Marquee>
       <Marquee
         speed={150}
         direction="right"
-        pauseOnClick={true}
+        pauseOnClick={false}
         gradient={false}
+        style={{ marginTop: "-4rem" }}
       >
         <p className={styles.specialText}>Coming Sooner Than You Think.</p>
       </Marquee>

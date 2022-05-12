@@ -37,6 +37,7 @@ function MovingComponent() {
         speed={100}
         pauseOnClick={true}
         gradient={false}
+        style={{ marginTop: "-4rem" }}
       >
         <p className={styles.specialText}>
           SHOP BOLD. SHOP BOLD. SHOP BOLD. SHOP BOLD.
