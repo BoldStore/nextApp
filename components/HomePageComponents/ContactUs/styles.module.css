@@ -1,11 +1,103 @@
-.midHeading {
-  text-transform: uppercase;
-  font-family: "Raleway";
+.container {
+  padding: 5rem;
+  padding-top: 0px;
+}
+.heading {
   font-size: 5rem;
-  font-weight: 800;
+  color: var(--white);
+  margin: 0;
+}
+
+.flexDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.smallText {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #808080;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  position: relative;
+  width: fit-content;
+}
+
+.smallText2 {
+  font-size: 1.2rem;
+  font-weight: 300;
   color: #fff;
 }
-.container {
-  margin-top: 5rem;
-  padding: 5rem;
+.smallText::after {
+  position: absolute;
+  bottom: -6px;
+  content: "";
+  display: block;
+  height: 1px;
+  width: 0;
+  position: absolute;
+  background: #fff;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.smallText:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.smallText:hover {
+  color: #fff;
+  transition-duration: 0.2s;
+}
+
+.input {
+  background-color: black;
+  border: 0px solid #000;
+  padding: 1rem;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 300 !important;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.divInput {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #fff;
+  margin-bottom: 1rem;
+}
+
+.form {
+  margin-right: 5rem;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: flex-start;
+}
+
+.btn {
+  padding: 0.7rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  width: 100%;
+  border: 1px solid #fff;
+  margin-top: 2rem;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: #808080;
+}
+
+.btn:hover {
+  background-color: #fff;
+  color: #000;
+  border-color: #fff;
+  transition: all 0.5s;
 }

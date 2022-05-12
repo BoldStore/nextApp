@@ -58,7 +58,7 @@ function Header() {
     >
       <h1 className={"logo"}>
         BOLD
-        <span style={{ fontFamily: "Inter", fontSize: "3.5rem" }}>.</span>
+        <span style={{ fontFamily: "Inter", fontSize: "1.5rem" }}>.</span>
       </h1>
       {open && (
         <>
