@@ -128,8 +128,9 @@ img {
 
 @media only screen and (max-width: 1000px) {
   .cursor,
-  .cursor2 {
-    display: none;
+  .cursor2,
+  .drag {
+    display: none !important;
   }
   html,
   body {

@@ -18,3 +18,13 @@
   margin: 0;
   margin-left: 5rem;
 }
+
+@media only screen and (max-width: 1000px) {
+  .wrapper h1 {
+    font-size: 3rem;
+    margin-left: 3rem;
+  }
+  .wrapper {
+    margin-top: 5rem;
+  }
+}

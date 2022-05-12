@@ -29,7 +29,7 @@ function WhatWeDoComponent() {
       id="aboutus"
     >
       <div className={styles.flexDiv}>
-        <div style={{ marginTop: "3rem" }}>
+        <div className={styles.wrapper} style={{ marginTop: "3rem" }}>
           <h1 className={styles.heading}>
             <span style={{ color: "#808080" }}> Why</span> Us?
           </h1>

@@ -44,3 +44,20 @@
   color: #fff;
   transition-duration: 0.2s;
 }
+
+@media only screen and (max-width: 1000px) {
+  .flexDiv {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+  .heading {
+    font-size: 3rem;
+    margin: 3rem;
+    margin-bottom: 0;
+  }
+  .smallText {
+    text-align: center;
+    margin-left: 3rem;
+  }
+}

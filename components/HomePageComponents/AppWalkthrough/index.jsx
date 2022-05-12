@@ -2,11 +2,14 @@ import styles from "./styles.module.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Phone2 from "./Phone2";
+import { useState } from "react";
 
 function AppWalkthrough() {
   var cursor;
   var cursor2;
   var drag;
+
+  const [mobile, setMobile] = useState(false);
 
   const responsive = {
     desktop: {
@@ -74,6 +77,16 @@ function AppWalkthrough() {
     },
   ];
 
+  if (process.browser) {
+    window.addEventListener("resize", () => {
+      if (window.innerWidth < 1000) {
+        setMobile(true);
+      } else {
+        setMobile(false);
+      }
+    });
+  }
+
   return (
     <div
       className={styles.wrapper}
@@ -94,10 +107,11 @@ function AppWalkthrough() {
         swipeable={true}
         draggable={true}
         infinite={true}
-        autoPlay={false}
+        autoPlay={mobile}
         keyBoardControl={true}
         partialVisible={true}
         minimumTouchDrag={0}
+        autoPlaySpeed={2000}
       >
         {steps.map((step, i) => (
           <Phone2

@@ -18,3 +18,10 @@
   text-align: center;
   color: #fff;
 }
+
+@media only screen and (max-width: 1000px) {
+  .specialText {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+}

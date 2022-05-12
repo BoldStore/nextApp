@@ -54,3 +54,35 @@
   font-size: 2rem;
   color: #808080;
 }
+
+@media only screen and (max-width: 1000px) {
+  .container {
+    margin-top: 0rem;
+    padding: 0rem;
+  }
+  .wrapper {
+    margin-top: 0px !important;
+  }
+  .flexDiv {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .heading {
+    font-size: 3rem;
+    margin: 3rem;
+    margin-bottom: 0;
+  }
+  .text {
+    font-size: 1.2rem;
+    margin: 0px;
+  }
+  .smallText {
+    text-align: center;
+  }
+  .textDiv {
+    margin-left: 3rem;
+    margin-right: 3rem;
+    margin-top: 1.2rem;
+  }
+}
