@@ -9,6 +9,7 @@ import AppWalkthrough from "../components/HomePageComponents/AppWalkthrough";
 import WhatWeDoComponent from "../components/HomePageComponents/WhatWeDo";
 import StillHereComponent from "../components/HomePageComponents/StillHereComponent";
 import ContactUs from "../components/HomePageComponents/ContactUs";
+import Loading from "../components/Loading";
 import { useEffect, useState } from "react";
 
 const Home: NextPage = () => {
