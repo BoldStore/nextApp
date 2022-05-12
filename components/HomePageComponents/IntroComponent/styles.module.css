@@ -55,7 +55,7 @@
 @media only screen and (max-width: 1000px) {
   .container {
     padding: 0;
-    padding-top: 5rem;
+    padding-top: 2rem;
     display: block;
     width: 80%;
     margin-left: auto;

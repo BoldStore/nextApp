@@ -53,10 +53,13 @@ export default function TemporaryDrawer() {
   );
 
   return (
-    <div>
+    <div className={styles.menu}>
       {["right"].map((anchor) => (
         <React.Fragment key={anchor}>
-          <div onClick={toggleDrawer(anchor, true)} className={styles.menu}>
+          <div
+            onClick={toggleDrawer(anchor, true)}
+            style={{ position: "absolute", top: "25%", left: "25%" }}
+          >
             <svg
               fill="none"
               height="24"

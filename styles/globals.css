@@ -136,4 +136,8 @@ img {
   body {
     cursor: auto;
   }
+
+  .logo {
+    display: none;
+  }
 }

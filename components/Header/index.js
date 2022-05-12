@@ -17,7 +17,7 @@ function Header() {
 
   useEffect(() => {
     if (process.browser) {
-      if (window.innerWidth < 800) {
+      if (window.innerWidth < 1000) {
         setOpen(false);
       }
     }
@@ -25,7 +25,7 @@ function Header() {
 
   if (process.browser) {
     window.addEventListener("resize", () => {
-      if (window.innerWidth < 800) {
+      if (window.innerWidth < 1000) {
         setOpen(false);
       } else {
         setOpen(true);

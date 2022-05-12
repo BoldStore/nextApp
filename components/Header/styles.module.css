@@ -66,8 +66,9 @@
     width: 100%;
     left: 0%;
     position: fixed;
-    border-bottom: 2px solid var(--black);
+    border-bottom: 0px solid var(--black);
     padding: 20px;
+    background-color: transparent;
   }
   .rightContainer {
     margin-right: auto !important;
@@ -80,6 +81,15 @@
   }
   .menu {
     padding-right: 2rem;
+    background-color: black;
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    margin-left: auto;
+    position: relative;
   }
   .navLinks {
     margin-bottom: 2rem;
