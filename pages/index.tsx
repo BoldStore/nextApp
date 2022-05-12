@@ -9,8 +9,8 @@ import AppWalkthrough from "../components/HomePageComponents/AppWalkthrough";
 import WhatWeDoComponent from "../components/HomePageComponents/WhatWeDo";
 import StillHereComponent from "../components/HomePageComponents/StillHereComponent";
 import ContactUs from "../components/HomePageComponents/ContactUs";
-import Loading from "../components/Loading";
-import { useEffect, useState } from "react";
+import ComingSoon from "../components/HomePageComponents/ComingSoon";
+import Footer from "../components/Footer";
 
 const Home: NextPage = () => {
   var cursor: any;
@@ -47,6 +47,8 @@ const Home: NextPage = () => {
         <AppWalkthrough />
         <StillHereComponent />
         <ContactUs />
+        <ComingSoon />
+        {/* <Footer /> */}
       </div>
     </div>
   );
