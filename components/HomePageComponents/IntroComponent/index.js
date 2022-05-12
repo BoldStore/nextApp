@@ -38,7 +38,7 @@ function IntroComponent() {
         />
         <motion.div className={styles.wrapper}>
           <h1 className={styles.heading}>
-            <span style={{ color: "#808080" }}> The World's </span>First
+            <span style={{ color: "#808080" }}> The World&apos;s </span>First
             <br /> One Click{" "}
             <span style={{ color: "#808080" }}> MarketPlace.</span>
           </h1>

@@ -67,9 +67,9 @@ export default function TemporaryDrawer() {
               <path
                 d="M4 8H20M4 16H20"
                 stroke="#fff"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
               />
             </svg>
           </div>
