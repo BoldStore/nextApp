@@ -33,6 +33,7 @@ function ContactUs() {
 
     setLoading(false);
     if (response.data?.success) {
+      setError("");
       setMessage(response.data.message);
     } else {
       setError(response.data?.message || "There was an error");
@@ -52,10 +53,6 @@ function ContactUs() {
         (cursor2.style.backgroundColor = "#fff");
     });
   };
-
-  console.log(loading);
-  console.log(error);
-  console.log(message);
 
   return (
     <div
@@ -99,8 +96,10 @@ function ContactUs() {
             />
           </div>
 
+          {error && <p className={styles.error}>{error}</p>}
+          {message && <p className={styles.message}>{message}</p>}
           <p className={styles.btn} onClick={saveData}>
-            {!loading ? "Join The Waiting List" : "Loading"}
+            {!loading ? "Join The Waiting List" : "Loading..."}
           </p>
         </motion.div>
       </div>
