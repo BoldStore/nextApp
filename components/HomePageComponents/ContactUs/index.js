@@ -94,7 +94,7 @@ function ContactUs() {
           </div>
 
           <p className={styles.btn} onClick={saveData}>
-            {loading ? "Join The Waiting List" : "Loading"}
+            {!loading ? "Join The Waiting List" : "Loading"}
           </p>
         </motion.div>
       </div>
