@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 import PhoneComponent from "../PhoneComponent";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 function IntroComponent() {
   var cursor;
@@ -41,7 +42,9 @@ function IntroComponent() {
             <br /> One Click{" "}
             <span style={{ color: "#808080" }}> MarketPlace.</span>
           </h1>
-          <p className={styles.smallText}>Get Started </p>
+          <Link href="/#contactus">
+            <p className={styles.smallText}>Get Started </p>
+          </Link>
         </motion.div>
       </div>
     </div>

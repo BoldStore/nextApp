@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 import PhoneComponent from "../PhoneComponent";
+import Link from "next/link";
 
 function WhatWeDoComponent() {
   var cursor;
@@ -41,7 +42,9 @@ function WhatWeDoComponent() {
               </span>
               that customers can buy in one click!
             </p>
-            <p className={styles.smallText}>Want To Know More?</p>
+            <Link href="https://www.instagram.com/boldstore.in">
+              <p className={styles.smallText}>Want To Know More?</p>
+            </Link>
           </div>
         </div>
         <PhoneComponent
