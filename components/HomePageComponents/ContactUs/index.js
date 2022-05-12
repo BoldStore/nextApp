@@ -20,10 +20,16 @@ function ContactUs() {
     setLoading(true);
     const url =
       "https://us-central1-bold-96a92.cloudfunctions.net/stores-addPotentialStore";
-    const response = await axios.post(url, {
-      insta_username: instaUsername,
-      email,
-    });
+    const response = await axios.post(
+      url,
+      {
+        insta_username: instaUsername,
+        email,
+      },
+      {
+        headers: "Content-Type: application/json",
+      }
+    );
 
     if (response.data?.success) {
       setLoading(false);
