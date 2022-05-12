@@ -74,6 +74,7 @@
   .smallText {
     text-align: center;
     margin-left: 3rem;
+    margin-bottom: -2rem;
   }
   .wrapper {
     width: 100vw;
