@@ -46,9 +46,9 @@ function MyApp({ Component, pageProps }: any) {
         <link rel="manifest" href="/manifest.json" />
         <meta
           name="description"
-          content="The World's First One Click Marketplace!"
+          content="The World's First One Click Marketplace! We convert Instagram Posts to Products your customers can buy!"
         />
-        <link rel="icon" href="https://i.ibb.co/2ZB8GSG/LogoFull.png" />
+        <link rel="icon" href="https://i.ibb.co/Ct1jrgj/Logo2.png" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 
         <link rel="canonical" href="https://boldstore.in/" />
@@ -60,17 +60,17 @@ function MyApp({ Component, pageProps }: any) {
 
         <meta
           name="twitter:card"
-          content="https://i.ibb.co/2ZB8GSG/LogoFull.png"
+          content="https://i.ibb.co/Ct1jrgj/Logo2.png"
         />
         <meta name="twitter:site" content="https://boldstore.in/" />
         <meta name="twitter:title" content="Bold Store" />
         <meta
           name="twitter:description"
-          content="The World's First One Click Marketplace!"
+          content="The World's First One Click Marketplace! We convert Instagram Posts to Products your customers can buy!"
         />
         <meta
           name="twitter:image:src"
-          content="https://i.ibb.co/2ZB8GSG/LogoFull.png"
+          content="https://i.ibb.co/Ct1jrgj/Logo2.png"
         />
         <meta name="twitter:image:alt" content="Bold Store" />
 
@@ -79,23 +79,20 @@ function MyApp({ Component, pageProps }: any) {
         <meta property="og:title" content="Bold Store" />
         <meta
           property="og:image"
-          content="https://i.ibb.co/2ZB8GSG/LogoFull.png"
+          content="https://i.ibb.co/Ct1jrgj/Logo2.png"
         />
         <meta
           property="og:description"
-          content="The World's First One Click Marketplace!"
+          content="The World's First One Click Marketplace! We convert Instagram Posts to Products your customers can buy!"
         />
         <meta property="og:site_name" content="Bold Store" />
 
         <meta itemProp="name" content="Bold Store" />
         <meta
           itemProp="description"
-          content="The World's First One Click Marketplace!"
+          content="The World's First One Click Marketplace! We convert Instagram Posts to Products your customers can buy!"
         />
-        <meta
-          itemProp="image"
-          content="https://i.ibb.co/2ZB8GSG/LogoFull.png"
-        />
+        <meta itemProp="image" content="https://i.ibb.co/Ct1jrgj/Logo2.png" />
         <meta
           httpEquiv="Content-Security-Policy"
           content="upgrade-insecure-requests"
