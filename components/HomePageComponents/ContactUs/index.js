@@ -55,7 +55,7 @@ function ContactUs() {
             />
           </div>
 
-          <p className={styles.btn}>Ask For Code</p>
+          <p className={styles.btn}>Join The Waiting List</p>
         </motion.div>
       </div>
     </div>
