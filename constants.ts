@@ -1,4 +1,4 @@
-export const API_URL = "https://us-central1-bold-96a92.cloudfunctions.net/";
+export const API_URL = "https://us-central1-bold-96a92.cloudfunctions.net/app";
 
 // Pages
 export const HOME_PAGE = "pages-homePage";
@@ -30,4 +30,4 @@ export const CHECK_DELIVERY = "orders-checkForDelivery";
 export const ADD_INVITE_CODE = "codes-addInviteCode";
 
 // TEST
-export const SEND_MAIL = "tests-sendMail";
+export const SEND_MAIL = "tests/sendMail";

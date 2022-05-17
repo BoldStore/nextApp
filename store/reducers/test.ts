@@ -21,15 +21,15 @@ const testReducer = (state = initState, action: any) => {
         ...state,
         isLoading: false,
         errmess: null,
-        success: action.data.success,
-        message: action.data.message,
+        success: action.data?.success,
+        message: action.data?.message,
       };
 
     case ActionTypes.SEND_MAIL_FAILED:
       return {
         ...state,
         isLoading: false,
-        errmess: action.data.message,
+        errmess: action.data?.message,
         success: false,
       };
 
