@@ -29,6 +29,8 @@ const pagesReducer = (state = initState, action: any) => {
         home_loading: false,
         home_errmess: action.data.message,
       };
+    default:
+      return state;
   }
 };
 

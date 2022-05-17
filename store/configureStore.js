@@ -1,5 +1,11 @@
-import { createStore, applyMiddleware, compose } from "redux";
+import {
+  legacy_createStore as createStore,
+  applyMiddleware,
+  compose,
+} from "redux";
 import thunk from "redux-thunk";
+import logger from "redux-logger";
+import { createWrapper } from "next-redux-wrapper";
 import rootReducer from "./reducers/rootReducer";
 
 const composeEnhancers =
@@ -11,9 +17,11 @@ let middleware = [];
 if (process.env.NODE_ENV === "production") {
   middleware = [thunk];
 } else {
-  middleware = typeof window === "object" ? [thunk] : [thunk];
+  middleware = typeof window === "object" ? [thunk, logger] : [thunk];
 }
 
 const enhancer = composeEnhancers(applyMiddleware(...middleware));
 
-export const makeStore = () => createStore(rootReducer, enhancer);
+const makeStore = () => createStore(rootReducer, enhancer);
+
+export const wrapper = createWrapper(makeStore);

@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import { useEffect } from "react";
 import Head from "next/head";
+import { wrapper } from "../store/configureStore";
 
 function MyApp({ Component, pageProps }: any) {
   var cursor: any;
@@ -100,9 +101,10 @@ function MyApp({ Component, pageProps }: any) {
       </Head>
       <div className="cursor2" id="cursor2"></div>
       <div className="cursor" id="cursor"></div>
+
       <Component {...pageProps} />
     </>
   );
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);

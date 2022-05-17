@@ -28,3 +28,6 @@ export const CHECK_DELIVERY = "orders-checkForDelivery";
 
 // Invite code
 export const ADD_INVITE_CODE = "codes-addInviteCode";
+
+// TEST
+export const SEND_MAIL = "tests-sendMail";

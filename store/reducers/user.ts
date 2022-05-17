@@ -54,6 +54,8 @@ const userReducer = (state = initState, action: any) => {
         isLoading: false,
         errmess: action.data.errmess,
       };
+    default:
+      return state;
   }
 };
 

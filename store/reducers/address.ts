@@ -95,6 +95,8 @@ const addressReducer = (state = initState, action: any) => {
         isLoading: false,
         errmess: action.data.message,
       };
+    default:
+      return state;
   }
 };
 
