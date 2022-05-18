@@ -32,3 +32,4 @@ export const ADD_INVITE_CODE = "codes/addInviteCode";
 // TEST
 export const SEND_MAIL = "test/sendMail";
 export const PING_SERVER = "test";
+export const CHECK_LOGIN = "test/checkLogin";

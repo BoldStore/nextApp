@@ -3,13 +3,17 @@
 // and redux
 import { NextPage } from "next";
 import { useSelector, useDispatch } from "react-redux";
-import { pingServer } from "../store/actions/test";
+import { checkLogin, pingServer } from "../store/actions/test";
 
 const Test: NextPage = () => {
   const dispatch = useDispatch();
   const test = useSelector((state: any) => state.test);
   const pingServerTest = () => {
     dispatch(pingServer());
+  };
+
+  const loginCheck = () => {
+    dispatch(checkLogin());
   };
 
   return (
@@ -21,6 +25,12 @@ const Test: NextPage = () => {
       <h2>
         {test.success ? "Success" : test.failed ? "Failed" : "Not pinged"}
       </h2>
+      <h3>Message: {test.message}</h3>
+
+      <br />
+      <h1>Check Login</h1>
+      <button onClick={loginCheck}>Check</button>
+      <h2>{test.success ? "Success" : !test.id ? "Failed" : "Not sent"}</h2>
       <h3>Message: {test.message}</h3>
     </div>
   );
