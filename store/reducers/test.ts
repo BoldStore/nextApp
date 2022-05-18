@@ -9,14 +9,14 @@ const initState = {
 
 const testReducer = (state = initState, action: any) => {
   switch (action.type) {
-    case ActionTypes.SEND_MAIL_REQUEST:
+    case ActionTypes.PING_SERVER_REQUEST:
       return {
         ...state,
         isLoading: true,
         errmess: null,
       };
 
-    case ActionTypes.SEND_MAIL_SUCCESS:
+    case ActionTypes.PING_SERVER_SUCCESS:
       return {
         ...state,
         isLoading: false,
@@ -25,7 +25,7 @@ const testReducer = (state = initState, action: any) => {
         message: action.data?.message,
       };
 
-    case ActionTypes.SEND_MAIL_FAILED:
+    case ActionTypes.PING_SERVER_FAILED:
       return {
         ...state,
         isLoading: false,
