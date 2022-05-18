@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import instance from "../../axios";
-import { SEND_MAIL } from "../../constants";
+import { PING_SERVER } from "../../constants";
 import * as ActionTypes from "../ActionTypes";
 
 export const sendMail = () => {
@@ -8,7 +8,7 @@ export const sendMail = () => {
     dispatch({ type: ActionTypes.SEND_MAIL_REQUEST });
     try {
       const response = await instance.get(
-        SEND_MAIL
+        PING_SERVER
         // {
         //   headers: {
         //     Authorization: firebase().auth().currentUser.getIdToken(),
