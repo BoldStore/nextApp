@@ -3,7 +3,7 @@ import instance from "../../axios";
 import { PING_SERVER } from "../../constants";
 import * as ActionTypes from "../ActionTypes";
 
-export const sendMail = () => {
+export const pingServer = () => {
   return async (dispatch: Dispatch<any>) => {
     dispatch({ type: ActionTypes.SEND_MAIL_REQUEST });
     try {

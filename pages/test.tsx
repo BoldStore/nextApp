@@ -3,22 +3,24 @@
 // and redux
 import { NextPage } from "next";
 import { useSelector, useDispatch } from "react-redux";
-import { sendMail } from "../store/actions/test";
+import { pingServer } from "../store/actions/test";
 
 const Test: NextPage = () => {
   const dispatch = useDispatch();
   const test = useSelector((state: any) => state.test);
-  const sendMailTest = () => {
-    dispatch(sendMail());
+  const pingServerTest = () => {
+    dispatch(pingServer());
   };
 
   return (
     <div>
-      <h1>This is a test to send email</h1>
-      <button onClick={sendMailTest}>
-        {test.isLoading ? "Loading..." : "Send Mail"}
+      <h1>This is a test to ping server</h1>
+      <button onClick={pingServerTest}>
+        {test.isLoading ? "Loading..." : "Ping Server"}
       </button>
-      <h2>{test.success ? "Success" : test.failed ? "Failed" : "Not sent"}</h2>
+      <h2>
+        {test.success ? "Success" : test.failed ? "Failed" : "Not pinged"}
+      </h2>
       <h3>Message: {test.message}</h3>
     </div>
   );
