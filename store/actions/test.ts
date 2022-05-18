@@ -16,9 +16,6 @@ export const sendMail = () => {
         // }
       );
 
-      console.log("Status>>", response.status);
-      console.log("Data>>", response.data);
-
       if (response.status == 200) {
         dispatch({
           type: ActionTypes.SEND_MAIL_SUCCESS,
@@ -30,7 +27,6 @@ export const sendMail = () => {
           data: response.data,
         });
       }
-      console.log("WOHO WORKS");
     } catch (e) {
       dispatch({
         type: ActionTypes.SEND_MAIL_FAILED,
