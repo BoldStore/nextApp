@@ -35,11 +35,13 @@ const Test: NextPage = () => {
     dispatch(checkLogin());
   };
 
-  const signup = () => {
+  const signup = (e: any) => {
+    e.preventDefault();
     createUserWithEmailAndPassword(email, password);
   };
 
-  const login = () => {
+  const login = (e: any) => {
+    e.preventDefault();
     signInWithEmailAndPassword(email, password);
   };
 
@@ -49,7 +51,7 @@ const Test: NextPage = () => {
 
   return (
     <div>
-      <h1>{`This is a test to ping server - Hello, ${userInSession}`}</h1>
+      <h1>{`This is a test to ping server - Hello, ${userInSession?.email}`}</h1>
       <button onClick={pingServerTest}>
         {test.isLoading ? "Loading..." : "Ping Server"}
       </button>
