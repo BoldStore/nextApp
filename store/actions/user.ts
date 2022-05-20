@@ -121,7 +121,7 @@ export const updateUser = (
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.UPDATE_USER_REQUEST });
     try {
-      const response = await instance.post(
+      const response = await instance.patch(
         UPDATE_USER,
         {
           name,

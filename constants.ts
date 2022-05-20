@@ -14,7 +14,7 @@ export const ADD_POTENTIAL_STORE = "store/addPotentialStore";
 
 // Users
 export const CREATE_USER = "user/";
-export const ADD_INSTA_USERNAME = "users/InstaUsername";
+export const ADD_INSTA_USERNAME = "user/instaUsername";
 export const GET_PERSONAL_DETAILS = "user/";
 export const UPDATE_USER = "user/";
 export const DELETE_USER = "user/";
