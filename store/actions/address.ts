@@ -107,7 +107,7 @@ export const updateAddress = (
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.UPDATE_ADDRESS_REQUEST });
     try {
-      const response = await instance.post(
+      const response = await instance.patch(
         UPDATE_ADDRESS,
         {
           id: addressId,

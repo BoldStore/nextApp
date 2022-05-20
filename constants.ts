@@ -23,7 +23,7 @@ export const DELETE_USER = "user/";
 export const ADD_ADDRESS = "address/";
 export const USER_ADDRESSES = "address/";
 export const UPDATE_ADDRESS = "address/";
-export const DELETE_ADDRESS = "address/";
+export const DELETE_ADDRESS = "address/delete";
 
 // Orders
 export const CREATE_ORDER = "orders/createOrder";
