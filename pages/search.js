@@ -4,7 +4,7 @@ import SearchComponent from "../components/CommonComponents/Search";
 import styles from "../styles/common.module.css";
 import Grid from "../components/Grid";
 
-function search() {
+function Search() {
   return (
     <>
       <CustomerHeader />
@@ -18,4 +18,4 @@ function search() {
   );
 }
 
-export default search;
+export default Search;

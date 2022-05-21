@@ -1,0 +1,27 @@
+.container {
+  width: 80vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 7rem;
+  padding-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.customerDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.customerDetails p {
+  margin-top: -0.5rem;
+}
+
+.customerDetails p:hover {
+  text-decoration: underline;
+}

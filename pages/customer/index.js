@@ -27,6 +27,8 @@ function CustomerHomePage() {
           <Post />
           <Post />
           <Post />
+          <Post />
+          <Post />
         </div>
       </div>
     </>

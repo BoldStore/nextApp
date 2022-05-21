@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 function BoldButton({ text }) {
   return (
     <button className={styles.button}>
-      <p>Update{text}</p>
+      <p>{text}</p>
     </button>
   );
 }

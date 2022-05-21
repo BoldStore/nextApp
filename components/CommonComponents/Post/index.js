@@ -4,6 +4,7 @@ import Avatar from "@mui/material/Avatar";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Image from "next/image";
 import { Bookmark } from "react-feather";
+import BoldButton from "../BoldButton";
 
 function Post({ storeName, storeLocation, postUrl, price, caption }) {
   return (
@@ -38,12 +39,7 @@ function Post({ storeName, storeLocation, postUrl, price, caption }) {
         <p>$200</p>
         <Bookmark className={styles.bookmarkIcon} />
       </div>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
-      </p>
+      <BoldButton text={"Buy Now"} />
     </div>
   );
 }
