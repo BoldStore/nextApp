@@ -5,6 +5,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #000;
+  background-color: var(--black);
   cursor: none;
 }

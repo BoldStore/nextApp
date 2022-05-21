@@ -8,15 +8,15 @@ import styles from "./styles.module.css";
 const useStyles = makeStyles({
   list: {
     width: 300,
-    backgroundColor: "#fff",
-    color: "#000",
+    backgroundColor: "var(--white)",
+    color: "var(--black)",
     height: "100%",
     fontWeight: "500 !important",
   },
   fullList: {
     width: "auto",
-    backgroundColor: "#fff",
-    color: "#000",
+    backgroundColor: "var(--white)",
+    color: "var(--black)",
     fontWeight: "500 !important",
   },
 });
@@ -46,7 +46,7 @@ export default function TemporaryDrawer() {
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
-      style={{ backgroundColor: "#000" }}
+      style={{ backgroundColor: "var(--black)" }}
     >
       <MobileViewList />
     </div>
@@ -69,7 +69,7 @@ export default function TemporaryDrawer() {
             >
               <path
                 d="M4 8H20M4 16H20"
-                stroke="#fff"
+                stroke="var(--white)"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"

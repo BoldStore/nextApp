@@ -10,7 +10,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 function MobileViewList() {
   return (
-    <div style={{ backgroundColor: "#000" }}>
+    <div style={{ backgroundColor: "var(--black)" }}>
       <img
         src={"https://i.ibb.co/Ct1jrgj/Logo2.png"}
         style={{

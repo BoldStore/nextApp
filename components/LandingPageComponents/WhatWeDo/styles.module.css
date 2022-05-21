@@ -31,7 +31,7 @@
   height: 1px;
   width: 0;
   position: absolute;
-  background: #fff;
+  background: var(--white);
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .smallText:hover {
-  color: #fff;
+  color: var(--white);
   transition-duration: 0.2s;
 }
 

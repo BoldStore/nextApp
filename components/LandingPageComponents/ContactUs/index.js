@@ -48,9 +48,9 @@ function ContactUs() {
       (cursor.style.opacity = 0.2),
         (cursor2.style.opacity = 1),
         (drag.style.display = "none"),
-        (cursor.style.border = "0px solid #fff"),
-        (cursor.style.backgroundColor = "#fff"),
-        (cursor2.style.backgroundColor = "#fff");
+        (cursor.style.border = "0px solid var(--white)"),
+        (cursor.style.backgroundColor = "var(--white)"),
+        (cursor2.style.backgroundColor = "var(--white)");
     });
   };
 

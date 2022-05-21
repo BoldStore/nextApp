@@ -15,9 +15,9 @@ function WhatWeDoComponent() {
       (cursor.style.opacity = 0.2),
         (cursor2.style.opacity = 1),
         (drag.style.display = "none"),
-        (cursor.style.border = "0px solid #fff"),
-        (cursor.style.backgroundColor = "#fff"),
-        (cursor2.style.backgroundColor = "#fff");
+        (cursor.style.border = "0px solid var(--white)"),
+        (cursor.style.backgroundColor = "var(--white)"),
+        (cursor2.style.backgroundColor = "var(--white)");
     });
   };
 
@@ -37,7 +37,7 @@ function WhatWeDoComponent() {
           <div className={styles.textDiv}>
             <p className={styles.text}>
               We{" "}
-              <span style={{ color: "#fff" }}>
+              <span style={{ color: "var(--white)" }}>
                 convert all your posts into products{" "}
               </span>
               that customers can buy in one click!

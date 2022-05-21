@@ -19,9 +19,9 @@ const Home: NextPage = () => {
     cursor2 = document.getElementById("cursor2");
     document.body.addEventListener("mousemove", function (e) {
       (cursor.style.opacity = 0.2),
-        (cursor.style.border = "0px solid #fff"),
-        (cursor.style.backgroundColor = "#fff"),
-        (cursor2.style.backgroundColor = "#fff");
+        (cursor.style.border = "0px solid var(--white)"),
+        (cursor.style.backgroundColor = "var(--white)"),
+        (cursor2.style.backgroundColor = "var(--white)");
     });
   };
 

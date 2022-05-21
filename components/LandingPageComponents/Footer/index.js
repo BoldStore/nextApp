@@ -17,7 +17,7 @@ function Footer() {
           (cursor.style.opacity = 1),
           (cursor2.style.opacity = 1),
           (drag.style.display = "none"),
-          (cursor2.style.backgroundColor = "#000 !important");
+          (cursor2.style.backgroundColor = "var(--black) !important");
       });
     }
   }, [hover]);

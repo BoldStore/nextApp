@@ -27,7 +27,7 @@
 .smallText2 {
   font-size: 1.2rem;
   font-weight: 300;
-  color: #fff;
+  color: var(--white);
 }
 .smallText::after {
   position: absolute;
@@ -37,7 +37,7 @@
   height: 1px;
   width: 0;
   position: absolute;
-  background: #fff;
+  background: var(--white);
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
 }
 
@@ -47,15 +47,15 @@
 }
 
 .smallText:hover {
-  color: #fff;
+  color: var(--white);
   transition-duration: 0.2s;
 }
 
 .input {
   background-color: black;
-  border: 0px solid #000;
+  border: 0px solid var(--black);
   padding: 1rem;
-  color: #fff;
+  color: var(--white);
   font-size: 1rem;
   font-weight: 300 !important;
 }
@@ -68,7 +68,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid var(--white);
   margin-bottom: 1rem;
 }
 
@@ -85,7 +85,7 @@
   padding-left: 3rem;
   padding-right: 3rem;
   width: 100%;
-  border: 1px solid #fff;
+  border: 1px solid var(--white);
   margin-top: 2rem;
   border-radius: 5px;
   text-align: center;
@@ -95,9 +95,9 @@
 }
 
 .btn:hover {
-  background-color: #fff;
-  color: #000;
-  border-color: #fff;
+  background-color: var(--white);
+  color: var(--black);
+  border-color: var(--white);
   transition: all 0.5s;
 }
 

@@ -19,7 +19,7 @@ function StillHereComponent() {
         (cursor2.style.opacity = 1),
         (cursor2.style.display = "none"),
         (drag.style.display = "none"),
-        (cursor2.style.backgroundColor = "#000 !important");
+        (cursor2.style.backgroundColor = "var(--black) !important");
     });
   };
 
@@ -35,7 +35,7 @@ function StillHereComponent() {
         (cursor2.style.opacity = 1),
         (cursor2.style.display = "block"),
         (drag.style.display = "none"),
-        (cursor2.style.backgroundColor = "#000 !important");
+        (cursor2.style.backgroundColor = "var(--black) !important");
     });
   };
   return (
