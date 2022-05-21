@@ -6,15 +6,15 @@ export const EXPLORE_PAGE = "pages/explore";
 export const STORE_PAGE = "pages/store";
 
 // Stores
-export const CREATE_STORE = "stores/";
-export const UPDATE_STORE = "stores/update";
-export const UPDATE_STORE_PRODUCTS = "stores/update";
-export const SAVE_STORE_DATA = "stores/saveStoreData";
-export const ADD_POTENTIAL_STORE = "stores/addPotentialStore";
+export const CREATE_STORE = "store/";
+export const UPDATE_STORE = "store/update";
+export const UPDATE_STORE_PRODUCTS = "store/update";
+export const SAVE_STORE_DATA = "store/saveStoreData";
+export const ADD_POTENTIAL_STORE = "store/addPotentialStore";
 
 // Users
 export const CREATE_USER = "user/";
-export const ADD_INSTA_USERNAME = "users/InstaUsername";
+export const ADD_INSTA_USERNAME = "user/instaUsername";
 export const GET_PERSONAL_DETAILS = "user/";
 export const UPDATE_USER = "user/";
 export const DELETE_USER = "user/";

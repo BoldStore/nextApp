@@ -1,5 +1,10 @@
 // import functions from "@react-native-firebase/functions";
-import { CREATE_STORE, UPDATE_STORE } from "../../constants";
+import {
+  ADD_POTENTIAL_STORE,
+  CREATE_STORE,
+  SAVE_STORE_DATA,
+  UPDATE_STORE,
+} from "../../constants";
 import instance from "../../axios";
 import { Dispatch } from "redux";
 import * as ActionTypes from "../ActionTypes";
@@ -75,6 +80,93 @@ export const updateStore = (upi_id: string, phone_number: string) => {
     } catch (e) {
       dispatch({
         type: ActionTypes.UPDATE_STORE_FAILED,
+        errmess: e,
+      });
+    }
+  };
+};
+
+export const updateStoreProducts = () => {
+  return async (dispatch: Dispatch) => {
+    dispatch({ type: ActionTypes.UPDATE_STORE_PRODUCTS_REQUEST });
+    try {
+      const response = await instance.get(
+        UPDATE_STORE
+        // {
+        //   headers: {
+        //     Authorization: firebase().auth().currentUser.getIdToken(),
+        //   },
+        // }
+      );
+
+      if (response.status == 200) {
+        dispatch({
+          type: ActionTypes.UPDATE_STORE_PRODUCTS_SUCCESS,
+          data: response.data,
+        });
+      } else {
+        dispatch({
+          type: ActionTypes.UPDATE_STORE_PRODUCTS_FAILED,
+          error: response.data,
+        });
+      }
+    } catch (e) {
+      dispatch({
+        type: ActionTypes.UPDATE_STORE_PRODUCTS_FAILED,
+        errmess: e,
+      });
+    }
+  };
+};
+
+export const addPotentialStore = () => {
+  return async (dispatch: Dispatch) => {
+    dispatch({ type: ActionTypes.ADD_POTENTIAL_STORE_REQUEST });
+    try {
+      const response = await instance.get(ADD_POTENTIAL_STORE);
+
+      if (response.status == 200) {
+        dispatch({
+          type: ActionTypes.ADD_POTENTIAL_STORE_SUCCESS,
+          data: response.data,
+        });
+      } else {
+        dispatch({
+          type: ActionTypes.ADD_POTENTIAL_STORE_FAILED,
+          error: response.data,
+        });
+      }
+    } catch (e) {
+      dispatch({
+        type: ActionTypes.ADD_POTENTIAL_STORE_FAILED,
+        errmess: e,
+      });
+    }
+  };
+};
+
+export const saveStoreData = (insta_code: string) => {
+  return async (dispatch: Dispatch) => {
+    dispatch({ type: ActionTypes.SAVE_STORE_DATA_REQUEST });
+    try {
+      const response = await instance.post(SAVE_STORE_DATA, {
+        insta_code,
+      });
+
+      if (response.status == 200) {
+        dispatch({
+          type: ActionTypes.SAVE_STORE_DATA_SUCCESS,
+          data: response.data,
+        });
+      } else {
+        dispatch({
+          type: ActionTypes.SAVE_STORE_DATA_FAILED,
+          error: response.data,
+        });
+      }
+    } catch (e) {
+      dispatch({
+        type: ActionTypes.SAVE_STORE_DATA_FAILED,
         errmess: e,
       });
     }
