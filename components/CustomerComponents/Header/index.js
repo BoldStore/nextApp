@@ -8,6 +8,7 @@ import DrawerComponent from "./DrawerComponent";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Home, User, Search, ShoppingBag } from "react-feather";
+import CustomerTabs from "../Tabs";
 function CustomerHeader() {
   const [open, setOpen] = useState(true);
 
@@ -65,7 +66,12 @@ function CustomerHeader() {
           </Link>
         </>
       )}
-      {!open && <DrawerComponent />}
+      {!open && (
+        <>
+          <DrawerComponent />
+          <CustomerTabs />
+        </>
+      )}
     </div>
   );
 }
