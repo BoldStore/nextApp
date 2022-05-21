@@ -53,12 +53,26 @@
   justify-content: center;
   overflow-x: auto;
 }
+
+.postContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
 .topStoreContainer {
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */
 }
 .topStoreContainer::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
+}
+
+@media only screen and (max-width: 1250px) {
+  .container {
+    width: 95vw;
+  }
 }
 
 @media only screen and (max-width: 800px) {
@@ -83,6 +97,5 @@
   }
   .topStoreContainer {
     margin-top: 7rem !important;
-    overflow-x: auto;
   }
 }
