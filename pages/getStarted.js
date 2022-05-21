@@ -46,7 +46,7 @@ function getStarted() {
     <>
       <div className={styles.container} style={{ marginTop: "4rem" }}>
         <IconButton onClick={() => router.back()}>
-          <ArrowLeft size={40} style={{ color: "var(--white)" }} />
+          <ArrowLeft size={24} style={{ color: "var(--white)" }} />
         </IconButton>
         <div
           style={{

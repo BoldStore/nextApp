@@ -46,3 +46,25 @@
   color: var(--lightGrey);
   transition: 0.2s ease-out;
 }
+
+@media only screen and (max-width: 800px) {
+  .container {
+    width: 90vw;
+    margin-top: 2rem !important;
+  }
+  .btn,
+  .btn2 {
+    padding: 0rem 2rem;
+    border-radius: 7px;
+    margin-bottom: 1rem;
+  }
+
+  .btn {
+    margin-top: 2rem;
+  }
+
+  .btn p,
+  .btn2 p {
+    margin: 0.8rem;
+  }
+}
