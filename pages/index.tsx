@@ -2,15 +2,14 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import Header from "../components/Header";
-import IntroComponent from "../components/HomePageComponents/IntroComponent";
-import MovingComponent from "../components/HomePageComponents/MovingComponent";
-import AppWalkthrough from "../components/HomePageComponents/AppWalkthrough";
-import WhatWeDoComponent from "../components/HomePageComponents/WhatWeDo";
-import StillHereComponent from "../components/HomePageComponents/StillHereComponent";
-import ContactUs from "../components/HomePageComponents/ContactUs";
-import ComingSoon from "../components/HomePageComponents/ComingSoon";
-import Footer from "../components/Footer";
+import IntroComponent from "../components/LandingPageComponents/IntroComponent";
+import MovingComponent from "../components/LandingPageComponents/MovingComponent";
+import AppWalkthrough from "../components/LandingPageComponents/AppWalkthrough";
+import WhatWeDoComponent from "../components/LandingPageComponents/WhatWeDo";
+import StillHereComponent from "../components/LandingPageComponents/StillHereComponent";
+import ContactUs from "../components/LandingPageComponents/ContactUs";
+import ComingSoon from "../components/LandingPageComponents/ComingSoon";
+import Header from "../components/LandingPageComponents/Header";
 
 const Home: NextPage = () => {
   var cursor: any;
