@@ -13,7 +13,7 @@ function CustomerSignup() {
       <Header />
       <div className={styles.center}>
         <div className={styles.container}>
-          <p className={styles.heading}>Sign Up As A Customer 🥳</p>
+          <p className={styles.heading}>Sign Up As A Customer 😎 </p>
           <InputComponent
             type="text"
             setValue={setFullName}
@@ -56,12 +56,24 @@ function CustomerSignup() {
             }}
           >
             <Link href="/customer/login" passHref={true}>
-              <p style={{ color: "var(--lightGrey)", cursor: "pointer" }}>
+              <p
+                style={{
+                  color: "var(--lightGrey)",
+                  cursor: "pointer",
+                  marginBottom: 0,
+                }}
+              >
                 Or Skip Signup
               </p>
             </Link>
             <Link href="/customer/login" passHref={true}>
-              <p style={{ color: "var(--lightGrey)", cursor: "pointer" }}>
+              <p
+                style={{
+                  color: "var(--lightGrey)",
+                  cursor: "pointer",
+                  marginBottom: 0,
+                }}
+              >
                 Have An Account Already?{" "}
                 <span className={styles.link}>Login.</span>
               </p>

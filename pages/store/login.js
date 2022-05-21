@@ -13,7 +13,7 @@ function CustomerLogin() {
       <Header />
       <div className={styles.center}>
         <div className={styles.container}>
-          <p className={styles.heading}>Login As A Store 🥳</p>
+          <p className={styles.heading}>Login As A Store 😎 </p>
           <InputComponent
             type="text"
             setValue={setEmail}
@@ -29,7 +29,7 @@ function CustomerLogin() {
             noText={true}
           />
 
-          <Link href="/customer/" passHref={true}>
+          <Link href="/store/" passHref={true}>
             <div className={styles.btn}>
               <p>Login</p>
             </div>
@@ -42,13 +42,26 @@ function CustomerLogin() {
               alignItems: "center",
             }}
           >
-            <Link href="/customer/login" passHref={true}>
-              <p style={{ color: "var(--lightGrey)", cursor: "pointer" }}>
-                Or Skip Login
+            <Link href="#" passHref={true}>
+              <p
+                style={{
+                  color: "var(--lightGrey)",
+                  cursor: "pointer",
+                  marginBottom: 0,
+                }}
+              >
+                Forgot your password?
+                <span className={styles.link}>Click Here.</span>
               </p>
             </Link>
-            <Link href="/customer/login" passHref={true}>
-              <p style={{ color: "var(--lightGrey)", cursor: "pointer" }}>
+            <Link href="/store/signup" passHref={true}>
+              <p
+                style={{
+                  color: "var(--lightGrey)",
+                  cursor: "pointer",
+                  marginBottom: 0,
+                }}
+              >
                 Dont Have An Account?{" "}
                 <span className={styles.link}>Signup.</span>
               </p>

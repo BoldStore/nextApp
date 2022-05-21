@@ -43,13 +43,26 @@ function CustomerLogin() {
               alignItems: "center",
             }}
           >
-            <Link href="/customer/login" passHref={true}>
-              <p style={{ color: "var(--lightGrey)", cursor: "pointer" }}>
-                Or Skip Login
+            <Link href="#" passHref={true}>
+              <p
+                style={{
+                  color: "var(--lightGrey)",
+                  cursor: "pointer",
+                  marginBottom: 0,
+                }}
+              >
+                Forgot your password?{" "}
+                <span className={styles.link}>Click Here.</span>
               </p>
             </Link>
             <Link href="/customer/login" passHref={true}>
-              <p style={{ color: "var(--lightGrey)", cursor: "pointer" }}>
+              <p
+                style={{
+                  color: "var(--lightGrey)",
+                  cursor: "pointer",
+                  marginBottom: 0,
+                }}
+              >
                 Dont Have An Account?{" "}
                 <span className={styles.link}>Signup.</span>
               </p>
