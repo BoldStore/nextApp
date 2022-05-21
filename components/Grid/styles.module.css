@@ -1,5 +1,6 @@
 .gridContainer {
-  margin-top: 5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   width: 100%;
   display: flex;
   flex-direction: column;
