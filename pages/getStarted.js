@@ -2,12 +2,15 @@ import React from "react";
 import Header from "../components/LandingPageComponents/Header";
 import styles from "../styles/common.module.css";
 import styles2 from "../styles/Home.module.css";
-import { Truck, User } from "react-feather";
+import { ArrowLeft, Truck, User } from "react-feather";
+import Link from "next/link";
+import { IconButton } from "@mui/material";
+import { useRouter } from "next/router";
 function getStarted() {
   var cursor;
   var cursor2;
   var drag;
-
+  const router = useRouter();
   const changeMouse = () => {
     cursor = document.getElementById("cursor");
     cursor2 = document.getElementById("cursor2");
@@ -41,14 +44,16 @@ function getStarted() {
   };
   return (
     <>
-      <div className={styles.container}>
+      <div className={styles.container} style={{ marginTop: "4rem" }}>
+        <IconButton onClick={() => router.back()}>
+          <ArrowLeft size={40} style={{ color: "var(--white)" }} />
+        </IconButton>
         <div
           style={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: "12vh",
           }}
           onMouseEnter={() => {
             changeMouse();
@@ -57,17 +62,20 @@ function getStarted() {
             changeMouseBack();
           }}
         >
-          <img src={"/assets/bigLogo.svg"} style={{ width: "100%" }} />
+          <img src={"/assets/bigLogoWhite.svg"} style={{ width: "100%" }} />
         </div>
-
-        <div className={styles.btn}>
-          <Truck style={{ marginRight: "1rem" }} />
-          <p>Get Started As A Store</p>
-        </div>
-        <div className={styles.btn2}>
-          <User style={{ marginRight: "1rem" }} />
-          <p>Get Started As A Customer</p>
-        </div>
+        <Link href="/store/login" passHref={true}>
+          <div className={styles.btn}>
+            <Truck style={{ marginRight: "1rem" }} />
+            <p>Get Started As A Store</p>
+          </div>
+        </Link>
+        <Link href="/store/login" passHref={true}>
+          <div className={styles.btn2}>
+            <User style={{ marginRight: "1rem" }} />
+            <p>Get Started As A Customer</p>
+          </div>
+        </Link>
       </div>
     </>
   );
