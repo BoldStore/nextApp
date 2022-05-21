@@ -1,7 +1,7 @@
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import { Avatar } from "@material-ui/core";
+import Avatar from "@mui/material/Avatar";
 import Link from "next/link";
 import React from "react";
 import styles from "./styles.module.css";
@@ -11,17 +11,21 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 function MobileViewList() {
   return (
     <div style={{ backgroundColor: "var(--black)" }}>
-      <img
-        src={"https://i.ibb.co/Ct1jrgj/Logo2.png"}
-        style={{
-          width: "80%",
-          display: "block",
-          marginLeft: "auto",
-          marginRight: "auto",
-          position: "absolute",
-          left: "10%",
-        }}
-      />
+      <Link href="/customer/profile">
+        <Avatar
+          alt="Avatar"
+          src={"https://i.ibb.co/Bswp8RS/avi.jpg"}
+          sx={{
+            width: 150,
+            height: 150,
+            cursor: "pointer",
+            display: "block",
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginTop: "2rem",
+          }}
+        />
+      </Link>
       <div
         style={{
           padding: "2rem",
