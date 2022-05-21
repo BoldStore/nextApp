@@ -1,3 +1,6 @@
+.page {
+  min-height: 100vh;
+}
 .container {
   width: 70vw;
   display: block;
@@ -7,12 +10,11 @@
   padding-bottom: 3rem;
 }
 .center {
-  margin-top: 15vh;
   margin-top: 8rem;
 }
 
 .btn {
-  padding: 0.2rem 2rem;
+  padding: 0.1rem 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +29,7 @@
 }
 
 .btn2 {
-  padding: 0.2rem 2rem;
+  padding: 0.1rem 2rem;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -9,7 +9,7 @@ function CustomerSignup() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   return (
-    <>
+    <div className={styles.page}>
       <Header />
       <div className={styles.center}>
         <div className={styles.container}>
@@ -69,7 +69,7 @@ function CustomerSignup() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
