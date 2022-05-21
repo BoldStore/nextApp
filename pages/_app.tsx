@@ -101,6 +101,9 @@ function MyApp({ Component, pageProps }: any) {
       </Head>
       <div className="cursor2" id="cursor2"></div>
       <div className="cursor" id="cursor"></div>
+      <div className="drag" id="drag">
+        Drag
+      </div>
 
       <Component {...pageProps} />
     </>

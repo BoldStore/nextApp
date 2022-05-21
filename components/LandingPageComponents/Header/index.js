@@ -72,9 +72,11 @@ function Header() {
             <Link href="/#app">
               <p className={styles.navLinks}>Mobile App</p>
             </Link>
-
             <Link href="/#contactus">
               <p className={styles.navLinks}>Contact Us</p>
+            </Link>
+            <Link href="/getStarted">
+              <p className={styles.navLinks}>Get Started</p>
             </Link>
           </div>
         </>
