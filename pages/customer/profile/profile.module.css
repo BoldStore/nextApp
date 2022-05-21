@@ -4,7 +4,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 7rem;
-  padding-bottom: 3rem;
+  padding-bottom: 6rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -24,4 +24,32 @@
 
 .customerDetails p:hover {
   text-decoration: underline;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.chipContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.sizeChip {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  margin-right: 2rem;
+}
+
+@media (max-width: 1050px) {
+  .sizeChip {
+    margin-right: 1.5rem;
+  }
+}
+
+@media (max-width: 750px) {
+  .sizeChip {
+    padding: 0.1rem 1.5rem;
+    margin-right: 1rem;
+  }
 }

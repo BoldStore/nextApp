@@ -62,7 +62,12 @@ function CustomerHeader() {
             <Avatar
               alt="Avatar"
               src={"https://i.ibb.co/Bswp8RS/avi.jpg"}
-              sx={{ width: 50, height: 50, cursor: "pointer" }}
+              sx={{
+                width: 50,
+                height: 50,
+                cursor: "pointer",
+                marginLeft: "2.5rem",
+              }}
             />
           </Link>
         </>

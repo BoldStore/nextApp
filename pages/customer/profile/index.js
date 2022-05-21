@@ -62,7 +62,7 @@ function Profile() {
           value={pincode}
           placeholder={"Pincode"}
         />
-        <div style={{ marginTop: "5rem" }}></div>
+        <div style={{ marginTop: "3rem" }}></div>
         <BoldButton text={"Update"} />
       </div>
     </>
