@@ -1,0 +1,16 @@
+.button {
+  padding: 0.1rem 5.5rem;
+  background-color: transparent;
+  border: 1px solid var(--grey);
+  border-radius: 10px;
+  color: var(--white);
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+}
+
+.button:hover {
+  border: 1px solid var(--white);
+  background-color: var(--white);
+  color: var(--black);
+  transition: 0.2s ease-out;
+}

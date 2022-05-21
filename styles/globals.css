@@ -5,17 +5,20 @@
 :root {
   --white: #fff;
   --black: #000;
+  --grey: #2f3336;
 }
 
 body[data-theme="dark"] {
   --white: #000;
   --black: #fff;
+  --grey: #2f3336;
 }
 
 body,
 body[data-theme="light"] {
   --white: #fff;
   --black: #000;
+  --grey: #2f3336;
 }
 
 html,
