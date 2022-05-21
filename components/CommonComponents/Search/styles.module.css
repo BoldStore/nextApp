@@ -1,0 +1,29 @@
+.searchContainer {
+  margin-top: 8rem;
+  width: 100%;
+  border: 2px solid var(--darkGrey);
+  border-radius: 2rem;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.searchBar {
+  width: 90%;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  color: var(--white);
+  font-family: "Inter", sans-serif;
+  margin-left: 0.5rem;
+}
+
+.searchBar:focus {
+  border: none;
+}
+
+.searchIcon {
+  color: var(--darkGrey);
+}

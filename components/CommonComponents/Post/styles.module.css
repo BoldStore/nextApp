@@ -1,0 +1,65 @@
+.postContainer {
+  margin-top: 5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.postHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+}
+
+.nameLocation {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+
+.nameLocation p {
+  font-size: 0.8rem;
+  margin: 0;
+  margin-bottom: 2px;
+}
+
+.moreIcon {
+  color: var(--white);
+  opacity: 0.5;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.moreIcon:hover {
+  color: var(--white);
+}
+
+.productImg {
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.priceContainer p {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.bookmarkIcon {
+  cursor: pointer;
+}
+.bookmarkIcon:hover {
+  color: var(--lightGrey);
+}

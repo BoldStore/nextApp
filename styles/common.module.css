@@ -8,6 +8,7 @@
 }
 .center {
   margin-top: 15vh;
+  margin-top: 8rem;
 }
 
 .btn {
@@ -89,6 +90,19 @@
   color: var(--white);
   transition-duration: 0.2s;
 }
+.topStoreContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: auto;
+}
+.topStoreContainer {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.topStoreContainer::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
 
 @media only screen and (max-width: 800px) {
   .container {
@@ -109,5 +123,9 @@
   .btn p,
   .btn2 p {
     margin: 0.8rem;
+  }
+  .topStoreContainer {
+    margin-top: 7rem !important;
+    overflow-x: auto;
   }
 }
