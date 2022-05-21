@@ -61,6 +61,7 @@ function CustomerHeader() {
           <Link href="/customer/profile">
             <Avatar
               alt="Avatar"
+              src={"https://i.ibb.co/Bswp8RS/avi.jpg"}
               sx={{ width: 50, height: 50, cursor: "pointer" }}
             />
           </Link>
