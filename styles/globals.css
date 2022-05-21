@@ -134,6 +134,29 @@ img {
   mix-blend-mode: exclusion;
 }
 
+input:-webkit-autofill {
+  color: var(--white) !important;
+  background-color: var(--black) !important;
+  padding: 1rem;
+  padding-left: 0rem;
+  border: 0px;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--lightGrey) !important;
+  width: 100%;
+  font-family: "Inter";
+}
+input:autofill {
+  color: var(--white) !important;
+  background-color: var(--black) !important;
+  padding: 1rem;
+  padding-left: 0rem;
+  border: 0px;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--lightGrey) !important;
+  width: 100%;
+  font-family: "Inter";
+}
+
 @media only screen and (max-width: 1000px) {
   .cursor,
   .cursor2,

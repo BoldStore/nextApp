@@ -62,15 +62,18 @@ function getStarted() {
             changeMouseBack();
           }}
         >
-          <img src={"/assets/bigLogoWhite.svg"} style={{ width: "100%" }} />
+          <img
+            src={"/assets/bigLogoWhite.svg"}
+            style={{ width: "100%", marginBottom: "3rem" }}
+          />
         </div>
-        <Link href="/store/login" passHref={true}>
+        <Link href="/store/signup" passHref={true}>
           <div className={styles.btn}>
             <Truck style={{ marginRight: "1rem" }} />
             <p>Get Started As A Store</p>
           </div>
         </Link>
-        <Link href="/store/login" passHref={true}>
+        <Link href="/customer/signup" passHref={true}>
           <div className={styles.btn2}>
             <User style={{ marginRight: "1rem" }} />
             <p>Get Started As A Customer</p>
