@@ -4,6 +4,10 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 7rem;
+  padding-bottom: 3rem;
+}
+.center {
+  margin-top: 15vh;
 }
 
 .btn {
@@ -16,7 +20,7 @@
   border: 1px solid var(--lightGrey);
   border-radius: 10px;
   color: var(--lightGrey);
-  margin-top: 5rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
   cursor: pointer;
 }
@@ -45,6 +49,45 @@
   background-color: var(--black);
   color: var(--lightGrey);
   transition: 0.2s ease-out;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.link {
+  position: relative;
+  cursor: pointer !important;
+  width: fit-content;
+  font-family: "Inter";
+  font-size: 1rem;
+  font-weight: 300;
+  color: #808080;
+  padding: 0px !important;
+}
+
+.link::after {
+  position: absolute;
+  bottom: -6px;
+  content: "";
+  display: block;
+  height: 1px;
+  width: 0;
+  position: absolute;
+  background: var(--white);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.link:hover {
+  color: var(--white);
+  transition-duration: 0.2s;
 }
 
 @media only screen and (max-width: 800px) {
