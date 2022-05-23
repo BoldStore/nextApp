@@ -90,6 +90,8 @@
 }
 
 .topStoreContainer {
+  padding: 1rem;
+  border-bottom: 2px solid var(--darkGrey);
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */
 }

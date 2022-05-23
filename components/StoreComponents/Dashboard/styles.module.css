@@ -1,0 +1,33 @@
+.chartContainer {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  min-width: 300px;
+  padding: 1rem;
+  border: 2px solid var(--darkGrey);
+  border-radius: 2rem;
+  margin-right: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.chartContainer h1 {
+  font-size: 1.5rem;
+}
+
+.numberBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.productImg {
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+@media (max-width: 1350px) {
+  .chartContainer {
+    width: 850px;
+    margin-right: 0;
+  }
+}

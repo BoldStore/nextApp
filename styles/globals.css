@@ -22,6 +22,7 @@ body[data-theme="light"] {
   --black: #000;
   --darkGrey: #2f3336;
   --lightGrey: #808080;
+  --blue: #1d9bf0;
 }
 
 html,
