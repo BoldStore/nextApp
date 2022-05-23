@@ -19,7 +19,7 @@ function TopStores({ storeUrl, storeName }) {
           width: 75,
           height: 75,
           cursor: "pointer",
-          border: "2px solid var(--white)",
+          border: "1.5px solid var(--darkGrey)",
         }}
       />
       <p
