@@ -8,23 +8,34 @@
 
 .div1 {
   grid-area: 1 / 3 / 3 / 5;
+  overflow: hidden;
+  border-radius: 10px;
 }
 .div2 {
   grid-area: 2 / 1 / 4 / 3;
+  overflow: hidden;
+  border-radius: 10px;
 }
 .div3 {
   grid-area: 1 / 1 / 2 / 2;
+  overflow: hidden;
+  border-radius: 10px;
 }
 .div4 {
   grid-area: 1 / 2 / 2 / 3;
+  overflow: hidden;
+  border-radius: 10px;
 }
 .div5 {
   grid-area: 3 / 3 / 4 / 4;
+  overflow: hidden;
+  border-radius: 10px;
 }
 .div6 {
   grid-area: 3 / 4 / 4 / 5;
+  overflow: hidden;
+  border-radius: 10px;
 }
-
 .img {
   width: 100%;
   height: 100%;
@@ -35,6 +46,8 @@
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 10px;
+  display: block;
+  transition: transform 0.4s; /* smoother zoom */
 }
 
 .bigImg {
@@ -47,4 +60,13 @@
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 10px;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: transform 0.4s; /* smoother zoom */
+}
+
+.img:hover,
+.bigImg:hover {
+  transform: scale(1.05);
+  transform-origin: 50% 50%;
 }
