@@ -46,7 +46,7 @@ function CustomerHeader() {
             <Link href="/customer">
               <Home className={styles.navLinks} />
             </Link>
-            <Link href="/customer/search">
+            <Link href="/search">
               <Search className={styles.navLinks} />
             </Link>
             <Link href="/customer/orders">

@@ -11,13 +11,13 @@
 }
 
 .searchBar {
-  width: 90%;
+  width: 100%;
   border: none;
   background-color: transparent;
   outline: none;
   color: var(--white);
   font-family: "Inter", sans-serif;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
 }
 
 .searchBar:focus {
@@ -25,5 +25,6 @@
 }
 
 .searchIcon {
-  color: var(--darkGrey);
+  color: var(--lightGrey);
+  margin-left: 1rem;
 }
