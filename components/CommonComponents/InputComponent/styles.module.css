@@ -1,23 +1,27 @@
 .wrapper p {
   margin-bottom: 0rem;
+  margin-left: 0.5rem;
 }
 
 .input {
   color: var(--white);
   background-color: var(--black) !important;
   padding: 1rem;
-  padding-left: 0rem;
+  padding-left: 0.5rem;
   border: 0px;
   font-size: 1rem;
-  border-bottom: 1px solid var(--lightGrey);
+  border: 2px solid var(--darkGrey);
+  border-radius: 0.5rem;
   width: 100%;
   font-family: "Inter";
   display: flex;
+  /* padding: 1rem 1rem; */
+  margin-top: 0.5rem;
 }
 
 .input:focus {
   outline: none;
-  border-bottom: 1px solid var(--white);
+  border: 2px solid var(--white);
   transition: 0.3s all;
 }
 

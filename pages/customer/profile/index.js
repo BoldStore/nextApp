@@ -7,8 +7,8 @@ import Avatar from "@mui/material/Avatar";
 import Link from "next/link";
 
 function Profile() {
-  const [addressLineOne, setAddressLineOne] = useState("");
-  const [addressLineTwo, setAddressLineTwo] = useState("");
+  const [locality, setLocality] = useState("");
+  const [appartment, setAppartment] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [pincode, setPincode] = useState("");
@@ -34,15 +34,15 @@ function Profile() {
         </div>
         <InputComponent
           type="text"
-          setValue={setAddressLineOne}
-          value={addressLineOne}
-          placeholder={"Address Line 1"}
+          setValue={setLocality}
+          value={locality}
+          placeholder={"Locality"}
         />
         <InputComponent
           type="text"
-          setValue={setAddressLineTwo}
-          value={addressLineTwo}
-          placeholder={"Address Line 2"}
+          setValue={setAppartment}
+          value={appartment}
+          placeholder={"Appartment/Suite"}
         />
         <InputComponent
           type="text"

@@ -2,7 +2,7 @@
   padding: 0rem 5.5rem;
   background-color: transparent;
   border: 1px solid var(--darkGrey);
-  border-radius: 5px;
+  border-radius: 0.5rem;
   color: var(--white);
   cursor: pointer;
   font-family: "Inter", sans-serif;
@@ -12,5 +12,11 @@
   border: 1px solid var(--white);
   background-color: var(--white);
   color: var(--black);
-  transition: 0.2s ease-out;
+  transition: 0.5s ease-out;
+}
+
+@media (max-width: 750px) {
+  .button {
+    padding: 0rem !important;
+  }
 }
