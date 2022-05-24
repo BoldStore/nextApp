@@ -1,0 +1,35 @@
+.container {
+  width: 80vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 7rem;
+  padding-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.storeDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--darkGrey);
+  padding-bottom: 1rem;
+}
+
+.storeDetails p {
+  margin-top: -0.5rem;
+}
+
+.storeDetails p:hover {
+  text-decoration: underline;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.storeDetails h1 {
+  font-size: 1.3rem;
+}
