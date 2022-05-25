@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import { useEffect } from "react";
 import Head from "next/head";
 import { wrapper } from "../store/configureStore";
+import NextNProgress from "nextjs-progressbar";
 
 function MyApp({ Component, pageProps }: any) {
   var cursor: any;
@@ -104,6 +105,8 @@ function MyApp({ Component, pageProps }: any) {
       <div className="drag" id="drag">
         Drag
       </div>
+
+      <NextNProgress />
 
       <Component {...pageProps} />
     </>

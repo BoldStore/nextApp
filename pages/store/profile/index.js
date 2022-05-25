@@ -13,8 +13,6 @@ function StoreProfile() {
   return (
     <>
       <TabsStoreProfile />
-      {/* <CustomerHeader />
-      <VerticalHeader />
       <div className={styles.container}>
         <div className={styles.storeDetails}>
           <Avatar
@@ -35,7 +33,7 @@ function StoreProfile() {
           <Grid3 />
           <Grid4 />
         </div>
-      </div> */}
+      </div>
     </>
   );
 }
