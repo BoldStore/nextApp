@@ -30,6 +30,7 @@
   font-weight: 300;
   color: var(--lightGrey);
   margin-bottom: 2rem;
+  cursor: pointer;
 }
 
 .icon:hover {
