@@ -12,8 +12,9 @@ import TabsStoreProfile from "./tabs";
 function StoreProfile() {
   return (
     <>
-      <TabsStoreProfile />
-      {/* <div className={styles.container}>
+      <CustomerHeader />
+      <VerticalHeader />
+      <div className={styles.container}>
         <div className={styles.storeDetails}>
           <Avatar
             alt="Avatar"
@@ -27,13 +28,18 @@ function StoreProfile() {
           />
           <h1>@store_profile</h1>
         </div>
-        <div className={styles.productsGrid}>
-          <Grid1 />
-          <Grid2 />
-          <Grid3 />
-          <Grid4 />
+        <div className={styles.tabs}>
+          <TabsStoreProfile />
         </div>
-      </div> */}
+        <div className={styles.products}>
+          <div className={styles.productsGrid}>
+            <Grid1 />
+            <Grid2 />
+            <Grid3 />
+            <Grid4 />
+          </div>
+        </div>
+      </div>
     </>
   );
 }

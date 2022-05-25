@@ -40,3 +40,18 @@
   align-items: center;
   justify-content: center;
 }
+.tabs {
+  display: none;
+}
+
+@media (max-width: 1050px) {
+  .tabs {
+    display: block;
+  }
+  .products {
+    display: none;
+  }
+  .storeDetails {
+    margin-bottom: 0px;
+  }
+}

@@ -20,7 +20,7 @@ function TabsStoreProfile() {
   };
   return (
     <div>
-      <Box sx={{ width: "100vw", typography: "body1" }}>
+      <Box sx={{ width: "100%", typography: "body1" }}>
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <TabList
@@ -29,6 +29,7 @@ function TabsStoreProfile() {
               aria-label="lab API tabs example"
               style={{
                 color: "var(--white)",
+                padding: 0,
               }}
             >
               <Tab
@@ -45,8 +46,11 @@ function TabsStoreProfile() {
               />
             </TabList>
           </Box>
-          <TabPanel value="1">
-            <div className={styles.container} style={{ marginTop: 0 }}>
+          <TabPanel value="1" style={{ padding: 0 }}>
+            <div
+              className={styles.container}
+              style={{ marginTop: 20, marginLeft: 0 }}
+            >
               <div className={styles.productsGrid}>
                 <Grid1 />
                 <Grid2 />
@@ -55,7 +59,7 @@ function TabsStoreProfile() {
               </div>
             </div>
           </TabPanel>
-          <TabPanel value="2">
+          <TabPanel value="2" style={{ padding: 0, paddingTop: 20 }}>
             <div className={styles.postContainer}>
               <Post />
               <Post />
