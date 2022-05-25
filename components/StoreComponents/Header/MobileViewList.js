@@ -11,7 +11,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 function MobileViewList() {
   return (
     <div style={{ backgroundColor: "var(--black)" }}>
-      <Link href="/customer/profile">
+      <Link href="/store/profile">
         <Avatar
           alt="Avatar"
           src={"https://i.ibb.co/Bswp8RS/avi.jpg"}
@@ -34,17 +34,17 @@ function MobileViewList() {
           position: "absolute",
         }}
       >
-        <Link href="/customer">
+        <Link href="/store">
           <p className={styles.navLinks}>Home</p>
         </Link>
-        <Link href="/customer/search">
+        <Link href="/store/search">
           <p className={styles.navLinks}>Search</p>
         </Link>
-        <Link href="/customer/orders">
-          <p className={styles.navLinks}>Orders</p>
+        <Link href="/store/dashboard">
+          <p className={styles.navLinks}>Dashboard</p>
         </Link>
 
-        <Link href="/customer/profile">
+        <Link href="/store/profile">
           <p className={styles.navLinks}>Profile</p>
         </Link>
         <Link href="https://www.instagram.com/boldstore.in">

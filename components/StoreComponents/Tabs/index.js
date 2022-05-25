@@ -47,12 +47,12 @@ color: #808080;
           <CustomBottomNavigationAction
             value="home"
             icon={<Home />}
-            onClick={() => router.push("/customer")}
+            onClick={() => router.push("/store")}
           />
           <CustomBottomNavigationAction
             value="search"
             icon={<Search />}
-            onClick={() => router.push("/search")}
+            onClick={() => router.push("/store/search")}
           />
           <CustomBottomNavigationAction
             value="dashboard"

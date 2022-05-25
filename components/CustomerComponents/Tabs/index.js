@@ -52,7 +52,7 @@ color: #808080;
           <CustomBottomNavigationAction
             value="search"
             icon={<Search />}
-            onClick={() => router.push("/search")}
+            onClick={() => router.push("/customer/search")}
           />
           <CustomBottomNavigationAction
             value="bag"

@@ -34,7 +34,7 @@ function StoreHeader() {
 
   return (
     <div className={styles.container}>
-      <Link href="/customer">
+      <Link href="/store">
         <h1 className={styles.logo}>
           BOLD
           <span style={{ fontFamily: "Inter", fontSize: "1.5rem" }}>.</span>
@@ -43,10 +43,10 @@ function StoreHeader() {
       {open && (
         <>
           <div className={styles.leftContainer}>
-            <Link href="/customer">
+            <Link href="/store">
               <Home className={styles.navLinks} />
             </Link>
-            <Link href="/search">
+            <Link href="/store/search">
               <Search className={styles.navLinks} />
             </Link>
             <Link href="/store/dashboard">
