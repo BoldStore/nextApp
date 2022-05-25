@@ -3,16 +3,16 @@ import Grid1 from "../../../components/CommonComponents/Grids/grid1";
 import Grid2 from "../../../components/CommonComponents/Grids/grid2";
 import Grid3 from "../../../components/CommonComponents/Grids/grid3";
 import Grid4 from "../../../components/CommonComponents/Grids/grid4";
-import CustomerHeader from "../../../components/CustomerComponents/Header";
 import VerticalHeader from "../../../components/StoreComponents/VerticalHeader";
 import styles from "./styles.module.css";
 import React, { useState } from "react";
 import TabsStoreProfile from "./tabs";
+import StoreHeader from "../../../components/StoreComponents/Header";
 
 function StoreProfile() {
   return (
     <>
-      <CustomerHeader />
+      <StoreHeader />
       <VerticalHeader />
       <div className={styles.container}>
         <div className={styles.storeDetails}>
