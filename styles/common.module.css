@@ -18,7 +18,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
   background-color: var(--black);
   border: 1px solid var(--lightGrey);
   border-radius: 10px;
@@ -33,7 +35,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
   background-color: var(--white);
   border: 1px solid var(--lightGrey);
   border-radius: 10px;
@@ -116,6 +120,7 @@
     padding: 0rem 2rem;
     border-radius: 7px;
     margin-bottom: 1rem;
+    width: 100%;
   }
 
   .btn {
@@ -128,5 +133,8 @@
   }
   .topStoreContainer {
     margin-top: 7rem !important;
+  }
+  .logoImg {
+    margin-bottom: 0px !important;
   }
 }

@@ -63,8 +63,9 @@ function getStarted() {
           }}
         >
           <img
+            className={styles.logoImg}
             src={"/assets/bigLogoWhite.svg"}
-            style={{ width: "100%", marginBottom: "3rem" }}
+            style={{ width: "70%", marginBottom: "3rem" }}
           />
         </div>
         <Link href="/store/signup" passHref={true}>
