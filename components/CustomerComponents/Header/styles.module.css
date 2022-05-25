@@ -74,8 +74,8 @@
     left: 0%;
     position: fixed;
     border-bottom: 0px solid var(--black);
-    padding: 20px;
-    background-color: transparent;
+    padding: 15px;
+    background-color: #121212;
   }
   .rightContainer {
     margin-right: auto !important;
@@ -87,17 +87,19 @@
     padding-left: 2rem;
   }
   .menu {
-    padding-right: 2rem;
-    background-color: black;
-    border-radius: 50%;
-    height: 3rem;
-    width: 3rem;
+    background-color: #121212;
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-self: center;
-    margin-left: auto;
-    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
+
+  .menu h2 {
+    margin: 0px;
+  }
+
   .navLinks {
     margin-bottom: 2rem;
   }
