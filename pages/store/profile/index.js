@@ -6,14 +6,14 @@ import Grid4 from "../../../components/CommonComponents/Grids/grid4";
 import CustomerHeader from "../../../components/CustomerComponents/Header";
 import VerticalHeader from "../../../components/StoreComponents/VerticalHeader";
 import styles from "./styles.module.css";
-import React, { useState } from "react";
+import React from "react";
 
 function StoreProfile() {
   return (
     <>
       <CustomerHeader />
       <VerticalHeader />
-      <LabTabs />
+      {/* <LabTabs /> */}
       <div className={styles.container}>
         <div className={styles.storeDetails}>
           <Avatar
