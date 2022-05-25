@@ -33,3 +33,10 @@
 .storeDetails h1 {
   font-size: 1.3rem;
 }
+
+.postContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}

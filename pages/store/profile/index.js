@@ -7,13 +7,14 @@ import CustomerHeader from "../../../components/CustomerComponents/Header";
 import VerticalHeader from "../../../components/StoreComponents/VerticalHeader";
 import styles from "./styles.module.css";
 import React, { useState } from "react";
+import TabsStoreProfile from "./tabs";
 
 function StoreProfile() {
   return (
     <>
-      <CustomerHeader />
+      <TabsStoreProfile />
+      {/* <CustomerHeader />
       <VerticalHeader />
-      <LabTabs />
       <div className={styles.container}>
         <div className={styles.storeDetails}>
           <Avatar
@@ -34,7 +35,7 @@ function StoreProfile() {
           <Grid3 />
           <Grid4 />
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
