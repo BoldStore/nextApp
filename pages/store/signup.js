@@ -50,7 +50,7 @@ function StoreSignup() {
             placeholder={"Confirm Password"}
             noText={true}
           />
-          <Link href="/customer/" passHref={true}>
+          <Link href="/store/" passHref={true}>
             <div className={styles.btn}>
               <p>Signup</p>
             </div>
