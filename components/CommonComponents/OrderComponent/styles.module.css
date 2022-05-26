@@ -1,5 +1,4 @@
 .postContainer {
-  margin-top: 5rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -7,6 +6,7 @@
   max-width: 350px;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+  margin-bottom: 5rem;
 }
 
 .postHeader {
@@ -56,7 +56,7 @@
 }
 
 .priceContainer p {
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: bold;
 }
 

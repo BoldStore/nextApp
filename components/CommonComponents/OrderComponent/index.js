@@ -26,9 +26,11 @@ function OrderComponent() {
             <p style={{ opacity: 0.5 }}>New Delhi</p>
           </div>
         </div>
-        <MoreHorizIcon className={styles.moreIcon} />
+        {/* <MoreHorizIcon className={styles.moreIcon} /> */}
       </div>
-      <p style={{ marginTop: 0 }}>#1XCGYV</p>
+      <p style={{ marginTop: 0, color: "var(--lightGrey)" }}>
+        Order Number : #1XCGYV
+      </p>
       <Image
         src="/assets/shoe2.jpg"
         alt="item"
@@ -36,10 +38,10 @@ function OrderComponent() {
         height="450"
         className={styles.productImg}
       />
-      <Send className={styles.sendIcon} />
+      {/* <Send className={styles.sendIcon} /> */}
       <div className={styles.priceContainer}>
-        <p>Price: $200</p>
-        <p>Size: M</p>
+        <p>$200</p>
+        <p> M</p>
       </div>
       {/* <div style={{ marginTop: "-1rem" }}>
         {/* <p>Order Details:</p>
