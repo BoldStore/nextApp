@@ -19,6 +19,11 @@
   margin-top: 0.5rem;
 }
 
+.input:hover {
+  border-color: var(--lightGrey);
+  transition: 0.3s all;
+}
+
 .input:focus {
   outline: none;
   border: 2px solid var(--white);
