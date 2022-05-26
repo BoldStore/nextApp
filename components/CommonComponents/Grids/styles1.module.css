@@ -58,6 +58,7 @@
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 10px;
+  cursor: pointer;
   display: block;
   transition: transform 0.4s; /* smoother zoom */
 }
@@ -73,6 +74,7 @@
   background-position: center;
   border-radius: 10px;
   overflow: hidden;
+  cursor: pointer;
   border-radius: 10px;
   transition: transform 0.4s; /* smoother zoom */
 }

@@ -53,6 +53,7 @@
   max-width: 350px;
   object-fit: cover;
   background-size: cover;
+  cursor: pointer;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 10px;
@@ -70,6 +71,7 @@
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 10px;
+  cursor: pointer;
   overflow: hidden;
   border-radius: 10px;
   transition: transform 0.4s; /* smoother zoom */
