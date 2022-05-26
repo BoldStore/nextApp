@@ -22,7 +22,6 @@ function Dashboard() {
             marginBottom: "1rem",
           }}
         >
-          <DashboardIcon sx={{ marginRight: "0.5rem" }} />
           <h1>Dashboard</h1>
         </div>
         <div className={styles.dashboardContainer}>
