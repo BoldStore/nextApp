@@ -25,12 +25,14 @@
   display: flex;
   flex-direction: column;
   margin-left: 1rem;
+  cursor: pointer;
 }
 
 .nameLocation p {
   font-size: 0.8rem;
   margin: 0;
   margin-bottom: 2px;
+  cursor: pointer;
 }
 
 .moreIcon {
@@ -47,6 +49,8 @@
 .productImg {
   border-radius: 1rem;
   object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.4s;
 }
 
 .priceContainer {
@@ -68,6 +72,11 @@
 
 .bookmarkIcon:hover {
   color: var(--lightGrey);
+}
+
+.productImg:hover {
+  transform: scale(1.05);
+  transform-origin: 50% 50%;
 }
 
 @media (max-width: 1350px) {

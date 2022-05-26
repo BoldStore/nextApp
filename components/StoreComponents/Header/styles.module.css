@@ -66,6 +66,7 @@
   font-size: 2rem;
   color: var(--white);
   mix-blend-mode: exclusion;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 800px) {

@@ -5,36 +5,42 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Image from "next/image";
 import { Bookmark } from "react-feather";
 import BoldButton from "../BoldButton";
-
+import Link from "next/link";
 function Post({ storeName, storeLocation, postUrl, price, caption }) {
   return (
     <div className={styles.postContainer}>
-      <div className={styles.postHeader}>
-        <div className={styles.userInfo}>
-          <Avatar
-            alt="Avatar"
-            src={"https://i.ibb.co/Bswp8RS/avi.jpg"}
-            sx={{
-              width: 50,
-              height: 50,
-              cursor: "pointer",
-              border: "1px solid var(--darkGrey)",
-            }}
-          />
-          <div className={styles.nameLocation}>
-            <p>Store_Username</p>
-            <p style={{ opacity: 0.5 }}>New Delhi</p>
+      <Link href="/store/profile" passHref={true}>
+        <div className={styles.postHeader}>
+          <div className={styles.userInfo}>
+            <Avatar
+              alt="Avatar"
+              src={"https://i.ibb.co/Bswp8RS/avi.jpg"}
+              sx={{
+                width: 50,
+                height: 50,
+                cursor: "pointer",
+                border: "1px solid var(--darkGrey)",
+              }}
+            />
+            <div className={styles.nameLocation}>
+              <p>Store_Username</p>
+              <p style={{ opacity: 0.5 }}>New Delhi</p>
+            </div>
           </div>
+          <MoreHorizIcon className={styles.moreIcon} />
         </div>
-        <MoreHorizIcon className={styles.moreIcon} />
-      </div>
-      <Image
-        src="/assets/shoe2.jpg"
-        alt="item"
-        width="450"
-        height="450"
-        className={styles.productImg}
-      />
+      </Link>
+      <Link href="/store/product" passHref={true}>
+        <div style={{ overflow: "hidden", borderRadius: "1rem" }}>
+          <Image
+            src="/assets/shoe2.jpg"
+            alt="item"
+            width="450"
+            height="450"
+            className={styles.productImg}
+          />
+        </div>
+      </Link>
       <div className={styles.priceContainer}>
         <p>$200</p>
         <Bookmark className={styles.bookmarkIcon} />
