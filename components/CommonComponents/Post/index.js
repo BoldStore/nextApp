@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Bookmark } from "react-feather";
 import BoldButton from "../BoldButton";
 import Link from "next/link";
+
 function Post({ storeName, storeLocation, postUrl, price, caption }) {
   return (
     <div className={styles.postContainer}>
