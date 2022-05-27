@@ -1,15 +1,15 @@
 import React from "react";
-import Header from "../components/LandingPageComponents/Header";
 import styles from "../styles/common.module.css";
-import styles2 from "../styles/Home.module.css";
 import { ArrowLeft, Truck, User } from "react-feather";
 import Link from "next/link";
 import { IconButton } from "@mui/material";
 import { useRouter } from "next/router";
+
 function getStarted() {
   var cursor;
   var cursor2;
   var drag;
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const router = useRouter();
   const changeMouse = () => {
     cursor = document.getElementById("cursor");
