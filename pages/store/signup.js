@@ -71,7 +71,7 @@ function StoreSignup() {
                   marginBottom: 0,
                 }}
               >
-                Don't Have An Invite Code?{" "}
+                Don&apos;t Have An Invite Code?{" "}
                 <span className={styles.link}>Click Here.</span>
               </p>
             </Link>
