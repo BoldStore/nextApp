@@ -54,7 +54,7 @@ export default function TemporaryDrawer() {
 
   return (
     <div className={styles.menu}>
-      <h2>Bold.</h2>
+      <h2>BOLD.</h2>
       {["right"].map((anchor) => (
         <React.Fragment key={anchor}>
           <div onClick={toggleDrawer(anchor, true)}>
