@@ -31,7 +31,7 @@ function Post({ storeName, storeLocation, postUrl, price, caption }) {
           <MoreHorizIcon className={styles.moreIcon} />
         </div>
       </Link>
-      <Link href="/store/product" passHref={true}>
+      <Link href="/store/product/1" passHref={true}>
         <div style={{ overflow: "hidden", borderRadius: "1rem" }}>
           <Image
             src="/assets/shoe2.jpg"
