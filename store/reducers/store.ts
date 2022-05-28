@@ -52,7 +52,7 @@ const storeReducer = (state = initState, action: any) => {
       return {
         ...state,
         isLoading: false,
-        errmess: action.data.errmess,
+        errmess: (action.errmess || action.data.errmess).toString(),
       };
     default:
       return state;

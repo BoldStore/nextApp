@@ -4,6 +4,10 @@ import Header from "../../components/LandingPageComponents/Header";
 import styles from "../../styles/common.module.css";
 import Link from "next/link";
 import { isEmail, isStrongPassword, equals } from "validator";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { auth } from "../../firebaseConfig";
+import { useDispatch, useSelector } from "react-redux";
+import { createStore } from "../../store/actions/store";
 
 function StoreSignup() {
   const [inviteCode, setInviteCode] = useState("");
@@ -12,6 +16,12 @@ function StoreSignup() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [strongPassword, setStrongPassword] = useState(false);
+  const [error, setError] = useState("");
+  const [createUserWithEmailAndPassword, user, loading, signupError] =
+    useCreateUserWithEmailAndPassword(auth);
+
+  const dispatch = useDispatch();
+  const store = useSelector((state) => state.store);
 
   const validation = () => {
     const validEmail = isEmail(email);
@@ -24,22 +34,47 @@ function StoreSignup() {
     return false;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validation()) {
       setError("Please check your inputs");
+      return;
     }
+    setError("");
 
     // 1. Signup up for firebase auth
-    // 2. Create a new user in the database
+    await createUserWithEmailAndPassword(email, password).then(() => {
+      console.log(user);
+      console.log(signupError);
+      // 2. Create a new user in the database
+      if (user) {
+        dispatch(createStore(user?.user?.email, inviteCode));
+
+        console.log("Error>>>", store.error);
+
+        if (!store.success) {
+          console.log(store);
+          setError(store?.errmess?.toString());
+          return;
+        }
+      }
+    });
+
     // 3. Create a new store in the database (open insta access page)
   };
 
   useEffect(() => {
+    console.log(password);
     if (isStrongPassword(password)) {
       setStrongPassword(true);
+    } else {
+      console.log("Strong");
     }
   }, [password]);
+
+  useEffect(() => {
+    console.log(store);
+  }, [store]);
 
   return (
     <div className={styles.page}>
@@ -47,6 +82,9 @@ function StoreSignup() {
       <div className={styles.center}>
         <div className={styles.container}>
           <p className={styles.heading}>Sign Up As A Store 😉 </p>
+          <p className={styles.error}>
+            {error || signupError || store.errmess}
+          </p>
           <InputComponent
             type="text"
             setValue={setInviteCode}
@@ -84,7 +122,7 @@ function StoreSignup() {
           />
           {/* <Link href="/store/" passHref={true}> */}
           <div className={styles.btn} onClick={handleSubmit}>
-            <p>Signup</p>
+            <p>{loading || store.isLoading ? "Loading...." : "Signup"}</p>
           </div>
           {/* </Link> */}
           <div

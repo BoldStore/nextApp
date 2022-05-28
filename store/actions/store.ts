@@ -29,6 +29,9 @@ export const createStore = () => {
         // }
       );
 
+      console.log(response.status);
+      console.log(response.data);
+
       if (response.status == 201) {
         dispatch({
           type: ActionTypes.CREATE_STORE_SUCCESS,
@@ -37,7 +40,7 @@ export const createStore = () => {
       } else {
         dispatch({
           type: ActionTypes.CREATE_STORE_FAILED,
-          error: response.data,
+          errmess: response.data,
         });
       }
     } catch (e) {
