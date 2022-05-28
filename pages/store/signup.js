@@ -1,14 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputComponent from "../../components/CommonComponents/InputComponent";
 import Header from "../../components/LandingPageComponents/Header";
 import styles from "../../styles/common.module.css";
 import Link from "next/link";
+import { isEmail, isStrongPassword, equals } from "validator";
+
 function StoreSignup() {
   const [inviteCode, setInviteCode] = useState("");
   const [email, setEmail] = useState("");
-  const [fullName, setFullName] = useState("");
+  // const [fullName, setFullName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [strongPassword, setStrongPassword] = useState(false);
+
+  const validation = () => {
+    const validEmail = isEmail(email);
+    const passwordValid = equals(password, confirmPassword);
+
+    if (validEmail && passwordValid && strongPassword) {
+      return true;
+    }
+
+    return false;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!validation()) {
+      setError("Please check your inputs");
+    }
+
+    // 1. Signup up for firebase auth
+    // 2. Create a new user in the database
+    // 3. Create a new store in the database (open insta access page)
+  };
+
+  useEffect(() => {
+    if (isStrongPassword(password)) {
+      setStrongPassword(true);
+    }
+  }, [password]);
+
   return (
     <div className={styles.page}>
       <Header />
@@ -22,13 +54,13 @@ function StoreSignup() {
             placeholder={"Invite Code"}
             noText={true}
           />
-          <InputComponent
+          {/* <InputComponent
             type="text"
             setValue={setFullName}
             value={fullName}
             placeholder={"Full Name"}
             noText={true}
-          />
+          /> */}
           <InputComponent
             type="text"
             setValue={setEmail}
@@ -50,11 +82,11 @@ function StoreSignup() {
             placeholder={"Confirm Password"}
             noText={true}
           />
-          <Link href="/store/" passHref={true}>
-            <div className={styles.btn}>
-              <p>Signup</p>
-            </div>
-          </Link>
+          {/* <Link href="/store/" passHref={true}> */}
+          <div className={styles.btn} onClick={handleSubmit}>
+            <p>Signup</p>
+          </div>
+          {/* </Link> */}
           <div
             style={{
               display: "flex",
