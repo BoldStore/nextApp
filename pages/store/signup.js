@@ -62,8 +62,6 @@ function StoreSignup() {
         }
       }
     });
-
-    // 3. Create a new store in the database (open insta access page)
   };
 
   useEffect(() => {
@@ -76,6 +74,7 @@ function StoreSignup() {
   }, [password]);
 
   useEffect(() => {
+    // 3. Create a new store in the database (open insta access page)
     if (store.success) {
       router.push(INSTAGRAM_URL);
     }
