@@ -46,7 +46,7 @@ export const createStore = () => {
     } catch (e) {
       dispatch({
         type: ActionTypes.CREATE_STORE_FAILED,
-        errmess: e,
+        data: (e as any)?.response?.data.err ?? "Something went wrong",
       });
     }
   };

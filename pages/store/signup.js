@@ -74,6 +74,20 @@ function StoreSignup() {
   }, [password]);
 
   useEffect(() => {
+    if (user) {
+      dispatch(createStore(user?.user?.email, inviteCode));
+
+      console.log("Error>>>", store.error);
+
+      if (!store.success) {
+        console.log(store);
+        setError(store?.errmess?.toString());
+        return;
+      }
+    }
+  }, [user, signupError]);
+
+  useEffect(() => {
     // 3. Create a new store in the database (open insta access page)
     if (store.success) {
       router.push(INSTAGRAM_URL);
@@ -87,7 +101,7 @@ function StoreSignup() {
         <div className={styles.container}>
           <p className={styles.heading}>Sign Up As A Store 😉 </p>
           <p className={styles.error}>
-            {error || signupError || store.errmess}
+            {(error || signupError || store?.errmess)?.toString()}
           </p>
           <InputComponent
             type="text"
