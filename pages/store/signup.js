@@ -8,8 +8,11 @@ import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "../../firebaseConfig";
 import { useDispatch, useSelector } from "react-redux";
 import { createStore } from "../../store/actions/store";
+import { INSTAGRAM_URL } from "../../constants";
+import { useRouter } from "next/router";
 
 function StoreSignup() {
+  const router = useRouter();
   const [inviteCode, setInviteCode] = useState("");
   const [email, setEmail] = useState("");
   // const [fullName, setFullName] = useState("");
@@ -73,7 +76,9 @@ function StoreSignup() {
   }, [password]);
 
   useEffect(() => {
-    console.log(store);
+    if (store.success) {
+      router.push(INSTAGRAM_URL);
+    }
   }, [store]);
 
   return (
