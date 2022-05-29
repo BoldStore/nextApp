@@ -3,8 +3,29 @@ import InputComponent from "../../../components/CommonComponents/InputComponent"
 import StoreHeader from "../../../components/StoreComponents/Header";
 import styles from "./styles.module.css";
 import BoldButton from "../../../components/CommonComponents/BoldButton";
-import Avatar from "@mui/material/Avatar";
-import Link from "next/link";
+import { getCookie } from "cookies-next";
+import { firebaseAdmin } from "../../firebaseAdmin";
+
+export async function getServerSideProps({ req, res }) {
+  const token = getCookie("token", { req, res });
+  let user;
+  try {
+    user = await firebaseAdmin.auth().verifyIdToken(token);
+    return {
+      props: {
+        user,
+      },
+    };
+  } catch (e) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/store/signup",
+      },
+      props: {},
+    };
+  }
+}
 
 function ProfileUpi() {
   const [upi, setUpi] = useState("");

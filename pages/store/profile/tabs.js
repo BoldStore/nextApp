@@ -10,8 +10,31 @@ import Grid1 from "../../../components/CommonComponents/Grids/grid1";
 import Grid2 from "../../../components/CommonComponents/Grids/grid2";
 import Grid3 from "../../../components/CommonComponents/Grids/grid3";
 import Grid4 from "../../../components/CommonComponents/Grids/grid4";
-
 import Post from "../../../components/CommonComponents/Post";
+import { getCookie } from "cookies-next";
+import { firebaseAdmin } from "../../firebaseAdmin";
+
+export async function getServerSideProps({ req, res }) {
+  const token = getCookie("token", { req, res });
+  let user;
+  try {
+    user = await firebaseAdmin.auth().verifyIdToken(token);
+    return {
+      props: {
+        user,
+      },
+    };
+  } catch (e) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/store/signup",
+      },
+      props: {},
+    };
+  }
+}
+
 function TabsStoreProfile() {
   const [value, setValue] = useState("1");
 
