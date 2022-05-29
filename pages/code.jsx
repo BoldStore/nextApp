@@ -12,7 +12,7 @@ const Code = () => {
   useEffect(() => {
     if (router.query.code) {
       setCode(router.query.code.toString());
-      dispatch(saveStoreData(code));
+      dispatch(saveStoreData(router.query.code.toString()));
     }
   }, [router]);
   return (
