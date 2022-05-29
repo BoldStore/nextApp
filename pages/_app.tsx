@@ -4,6 +4,7 @@ import Head from "next/head";
 import { wrapper } from "../store/configureStore";
 import NextNProgress from "nextjs-progressbar";
 import { auth } from "../firebaseConfig";
+import { removeCookies, setCookies } from "cookies-next";
 
 function MyApp({ Component, pageProps }: any) {
   var cursor: any;
@@ -30,9 +31,20 @@ function MyApp({ Component, pageProps }: any) {
       (cursor.style.height = "35px"), (cursor.style.width = "35px");
     });
 
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(async (user) => {
       if (user) {
+        setCookies("token", await user!.getIdToken());
       } else {
+        removeCookies("token");
+      }
+    });
+
+    return auth.onIdTokenChanged(async (user) => {
+      if (!user) {
+        removeCookies("token");
+      } else {
+        const token = await user.getIdToken();
+        setCookies("token", token);
       }
     });
   }, []);

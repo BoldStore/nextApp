@@ -20,7 +20,8 @@
     "**/*.ts",
     "**/*.tsx",
     "pages/_app.tsx",
-    "pages/code.jsx"
+    "pages/code.jsx",
+    "lib/checkAuth.js"
   ],
   "exclude": ["node_modules"]
 }
