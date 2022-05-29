@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Head from "next/head";
 import { wrapper } from "../store/configureStore";
 import NextNProgress from "nextjs-progressbar";
+import { auth } from "../firebaseConfig";
 
 function MyApp({ Component, pageProps }: any) {
   var cursor: any;
@@ -27,6 +28,12 @@ function MyApp({ Component, pageProps }: any) {
     });
     document.addEventListener("mouseup", function (e) {
       (cursor.style.height = "35px"), (cursor.style.width = "35px");
+    });
+
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+      } else {
+      }
     });
   }, []);
 
