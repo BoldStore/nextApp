@@ -169,7 +169,7 @@ export const saveStoreData = (insta_code: string) => {
     } catch (e) {
       dispatch({
         type: ActionTypes.SAVE_STORE_DATA_FAILED,
-        errmess: e,
+        errmess: (e as any)?.response?.data.err ?? "Something went wrong",
       });
     }
   };

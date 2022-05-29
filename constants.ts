@@ -39,6 +39,6 @@ export const SEND_MAIL = "test/sendMail";
 export const PING_SERVER = "test";
 export const CHECK_LOGIN = "test/checkLogin";
 
-const REDIRECT_URL = "https://bold-96a92.firebaseapp.com/__/auth/handler";
+const REDIRECT_URL = "https://dev-bold.netlify.app/code";
 const CLIENT_ID = "716956792630660";
 export const INSTAGRAM_URL = `https://www.instagram.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL}&scope=user_profile%2Cuser_media&response_type=code`;
