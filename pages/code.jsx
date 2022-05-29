@@ -1,14 +1,13 @@
-import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { saveStoreData } from "../store/actions/store";
 
-const Code: NextPage = () => {
+const Code = () => {
   const router = useRouter();
   const [code, setCode] = useState("");
   const dispatch = useDispatch();
-  const storeData = useSelector((state: any) => state.storeData);
+  const storeData = useSelector((state) => state.storeData);
 
   useEffect(() => {
     if (router.query.code) {
