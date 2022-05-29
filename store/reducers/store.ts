@@ -56,7 +56,7 @@ const storeReducer = (state = initState, action: any) => {
       return {
         ...state,
         isLoading: false,
-        errmess: (action.errmess || action.data.message).toString(),
+        errmess: (action.errmess || action.data.message)?.toString(),
         success: false,
       };
 
@@ -81,7 +81,7 @@ const storeReducer = (state = initState, action: any) => {
       return {
         ...state,
         isLoading: false,
-        errmess: (action.errmess || action.data.message).toString(),
+        errmess: (action.errmess || action.data.message)?.toString(),
         success: false,
       };
     default:

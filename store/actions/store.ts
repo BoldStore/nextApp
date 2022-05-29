@@ -14,22 +14,9 @@ export const createStore = (inviteCode: string) => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.CREATE_STORE_REQUEST });
     try {
-      // const instance = functions().httpsCallable(CREATE_STORE);
-
-      // const response = await instance({
-      //   email: firebase().auth().currentUser.email,
-      // });
-      const response = await instance.post(
-        CREATE_STORE,
-        {
-          inviteCode,
-        }
-        // {
-        //   headers: {
-        //     Authorization: firebase().auth().currentUser.getIdToken(),
-        //   },
-        // }
-      );
+      const response = await instance.post(CREATE_STORE, {
+        inviteCode,
+      });
 
       if (response.status == 201) {
         dispatch({
@@ -45,7 +32,7 @@ export const createStore = (inviteCode: string) => {
     } catch (e) {
       dispatch({
         type: ActionTypes.CREATE_STORE_FAILED,
-        data: (e as any)?.response?.data.err ?? "Something went wrong",
+        data: (e as any)?.response?.data?.err ?? "Something went wrong",
       });
     }
   };
@@ -152,7 +139,7 @@ export const saveStoreData = (insta_code: string) => {
     dispatch({ type: ActionTypes.SAVE_STORE_DATA_REQUEST });
     try {
       const response = await instance.post(SAVE_STORE_DATA, {
-        insta_code,
+        code: insta_code,
       });
 
       if (response.status == 200) {
