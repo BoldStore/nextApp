@@ -1,19 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputComponent from "../../components/CommonComponents/InputComponent";
 import Header from "../../components/LandingPageComponents/Header";
 import styles from "../../styles/common.module.css";
 import Link from "next/link";
+import { auth } from "../../firebaseConfig";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useRouter } from "next/router";
+
 function CustomerLogin() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
-  const [fullName, setFullName] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await signInWithEmailAndPassword(email, password);
+  };
+
+  useEffect(() => {
+    if (user) {
+      router.replace("/store");
+    }
+  }, [user]);
+
   return (
     <div className={styles.page}>
       <Header />
       <div className={styles.center}>
         <div className={styles.container}>
           <p className={styles.heading}>Login As A Store 😎 </p>
+          {error && <p className={styles.error}>{error.message}</p>}
           <InputComponent
             type="text"
             setValue={setEmail}
@@ -29,11 +47,11 @@ function CustomerLogin() {
             noText={true}
           />
 
-          <Link href="/store/" passHref={true}>
-            <div className={styles.btn}>
-              <p>Login</p>
-            </div>
-          </Link>
+          {/* <Link href="/store/" passHref={true}> */}
+          <div className={styles.btn} onClick={handleSubmit}>
+            <p>{loading ? "Loading..." : "Login"}</p>
+          </div>
+          {/* </Link> */}
           <div
             style={{
               display: "flex",
