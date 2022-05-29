@@ -34,7 +34,7 @@ function Post({ storeName, storeLocation, postUrl, price, caption }) {
       <Link href="/store/product/1" passHref={true}>
         <div style={{ overflow: "hidden", borderRadius: "1rem" }}>
           <Image
-            src="/assets/shoe2.jpg"
+            src={postUrl ?? "/assets/shoe2.jpg"}
             alt="item"
             width="450"
             height="450"

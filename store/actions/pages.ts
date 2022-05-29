@@ -8,14 +8,7 @@ export const homePage = () => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.HOME_PAGE_REQUEST });
     try {
-      const response = await instance.get(
-        HOME_PAGE
-        // {
-        //   headers: {
-        //     Authorization: firebase().auth().currentUser.getIdToken(),
-        //   },
-        // }
-      );
+      const response = await instance.get(HOME_PAGE);
 
       if (response.status == 200) {
         dispatch({
@@ -31,7 +24,7 @@ export const homePage = () => {
     } catch (e) {
       dispatch({
         type: ActionTypes.HOME_PAGE_FAILED,
-        errmess: e,
+        errmess: (e as any).response.data,
       });
     }
   };

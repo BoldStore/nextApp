@@ -14,7 +14,7 @@ function TopStores({ storeUrl, storeName }) {
     >
       <Avatar
         alt="Avatar"
-        src={"https://i.ibb.co/myvq6GR/aryan.jpg"}
+        src={storeUrl ?? "https://i.ibb.co/myvq6GR/aryan.jpg"}
         sx={{
           width: 75,
           height: 75,
@@ -29,7 +29,7 @@ function TopStores({ storeUrl, storeName }) {
           fontSize: "0.8rem",
         }}
       >
-        Aryan
+        {storeName ? storeName : "Aryan"}
       </p>
     </div>
   );

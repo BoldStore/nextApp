@@ -27,7 +27,7 @@ const pagesReducer = (state = initState, action: any) => {
       return {
         ...state,
         home_loading: false,
-        home_errmess: action.data.message,
+        home_errmess: (action?.data?.message || action?.errmess)?.toString(),
       };
     default:
       return state;
