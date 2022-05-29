@@ -17,16 +17,16 @@ const Code = () => {
   }, [router]);
 
   useEffect(() => {
-    if (storeData.success) {
+    if (storeData?.success) {
       router.replace("/store");
     }
   }, [storeData, storeData.success]);
 
   return (
     <div>
-      {storeData.isLoading && <h1>Loading...</h1>}
-      {storeData.success && storeData.errmess && (
-        <h1 style={{ color: "red" }}>Error: {storeData.errmess}</h1>
+      {storeData?.isLoading && <h1>Loading...</h1>}
+      {storeData?.success && storeData?.errmess && (
+        <h1 style={{ color: "red" }}>Error: {storeData?.errmess}</h1>
       )}
       <div>Code: {code}</div>
       <br />
