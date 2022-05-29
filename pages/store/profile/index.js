@@ -9,38 +9,6 @@ import React, { useState } from "react";
 import TabsStoreProfile from "./tabs";
 import StoreHeader from "../../../components/StoreComponents/Header";
 import Post from "../../../components/CommonComponents/Post";
-// import { auth } from "../../../firebaseConfig";
-import { getCookie } from "cookies-next";
-import { firebaseAdmin } from "../../../firebaseAdmin";
-
-export async function getServerSideProps({ req, res }) {
-  const token = getCookie("token", { req, res });
-  let user;
-  try {
-    user = await firebaseAdmin.auth().verifyIdToken(token);
-    return {
-      props: {
-        user,
-      },
-    };
-  } catch (e) {
-    // either the `token` cookie didn't exist
-    // or token verification failed
-    // either way: redirect to the login page
-    // either the `token` cookie didn't exist
-    // or token verification failed
-    // either way: redirect to the login page
-    return {
-      redirect: {
-        permanent: false,
-        destination: "/store/login",
-      },
-      // `as never` is required for correct type inference
-      // by InferGetServerSidePropsType below
-      props: {},
-    };
-  }
-}
 
 function StoreProfile({ user }) {
   const [value, setValue] = useState(0);

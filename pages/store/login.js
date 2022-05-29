@@ -6,6 +6,26 @@ import Link from "next/link";
 import { auth } from "../../firebaseConfig";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
+import { getCookie } from "cookies-next";
+import { firebaseAdmin } from "../../firebaseAdmin";
+
+export async function getServerSideProps({ req, res }) {
+  const token = getCookie("token", { req, res });
+  let user;
+  try {
+    user = await firebaseAdmin.auth().verifyIdToken(token);
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/store/",
+      },
+    };
+  } catch (e) {
+    return {
+      props: {},
+    };
+  }
+}
 
 function CustomerLogin() {
   const router = useRouter();
