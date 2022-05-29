@@ -15,10 +15,17 @@ const Code = () => {
       dispatch(saveStoreData(router.query.code.toString()));
     }
   }, [router]);
+
+  useEffect(() => {
+    if (storeData.success) {
+      router.replace("/store");
+    }
+  }, [storeData, storeData.success]);
+
   return (
     <div>
       <div>Code: {code}</div>
-      <div>Store: {storeData}</div>
+      <div>Store: {storeData?.store}</div>
     </div>
   );
 };

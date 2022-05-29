@@ -6,6 +6,7 @@ const initState = {
   errmess: null,
   name: "",
   insta_id: "",
+  store: null,
 };
 
 const storeReducer = (state = initState, action: any) => {
@@ -72,9 +73,8 @@ const storeReducer = (state = initState, action: any) => {
         ...state,
         isLoading: false,
         errmess: null,
-        name: action.data.name,
-        insta_id: action.data.insta_id,
         success: true,
+        store: action.data.store,
       };
 
     case ActionTypes.SAVE_STORE_DATA_FAILED:
