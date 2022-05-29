@@ -20,6 +20,7 @@ const Code = () => {
   }, [router, user]);
 
   useEffect(() => {
+    console.log(storeData);
     if (storeData?.success) {
       router.replace("/store");
     }
@@ -33,7 +34,7 @@ const Code = () => {
       )}
       <div>Code: {code}</div>
       <br />
-      <div>Store: {storeData?.store}</div>
+      <div>Store: {storeData?.store?.insta_username}</div>
     </div>
   );
 };
