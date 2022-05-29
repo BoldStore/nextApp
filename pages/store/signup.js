@@ -46,38 +46,12 @@ function StoreSignup() {
     setError("");
 
     // 1. Signup up for firebase auth
-    await createUserWithEmailAndPassword(email, password).then(() => {
-      console.log(user);
-      console.log(signupError);
-      // 2. Create a new user in the database
-      if (user) {
-        dispatch(createStore(user?.user?.email, inviteCode));
-
-        console.log("Error>>>", store.error);
-
-        if (!store.success) {
-          console.log(store);
-          setError(store?.errmess?.toString());
-          return;
-        }
-      }
-    });
+    await createUserWithEmailAndPassword(email, password);
   };
 
   useEffect(() => {
-    console.log(password);
-    if (isStrongPassword(password)) {
-      setStrongPassword(true);
-    } else {
-      console.log("Strong");
-    }
-  }, [password]);
-
-  useEffect(() => {
     if (user) {
-      dispatch(createStore(user?.user?.email, inviteCode));
-
-      console.log("Error>>>", store.error);
+      dispatch(createStore(inviteCode));
 
       if (!store.success) {
         console.log(store);
@@ -85,14 +59,20 @@ function StoreSignup() {
         return;
       }
     }
-  }, [user, signupError]);
+  }, [user]);
+
+  useEffect(() => {
+    if (isStrongPassword(password)) {
+      setStrongPassword(true);
+    }
+  }, [password]);
 
   useEffect(() => {
     // 3. Create a new store in the database (open insta access page)
     if (store.success) {
       router.push(INSTAGRAM_URL);
     }
-  }, [store]);
+  }, [store, store.success]);
 
   return (
     <div className={styles.page}>

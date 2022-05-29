@@ -2,6 +2,7 @@ import * as ActionTypes from "../ActionTypes";
 
 const initState = {
   isLoading: false,
+  success: false,
   errmess: null,
   name: "",
   insta_id: "",
@@ -37,6 +38,7 @@ const storeReducer = (state = initState, action: any) => {
         ...state,
         isLoading: true,
         errmess: null,
+        success: false,
       };
 
     case ActionTypes.CREATE_STORE_SUCCESS:
@@ -46,6 +48,7 @@ const storeReducer = (state = initState, action: any) => {
         errmess: null,
         name: action.data.name,
         insta_id: action.data.insta_id,
+        success: true,
       };
 
     case ActionTypes.CREATE_STORE_FAILED:
@@ -53,6 +56,7 @@ const storeReducer = (state = initState, action: any) => {
         ...state,
         isLoading: false,
         errmess: (action.errmess || action.data.message).toString(),
+        success: false,
       };
     default:
       return state;

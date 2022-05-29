@@ -10,7 +10,7 @@ import { Dispatch } from "redux";
 import * as ActionTypes from "../ActionTypes";
 
 // We really gotta test it
-export const createStore = () => {
+export const createStore = (inviteCode: string) => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.CREATE_STORE_REQUEST });
     try {
@@ -21,16 +21,15 @@ export const createStore = () => {
       // });
       const response = await instance.post(
         CREATE_STORE,
-        {}
+        {
+          inviteCode,
+        }
         // {
         //   headers: {
         //     Authorization: firebase().auth().currentUser.getIdToken(),
         //   },
         // }
       );
-
-      console.log(response.status);
-      console.log(response.data);
 
       if (response.status == 201) {
         dispatch({
