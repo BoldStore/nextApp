@@ -24,7 +24,12 @@ const Code = () => {
 
   return (
     <div>
+      {storeData.isLoading && <h1>Loading...</h1>}
+      {storeData.success && storeData.errmess && (
+        <h1 style={{ color: "red" }}>Error: {storeData.errmess}</h1>
+      )}
       <div>Code: {code}</div>
+      <br />
       <div>Store: {storeData?.store}</div>
     </div>
   );
