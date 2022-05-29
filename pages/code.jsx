@@ -15,7 +15,7 @@ const Code = () => {
   useEffect(() => {
     if (router.query.code && user?.email) {
       setCode(router.query.code.toString());
-      dispatch(saveStoreData(router.query.code.toString()));
+      dispatch(saveStoreData(router.query.code.toString().split("#")[0]));
     }
   }, [router, user]);
 
