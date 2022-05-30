@@ -7,7 +7,7 @@ import { Bookmark } from "react-feather";
 import BoldButton from "../BoldButton";
 import Link from "next/link";
 
-function Post({ storeName, storeLocation, postUrl, price, caption }) {
+function Post({ storeName, storeLocation, postUrl, price, caption, expanded }) {
   return (
     <div className={styles.postContainer}>
       <Link href="/store/profile" passHref={true}>
@@ -31,7 +31,7 @@ function Post({ storeName, storeLocation, postUrl, price, caption }) {
           <MoreHorizIcon className={styles.moreIcon} />
         </div>
       </Link>
-      <Link href="/store/product/1" passHref={true}>
+      <Link href={!expanded ? "/store/product/1" : "#"} passHref={true}>
         <div style={{ overflow: "hidden", borderRadius: "1rem" }}>
           <Image
             src={postUrl ?? "/assets/shoe2.jpg"}
@@ -46,6 +46,14 @@ function Post({ storeName, storeLocation, postUrl, price, caption }) {
         <p>$200</p>
         <Bookmark className={styles.bookmarkIcon} />
       </div>
+      {expanded && (
+        <>
+          <p style={{ marginTop: 0 }}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </>
+      )}
       <BoldButton text={"Buy Now"} />
     </div>
   );

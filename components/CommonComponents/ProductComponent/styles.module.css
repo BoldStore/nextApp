@@ -57,8 +57,22 @@
   font-weight: bold;
 }
 
+.mobileContainer {
+  display: none;
+}
+
 @media (max-width: 1450px) {
   .productInfo {
     margin-left: 1rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .productContainer {
+    display: none;
+  }
+  .mobileContainer {
+    display: block;
+    margin-top: 2rem;
   }
 }
