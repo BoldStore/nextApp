@@ -9,7 +9,7 @@ import Link from "next/link";
 
 function Post({ storeName, storeLocation, postUrl, price, caption, expanded }) {
   return (
-    <div className={styles.postContainer}>
+    <div className={styles.postContainer} style={{ marginLeft: expanded && 0 }}>
       <Link href="/store/profile" passHref={true}>
         <div className={styles.postHeader}>
           <div className={styles.userInfo}>
