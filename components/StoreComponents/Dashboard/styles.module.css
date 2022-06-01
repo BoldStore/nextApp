@@ -1,7 +1,7 @@
 .chartContainer {
   display: flex;
   flex-direction: column;
-  width: 620px;
+  width: 30%;
   min-width: 300px;
   padding: 1rem;
   border: 2px solid var(--darkGrey);
@@ -27,7 +27,14 @@
 
 @media (max-width: 1350px) {
   .chartContainer {
-    width: 850px;
+    width: 45%;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 550px) {
+  .chartContainer {
+    width: 100%;
     margin-right: 0;
   }
 }

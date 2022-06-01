@@ -14,7 +14,7 @@ function WorstPost() {
         height="450"
         className={styles.productImg}
       />
-      <p>$200</p>
+      {/* <p>$200</p> */}
     </div>
   );
 }

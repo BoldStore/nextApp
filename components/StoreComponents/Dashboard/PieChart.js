@@ -18,7 +18,7 @@ function PieChart({ topic, array }) {
   return (
     <div className={styles.chartContainer}>
       <h1>Most Sold Products</h1>
-      <Pie data={data} />
+      <Pie data={data} style={{ margin: "1rem", marginTop: "0rem" }} />
     </div>
   );
 }
