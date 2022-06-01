@@ -125,7 +125,7 @@ function MyApp({ Component, pageProps }: any) {
         Drag
       </div>
 
-      <NextNProgress />
+      <NextNProgress color="#e3e3e3" height={2} />
 
       <Component {...pageProps} />
     </>
