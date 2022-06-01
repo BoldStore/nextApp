@@ -69,7 +69,13 @@
 
 @media (max-width: 550px) {
   .productContainer {
-    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+  .productInfo {
+    width: 100%;
+    margin-top: 1rem;
+    margin-left: 0rem;
   }
   .mobileContainer {
     display: block;

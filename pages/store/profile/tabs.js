@@ -12,7 +12,7 @@ import Grid3 from "../../../components/CommonComponents/Grids/grid3";
 import Grid4 from "../../../components/CommonComponents/Grids/grid4";
 import Post from "../../../components/CommonComponents/Post";
 import { getCookie } from "cookies-next";
-import { firebaseAdmin } from "../../firebaseAdmin";
+import { firebaseAdmin } from "../../../firebaseAdmin";
 
 export async function getServerSideProps({ req, res }) {
   const token = getCookie("token", { req, res });

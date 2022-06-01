@@ -12,7 +12,7 @@ function ProductComponent() {
   return (
     <>
       <div className={styles.productContainer}>
-        <div style={{ width: "50%" }}>
+        <div>
           <Image
             src="/assets/shoe2.jpg"
             alt="item"
@@ -22,6 +22,7 @@ function ProductComponent() {
           />
         </div>
         <div className={styles.productInfo}>
+          <h1 style={{ marginTop: 0 }}>Product Title</h1>
           <div className={styles.userInfo}>
             <Avatar
               alt="Avatar"
@@ -53,9 +54,9 @@ function ProductComponent() {
           <BoldButton text={"Produce To Buy"} />
         </div>
       </div>
-      <div className={styles.mobileContainer}>
+      {/* <div className={styles.mobileContainer}>
         <Post expanded={true} />
-      </div>
+      </div> */}
     </>
   );
 }
