@@ -4,7 +4,7 @@ import StoreHeader from "../../../components/StoreComponents/Header";
 import styles from "./styles.module.css";
 import BoldButton from "../../../components/CommonComponents/BoldButton";
 import { getCookie } from "cookies-next";
-import { firebaseAdmin } from "../../firebaseAdmin";
+import { firebaseAdmin } from "../../../firebaseAdmin";
 
 export async function getServerSideProps({ req, res }) {
   const token = getCookie("token", { req, res });
