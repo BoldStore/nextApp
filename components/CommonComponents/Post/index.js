@@ -9,6 +9,7 @@ import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
 
 function Post({
+  id,
   storeUrl,
   storeName,
   storeLocation,
@@ -53,7 +54,7 @@ function Post({
           <MoreHorizIcon className={styles.moreIcon} />
         </div>
       </Link>
-      <Link href={!expanded ? "/store/product/1" : "#"} passHref={true}>
+      <Link href={!expanded ? `/store/product/${id}` : "#"} passHref={true}>
         <div style={{ overflow: "hidden", borderRadius: "1rem" }}>
           {postUrl ? (
             <Image
