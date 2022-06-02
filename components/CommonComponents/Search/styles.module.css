@@ -1,12 +1,15 @@
 .searchContainer {
   margin-top: 8rem;
-  width: 100%;
+  width: 90%;
+
   border: 2px solid var(--darkGrey);
   border-radius: 2rem;
   background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
   padding: 0.5rem;
 }
 
