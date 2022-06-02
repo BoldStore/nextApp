@@ -3,6 +3,7 @@ import CustomerHeader from "../../components/CustomerComponents/Header";
 import styles from "../../styles/common.module.css";
 import Post from "../../components/CommonComponents/Post";
 import TopStores from "../../components/CommonComponents/TopStores";
+import Skeleton from "react-loading-skeleton";
 
 function CustomerHomePage() {
   return (
@@ -10,7 +11,6 @@ function CustomerHomePage() {
       <CustomerHeader />
       <div className={styles.container}>
         <div className={styles.topStoreContainer}>
-          <TopStores />
           <TopStores />
           <TopStores />
           <TopStores />
