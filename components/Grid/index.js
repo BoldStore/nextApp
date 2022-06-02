@@ -61,7 +61,7 @@ function Grid({
         ) : (
           <Skeleton
             count={1}
-            width={600}
+            width={"72vw"}
             height={600}
             className={styles.productImg}
           />
@@ -87,7 +87,7 @@ function Grid({
             ) : (
               <Skeleton
                 count={1}
-                width={300}
+                width={0}
                 height={300}
                 className={styles.productImg}
               />
@@ -107,7 +107,7 @@ function Grid({
             ) : (
               <Skeleton
                 count={1}
-                width={300}
+                width={0}
                 height={300}
                 className={styles.productImg}
               />
@@ -125,7 +125,7 @@ function Grid({
             ) : (
               <Skeleton
                 count={1}
-                width={300}
+                width={0}
                 height={300}
                 className={styles.productImg}
               />
@@ -145,7 +145,7 @@ function Grid({
             ) : (
               <Skeleton
                 count={1}
-                width={300}
+                width={0}
                 height={300}
                 className={styles.productImg}
               />
