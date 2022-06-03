@@ -15,7 +15,6 @@ function TopStores({ storeUrl, storeName }) {
     >
       {storeUrl ? (
         <Avatar
-          alt="Avatar"
           src={storeUrl}
           sx={{
             width: 75,
@@ -35,7 +34,7 @@ function TopStores({ storeUrl, storeName }) {
             fontSize: "0.8rem",
           }}
         >
-          {storeName ? storeName : "Aryan"}
+          {storeName ? storeName : "Name"}
         </p>
       ) : (
         <Skeleton

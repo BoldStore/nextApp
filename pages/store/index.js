@@ -37,7 +37,7 @@ function StoreHomePage() {
         <div className={styles.topStoreContainer}>
           {pageData?.home?.stores?.map((store, index) => (
             <TopStores
-              storeName={store.full_name.split(" ")[0]}
+              storeName={store.full_name?.split(" ")[0]}
               storeUrl={store.profile_pic}
               key={index}
             />
