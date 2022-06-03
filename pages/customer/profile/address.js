@@ -69,7 +69,7 @@ function CustomerAddress() {
           placeholder={"Pincode"}
         />
         <div style={{ marginTop: "3rem" }}></div>
-        <BoldButton text={"Update"} />
+        <BoldButton text={"Proceed"} />
       </div>
     </>
   );
