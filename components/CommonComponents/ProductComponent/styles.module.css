@@ -62,12 +62,15 @@
 }
 
 @media (max-width: 1450px) {
+  .productContainer {
+    margin-top: 5rem;
+  }
   .productInfo {
     margin-left: 1rem;
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 750px) {
   .productContainer {
     flex-direction: column;
     width: 100%;

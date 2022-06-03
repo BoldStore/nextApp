@@ -16,8 +16,8 @@ function ProductComponent() {
           <Image
             src="/assets/shoe2.jpg"
             alt="item"
-            width="500"
-            height="500"
+            width="600"
+            height="600"
             className={styles.productImg}
           />
         </div>
