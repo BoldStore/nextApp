@@ -55,7 +55,7 @@ function CustomerLogin() {
                 <span className={styles.link}>Click Here.</span>
               </p>
             </Link>
-            <Link href="/customer/login" passHref={true}>
+            <Link href="/customer/signup" passHref={true}>
               <p
                 style={{
                   color: "var(--lightGrey)",
