@@ -35,6 +35,7 @@
   object-fit: cover;
   cursor: pointer;
   transition: transform 0.4s;
+  width: 100%;
 }
 
 .icon {
@@ -64,13 +65,20 @@
 @media (max-width: 1450px) {
   .productContainer {
     margin-top: 5rem;
+    justify-content: center;
+    align-items: center;
   }
   .productInfo {
     margin-left: 1rem;
   }
+  .productImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 800px) {
   .productContainer {
     flex-direction: column;
     width: 100%;

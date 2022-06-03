@@ -16,8 +16,8 @@ function ProductComponent() {
           <Image
             src="/assets/shoe2.jpg"
             alt="item"
-            width="600"
-            height="600"
+            width="650"
+            height="650"
             className={styles.productImg}
           />
         </div>
@@ -54,9 +54,6 @@ function ProductComponent() {
           <BoldButton text={"Produce To Buy"} />
         </div>
       </div>
-      {/* <div className={styles.mobileContainer}>
-        <Post expanded={true} />
-      </div> */}
     </>
   );
 }
