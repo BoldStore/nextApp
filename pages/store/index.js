@@ -23,7 +23,33 @@ function StoreHomePage() {
   }, [pageData]);
 
   if (pageData?.home_loading) {
-    return <>Loading...</>;
+    return (
+      <>
+        <StoreHeader />
+        <div className={styles.container}>
+          <div className={styles.topStoreContainer}>
+            <TopStores />
+            <TopStores />
+            <TopStores />
+            <TopStores />
+            <TopStores />
+            <TopStores />
+            <TopStores />
+            <TopStores />
+            <TopStores />
+          </div>
+          <div className={styles.postContainer}>
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+          </div>
+        </div>
+      </>
+    );
   }
 
   if (pageData?.home_errmess) {
