@@ -9,29 +9,29 @@ import BestPost from "../../components/StoreComponents/Dashboard/BestPost";
 import WorstPost from "../../components/StoreComponents/Dashboard/WorstPost";
 import StoreHeader from "../../components/StoreComponents/Header";
 
-import { getCookie } from "cookies-next";
-import { firebaseAdmin } from "../../firebaseAdmin";
+// import { getCookie } from "cookies-next";
+// import { firebaseAdmin } from "../../firebaseAdmin";
 
-export async function getServerSideProps({ req, res }) {
-  const token = getCookie("token", { req, res });
-  let user;
-  try {
-    user = await firebaseAdmin.auth().verifyIdToken(token);
-    return {
-      props: {
-        user,
-      },
-    };
-  } catch (e) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: "/store/signup",
-      },
-      props: {},
-    };
-  }
-}
+// export async function getServerSideProps({ req, res }) {
+//   const token = getCookie("token", { req, res });
+//   let user;
+//   try {
+//     user = await firebaseAdmin.auth().verifyIdToken(token);
+//     return {
+//       props: {
+//         user,
+//       },
+//     };
+//   } catch (e) {
+//     return {
+//       redirect: {
+//         permanent: false,
+//         destination: "/store/signup",
+//       },
+//       props: {},
+//     };
+//   }
+// }
 
 function Dashboard() {
   return (
