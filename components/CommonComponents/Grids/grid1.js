@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import Skeleton from "react-loading-skeleton";
 import styles from "./styles1.module.css";
 function Grid1() {
   return (

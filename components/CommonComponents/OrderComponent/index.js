@@ -68,7 +68,6 @@ function OrderComponent({
       ) : (
         <Skeleton count={1} width={"100%"} height={400} />
       )}
-
       {/* <Send className={styles.sendIcon} /> */}
       <div className={styles.priceContainer}>
         {price ? (
