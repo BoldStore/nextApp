@@ -7,8 +7,10 @@ import { Bookmark, Send } from "react-feather";
 import BoldButton from "../BoldButton";
 import Link from "next/link";
 import Post from "../Post";
+import { useRouter } from "next/router";
 
 function ProductComponent() {
+  const router = useRouter();
   return (
     <>
       <div className={styles.productContainer}>
@@ -51,7 +53,11 @@ function ProductComponent() {
             <p>Price: $200</p>
             <p>Size: M</p>
           </div>
-          <BoldButton text={"Produce To Buy"} />
+
+          <BoldButton
+            text={"Proceed To Buy"}
+            href="/customer/profile/address"
+          />
         </div>
       </div>
     </>
