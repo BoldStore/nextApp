@@ -43,7 +43,8 @@
 .tabs {
   display: none;
 }
-.postContainer {
+.postContainer,
+.productsGrid {
   padding-top: 1.5rem;
 }
 
