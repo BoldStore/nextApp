@@ -11,7 +11,7 @@ import Post from "../../../components/CommonComponents/Post";
 import OrderComponent from "../../../components/CommonComponents/OrderComponent";
 import OrderPageTabs from "./tabs";
 
-function StoreProfile() {
+function Orders() {
   const [value, setValue] = useState(1);
   const handleChange = (i) => {
     setValue(i);
@@ -66,4 +66,4 @@ function StoreProfile() {
   );
 }
 
-export default StoreProfile;
+export default Orders;

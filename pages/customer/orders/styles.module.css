@@ -47,6 +47,18 @@
   padding-top: 1.5rem;
 }
 
+.container2 {
+  width: 90vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 7rem;
+  padding-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 @media (max-width: 1050px) {
   .tabs {
     display: block;
@@ -59,5 +71,14 @@
   }
   .container {
     margin-top: 4rem;
+  }
+  .container2 {
+    margin-top: 6rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .container2 {
+    margin-top: 3rem;
   }
 }
