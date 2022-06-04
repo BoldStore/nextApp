@@ -4,6 +4,7 @@ import InputComponent from "../../../components/CommonComponents/InputComponent"
 import BoldButton from "../../../components/CommonComponents/BoldButton";
 import styles from "./profile.module.css";
 import { border } from "@mui/system";
+import UsernameComponent from "../../../components/CommonComponents/InputComponent/username";
 
 function Edit() {
   const [name, setName] = useState("");
@@ -41,11 +42,11 @@ function Edit() {
           value={phoneNumber}
           placeholder={"Phone Number"}
         />
-        <InputComponent
+        <UsernameComponent
           type="text"
           setValue={setInstagramUsername}
           value={instagramUsername}
-          placeholder={"Instagram Username"}
+          placeholder={"Username"}
         />
         <p>Preference</p>
         <div className={styles.chipContainer}>
