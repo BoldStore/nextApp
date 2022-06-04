@@ -137,4 +137,9 @@
     transform: scale(1.05);
     transform-origin: 50% 50%;
   }
+
+  .hoverDiv {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
 }
