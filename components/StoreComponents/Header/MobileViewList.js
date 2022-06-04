@@ -30,7 +30,7 @@ function MobileViewList() {
         style={{
           padding: "2rem",
           paddingLeft: "1.2rem",
-          top: "20vh",
+          top: "22vh",
           position: "absolute",
         }}
       >
