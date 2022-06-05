@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
@@ -18,6 +18,8 @@ function Post({
   caption,
   expanded,
 }) {
+  const [text, setText] = useState(caption?.slice(0, 50));
+  const [readMore, setReadMore] = useState(false);
   return (
     <div className={styles.postContainer} style={{ marginLeft: expanded && 0 }}>
       <Link href="/store/profile" passHref={true}>
@@ -85,8 +87,16 @@ function Post({
       {expanded && (
         <>
           <p style={{ marginTop: 0 }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            {!readMore ? text : caption}
+            {!readMore && "..."}
+            <p
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                setReadMore(!readMore);
+              }}
+            >
+              {readMore ? "Show Less" : " Read More"}
+            </p>
           </p>
         </>
       )}
