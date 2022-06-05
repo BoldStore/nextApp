@@ -10,7 +10,7 @@
   padding-left: 0.5rem;
   border: 0px;
   font-size: 1rem;
-  border: 2px solid var(--darkGrey);
+  border: 1px solid var(--darkGrey);
   border-radius: 0.5rem;
   width: 100%;
   font-family: "Inter";
@@ -26,7 +26,7 @@
 
 .input:focus {
   outline: none;
-  border: 2px solid var(--white);
+  border: 1px solid var(--white);
   transition: 0.3s all;
 }
 
@@ -57,7 +57,12 @@
   display: flex;
   border: 0px;
   font-size: 1rem;
-  border-bottom: 1px solid var(--lightGrey) !important;
+  border: 1px solid var(--darkGrey);
+  border-radius: 0.5rem;
+}
+.flexWrap:hover {
+  border-color: var(--lightGrey);
+  transition: 0.3s all;
 }
 
 .input2 {
@@ -98,4 +103,18 @@
   border-bottom: 1px solid var(--lightGrey) !important;
   width: 100%;
   font-family: "Inter";
+}
+
+.eye {
+  position: absolute;
+  right: 1rem;
+  z-index: 100;
+  top: 25%;
+  cursor: pointer;
+  color: var(--lightGrey);
+}
+
+.eye:hover {
+  color: var(--white);
+  transition: all 0.3s;
 }

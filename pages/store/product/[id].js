@@ -10,6 +10,10 @@ function ProductPage() {
       <StoreHeader />
       <div className={styles.container}>
         <ProductComponent />
+        <h1>More From the Store </h1>
+        <div className={styles.flexDiv}>
+          <Post /> <Post /> <Post /> <Post />
+        </div>
       </div>
     </>
   );

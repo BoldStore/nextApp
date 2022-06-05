@@ -7,7 +7,7 @@ import Avatar from "@mui/material/Avatar";
 import DrawerComponent from "./DrawerComponent";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { Home, User, Search, ShoppingBag } from "react-feather";
+import { Home, User, Search, ShoppingBag, LogOut } from "react-feather";
 import CustomerTabs from "../Tabs";
 function CustomerHeader() {
   const [open, setOpen] = useState(true);
@@ -52,9 +52,11 @@ function CustomerHeader() {
             <Link href="/customer/orders">
               <ShoppingBag className={styles.navLinks} />
             </Link>
-
             <Link href="/customer/profile">
               <User className={styles.navLinks} />
+            </Link>
+            <Link href="/customer/login">
+              <LogOut className={styles.navLinks} />
             </Link>
           </div>
 

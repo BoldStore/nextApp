@@ -13,8 +13,10 @@ import Grid4 from "../../../components/CommonComponents/Grids/grid4";
 
 import Post from "../../../components/CommonComponents/Post";
 import OrderComponent from "../../../components/CommonComponents/OrderComponent";
+import NoOrders from "../../../components/CommonComponents/isEmptyComponents/NoOrders";
+import NoSavedItems from "../../../components/CommonComponents/IsEmptyComponents/NoSavedPosts";
 function OrderPageTabs({ saved }) {
-  const [value, setValue] = useState("0");
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -35,53 +37,56 @@ function OrderPageTabs({ saved }) {
             >
               <Tab
                 icon={<Grid />}
-                value="0"
+                value={0}
                 style={{
                   color: "var(--white)",
                 }}
               />
               <Tab
                 icon={<AlignJustify />}
-                value="1"
+                value={1}
                 style={{ color: "var(--white)" }}
               />
               {saved && (
                 <Tab
                   icon={<Bookmark />}
-                  value="2"
+                  value={2}
                   style={{ color: "var(--white)" }}
                 />
               )}
             </TabList>
           </Box>
-          <TabPanel value="0" style={{ padding: 0 }}>
+          <TabPanel value={0} style={{ padding: 0 }}>
             <div
               className={styles.container}
               style={{ marginTop: 20, marginLeft: 0 }}
             >
               <div className={styles.productsGrid}>
-                <Grid1 />
+                {/* <Grid1 />
                 <Grid2 />
                 <Grid3 />
-                <Grid4 />
+                <Grid4 /> */}
+                <NoOrders />
               </div>
             </div>
           </TabPanel>
-          <TabPanel value="1" style={{ padding: 0, paddingTop: 20 }}>
+          <TabPanel value={1} style={{ padding: 0, paddingTop: 20 }}>
             <div className={styles.postContainer}>
+              {/* <OrderComponent />
               <OrderComponent />
               <OrderComponent />
               <OrderComponent />
               <OrderComponent />
               <OrderComponent />
               <OrderComponent />
-              <OrderComponent />
-              <OrderComponent />
+              <OrderComponent /> */}
+              <NoOrders />
             </div>
           </TabPanel>
           {saved && (
-            <TabPanel value="2" style={{ padding: 0, paddingTop: 20 }}>
+            <TabPanel value={2} style={{ padding: 0, paddingTop: 20 }}>
               <div className={styles.postContainer}>
+                {/* <Post />
                 <Post />
                 <Post />
                 <Post />
@@ -89,8 +94,8 @@ function OrderPageTabs({ saved }) {
                 <Post />
                 <Post />
                 <Post />
-                <Post />
-                <Post />
+                <Post /> */}
+                <NoSavedItems />
               </div>
             </TabPanel>
           )}

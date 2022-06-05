@@ -9,7 +9,7 @@ import Link from "next/link";
 import Post from "../Post";
 import { useRouter } from "next/router";
 
-function ProductComponent() {
+function CompleteOrderComponent() {
   const router = useRouter();
   return (
     <>
@@ -24,7 +24,8 @@ function ProductComponent() {
           />
         </div>
         <div className={styles.productInfo}>
-          <h1 style={{ marginTop: 0 }}>Product Title</h1>
+          <h1 style={{ marginTop: 0, marginBottom: 0 }}>Product Title</h1>
+          <p style={{ opacity: 0.5 }}>Order Id : #ABCDE123</p>
           <div className={styles.userInfo}>
             <Avatar
               alt="Avatar"
@@ -41,7 +42,9 @@ function ProductComponent() {
               <p style={{ opacity: 0.5 }}>New Delhi</p>
             </div>
           </div>
-          <p>
+          <p style={{ opacity: 0.5 }}>Order Date : 22 July 2022 , 7:55 PM</p>
+          <p style={{ opacity: 0.5, marginTop: 0 }}>Status : Delivered</p>
+          <p style={{ marginTop: 0 }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
@@ -54,14 +57,11 @@ function ProductComponent() {
             <p>Size: M</p>
           </div>
 
-          <BoldButton
-            text={"Proceed To Buy"}
-            href="/customer/profile/address"
-          />
+          <BoldButton text={"Download Receipt"} />
         </div>
       </div>
     </>
   );
 }
 
-export default ProductComponent;
+export default CompleteOrderComponent;

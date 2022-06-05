@@ -18,7 +18,7 @@ function DoughnutChart({ topic, array }) {
   return (
     <div className={styles.chartContainer}>
       <h1>Most Sold Sizes</h1>
-      <Doughnut data={data} />
+      <Doughnut data={data} style={{ margin: "1rem", marginTop: "0rem" }} />
     </div>
   );
 }

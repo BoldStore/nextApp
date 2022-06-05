@@ -64,9 +64,8 @@
 
 @media (max-width: 1450px) {
   .productContainer {
-    margin-top: 5rem;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
   }
   .productInfo {
     margin-left: 1rem;

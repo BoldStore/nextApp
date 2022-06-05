@@ -30,7 +30,7 @@ function MobileViewList() {
         style={{
           padding: "2rem",
           paddingLeft: "1.2rem",
-          top: "20vh",
+          top: "22vh",
           position: "absolute",
         }}
       >
@@ -43,9 +43,11 @@ function MobileViewList() {
         <Link href="/customer/orders">
           <p className={styles.navLinks}>Orders</p>
         </Link>
-
         <Link href="/customer/profile">
           <p className={styles.navLinks}>Profile</p>
+        </Link>
+        <Link href="/customer/login">
+          <p className={styles.navLinks}>Logout</p>
         </Link>
         <Link href="https://www.instagram.com/boldstore.in">
           <p className={styles.navLinks}>Instagram</p>

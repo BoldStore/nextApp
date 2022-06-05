@@ -24,7 +24,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-color: var(--black);
@@ -34,14 +34,21 @@
   margin-top: 2rem;
   margin-bottom: 2rem;
   cursor: pointer;
+  padding: 0rem 5.5rem;
+  background-color: transparent;
+  border: 1px solid var(--darkGrey);
+  border-radius: 0.5rem;
+  color: var(--white);
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
 }
 
 .btn2 {
-  padding: 0.1rem 2rem;
+  padding: 0rem 5.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-color: var(--white);

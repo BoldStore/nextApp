@@ -23,7 +23,33 @@ function StoreHomePage() {
   }, [pageData]);
 
   if (pageData?.home_loading) {
-    return <>Loading...</>;
+    return (
+      <>
+        <StoreHeader />
+        <div className={styles.container}>
+          <div className={styles.topStoreContainer}>
+            <TopStores />
+            <TopStores />
+            <TopStores />
+            <TopStores />
+            <TopStores />
+            <TopStores />
+            <TopStores />
+            <TopStores />
+            <TopStores />
+          </div>
+          <div className={styles.postContainer}>
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+          </div>
+        </div>
+      </>
+    );
   }
 
   if (pageData?.home_errmess) {
@@ -37,7 +63,7 @@ function StoreHomePage() {
         <div className={styles.topStoreContainer}>
           {pageData?.home?.stores?.map((store, index) => (
             <TopStores
-              storeName={store.full_name.split(" ")[0]}
+              storeName={store.full_name?.split(" ")[0]}
               storeUrl={store.profile_pic}
               key={index}
             />

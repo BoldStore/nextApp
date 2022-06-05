@@ -75,7 +75,7 @@ function getStarted() {
           </div>
         </Link>
         <Link href="/customer/signup" passHref={true}>
-          <div className={styles.btn2}>
+          <div className={styles.btn}>
             <User style={{ marginRight: "1rem" }} />
             <p>Get Started As A Customer</p>
           </div>

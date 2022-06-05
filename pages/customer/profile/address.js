@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import InputComponent from "../../../components/CommonComponents/InputComponent";
 import StoreHeader from "../../../components/StoreComponents/Header";
-import styles from "./styles.module.css";
+import styles from "./profile.module.css";
 import BoldButton from "../../../components/CommonComponents/BoldButton";
 // import { getCookie } from "cookies-next";
 // import { firebaseAdmin } from "../../../firebaseAdmin";
@@ -27,7 +27,7 @@ import BoldButton from "../../../components/CommonComponents/BoldButton";
 //   }
 // }
 
-function ProfileAddress() {
+function CustomerAddress() {
   const [locality, setLocality] = useState("");
   const [appartment, setAppartment] = useState("");
   const [city, setCity] = useState("");
@@ -69,10 +69,10 @@ function ProfileAddress() {
           placeholder={"Pincode"}
         />
         <div style={{ marginTop: "3rem" }}></div>
-        <BoldButton text={"Update"} />
+        <BoldButton text={"Proceed"} />
       </div>
     </>
   );
 }
 
-export default ProfileAddress;
+export default CustomerAddress;

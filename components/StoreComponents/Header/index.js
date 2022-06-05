@@ -7,7 +7,15 @@ import Avatar from "@mui/material/Avatar";
 import DrawerComponent from "./DrawerComponent";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { Home, User, Search, Layout, CreditCard, Truck } from "react-feather";
+import {
+  Home,
+  User,
+  Search,
+  Layout,
+  CreditCard,
+  Truck,
+  LogOut,
+} from "react-feather";
 import StoreTabs from "../Tabs";
 function StoreHeader() {
   const [open, setOpen] = useState(true);
@@ -57,6 +65,9 @@ function StoreHeader() {
             </Link>
             <Link href="/store/profile/address">
               <Truck className={styles.navLinks} />
+            </Link>
+            <Link href="/store/login">
+              <LogOut className={styles.navLinks} />
             </Link>
           </div>
 

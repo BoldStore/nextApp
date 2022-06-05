@@ -1,10 +1,12 @@
 .gridContainer {
   margin-top: 2rem;
   margin-bottom: 2rem;
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .gridHeader {
@@ -59,6 +61,7 @@
 .productImg {
   border-radius: 1rem;
   object-fit: cover;
+  width: 100%;
 }
 
 @media (max-width: 750px) {
@@ -88,5 +91,8 @@
   }
   .moreIcon {
     font-size: 1rem !important;
+  }
+  .productImg {
+    border-radius: 7px;
   }
 }
