@@ -10,11 +10,13 @@ import {
   useSignInWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
 import { auth } from "../firebaseConfig";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Test: NextPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [isStore, setIsStore] = useState<any>(false);
 
   const dispatch = useDispatch();
   const test = useSelector((state: any) => state.test);
@@ -49,9 +51,23 @@ const Test: NextPage = () => {
     auth.signOut();
   };
 
+  useEffect(() => {
+    if (userInSession) {
+      ifStore();
+    }
+  }, [userInSession]);
+
+  const ifStore = async () => {
+    const isStoreClaim = (await userInSession!.getIdTokenResult())!.claims[
+      "isStore"
+    ]!;
+    setIsStore(isStoreClaim);
+  };
+
   return (
     <div>
       <h1>{`This is a test to ping server - Hello, ${userInSession?.email}`}</h1>
+      <h2>{`Custom claims, isSttore: ${isStore}`}</h2>
       <button onClick={pingServerTest}>
         {test.isLoading ? "Loading..." : "Ping Server"}
       </button>
