@@ -9,6 +9,7 @@ import React, { useState } from "react";
 import TabsStoreProfile from "./tabs";
 import StoreHeader from "../../../components/StoreComponents/Header";
 import Post from "../../../components/CommonComponents/Post";
+import VerifiedIcon from "@mui/icons-material/Verified";
 // import { getCookie } from "cookies-next";
 // import { firebaseAdmin } from "../../../firebaseAdmin";
 
@@ -58,7 +59,23 @@ function StoreProfile({ user }) {
               border: "2px solid var(--darkGrey)",
             }}
           />
-          <h1>@store_profile</h1>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <h1>@store_profile</h1>
+
+            <VerifiedIcon
+              style={{
+                marginLeft: "0.5rem",
+                fontSize: "1.5rem",
+                color: "#1DA1F2",
+              }}
+            />
+          </div>
         </div>
         <div className={styles.tabs}>
           <TabsStoreProfile />
