@@ -84,6 +84,30 @@ const storeReducer = (state = initState, action: any) => {
         errmess: (action.errmess || action.data.message)?.toString(),
         success: false,
       };
+
+    case ActionTypes.UPDATE_STORE_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        errmess: null,
+        success: false,
+      };
+
+    case ActionTypes.UPDATE_STORE_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        errmess: null,
+        success: true,
+      };
+
+    case ActionTypes.UPDATE_STORE_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        errmess: (action.errmess || action.data.message)?.toString(),
+        success: false,
+      };
     default:
       return state;
   }

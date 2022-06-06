@@ -69,7 +69,7 @@ export const updateStore = (upi_id: string, phone_number: string) => {
     } catch (e) {
       dispatch({
         type: ActionTypes.UPDATE_STORE_FAILED,
-        errmess: e,
+        errmess: (e as any).response.data,
       });
     }
   };

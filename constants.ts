@@ -1,6 +1,6 @@
-export const API_URL = "https://us-central1-bold-96a92.cloudfunctions.net/app/";
+// export const API_URL = "https://us-central1-bold-96a92.cloudfunctions.net/app/";
 // To use firebase emulator
-// export const API_URL = "http://localhost:5003/bold-96a92/us-central1/app";
+export const API_URL = "http://localhost:5003/bold-96a92/us-central1/app/";
 
 // Pages
 export const HOME_PAGE = "pages/home";

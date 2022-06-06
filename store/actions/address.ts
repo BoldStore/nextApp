@@ -21,24 +21,16 @@ export const addAdress = (
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.ADD_ADDRESS_REQUEST });
     try {
-      const response = await instance.post(
-        ADD_ADDRESS,
-        {
-          title,
-          addressString,
-          addressL1,
-          addressL2,
-          city,
-          state,
-          pincode,
-          notes,
-        }
-        // {
-        //   headers: {
-        //     Authorization: firebase().auth().currentUser.getIdToken(),
-        //   },
-        // }
-      );
+      const response = await instance.post(ADD_ADDRESS, {
+        title,
+        addressString,
+        addressL1,
+        addressL2,
+        city,
+        state,
+        pincode,
+        notes,
+      });
 
       if (response.status == 201) {
         dispatch({
