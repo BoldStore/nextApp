@@ -20,3 +20,9 @@
     padding: 0rem !important;
   }
 }
+
+@media (max-width: 750px) {
+  .button {
+    width: 100%;
+  }
+}
