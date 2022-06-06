@@ -23,7 +23,7 @@ function CustomerHomePage() {
           <TopStores />
         </div>
         <div className={styles.postContainer}>
-          <Post />
+          <Post storeName={"Hi"} />
           <Post />
           <Post />
           <Post />
