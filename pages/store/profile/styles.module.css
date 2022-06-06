@@ -57,4 +57,7 @@
   .storeDetails {
     margin-bottom: 0px;
   }
+  .desktopTabs {
+    display: none;
+  }
 }
