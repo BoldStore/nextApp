@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Send } from "react-feather";
 import BoldButton from "../BoldButton";
 import Skeleton from "react-loading-skeleton";
-
+import VerifiedIcon from "@mui/icons-material/Verified";
 function OrderComponent({
   id,
   storeUrl,
@@ -37,7 +37,25 @@ function OrderComponent({
           )}
           <div className={styles.nameLocation}>
             {storeName ? (
-              <p>{storeName}</p>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <p>{storeName}</p>
+                <p>
+                  <VerifiedIcon
+                    style={{
+                      marginLeft: "0.5rem",
+                      fontSize: "1.2rem",
+                      color: "#1DA1F2",
+                      marginBottom: "-0.1rem",
+                    }}
+                  />
+                </p>
+              </div>
             ) : (
               <Skeleton count={1} width={100} height={12} />
             )}

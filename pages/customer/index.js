@@ -11,7 +11,7 @@ function CustomerHomePage() {
       <CustomerHeader />
       <div className={styles.container}>
         <div className={styles.topStoreContainer}>
-          <TopStores />
+          <TopStores storeName={"Hi"} />
           <TopStores />
           <TopStores />
           <TopStores />

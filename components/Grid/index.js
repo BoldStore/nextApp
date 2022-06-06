@@ -4,7 +4,7 @@ import Avatar from "@mui/material/Avatar";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Image from "next/image";
 import Skeleton from "react-loading-skeleton";
-
+import VerifiedIcon from "@mui/icons-material/Verified";
 function Grid({
   storeUrl,
   storeName,
@@ -36,7 +36,25 @@ function Grid({
 
           <div className={styles.nameLocation}>
             {storeName ? (
-              <p>{storeName}</p>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <p>{storeName}</p>
+                <p>
+                  <VerifiedIcon
+                    style={{
+                      marginLeft: "0.5rem",
+                      fontSize: "1.2rem",
+                      color: "#1DA1F2",
+                      marginBottom: "-0.1rem",
+                    }}
+                  />
+                </p>
+              </div>
             ) : (
               <Skeleton count={1} width={100} height={12} />
             )}

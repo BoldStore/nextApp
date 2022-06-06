@@ -1,7 +1,7 @@
 import React from "react";
 import Avatar from "@mui/material/Avatar";
 import Skeleton from "react-loading-skeleton";
-
+import VerifiedIcon from "@mui/icons-material/Verified";
 function TopStores({ storeUrl, storeName }) {
   return (
     <div
@@ -27,15 +27,32 @@ function TopStores({ storeUrl, storeName }) {
         <Skeleton circle={true} height={75} width={75} />
       )}
       {storeName ? (
-        <p
+        <div
           style={{
-            color: "var(--lightGrey)",
-            marginTop: "0.4rem",
-            fontSize: "0.8rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
-          {storeName ? storeName : "Name"}
-        </p>
+          <p
+            style={{
+              color: "var(--lightGrey)",
+              marginTop: "0.6rem",
+              fontSize: "0.8rem",
+            }}
+          >
+            {storeName}
+          </p>
+          <p>
+            <VerifiedIcon
+              style={{
+                marginLeft: "0.5rem",
+                fontSize: "1rem",
+                color: "#1DA1F2",
+              }}
+            />
+          </p>
+        </div>
       ) : (
         <Skeleton
           count={1}
