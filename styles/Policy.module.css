@@ -1,0 +1,14 @@
+.wrapper p {
+  font-size: 1.2rem;
+  line-height: 2rem;
+  color: lightgrey;
+  margin-bottom: 3rem;
+}
+
+.wrapper h3 {
+  font-size: 1.4rem;
+}
+
+.wrapper h1 {
+  font-size: 1.8rem;
+}
