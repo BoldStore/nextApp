@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputComponent from "../../../components/CommonComponents/InputComponent";
 import Header from "../../../components/CommonComponents/Header";
 import styles from "./styles.module.css";
@@ -32,6 +32,7 @@ import { updateStore } from "../../../store/actions/store";
 function ProfileUpi() {
   const dispatch = useDispatch();
   const storeData = useSelector((state) => state.store);
+  const profile = useSelector((state) => state.profile);
   const [upi, setUpi] = useState("");
   const [mobile, setMobile] = useState("");
 
@@ -39,6 +40,13 @@ function ProfileUpi() {
     e.preventDefault();
     dispatch(updateStore(upi, mobile));
   };
+
+  useEffect(() => {
+    if (profile?.data?.paymentDetails) {
+      setUpi(profile?.data?.paymentDetails?.upi_id);
+      setMobile(profile?.data?.paymentDetails?.phone);
+    }
+  }, [profile, profile.data]);
 
   return (
     <>
