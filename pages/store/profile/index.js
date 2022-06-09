@@ -7,7 +7,7 @@ import VerticalHeader from "../../../components/StoreComponents/VerticalHeader";
 import styles from "./styles.module.css";
 import React, { useState } from "react";
 import TabsStoreProfile from "./tabs";
-import StoreHeader from "../../../components/StoreComponents/Header";
+import Header from "../../../components/CommonComponents/Header";
 import Post from "../../../components/CommonComponents/Post";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import SignUpComplete from "../../../components/StoreComponents/SignupComplete";
@@ -42,7 +42,7 @@ function StoreProfile({ user }) {
   };
   return (
     <>
-      <StoreHeader />
+      <Header />
       <VerticalHeader
         value={value}
         setValue={setValue}

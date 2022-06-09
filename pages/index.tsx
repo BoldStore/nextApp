@@ -1,6 +1,4 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import IntroComponent from "../components/LandingPageComponents/IntroComponent";
 import MovingComponent from "../components/LandingPageComponents/MovingComponent";
@@ -9,7 +7,7 @@ import WhatWeDoComponent from "../components/LandingPageComponents/WhatWeDo";
 import StillHereComponent from "../components/LandingPageComponents/StillHereComponent";
 import ContactUs from "../components/LandingPageComponents/ContactUs";
 import ComingSoon from "../components/LandingPageComponents/ComingSoon";
-import Header from "../components/LandingPageComponents/Header";
+import Header from "../components/CommonComponents/Header";
 
 const Home: NextPage = () => {
   var cursor: any;

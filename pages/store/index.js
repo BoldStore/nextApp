@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styles from "../../styles/common.module.css";
 import Post from "../../components/CommonComponents/Post";
 import TopStores from "../../components/CommonComponents/TopStores";
-import StoreHeader from "../../components/StoreComponents/Header";
+import Header from "../../components/CommonComponents/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { homePage } from "../../store/actions/pages";
 
@@ -25,7 +25,7 @@ function StoreHomePage() {
   if (pageData?.home_loading) {
     return (
       <>
-        <StoreHeader />
+        <Header />
         <div className={styles.container}>
           <div className={styles.topStoreContainer}>
             <TopStores />
@@ -58,7 +58,7 @@ function StoreHomePage() {
 
   return (
     <>
-      <StoreHeader />
+      <Header />
       <div className={styles.container}>
         <div className={styles.topStoreContainer}>
           {pageData?.home?.stores?.map((store, index) => (

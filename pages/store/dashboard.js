@@ -7,7 +7,7 @@ import Analytics from "../../components/StoreComponents/Dashboard/Analytics";
 import DoughnutChart from "../../components/StoreComponents/Dashboard/DoughnutChart";
 import BestPost from "../../components/StoreComponents/Dashboard/BestPost";
 import WorstPost from "../../components/StoreComponents/Dashboard/WorstPost";
-import StoreHeader from "../../components/StoreComponents/Header";
+import Header from "../../components/CommonComponents/Header";
 
 // import { getCookie } from "cookies-next";
 // import { firebaseAdmin } from "../../firebaseAdmin";
@@ -36,7 +36,7 @@ import StoreHeader from "../../components/StoreComponents/Header";
 function Dashboard() {
   return (
     <>
-      <StoreHeader />
+      <Header />
       <div className={styles.container}>
         <div
           style={{

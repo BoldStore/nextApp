@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import InputComponent from "../../../components/CommonComponents/InputComponent";
-import StoreHeader from "../../../components/StoreComponents/Header";
+import Header from "../../../components/CommonComponents/Header";
 import styles from "./styles.module.css";
 import BoldButton from "../../../components/CommonComponents/BoldButton";
 // import { getCookie } from "cookies-next";
@@ -35,7 +35,7 @@ function ProfileAddress() {
   const [pincode, setPincode] = useState("");
   return (
     <>
-      <StoreHeader />
+      <Header />
       <div className={styles.container}>
         <h1>Address Details</h1>
         <InputComponent

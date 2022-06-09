@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import InputComponent from "../../../components/CommonComponents/InputComponent";
-import StoreHeader from "../../../components/StoreComponents/Header";
+import Header from "../../../components/CommonComponents/Header";
 import styles from "./styles.module.css";
 import BoldButton from "../../../components/CommonComponents/BoldButton";
 import { useDispatch, useSelector } from "react-redux";
@@ -42,7 +42,7 @@ function ProfileUpi() {
 
   return (
     <>
-      <StoreHeader />
+      <Header />
       <div className={styles.container}>
         {storeData.success && (
           <h1 style={{ color: "green" }}>Saved Succesfully</h1>
