@@ -4,13 +4,16 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import UpiCard from "./UpiCard";
 import AddressCard from "./AddressCard";
+import { useSelector } from "react-redux";
+
 function SignUpComplete() {
+  const profile = useSelector((state) => state.profile);
   return (
     <div className={styles.container}>
       <div style={{ width: "300px", paddingTop: "2rem" }}>
         <CircularProgressbar
-          value={50}
-          text={`${50}%`}
+          value={profile.data?.percentage}
+          text={`${Math.round(profile.data?.percentage ?? 0)}%`}
           strokeWidth={1}
           styles={buildStyles({
             strokeLinecap: "butt",

@@ -1,45 +1,20 @@
-import { Avatar } from "@mui/material";
-import Grid1 from "../../../components/CommonComponents/Grids/grid1";
-import Grid2 from "../../../components/CommonComponents/Grids/grid2";
-import Grid3 from "../../../components/CommonComponents/Grids/grid3";
-import Grid4 from "../../../components/CommonComponents/Grids/grid4";
+import { Avatar, User } from "@mui/material";
 import VerticalHeader from "../../../components/StoreComponents/VerticalHeader";
 import styles from "./styles.module.css";
 import React, { useState } from "react";
 import TabsStoreProfile from "./tabs";
 import Header from "../../../components/CommonComponents/Header";
-import Post from "../../../components/CommonComponents/Post";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import SignUpComplete from "../../../components/StoreComponents/SignupComplete";
-// import { getCookie } from "cookies-next";
-// import { firebaseAdmin } from "../../../firebaseAdmin";
-
-// export async function getServerSideProps({ req, res }) {
-//   const token = getCookie("token", { req, res });
-//   let user;
-//   try {
-//     user = await firebaseAdmin.auth().verifyIdToken(token);
-//     return {
-//       props: {
-//         user,
-//       },
-//     };
-//   } catch (e) {
-//     return {
-//       redirect: {
-//         permanent: false,
-//         destination: "/store/signup",
-//       },
-//       props: {},
-//     };
-//   }
-// }
+import { useSelector } from "react-redux";
 
 function StoreProfile() {
+  const profile = useSelector((state) => state.profile);
   const [value, setValue] = useState(0);
   const handleChange = (i) => {
     setValue(i);
   };
+
   return (
     <>
       <Header />
@@ -50,16 +25,20 @@ function StoreProfile() {
       />
       <div className={styles.container}>
         <div className={styles.storeDetails}>
-          <Avatar
-            alt="Avatar"
-            src={"https://i.ibb.co/myvq6GR/aryan.jpg"}
-            sx={{
-              width: 100,
-              height: 100,
-              cursor: "pointer",
-              border: "2px solid var(--darkGrey)",
-            }}
-          />
+          {profile.profile_pic ? (
+            <Avatar
+              alt="Avatar"
+              src={profile.profile_pic}
+              sx={{
+                width: 100,
+                height: 100,
+                cursor: "pointer",
+                border: "2px solid var(--darkGrey)",
+              }}
+            />
+          ) : (
+            <User />
+          )}
           <div
             style={{
               display: "flex",
@@ -67,7 +46,7 @@ function StoreProfile() {
               justifyContent: "center",
             }}
           >
-            <h1>@store_profile</h1>
+            <h1>@{profile?.data?.data?.username}</h1>
 
             <VerifiedIcon
               style={{

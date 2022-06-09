@@ -68,7 +68,7 @@ function StoreHeader() {
             </Link>
           </div>
 
-          <Link href="/store/profile">
+          <Link href="/profile">
             {profile.profile_pic ? (
               <Avatar
                 alt="Avatar"
