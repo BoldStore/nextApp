@@ -56,13 +56,13 @@ function PrivacyPolicy() {
         </p>
         <h2>ABOUT US</h2>
         <p>
-          "Bold" is an app that will allow users to log in to buy and sell items
-          online. The app will convert Instagram Store’s posts into products by
-          using the information provided by them in the post’s caption. It will
-          also serve as a platform which handles delivery details of the
-          products as well. We are also a platform for customers to join and
-          look for items to buy. It is an open app for customers to use. We are
-          located in India.
+          &quot;Bold&quot; is an app that will allow users to log in to buy and
+          sell items online. The app will convert Instagram Store&apos;s posts
+          into products by using the information provided by them in the
+          post&apos;s caption. It will also serve as a platform which handles
+          delivery details of the products as well. We are also a platform for
+          customers to join and look for items to buy. It is an open app for
+          customers to use. We are located in India.
         </p>
         <p>
           Please read this privacy policy carefully as it will help you make
@@ -131,7 +131,7 @@ function PrivacyPolicy() {
           and/or with your Consent. We may use your information to develop and
           display content and advertising (and work with third parties who do
           so) tailored to your interests and/or location and to measure its
-          effectiveness. [For more information, see our Cookie Policy.
+          effectiveness. For more information, see our Cookie Policy.
           <br /> • Request Feedback for our Business Purposes and/or with your
           Consent. We may use your information to request feedback and to
           contact you about your use of our Mobile Application.

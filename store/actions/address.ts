@@ -8,9 +8,9 @@ import {
 } from "../../constants";
 import * as ActionTypes from "../ActionTypes";
 
-export const addAdress = (
+export const addAddress = (
   title: string,
-  addressString: string,
+  address: string,
   addressL1: string,
   addressL2: string,
   city: string,
@@ -23,7 +23,7 @@ export const addAdress = (
     try {
       const response = await instance.post(ADD_ADDRESS, {
         title,
-        addressString,
+        address,
         addressL1,
         addressL2,
         city,
@@ -46,7 +46,7 @@ export const addAdress = (
     } catch (e) {
       dispatch({
         type: ActionTypes.ADD_ADDRESS_FAILED,
-        errmess: e,
+        errmess: (e as any).response.data?.err?.message,
       });
     }
   };

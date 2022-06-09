@@ -27,7 +27,7 @@ const addressReducer = (state = initState, action: any) => {
       return {
         ...state,
         isLoading: false,
-        errmess: action.data.message,
+        errmess: action.data?.errmess,
       };
 
     case ActionTypes.ADD_ADDRESS_REQUEST:
@@ -42,14 +42,14 @@ const addressReducer = (state = initState, action: any) => {
         ...state,
         isLoading: false,
         errmess: null,
-        addresses: [...state.addresses!, action.data.address],
+        addresses: [action.data.address],
       };
 
     case ActionTypes.ADD_ADDRESS_FAILED:
       return {
         ...state,
         isLoading: false,
-        errmess: action.data.message,
+        errmess: action.errmess,
       };
 
     case ActionTypes.UPDATE_ADDRESS_REQUEST:
@@ -71,7 +71,7 @@ const addressReducer = (state = initState, action: any) => {
       return {
         ...state,
         isLoading: false,
-        errmess: action.data.message,
+        errmess: action.data?.errmess,
       };
 
     case ActionTypes.DELETE_ADDRESS_REQUEST:
@@ -93,7 +93,7 @@ const addressReducer = (state = initState, action: any) => {
       return {
         ...state,
         isLoading: false,
-        errmess: action.data.message,
+        errmess: action.data?.errmess,
       };
     default:
       return state;

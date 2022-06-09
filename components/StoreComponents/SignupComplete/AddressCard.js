@@ -8,7 +8,7 @@ function AddressCard() {
       <Truck />
       <h2 style={{ marginTop: "1rem" }}>Pick Up Details</h2>
       <p style={{ color: "var(--lightGrey)" }}>
-        Fill in the address rom where you'll be shipping your orders
+        Fill in the address rom where you&apos;ll be shipping your orders
       </p>
       <BoldButton text={"Update"} href="store/profile/address" />
     </div>
