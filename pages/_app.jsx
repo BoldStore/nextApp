@@ -8,11 +8,13 @@ import { auth } from "../firebaseConfig";
 import { removeCookies, setCookies } from "cookies-next";
 import { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getProfile } from "../store/actions/profile";
+import Loading from "../components/Loading";
 
 function MyApp({ Component, pageProps }) {
   const dispatch = useDispatch();
+  const profile = useSelector((state) => state.profile);
   var cursor;
   var cursor2;
 
@@ -56,6 +58,10 @@ function MyApp({ Component, pageProps }) {
       }
     });
   }, []);
+
+  if (profile?.isLoading) {
+    return <Loading />;
+  }
 
   return (
     <>
