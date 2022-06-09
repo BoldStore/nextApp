@@ -31,7 +31,7 @@ function Grid4() {
                   bounce: 0.4,
                 }}
               >
-                <p>$100</p> <p>M</p>
+                <p>₹100</p> <p>M</p>
               </motion.div>
             )}
           </div>
@@ -54,7 +54,7 @@ function Grid4() {
                   bounce: 0.4,
                 }}
               >
-                <p>$100</p> <p>M</p>
+                <p>₹100</p> <p>M</p>
               </motion.div>
             )}
           </div>
@@ -77,7 +77,7 @@ function Grid4() {
                   bounce: 0.4,
                 }}
               >
-                <p>$100</p> <p>M</p>
+                <p>₹100</p> <p>M</p>
               </motion.div>
             )}
           </div>
@@ -100,7 +100,7 @@ function Grid4() {
                   bounce: 0.4,
                 }}
               >
-                <p>$100</p> <p>M</p>
+                <p>₹100</p> <p>M</p>
               </motion.div>
             )}
           </div>
@@ -123,7 +123,7 @@ function Grid4() {
                   bounce: 0.4,
                 }}
               >
-                <p>$100</p> <p>M</p>
+                <p>₹100</p> <p>M</p>
               </motion.div>
             )}
           </div>
@@ -146,7 +146,7 @@ function Grid4() {
                   bounce: 0.4,
                 }}
               >
-                <p>$100</p> <p>M</p>
+                <p>₹100</p> <p>M</p>
               </motion.div>
             )}
           </div>

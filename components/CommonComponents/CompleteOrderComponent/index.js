@@ -53,7 +53,7 @@ function CompleteOrderComponent() {
             <Bookmark className={styles.icon} />
           </div>
           <div className={styles.priceContainer}>
-            <p>Price: $200</p>
+            <p>Price: ₹200</p>
             <p>Size: M</p>
           </div>
 

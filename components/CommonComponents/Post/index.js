@@ -3,6 +3,7 @@ import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Image from "next/image";
+import { toast } from "react-toastify";
 import { Bookmark } from "react-feather";
 import BoldButton from "../BoldButton";
 import Link from "next/link";
@@ -15,13 +16,14 @@ function Post({
   storeLocation,
   postUrl,
   price,
+  size,
   caption,
-  expanded,
 }) {
   const [text, setText] = useState(caption?.slice(0, 50));
   const [readMore, setReadMore] = useState(false);
+  const notify = () => toast("Product Saved!");
   return (
-    <div className={styles.postContainer} style={{ marginLeft: expanded && 0 }}>
+    <div className={styles.postContainer}>
       <Link href="/store/profile" passHref={true}>
         <div className={styles.postHeader}>
           <div className={styles.userInfo}>
@@ -74,10 +76,16 @@ function Post({
           <MoreHorizIcon className={styles.moreIcon} />
         </div>
       </Link>
-      <Link href={!expanded ? `/store/product/${id}` : "#"} passHref={true}>
-        <div style={{ overflow: "hidden", borderRadius: "1rem" }}>
+      <Link href={`/store/product/₹{id}`} passHref={true}>
+        <div
+          style={{
+            overflow: "hidden",
+            borderRadius: "1rem",
+            position: "relative",
+          }}
+        >
           {postUrl ? (
-            <Image
+            <img
               src={postUrl ?? "/assets/shoe2.jpg"}
               alt="item"
               width="450"
@@ -89,9 +97,10 @@ function Post({
           )}
         </div>
       </Link>
+
       <div className={styles.priceContainer}>
         {price ? (
-          <p>$200</p>
+          <p>₹{price}</p>
         ) : (
           <Skeleton
             count={1}
@@ -100,24 +109,29 @@ function Post({
             style={{ margin: "1rem", marginLeft: 0 }}
           />
         )}
-        {price && <Bookmark className={styles.bookmarkIcon} />}
+        {/* {size && <p>{size}</p>} */}
+        {price && <Bookmark onClick={notify} className={styles.bookmarkIcon} />}
       </div>
-      {expanded && (
-        <>
-          <p style={{ marginTop: 0 }}>
-            {!readMore ? text : caption}
-            {!readMore && "..."}
-            <p
-              style={{ cursor: "pointer" }}
-              onClick={() => {
-                setReadMore(!readMore);
-              }}
-            >
-              {readMore ? "Show Less" : " Read More"}
-            </p>
+
+      <>
+        <p style={{ marginTop: 0 }}>
+          {!readMore ? text : caption}
+          {!readMore && "..."}
+          <p
+            style={{
+              cursor: "pointer",
+              color: "var(--lightGrey)",
+              marginBottom: 0,
+            }}
+            onClick={() => {
+              setReadMore(!readMore);
+            }}
+          >
+            {readMore ? "Show Less" : " Read More"}
           </p>
-        </>
-      )}
+        </p>
+      </>
+
       {price ? (
         <BoldButton text={"Buy Now"} />
       ) : (

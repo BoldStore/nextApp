@@ -11,6 +11,8 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfile } from "../store/actions/profile";
 import Loading from "../components/Loading";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function MyApp({ Component, pageProps }) {
   const dispatch = useDispatch();
@@ -66,6 +68,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <SkeletonTheme baseColor="#0f0f0f" highlightColor="#111">
+        <ToastContainer autoClose={false} />
         <Head>
           <title>Bold Store</title>
 
