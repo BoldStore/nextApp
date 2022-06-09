@@ -25,15 +25,15 @@ const profileReducer = (state = initState, action: any) => {
         errmess: null,
         data: action.data,
         isStore: action.data.isStore,
-        profile_pic: action.data.profile_pic,
-        name: action.data.name,
+        profile_pic: action.data?.data?.profile_pic,
+        name: action.data?.data?.full_name ?? action.data?.data?.name,
       };
 
     case ActionTypes.PROFILE_FAILED:
       return {
         ...state,
         isLoading: false,
-        errmess: action.data.message,
+        errmess: action?.errmess,
         data: null,
         isStore: false,
         profile_pic: null,
