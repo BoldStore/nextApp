@@ -25,7 +25,8 @@ const profileReducer = (state = initState, action: any) => {
         errmess: null,
         data: action.data,
         isStore: action.data.isStore,
-        profile_pic: action.data?.data?.profile_pic,
+        profile_pic:
+          action.data?.data?.profile_pic ?? action.data?.data?.imgUrl,
         name: action.data?.data?.full_name ?? action.data?.data?.name,
       };
 

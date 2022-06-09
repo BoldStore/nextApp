@@ -14,6 +14,8 @@ import {
 } from "react-feather";
 import StoreTabs from "../Tabs";
 import { useSelector } from "react-redux";
+import { signOut } from "firebase/auth";
+import { auth } from "../../../firebaseConfig";
 
 function StoreHeader() {
   const profile = useSelector((state) => state.profile);
@@ -36,6 +38,12 @@ function StoreHeader() {
       }
     });
   }
+
+  const logout = async () => {
+    localStorage.removeItem("token");
+    await signOut(auth);
+    window.location.reload();
+  };
 
   return (
     <div className={styles.container}>
@@ -63,9 +71,7 @@ function StoreHeader() {
             <Link href="/store/profile/address">
               <Truck className={styles.navLinks} />
             </Link>
-            <Link href="/store/login">
-              <LogOut className={styles.navLinks} />
-            </Link>
+            <LogOut onClick={logout} className={styles.navLinks} />
           </div>
 
           <Link href="/profile">

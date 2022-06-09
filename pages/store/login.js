@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import InputComponent from "../../components/CommonComponents/InputComponent";
 import Header from "../../components/LandingPageComponents/Header";

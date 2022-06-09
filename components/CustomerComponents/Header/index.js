@@ -12,8 +12,6 @@ function CustomerHeader() {
   const profile = useSelector((state) => state.profile);
   const [open, setOpen] = useState(true);
 
-  const router = useRouter();
-
   useEffect(() => {
     if (!(typeof window === "undefined")) {
       if (window.innerWidth < 800) {
@@ -60,7 +58,7 @@ function CustomerHeader() {
             </Link>
           </div>
 
-          <Link href="/store/profile">
+          <Link href="/profile">
             {profile.profile_pic ? (
               <Avatar
                 alt="Avatar"
