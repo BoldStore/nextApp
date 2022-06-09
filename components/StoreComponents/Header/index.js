@@ -1,12 +1,8 @@
 import Link from "next/link";
 import styles from "./styles.module.css";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import MailIcon from "@mui/icons-material/Mail";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Avatar from "@mui/material/Avatar";
 import DrawerComponent from "./DrawerComponent";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import {
   Home,
   User,
@@ -17,20 +13,21 @@ import {
   LogOut,
 } from "react-feather";
 import StoreTabs from "../Tabs";
+import { useSelector } from "react-redux";
+
 function StoreHeader() {
+  const profile = useSelector((state) => state.profile);
   const [open, setOpen] = useState(true);
 
-  const router = useRouter();
-
   useEffect(() => {
-    if (process.browser) {
+    if (typeof window === "undefined") {
       if (window.innerWidth < 800) {
         setOpen(false);
       }
     }
   }, []);
 
-  if (process.browser) {
+  if (typeof window === "undefined") {
     window.addEventListener("resize", () => {
       if (window.innerWidth < 800) {
         setOpen(false);
@@ -72,16 +69,20 @@ function StoreHeader() {
           </div>
 
           <Link href="/store/profile">
-            <Avatar
-              alt="Avatar"
-              src={"https://i.ibb.co/Bswp8RS/avi.jpg"}
-              sx={{
-                width: 50,
-                height: 50,
-                cursor: "pointer",
-                marginLeft: "2.5rem",
-              }}
-            />
+            {profile.profile_pic ? (
+              <Avatar
+                alt="Avatar"
+                src={profile.profile_pic}
+                sx={{
+                  width: 50,
+                  height: 50,
+                  cursor: "pointer",
+                  marginLeft: "2.5rem",
+                }}
+              />
+            ) : (
+              <User />
+            )}
           </Link>
         </>
       )}

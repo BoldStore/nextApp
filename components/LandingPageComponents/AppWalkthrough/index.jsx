@@ -77,7 +77,7 @@ function AppWalkthrough() {
     },
   ];
 
-  if (process.browser) {
+  if (typeof window === "undefined") {
     window.addEventListener("resize", () => {
       if (window.innerWidth < 1000) {
         setMobile(true);
@@ -88,7 +88,7 @@ function AppWalkthrough() {
   }
 
   useEffect(() => {
-    if (process.browser) {
+    if (typeof window === "undefined") {
       if (window.innerWidth < 1000) {
         setMobile(true);
       }

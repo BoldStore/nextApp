@@ -16,14 +16,14 @@ function Header() {
   const router = useRouter();
 
   useEffect(() => {
-    if (process.browser) {
+    if (typeof window === "undefined") {
       if (window.innerWidth < 1000) {
         setOpen(false);
       }
     }
   }, []);
 
-  if (process.browser) {
+  if (typeof window === "undefined") {
     window.addEventListener("resize", () => {
       if (window.innerWidth < 1000) {
         setOpen(false);
