@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import styles from "./styles.module.css";
 import { Eye, EyeOff } from "react-feather";
 
-function InputComponent({ value, setValue, placeholder, type, noText }) {
+function InputComponent({
+  value,
+  setValue,
+  placeholder,
+  type,
+  noText,
+  disable,
+}) {
   const [passType, setPassType] = useState("password");
   return (
     <div
@@ -11,6 +18,7 @@ function InputComponent({ value, setValue, placeholder, type, noText }) {
     >
       {!noText && <p>{placeholder}</p>}
       <input
+        disabled={disable}
         className={styles.input}
         value={value}
         onChange={(e) => {

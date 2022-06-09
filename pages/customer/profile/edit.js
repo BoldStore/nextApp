@@ -1,19 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CustomerHeader from "../../../components/CustomerComponents/Header";
 import InputComponent from "../../../components/CommonComponents/InputComponent";
 import BoldButton from "../../../components/CommonComponents/BoldButton";
 import styles from "./profile.module.css";
-import { border } from "@mui/system";
 import UsernameComponent from "../../../components/CommonComponents/InputComponent/username";
+import { useSelector } from "react-redux";
 
 function Edit() {
+  // const dispatch = useDispatch();
+  const profile = useSelector((state) => state.profile);
+
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
-  const [email, setemail] = useState("");
+  const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [instagramUsername, setInstagramUsername] = useState("");
   const preferences = ["Xs", "S", "M", "L", "Xl"];
   const [myPreference, setMyPreference] = useState("M");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  const setData = () => {
+    console.log(profile);
+    setName(profile?.data?.data?.name ?? "");
+    setAge(profile?.data?.data?.age ?? "");
+    setEmail(profile?.data?.data?.email ?? "");
+    setPhoneNumber(profile?.data?.data?.phone ?? "");
+    setInstagramUsername(profile?.data?.data?.insta_username ?? "");
+  };
+
+  useEffect(() => {
+    if (profile?.data) setData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [profile, profile.data]);
+
   return (
     <>
       <CustomerHeader />
@@ -32,9 +54,10 @@ function Edit() {
         />
         <InputComponent
           type="text"
-          setValue={setemail}
+          setValue={setEmail}
           value={email}
           placeholder={"Email"}
+          disable={true}
         />
         <InputComponent
           type="text"
@@ -90,7 +113,7 @@ function Edit() {
           })}
         </div>
         <div style={{ marginTop: "3rem" }}></div>
-        <BoldButton text={"Save"} />
+        <BoldButton text={"Save"} onClick={handleSubmit} />
       </div>
     </>
   );
