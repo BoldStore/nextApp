@@ -20,14 +20,14 @@ function StoreHeader() {
   const [open, setOpen] = useState(true);
 
   useEffect(() => {
-    if (typeof window === "undefined") {
+    if (!(typeof window === "undefined")) {
       if (window.innerWidth < 800) {
         setOpen(false);
       }
     }
   }, []);
 
-  if (typeof window === "undefined") {
+  if (!(typeof window === "undefined")) {
     window.addEventListener("resize", () => {
       if (window.innerWidth < 800) {
         setOpen(false);

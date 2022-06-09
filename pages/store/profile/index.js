@@ -35,7 +35,7 @@ import SignUpComplete from "../../../components/StoreComponents/SignupComplete";
 //   }
 // }
 
-function StoreProfile({ user }) {
+function StoreProfile() {
   const [value, setValue] = useState(0);
   const handleChange = (i) => {
     setValue(i);
