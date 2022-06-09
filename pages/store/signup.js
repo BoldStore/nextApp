@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import InputComponent from "../../components/CommonComponents/InputComponent";
 import Header from "../../components/LandingPageComponents/Header";
@@ -10,32 +11,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { createStore } from "../../store/actions/store";
 import { INSTAGRAM_URL } from "../../constants";
 import { useRouter } from "next/router";
-// import { getCookie } from "cookies-next";
-// import { firebaseAdmin } from "../../firebaseAdmin";
-
-// export async function getServerSideProps({ req, res }) {
-//   const token = getCookie("token", { req, res });
-//   let user;
-//   try {
-//     user = await firebaseAdmin.auth().verifyIdToken(token);
-//     return {
-//       redirect: {
-//         permanent: false,
-//         destination: "/store/",
-//       },
-//     };
-//   } catch (e) {
-//     return {
-//       props: {},
-//     };
-//   }
-// }
 
 function StoreSignup() {
   const router = useRouter();
   const [inviteCode, setInviteCode] = useState("");
   const [email, setEmail] = useState("");
-  // const [fullName, setFullName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [strongPassword, setStrongPassword] = useState(false);

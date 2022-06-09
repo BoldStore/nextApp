@@ -22,22 +22,14 @@ export const createUser = () => {
         //   },
         // }
       );
-
-      if (response.status == 201) {
-        dispatch({
-          type: ActionTypes.CREATE_USER_SUCCESS,
-          data: response.data,
-        });
-      } else {
-        dispatch({
-          type: ActionTypes.CREATE_USER_FAILED,
-          error: response.data,
-        });
-      }
+      dispatch({
+        type: ActionTypes.CREATE_USER_SUCCESS,
+        data: response.data,
+      });
     } catch (e) {
       dispatch({
         type: ActionTypes.CREATE_USER_FAILED,
-        errmess: e,
+        errmess: (e as any).response?.data?.err?.message ?? e,
       });
     }
   };

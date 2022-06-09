@@ -67,8 +67,7 @@ const userReducer = (state = initState, action: any) => {
         ...state,
         isLoading: false,
         errmess: null,
-        name: action.data.name,
-        insta_id: action.data.insta_id,
+        success: true,
       };
 
     case ActionTypes.CREATE_USER_FAILED:
