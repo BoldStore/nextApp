@@ -1,13 +1,31 @@
-import React, { useState } from "react";
-import InputComponent from "../../components/CommonComponents/InputComponent";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
 import Header from "../../components/LandingPageComponents/Header";
 import styles from "../../styles/common.module.css";
 import Link from "next/link";
 import UsernameComponent from "../../components/CommonComponents/InputComponent/username";
+import { useDispatch, useSelector } from "react-redux";
+import { addInstaUsername } from "../../store/actions/user";
+import { useRouter } from "next/router";
 
 function InstagramUsername() {
-  const [email, setEmail] = useState("");
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const userData = useSelector((state) => state.user);
+
   const [username, setUsername] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addInstaUsername(username));
+  };
+
+  useEffect(() => {
+    if (userData.success) {
+      router.replace("/");
+    }
+  }, [userData]);
+
   return (
     <div className={styles.page}>
       <Header />
@@ -21,11 +39,12 @@ function InstagramUsername() {
             placeholder={"Username"}
           />
 
-          <Link href="/store/" passHref={true}>
-            <div className={styles.btn}>
-              <p>Continue</p>
-            </div>
-          </Link>
+          <div
+            className={styles.btn}
+            onClick={userData.isLoading ? null : handleSubmit}
+          >
+            <p>{!userData.isLoading ? "Continue" : "Loading..."}</p>
+          </div>
         </div>
       </div>
     </div>

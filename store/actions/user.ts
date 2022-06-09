@@ -47,33 +47,18 @@ export const addInstaUsername = (insta_username: string) => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.ADD_INSTA_USERNAME_REQUEST });
     try {
-      const response = await instance.post(
-        ADD_INSTA_USERNAME,
-        {
-          insta_username,
-        }
-        // {
-        //   headers: {
-        //     Authorization: firebase().auth().currentUser.getIdToken(),
-        //   },
-        // }
-      );
+      const response = await instance.post(ADD_INSTA_USERNAME, {
+        insta_username,
+      });
 
-      if (response.status == 200) {
-        dispatch({
-          type: ActionTypes.ADD_INSTA_USERNAME_SUCCESS,
-          data: response.data,
-        });
-      } else {
-        dispatch({
-          type: ActionTypes.ADD_INSTA_USERNAME_FAILED,
-          data: response.data,
-        });
-      }
+      dispatch({
+        type: ActionTypes.ADD_INSTA_USERNAME_SUCCESS,
+        data: response.data,
+      });
     } catch (e) {
       dispatch({
         type: ActionTypes.ADD_INSTA_USERNAME_FAILED,
-        errmess: e,
+        errmess: (e as any)?.response?.data ?? e,
       });
     }
   };
