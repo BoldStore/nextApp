@@ -7,7 +7,7 @@ import WhatWeDoComponent from "../components/LandingPageComponents/WhatWeDo";
 import StillHereComponent from "../components/LandingPageComponents/StillHereComponent";
 import ContactUs from "../components/LandingPageComponents/ContactUs";
 import ComingSoon from "../components/LandingPageComponents/ComingSoon";
-import Header from "../components/CommonComponents/Header";
+import Header from "../components/LandingPageComponents/Header";
 
 const Home: NextPage = () => {
   var cursor: any;
