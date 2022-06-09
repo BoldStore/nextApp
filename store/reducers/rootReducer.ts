@@ -3,6 +3,7 @@ import addressReducer from "./address";
 import codeReducer from "./code";
 import orderReducer from "./order";
 import pagesReducer from "./pages";
+import profileReducer from "./profile";
 import storeReducer from "./store";
 import testReducer from "./test";
 import userReducer from "./user";
@@ -14,6 +15,7 @@ const rootReducer: Reducer<any> = combineReducers({
   code: codeReducer,
   addresses: addressReducer,
   pages: pagesReducer,
+  profile: profileReducer,
   test: testReducer,
 });
 

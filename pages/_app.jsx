@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "../styles/globals.css";
 import { useEffect } from "react";
 import Head from "next/head";
@@ -5,11 +6,15 @@ import { wrapper } from "../store/configureStore";
 import NextNProgress from "nextjs-progressbar";
 import { auth } from "../firebaseConfig";
 import { removeCookies, setCookies } from "cookies-next";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-function MyApp({ Component, pageProps }: any) {
-  var cursor: any;
-  var cursor2: any;
+import { useDispatch } from "react-redux";
+import { getProfile } from "../store/actions/profile";
+
+function MyApp({ Component, pageProps }) {
+  const dispatch = useDispatch();
+  var cursor;
+  var cursor2;
 
   useEffect(() => {
     cursor = document.getElementById("cursor");
@@ -34,7 +39,8 @@ function MyApp({ Component, pageProps }: any) {
 
     auth.onAuthStateChanged(async (user) => {
       if (user) {
-        setCookies("token", await user!.getIdToken());
+        setCookies("token", await user.getIdToken());
+        dispatch(getProfile());
       } else {
         removeCookies("token");
       }
@@ -46,6 +52,7 @@ function MyApp({ Component, pageProps }: any) {
       } else {
         const token = await user.getIdToken();
         setCookies("token", token);
+        dispatch(getProfile());
       }
     });
   }, []);

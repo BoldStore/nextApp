@@ -2,6 +2,8 @@
 // To use firebase emulator
 export const API_URL = "http://localhost:5003/bold-96a92/us-central1/app/";
 
+export const PROFILE = "profile";
+
 // Pages
 export const HOME_PAGE = "pages/home";
 export const EXPLORE_PAGE = "pages/explore";
