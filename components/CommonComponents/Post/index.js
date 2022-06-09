@@ -114,7 +114,12 @@ function Post({
       </div>
 
       <>
-        <p style={{ marginTop: 0 }}>
+        <p
+          style={{ marginTop: 0 }}
+          onClick={() => {
+            setReadMore(!readMore);
+          }}
+        >
           {!readMore ? text : caption}
           {!readMore && "..."}
           <p
