@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputComponent from "../../../components/CommonComponents/InputComponent";
 import Header from "../../../components/CommonComponents/Header";
 import styles from "./styles.module.css";
@@ -9,6 +9,8 @@ import { addAddress } from "../../../store/actions/address";
 function ProfileAddress() {
   const dispatch = useDispatch();
   const address = useSelector((state) => state.addresses);
+  const profile = useSelector((state) => state.profile);
+
   const [title, setTitle] = useState("");
   const [addressString, setAddressString] = useState("");
   const [locality, setLocality] = useState("");
@@ -34,11 +36,30 @@ function ProfileAddress() {
     );
   };
 
+  const setData = () => {
+    setTitle(profile?.data?.address?.title ?? "");
+    setAddressString(profile?.data?.address?.addressString ?? "");
+    setLocality(profile?.data?.address?.addressL1 ?? "");
+    setAppartment(profile?.data?.address?.addressL2 ?? "");
+    setCity(profile?.data?.address?.city ?? "");
+    setState(profile?.data?.address?.state ?? "");
+    setPincode(profile?.data?.address?.pincode ?? "");
+    setNotes(profile?.data?.address?.notes ?? "");
+  };
+
+  useEffect(() => {
+    if (profile?.data?.address) setData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [profile, profile.data]);
+
   return (
     <>
       <Header />
       <div className={styles.container}>
         <h1>Address Details</h1>
+        {address.success && (
+          <h1 style={{ color: "green" }}>Saved Succesfully</h1>
+        )}
         {address.errmess && <h1 style={{ color: "red" }}>{address.errmess}</h1>}
         <InputComponent
           type="text"

@@ -37,6 +37,11 @@ export const addAddress = (
           type: ActionTypes.ADD_ADDRESS_SUCCESS,
           data: response.data,
         });
+      } else if (response.status == 200) {
+        dispatch({
+          type: ActionTypes.UPDATE_ADDRESS_SUCCESS,
+          data: response.data,
+        });
       } else {
         dispatch({
           type: ActionTypes.ADD_ADDRESS_FAILED,
