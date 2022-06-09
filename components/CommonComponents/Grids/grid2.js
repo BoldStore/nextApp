@@ -12,7 +12,7 @@ function Grid2() {
   return (
     <div className={styles.gridWrapper}>
       <div className={styles.parent}>
-        <Link href="/store/product/1" passHref={true}>
+        <Link href="/product/1" passHref={true}>
           <div
             className={styles.div1}
             onMouseEnter={() => setFlag1(true)}
@@ -35,7 +35,7 @@ function Grid2() {
             )}
           </div>
         </Link>
-        <Link href="/store/product/1" passHref={true}>
+        <Link href="/product/1" passHref={true}>
           <div
             className={styles.div2}
             onMouseEnter={() => setFlag2(true)}
@@ -58,7 +58,7 @@ function Grid2() {
             )}
           </div>
         </Link>
-        <Link href="/store/product/1" passHref={true}>
+        <Link href="/product/1" passHref={true}>
           <div
             className={styles.div3}
             onMouseEnter={() => setFlag3(true)}
@@ -81,7 +81,7 @@ function Grid2() {
             )}
           </div>
         </Link>
-        <Link href="/store/product/1" passHref={true}>
+        <Link href="/product/1" passHref={true}>
           <div
             className={styles.div4}
             onMouseEnter={() => setFlag4(true)}
@@ -104,7 +104,7 @@ function Grid2() {
             )}
           </div>
         </Link>
-        <Link href="/store/product/1" passHref={true}>
+        <Link href="/product/1" passHref={true}>
           <div
             className={styles.div5}
             onMouseEnter={() => setFlag5(true)}
@@ -127,7 +127,7 @@ function Grid2() {
             )}
           </div>
         </Link>
-        <Link href="/store/product/1" passHref={true}>
+        <Link href="/product/1" passHref={true}>
           <div
             className={styles.div6}
             onMouseEnter={() => setFlag6(true)}

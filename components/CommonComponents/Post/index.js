@@ -76,7 +76,7 @@ function Post({
           <MoreHorizIcon className={styles.moreIcon} />
         </div>
       </Link>
-      <Link href={`/store/product/₹{id}`} passHref={true}>
+      <Link href={`/product/₹{id}`} passHref={true}>
         <div
           style={{
             overflow: "hidden",

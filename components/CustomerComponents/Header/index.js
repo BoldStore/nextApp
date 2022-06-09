@@ -39,7 +39,7 @@ function CustomerHeader() {
 
   return (
     <div className={styles.container}>
-      <Link href="/customer">
+      <Link href="/home">
         <h1 className={styles.logo}>
           BOLD
           <span style={{ fontFamily: "Inter", fontSize: "1.5rem" }}>.</span>
@@ -48,17 +48,14 @@ function CustomerHeader() {
       {open && (
         <>
           <div className={styles.leftContainer}>
-            <Link href="/customer">
+            <Link href="/home">
               <Home className={styles.navLinks} />
             </Link>
-            <Link href="/customer/search">
+            <Link href="/search">
               <Search className={styles.navLinks} />
             </Link>
             <Link href="/customer/orders">
               <ShoppingBag className={styles.navLinks} />
-            </Link>
-            <Link href="/customer/profile">
-              <User className={styles.navLinks} />
             </Link>
             <LogOut onClick={logout} className={styles.navLinks} />
           </div>
