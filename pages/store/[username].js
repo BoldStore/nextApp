@@ -12,6 +12,7 @@ import Grid3 from "../../components/CommonComponents/Grids/grid3";
 import Grid4 from "../../components/CommonComponents/Grids/grid4";
 import Post from "../../components/CommonComponents/Post";
 import StoreHeader from "../../components/StoreComponents/Header";
+import CustomerHeader from "../../components/CustomerComponents/Header";
 
 function StorePage() {
   const profile = useSelector((state) => state.profile);
@@ -22,7 +23,8 @@ function StorePage() {
 
   return (
     <>
-      <StoreHeader />
+      {profile?.isStore ? <StoreHeader /> : <CustomerHeader />}
+
       <VerticalHeader
         value={value}
         setValue={setValue}
@@ -42,7 +44,16 @@ function StorePage() {
               }}
             />
           ) : (
-            <User />
+            <User
+              style={{
+                width: 70,
+                height: 70,
+                cursor: "pointer",
+                border: "2px solid var(--white)",
+                padding: "1rem",
+                borderRadius: "50%",
+              }}
+            />
           )}
           <div
             style={{
