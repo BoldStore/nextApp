@@ -50,7 +50,7 @@ export const addInstaUsername = (insta_username: string) => {
     } catch (e) {
       dispatch({
         type: ActionTypes.ADD_INSTA_USERNAME_FAILED,
-        errmess: (e as any)?.response?.data ?? e,
+        errmess: (e as any)?.response?.data?.err?.message ?? e,
       });
     }
   };

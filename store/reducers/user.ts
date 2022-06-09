@@ -4,6 +4,7 @@ const initState = {
   isLoading: false,
   errmess: null,
   success: false,
+  username_success: false,
   name: "",
   insta_id: "",
 };
@@ -45,7 +46,7 @@ const userReducer = (state = initState, action: any) => {
         ...state,
         isLoading: false,
         errmess: null,
-        success: true,
+        username_success: true,
       };
 
     case ActionTypes.ADD_INSTA_USERNAME_FAILED:

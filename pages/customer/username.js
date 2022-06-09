@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../components/LandingPageComponents/Header";
 import styles from "../../styles/common.module.css";
-import Link from "next/link";
 import UsernameComponent from "../../components/CommonComponents/InputComponent/username";
 import { useDispatch, useSelector } from "react-redux";
 import { addInstaUsername } from "../../store/actions/user";
@@ -21,7 +20,7 @@ function InstagramUsername() {
   };
 
   useEffect(() => {
-    if (userData.success) {
+    if (userData.username_success) {
       router.replace("/");
     }
   }, [userData]);
