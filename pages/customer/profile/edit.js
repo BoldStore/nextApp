@@ -4,11 +4,13 @@ import InputComponent from "../../../components/CommonComponents/InputComponent"
 import BoldButton from "../../../components/CommonComponents/BoldButton";
 import styles from "./profile.module.css";
 import UsernameComponent from "../../../components/CommonComponents/InputComponent/username";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUser } from "../../../store/actions/user";
 
 function Edit() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const profile = useSelector((state) => state.profile);
+  const userData = useSelector((state) => state.user);
 
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
@@ -20,10 +22,12 @@ function Edit() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(
+      updateUser(name, phoneNumber, instagramUsername, undefined, undefined)
+    );
   };
 
   const setData = () => {
-    console.log(profile);
     setName(profile?.data?.data?.name ?? "");
     setAge(profile?.data?.data?.age ?? "");
     setEmail(profile?.data?.data?.email ?? "");
@@ -40,6 +44,10 @@ function Edit() {
     <>
       <CustomerHeader />
       <div className={styles.container}>
+        {userData.errmess && (
+          <p className={styles.error}>{userData.errmess.toString()}</p>
+        )}
+        {userData.success && <p className={styles.success}>Saved</p>}
         <InputComponent
           type="text"
           setValue={setName}
@@ -113,7 +121,10 @@ function Edit() {
           })}
         </div>
         <div style={{ marginTop: "3rem" }}></div>
-        <BoldButton text={"Save"} onClick={handleSubmit} />
+        <BoldButton
+          text={userData.isLoading ? "Loading" : "Save"}
+          onClick={userData.isLoading ? null : handleSubmit}
+        />
       </div>
     </>
   );

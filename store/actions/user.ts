@@ -91,9 +91,10 @@ export const getPersonalDetails = () => {
 
 export const updateUser = (
   name: string,
-  birthday: Date,
-  sizePreference: string,
-  phone: string
+  phone: string,
+  insta_username?: string,
+  birthday?: Date,
+  sizePreference?: string
 ) => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.UPDATE_USER_REQUEST });
@@ -105,6 +106,7 @@ export const updateUser = (
           birthday,
           sizePreference,
           phone,
+          insta_username,
         }
         // {
         //   headers: {
@@ -113,21 +115,17 @@ export const updateUser = (
         // }
       );
 
-      if (response.status == 200) {
-        dispatch({
-          type: ActionTypes.UPDATE_USER_SUCCESS,
-          data: response.data,
-        });
-      } else {
-        dispatch({
-          type: ActionTypes.UPDATE_USER_FAILED,
-          data: response.data,
-        });
-      }
+      dispatch({
+        type: ActionTypes.UPDATE_USER_SUCCESS,
+        data: response.data,
+      });
     } catch (e) {
       dispatch({
         type: ActionTypes.UPDATE_USER_FAILED,
-        errmess: e,
+        errmess:
+          (e as any).response?.data?.err?.message ??
+          (e as any)?.response?.data ??
+          e,
       });
     }
   };

@@ -77,6 +77,28 @@ const userReducer = (state = initState, action: any) => {
         isLoading: false,
         errmess: action.errmess,
       };
+
+    case ActionTypes.UPDATE_USER_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        errmess: null,
+      };
+
+    case ActionTypes.UPDATE_USER_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        errmess: null,
+        success: true,
+      };
+
+    case ActionTypes.UPDATE_USER_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        errmess: action.errmess,
+      };
     default:
       return state;
   }
