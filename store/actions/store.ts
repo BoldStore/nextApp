@@ -38,6 +38,12 @@ export const createStore = (inviteCode: string) => {
   };
 };
 
+export const setInviteCodeToState = (inviteCode: string) => {
+  return async (dispatch: Dispatch) => {
+    dispatch({ type: ActionTypes.INVITE_CODE_STATE, code: inviteCode });
+  };
+};
+
 export const updateStore = (upi_id: string, phone_number: string) => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.UPDATE_STORE_REQUEST });

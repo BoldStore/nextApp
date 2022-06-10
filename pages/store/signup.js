@@ -12,7 +12,7 @@ import {
 } from "react-firebase-hooks/auth";
 import { auth } from "../../firebaseConfig";
 import { useDispatch, useSelector } from "react-redux";
-import { createStore } from "../../store/actions/store";
+import { createStore, setInviteCodeToState } from "../../store/actions/store";
 import { INSTAGRAM_URL } from "../../constants";
 import { useRouter } from "next/router";
 import Loading from "../../components/Loading";
@@ -54,14 +54,15 @@ function StoreSignup() {
       return;
     }
     setError("");
+    dispatch(setInviteCodeToState(inviteCode));
 
     // 1. Signup up for firebase auth
-    await createUserWithEmailAndPassword(email, password);
+    createUserWithEmailAndPassword(email, password);
   };
 
   useEffect(() => {
     if (user || currentUser) {
-      dispatch(createStore(inviteCode));
+      dispatch(createStore(store.inviteCode));
 
       if (!store.success) {
         console.log(store);
@@ -84,13 +85,10 @@ function StoreSignup() {
     }
   }, [store, store.success]);
 
-  if (google_loading) {
-    return <Loading />;
-  }
-
   return (
     <div className={styles.page}>
       <Header />
+      {(loading || google_loading) && <Loading />}
       <div className={styles.center}>
         <div className={styles.containerLogin}>
           <p className={styles.heading}>Sign Up As A Store 😉 </p>

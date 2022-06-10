@@ -7,10 +7,19 @@ const initState = {
   name: "",
   insta_id: "",
   store: null,
+  inviteCode: "",
 };
 
 const storeReducer = (state = initState, action: any) => {
   switch (action.type) {
+    case ActionTypes.INVITE_CODE_STATE:
+      return {
+        ...state,
+        isLoading: false,
+        errmess: null,
+        inviteCode: action.code,
+      };
+
     case ActionTypes.GET_STORE_REQUEST:
       return {
         ...state,

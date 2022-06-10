@@ -16,7 +16,7 @@ export const getProfile = () => {
     } catch (e) {
       dispatch({
         type: ActionTypes.PROFILE_FAILED,
-        errmess: (e as any).response.data,
+        errmess: (e as any)?.response?.data ?? (e as any).toString(),
       });
     }
   };
