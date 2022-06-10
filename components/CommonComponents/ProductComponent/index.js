@@ -8,9 +8,12 @@ import BoldButton from "../BoldButton";
 import Link from "next/link";
 import Post from "../Post";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
+import { RWebShare } from "react-web-share";
 
 function ProductComponent() {
   const router = useRouter();
+  const notify = () => toast("Product Saved!");
   return (
     <>
       <div className={styles.productContainer}>
@@ -46,8 +49,20 @@ function ProductComponent() {
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
           <div>
-            <Send className={styles.icon} />
-            <Bookmark className={styles.icon} />
+            <RWebShare
+              data={{
+                text: "Hey, checkout this amazing Thrift Store Product on Bold.",
+                url: `https://www.boldstore.in/product/${1}`,
+                title: "Thrift Store on Bold",
+              }}
+              className={styles.share}
+              style={{ color: "var(--black) !important" }}
+              onClick={() => console.log("shared successfully!")}
+            >
+              <Send className={styles.icon} />
+            </RWebShare>
+
+            <Bookmark className={styles.icon} onClick={notify} />
           </div>
           <div className={styles.priceContainer}>
             <p>Price: ₹200</p>
