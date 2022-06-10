@@ -8,8 +8,10 @@ import { auth } from "../firebaseConfig";
 import {
   useAuthState,
   useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
+import Loading from "../components/Loading";
 
 function CustomerLogin() {
   const router = useRouter();
@@ -20,17 +22,24 @@ function CustomerLogin() {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
+  const [signInWithGoogle, google_user, google_loading, google_error] =
+    useSignInWithGoogle(auth);
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     await signInWithEmailAndPassword(email, password);
   };
 
   useEffect(() => {
-    if (user || currentUser) {
+    if (currentUser) {
       router.replace("/home");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user, currentUser]);
+  }, [user, google_user, currentUser]);
+
+  if (google_loading) {
+    return <Loading />;
+  }
 
   return (
     <div className={styles.page}>
@@ -39,6 +48,9 @@ function CustomerLogin() {
         <div className={styles.container}>
           <p className={styles.heading}>Login 🥳</p>
           {error && <p className={styles.error}>{error.message}</p>}
+          {google_error && (
+            <p className={styles.error}>{google_error.message}</p>
+          )}
           <InputComponent
             type="text"
             setValue={setEmail}
@@ -56,6 +68,10 @@ function CustomerLogin() {
 
           <div className={styles.btn} onClick={handleSubmit}>
             <p>{loading ? "Loading..." : "Login"}</p>
+          </div>
+
+          <div className={styles.btn} onClick={() => signInWithGoogle()}>
+            <p>{loading ? "Loading..." : "Continue With Google"}</p>
           </div>
           <div
             style={{
