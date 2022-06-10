@@ -16,10 +16,12 @@ import StoreTabs from "../Tabs";
 import { useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../firebaseConfig";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 function StoreHeader() {
   const profile = useSelector((state) => state.profile);
   const [open, setOpen] = useState(true);
+  const [user] = useAuthState(auth);
 
   useEffect(() => {
     if (!(typeof window === "undefined")) {
@@ -71,7 +73,7 @@ function StoreHeader() {
             <Link href="/store/profile/address">
               <Truck className={styles.navLinks} />
             </Link>
-            <LogOut onClick={logout} className={styles.navLinks} />
+            {user && <LogOut onClick={logout} className={styles.navLinks} />}
           </div>
 
           <Link href="/profile">
