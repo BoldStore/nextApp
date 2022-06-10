@@ -36,7 +36,7 @@ function CustomerLogin() {
     <div className={styles.page}>
       <Header />
       <div className={styles.center}>
-        <div className={styles.container}>
+        <div className={styles.containerLogin}>
           <p className={styles.heading}>Login As A Customer 🥳</p>
           {error && <p className={styles.error}>{error.message}</p>}
           <InputComponent

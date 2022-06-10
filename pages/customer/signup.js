@@ -80,7 +80,7 @@ function CustomerSignup() {
     <div className={styles.page}>
       <Header />
       <div className={styles.center}>
-        <div className={styles.container}>
+        <div className={styles.containerLogin}>
           <p className={styles.heading}>Sign Up As A Customer 😎 </p>
           {error && <p className={styles.error}>{error}</p>}
           {signupError && <p className={styles.error}>{signupError.message}</p>}
@@ -112,11 +112,24 @@ function CustomerSignup() {
             <p>{loading ? "Loading..." : "Signup"}</p>
           </div>
 
-          <div
-            className={styles.btn}
-            onClick={loading ? null : () => signInWithGoogle()}
-          >
-            <p>{loading ? "Loading..." : "Continue With Google"}</p>
+          <div className={styles.whiteBtn} onClick={() => signInWithGoogle()}>
+            {loading ? (
+              <p>Loading...</p>
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <img
+                  src="/assets/google.png"
+                  style={{ height: "2rem", marginRight: "0.5rem" }}
+                />
+                <p>Continue With Google</p>
+              </div>
+            )}
           </div>
           <div
             style={{
@@ -147,6 +160,18 @@ function CustomerSignup() {
               >
                 Have An Account Already?{" "}
                 <span className={styles.link}>Login.</span>
+              </p>
+            </Link>
+            <Link href="/store/signup" passHref={true}>
+              <p
+                style={{
+                  color: "var(--lightGrey)",
+                  cursor: "pointer",
+                  marginBottom: 0,
+                }}
+              >
+                Want to Signup as a store?{" "}
+                <span className={styles.link}>Click Here.</span>
               </p>
             </Link>
           </div>

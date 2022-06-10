@@ -45,7 +45,7 @@ function CustomerLogin() {
     <div className={styles.page}>
       <Header />
       <div className={styles.center}>
-        <div className={styles.container}>
+        <div className={styles.containerLogin}>
           <p className={styles.heading}>Login 🥳</p>
           {error && <p className={styles.error}>{error.message}</p>}
           {google_error && (
@@ -70,8 +70,25 @@ function CustomerLogin() {
             <p>{loading ? "Loading..." : "Login"}</p>
           </div>
 
-          <div className={styles.btn} onClick={() => signInWithGoogle()}>
-            <p>{loading ? "Loading..." : "Continue With Google"}</p>
+          <p style={{ textAlign: "center", color: "var(--lightGrey)" }}>Or </p>
+          <div className={styles.whiteBtn} onClick={() => signInWithGoogle()}>
+            {loading ? (
+              <p>Loading...</p>
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <img
+                  src="/assets/google.png"
+                  style={{ height: "2rem", marginRight: "0.5rem" }}
+                />
+                <p>Continue With Google</p>
+              </div>
+            )}
           </div>
           <div
             style={{
@@ -93,19 +110,19 @@ function CustomerLogin() {
                 <span className={styles.link}>Click Here.</span>
               </p>
             </Link>
-            <Link href="/customer/signup" passHref={true}>
-              <p
-                style={{
-                  color: "var(--lightGrey)",
-                  cursor: "pointer",
-                  marginBottom: 0,
-                }}
-              >
-                Dont Have An Account?{" "}
-                <span className={styles.link}>Signup.</span>
-              </p>
-            </Link>
           </div>
+          <Link href="/customer/signup" passHref={true}>
+            <p
+              style={{
+                color: "var(--lightGrey)",
+                cursor: "pointer",
+                marginBottom: 0,
+                textAlign: "center",
+              }}
+            >
+              Dont Have An Account? <span className={styles.link}>Signup.</span>
+            </p>
+          </Link>
         </div>
       </div>
     </div>
