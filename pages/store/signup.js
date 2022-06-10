@@ -5,7 +5,10 @@ import Header from "../../components/LandingPageComponents/Header";
 import styles from "../../styles/common.module.css";
 import Link from "next/link";
 import { isEmail, isStrongPassword, equals } from "validator";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useAuthState,
+  useCreateUserWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import { auth } from "../../firebaseConfig";
 import { useDispatch, useSelector } from "react-redux";
 import { createStore } from "../../store/actions/store";
@@ -22,6 +25,7 @@ function StoreSignup() {
   const [error, setError] = useState("");
   const [createUserWithEmailAndPassword, user, loading, signupError] =
     useCreateUserWithEmailAndPassword(auth);
+  const [currentUser] = useAuthState(auth);
 
   const dispatch = useDispatch();
   const store = useSelector((state) => state.store);
@@ -50,7 +54,7 @@ function StoreSignup() {
   };
 
   useEffect(() => {
-    if (user) {
+    if (user || currentUser) {
       dispatch(createStore(inviteCode));
 
       if (!store.success) {
@@ -59,7 +63,7 @@ function StoreSignup() {
         return;
       }
     }
-  }, [user]);
+  }, [user, currentUser]);
 
   useEffect(() => {
     if (isStrongPassword(password)) {

@@ -5,13 +5,17 @@ import styles from "../../styles/common.module.css";
 import Link from "next/link";
 
 import { auth } from "../../firebaseConfig";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useAuthState,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 
 function CustomerLogin() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [currentUser] = useAuthState(auth);
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
@@ -22,11 +26,11 @@ function CustomerLogin() {
   };
 
   useEffect(() => {
-    if (user) {
-      router.replace("/customer");
+    if (user || currentUser) {
+      router.replace("/home");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+  }, [user, currentUser]);
 
   return (
     <div className={styles.page}>

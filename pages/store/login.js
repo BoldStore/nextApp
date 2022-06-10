@@ -5,7 +5,10 @@ import Header from "../../components/LandingPageComponents/Header";
 import styles from "../../styles/common.module.css";
 import Link from "next/link";
 import { auth } from "../../firebaseConfig";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useAuthState,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 // import { getCookie } from "cookies-next";
 // import { firebaseAdmin } from "../../firebaseAdmin";
@@ -34,6 +37,7 @@ function CustomerLogin() {
   const [password, setPassword] = useState("");
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [currentUser] = useAuthState(auth);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,10 +45,10 @@ function CustomerLogin() {
   };
 
   useEffect(() => {
-    if (user) {
+    if (user || currentUser) {
       router.replace("/store");
     }
-  }, [user]);
+  }, [user, currentUser]);
 
   return (
     <div className={styles.page}>
