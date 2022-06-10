@@ -62,7 +62,7 @@ function CustomerHeader() {
             <Link href="/search">
               <Search className={styles.navLinks} />
             </Link>
-            <Link href="/customer/orders">
+            <Link href="/bag">
               <ShoppingBag className={styles.navLinks} />
             </Link>
             {user ? (

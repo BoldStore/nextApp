@@ -11,6 +11,7 @@ import {
   CreditCard,
   Truck,
   LogOut,
+  ShoppingBag,
 } from "react-feather";
 import StoreTabs from "../Tabs";
 import { useSelector } from "react-redux";
@@ -66,6 +67,9 @@ function StoreHeader() {
             </Link>
             <Link href="/store/dashboard">
               <Layout className={styles.navLinks} />
+            </Link>
+            <Link href="/bag">
+              <ShoppingBag className={styles.navLinks} />
             </Link>
             <Link href="/store/profile/upi">
               <CreditCard className={styles.navLinks} />

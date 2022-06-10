@@ -118,7 +118,7 @@ function OrderComponent({
         </div>
       </div> */}
       {id ? (
-        <Link href={`/customer/orders/₹{id}`} passHref={true}>
+        <Link href={`/bag/${id}`} passHref={true}>
           <BoldButton text={"View Order Details"} />
         </Link>
       ) : (

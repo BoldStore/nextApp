@@ -70,6 +70,9 @@ function MobileViewList() {
         <Link href="/store/dashboard">
           <p className={styles.navLinks}>Dashboard</p>
         </Link>
+        <Link href="/bag">
+          <p className={styles.navLinks}>My Bag</p>
+        </Link>
         <Link href="/store/profile/upi">
           <p className={styles.navLinks}>Update Payment Details</p>
         </Link>
