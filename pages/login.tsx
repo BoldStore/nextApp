@@ -46,7 +46,7 @@ function CustomerLogin() {
       <Header />
       <div className={styles.center}>
         <div className={styles.containerLogin}>
-          <p className={styles.heading}>Login 🥳</p>
+          <p className={styles.heading}>Login</p>
           {error && <p className={styles.error}>{error.message}</p>}
           {google_error && (
             <p className={styles.error}>{google_error.message}</p>
@@ -111,6 +111,7 @@ function CustomerLogin() {
               </p>
             </Link>
           </div>
+
           <Link href="/customer/signup" passHref={true}>
             <p
               style={{
@@ -118,9 +119,10 @@ function CustomerLogin() {
                 cursor: "pointer",
                 marginBottom: 0,
                 textAlign: "center",
+                marginTop: "1.5rem",
               }}
             >
-              Dont Have An Account? <span className={styles.link}>Signup.</span>
+              Want to signup? <span className={styles.link}>Click Here.</span>
             </p>
           </Link>
         </div>

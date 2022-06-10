@@ -150,7 +150,7 @@ function CustomerSignup() {
                 Or Skip Signup
               </p>
             </Link>
-            <Link href="/login" passHref={true}>
+            {/* <Link href="/login" passHref={true}>
               <p
                 style={{
                   color: "var(--lightGrey)",
@@ -161,7 +161,7 @@ function CustomerSignup() {
                 Have An Account Already?{" "}
                 <span className={styles.link}>Login.</span>
               </p>
-            </Link>
+            </Link> */}
             <Link href="/store/signup" passHref={true}>
               <p
                 style={{
