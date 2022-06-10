@@ -7,12 +7,14 @@ import Link from "next/link";
 import {
   useAuthState,
   useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { auth } from "../../firebaseConfig";
 import { useDispatch, useSelector } from "react-redux";
 import { isEmail, equals } from "validator";
 import { createUser } from "../../store/actions/user";
 import { useRouter } from "next/router";
+import Loading from "../../components/Loading";
 
 function CustomerSignup() {
   const router = useRouter();
@@ -21,8 +23,11 @@ function CustomerSignup() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  const [createUserWithEmailAndPassword, loading, signupError] =
+  const [createUserWithEmailAndPassword, auth_user, loading, signupError] =
     useCreateUserWithEmailAndPassword(auth);
+
+  const [signInWithGoogle, google_user, google_loading, google_error] =
+    useSignInWithGoogle(auth);
 
   const [user] = useAuthState(auth);
 
@@ -56,7 +61,7 @@ function CustomerSignup() {
     if (user) {
       dispatch(createUser());
     }
-  }, [user]);
+  }, [user, auth_user, google_user]);
 
   useEffect(() => {
     if (!userData?.success) {
@@ -67,6 +72,10 @@ function CustomerSignup() {
     }
   }, [userData, userData.success]);
 
+  if (google_loading) {
+    return <Loading />;
+  }
+
   return (
     <div className={styles.page}>
       <Header />
@@ -74,7 +83,10 @@ function CustomerSignup() {
         <div className={styles.container}>
           <p className={styles.heading}>Sign Up As A Customer 😎 </p>
           {error && <p className={styles.error}>{error}</p>}
-          {signupError && <p className={styles.error}>{signupError}</p>}
+          {signupError && <p className={styles.error}>{signupError.message}</p>}
+          {google_error && (
+            <p className={styles.error}>{google_error.message}</p>
+          )}
           <InputComponent
             type="text"
             setValue={setEmail}
@@ -98,6 +110,13 @@ function CustomerSignup() {
           />
           <div className={styles.btn} onClick={handleSubmit}>
             <p>{loading ? "Loading..." : "Signup"}</p>
+          </div>
+
+          <div
+            className={styles.btn}
+            onClick={loading ? null : () => signInWithGoogle()}
+          >
+            <p>{loading ? "Loading..." : "Continue With Google"}</p>
           </div>
           <div
             style={{

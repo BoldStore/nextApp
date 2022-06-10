@@ -21,7 +21,7 @@ function InstagramUsername() {
 
   useEffect(() => {
     if (userData.username_success) {
-      router.replace("/");
+      router.replace("/home");
     }
   }, [userData]);
 
@@ -31,6 +31,9 @@ function InstagramUsername() {
       <div className={styles.center}>
         <div className={styles.container}>
           <p className={styles.heading}>Connect Your Username 🚀 </p>
+          {userData.errmess && (
+            <p className={styles.error}>{userData.errmess}</p>
+          )}
           <UsernameComponent
             type="text"
             setValue={setUsername}

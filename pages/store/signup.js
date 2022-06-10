@@ -8,12 +8,14 @@ import { isEmail, isStrongPassword, equals } from "validator";
 import {
   useAuthState,
   useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { auth } from "../../firebaseConfig";
 import { useDispatch, useSelector } from "react-redux";
 import { createStore } from "../../store/actions/store";
 import { INSTAGRAM_URL } from "../../constants";
 import { useRouter } from "next/router";
+import Loading from "../../components/Loading";
 
 function StoreSignup() {
   const router = useRouter();
@@ -25,6 +27,10 @@ function StoreSignup() {
   const [error, setError] = useState("");
   const [createUserWithEmailAndPassword, user, loading, signupError] =
     useCreateUserWithEmailAndPassword(auth);
+
+  const [signInWithGoogle, google_user, google_loading, google_error] =
+    useSignInWithGoogle(auth);
+
   const [currentUser] = useAuthState(auth);
 
   const dispatch = useDispatch();
@@ -78,6 +84,10 @@ function StoreSignup() {
     }
   }, [store, store.success]);
 
+  if (google_loading) {
+    return <Loading />;
+  }
+
   return (
     <div className={styles.page}>
       <Header />
@@ -87,6 +97,9 @@ function StoreSignup() {
           <p className={styles.error}>
             {(error || signupError || store?.errmess)?.toString()}
           </p>
+          {google_error && (
+            <p className={styles.error}>{google_error.message}</p>
+          )}
           <InputComponent
             type="text"
             setValue={setInviteCode}
@@ -125,6 +138,12 @@ function StoreSignup() {
           {/* <Link href="/store/" passHref={true}> */}
           <div className={styles.btn} onClick={handleSubmit}>
             <p>{loading || store.isLoading ? "Loading...." : "Signup"}</p>
+          </div>
+          <div
+            className={styles.btn}
+            onClick={loading ? null : () => signInWithGoogle()}
+          >
+            <p>{loading ? "Loading..." : "Continue With Google"}</p>
           </div>
           {/* </Link> */}
           <div
