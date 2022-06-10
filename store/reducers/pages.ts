@@ -4,6 +4,10 @@ const initState = {
   home_loading: false,
   home: null,
   home_errmess: null,
+
+  store: null,
+  store_loading: false,
+  store_errmess: null,
 };
 
 const pagesReducer = (state = initState, action: any) => {
@@ -28,6 +32,28 @@ const pagesReducer = (state = initState, action: any) => {
         ...state,
         home_loading: false,
         home_errmess: (action?.data?.message || action?.errmess)?.toString(),
+      };
+
+    case ActionTypes.STORE_PAGE_REQUEST:
+      return {
+        ...state,
+        store_loading: true,
+        store_errmess: null,
+      };
+
+    case ActionTypes.STORE_PAGE_SUCCESS:
+      return {
+        ...state,
+        store_loading: false,
+        store_errmess: null,
+        store: action.data,
+      };
+
+    case ActionTypes.STORE_PAGE_FAILED:
+      return {
+        ...state,
+        store_loading: false,
+        store_errmess: (action?.data?.message || action?.errmess)?.toString(),
       };
     default:
       return state;
