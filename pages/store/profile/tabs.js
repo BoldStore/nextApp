@@ -11,6 +11,8 @@ import Grid2 from "../../../components/CommonComponents/Grids/grid2";
 import Grid3 from "../../../components/CommonComponents/Grids/grid3";
 import Grid4 from "../../../components/CommonComponents/Grids/grid4";
 import Post from "../../../components/CommonComponents/Post";
+import SignUpComplete from "../../../components/StoreComponents/SignupComplete";
+import { useSelector } from "react-redux";
 // import { getCookie } from "cookies-next";
 // import { firebaseAdmin } from "../../../firebaseAdmin";
 
@@ -37,63 +39,68 @@ import Post from "../../../components/CommonComponents/Post";
 
 function TabsStoreProfile() {
   const [value, setValue] = useState("1");
+  const profile = useSelector((state) => state.profile);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   return (
     <div>
-      <Box sx={{ width: "100%", typography: "body1" }}>
-        <TabContext value={value}>
-          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-            <TabList
-              variant="fullWidth"
-              onChange={handleChange}
-              aria-label="lab API tabs example"
-              style={{
-                color: "var(--white)",
-                padding: 0,
-              }}
-            >
-              <Tab
-                icon={<Grid />}
-                value="1"
+      {profile.data?.percentage == 100 ? (
+        <Box sx={{ width: "100%", typography: "body1" }}>
+          <TabContext value={value}>
+            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+              <TabList
+                variant="fullWidth"
+                onChange={handleChange}
+                aria-label="lab API tabs example"
                 style={{
                   color: "var(--white)",
+                  padding: 0,
                 }}
-              />
-              <Tab
-                icon={<AlignJustify />}
-                value="2"
-                style={{ color: "var(--white)" }}
-              />
-            </TabList>
-          </Box>
-          <TabPanel value="1" style={{ padding: 0 }}>
-            <div
-              className={styles.container}
-              style={{ marginTop: 20, marginLeft: 0 }}
-            >
-              <div className={styles.productsGrid}>
-                <Grid1 />
-                <Grid2 />
-                <Grid3 />
-                <Grid4 />
+              >
+                <Tab
+                  icon={<Grid />}
+                  value="1"
+                  style={{
+                    color: "var(--white)",
+                  }}
+                />
+                <Tab
+                  icon={<AlignJustify />}
+                  value="2"
+                  style={{ color: "var(--white)" }}
+                />
+              </TabList>
+            </Box>
+            <TabPanel value="1" style={{ padding: 0 }}>
+              <div
+                className={styles.container}
+                style={{ marginTop: 20, marginLeft: 0 }}
+              >
+                <div className={styles.productsGrid}>
+                  <Grid1 />
+                  <Grid2 />
+                  <Grid3 />
+                  <Grid4 />
+                </div>
               </div>
-            </div>
-          </TabPanel>
-          <TabPanel value="2" style={{ padding: 0, paddingTop: 20 }}>
-            <div className={styles.postContainer}>
-              <Post />
-              <Post />
-              <Post />
-              <Post />
-              <Post />
-              <Post />
-            </div>
-          </TabPanel>
-        </TabContext>
-      </Box>
+            </TabPanel>
+            <TabPanel value="2" style={{ padding: 0, paddingTop: 20 }}>
+              <div className={styles.postContainer}>
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+              </div>
+            </TabPanel>
+          </TabContext>
+        </Box>
+      ) : (
+        <SignUpComplete />
+      )}
     </div>
   );
 }

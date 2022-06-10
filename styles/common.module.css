@@ -10,6 +10,15 @@
   padding-bottom: 7rem;
 }
 
+.containerLogin {
+  width: 35%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 7rem;
+  padding-bottom: 7rem;
+}
+
 .error {
   color: red;
   font-size: 1.5rem;
@@ -31,8 +40,7 @@
   border: 1px solid var(--lightGrey);
   border-radius: 10px;
   color: var(--lightGrey);
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
   cursor: pointer;
   padding: 0rem 5.5rem;
   background-color: transparent;
@@ -69,6 +77,28 @@
   background-color: var(--black);
   color: var(--lightGrey);
   transition: 0.2s ease-out;
+}
+
+.whiteBtn {
+  padding: 0rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  /* background-color: var(--white); */
+  border: 1px solid var(--lightGrey);
+  border-radius: 10px;
+  color: var(--lightGrey);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  border: 1px solid var(--darkGrey);
+  border-radius: 0.5rem;
+  color: var(--white);
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
 }
 
 .heading {
@@ -139,12 +169,18 @@
   .container {
     width: 95vw;
   }
+  .containerLogin {
+    width: 50%;
+  }
 }
 
 @media only screen and (max-width: 800px) {
   .container {
-    width: 90vw;
+    width: 90vw !important;
     margin-top: 2rem !important;
+  }
+  .containerLogin {
+    width: 90vw;
   }
   .btn,
   .btn2 {

@@ -16,7 +16,11 @@ function InputComponent({
       className={styles.wrapper}
       style={{ position: type == "password" && "relative" }}
     >
-      {!noText && <p>{placeholder}</p>}
+      {!noText && (
+        <p style={{ color: value.length > 0 && "var(--lightGrey)" }}>
+          {placeholder}
+        </p>
+      )}
       <input
         disabled={disable}
         className={styles.input}

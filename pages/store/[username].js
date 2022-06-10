@@ -16,6 +16,7 @@ import { useRouter } from "next/router";
 import { storePage } from "../../store/actions/pages";
 import Loading from "../../components/Loading";
 import { Avatar } from "@mui/material";
+import StoreComingSoon from "../../components/StoreComponents/StoreComingSoon";
 
 function StorePage() {
   const { query } = useRouter();
@@ -85,39 +86,45 @@ function StorePage() {
           >
             <h1>@{store?.store?.store?.username}</h1>
 
-            <VerifiedIcon
-              style={{
-                marginLeft: "0.5rem",
-                fontSize: "1.5rem",
-                color: "#1DA1F2",
-              }}
-            />
+            {store.data?.percentage == 100 && (
+              <VerifiedIcon
+                style={{
+                  marginLeft: "0.5rem",
+                  fontSize: "1.5rem",
+                  color: "#1DA1F2",
+                }}
+              />
+            )}
           </div>
         </div>
         <div className={styles.tabs}>
           <TabsStoreProfile />
         </div>
         <div className={styles.desktopTabs}>
-          {value == 0 ? (
-            <div className={styles.products}>
-              <div className={styles.productsGrid}>
-                <Grid1 />
-                <Grid2 />
-                <Grid3 />
-                <Grid4 />
+          {profile.data?.percentage == 100 ? (
+            value == 0 ? (
+              <div className={styles.products}>
+                <div className={styles.productsGrid}>
+                  <Grid1 />
+                  <Grid2 />
+                  <Grid3 />
+                  <Grid4 />
+                </div>
               </div>
-            </div>
-          ) : value == 1 ? (
-            <div className={styles.postContainer}>
-              <Post />
-              <Post />
-              <Post />
-              <Post />
-              <Post />
-              <Post />
-            </div>
+            ) : value == 1 ? (
+              <div className={styles.postContainer}>
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+              </div>
+            ) : (
+              <></>
+            )
           ) : (
-            <></>
+            <StoreComingSoon />
           )}
         </div>
       </div>

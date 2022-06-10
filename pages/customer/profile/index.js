@@ -72,7 +72,16 @@ function Profile() {
               }}
             />
           ) : (
-            <User />
+            <User
+              style={{
+                width: 70,
+                height: 70,
+                cursor: "pointer",
+                border: "2px solid var(--white)",
+                padding: "1rem",
+                borderRadius: "50%",
+              }}
+            />
           )}
           <h1>{profile.name}</h1>
           <Link href="/customer/profile/edit">
