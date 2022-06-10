@@ -61,28 +61,30 @@ function StoreProfile() {
           <TabsStoreProfile />
         </div>
         <div className={styles.desktopTabs}>
-          {value == 0 ? (
-            // <div className={styles.products}>
-            //   <div className={styles.productsGrid}>
-            //     <Grid1 />
-            //     <Grid2 />
-            //     <Grid3 />
-            //     <Grid4 />
-            //   </div>
-            // </div>
-            <SignUpComplete />
-          ) : value == 1 ? (
-            // <div className={styles.postContainer}>
-            //   <Post />
-            //   <Post />
-            //   <Post />
-            //   <Post />
-            //   <Post />
-            //   <Post />
-            // </div>
-            <SignUpComplete />
+          {profile.data?.percentage == 100 ? (
+            value == 0 ? (
+              <div className={styles.products}>
+                <div className={styles.productsGrid}>
+                  <Grid1 />
+                  <Grid2 />
+                  <Grid3 />
+                  <Grid4 />
+                </div>
+              </div>
+            ) : value == 1 ? (
+              <div className={styles.postContainer}>
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+              </div>
+            ) : (
+              <></>
+            )
           ) : (
-            <></>
+            <SignUpComplete />
           )}
         </div>
       </div>
