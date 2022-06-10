@@ -62,7 +62,7 @@ function CustomerHeader() {
             {user && <LogOut onClick={logout} className={styles.navLinks} />}
           </div>
 
-          <Link href="/profile">
+          <Link href={user ? "/profile" : "/customer/login"}>
             {profile.profile_pic ? (
               <Avatar
                 alt="Avatar"
