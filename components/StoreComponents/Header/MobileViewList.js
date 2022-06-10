@@ -1,14 +1,9 @@
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@mui/material/Avatar";
 import Link from "next/link";
 import React from "react";
 import styles from "./styles.module.css";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import MailIcon from "@mui/icons-material/Mail";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { useSelector } from "react-redux";
+import { User } from "react-feather";
 
 function MobileViewList() {
   const logout = async () => {

@@ -1,4 +1,5 @@
-import { Avatar, User } from "@mui/material";
+import { Avatar } from "@mui/material";
+import { User } from "react-feather";
 import VerticalHeader from "../../../components/StoreComponents/VerticalHeader";
 import styles from "./styles.module.css";
 import React, { useState } from "react";
@@ -66,20 +67,20 @@ function StoreProfile() {
             value == 0 ? (
               <div className={styles.products}>
                 <div className={styles.productsGrid}>
-                  <Grid1 />
+                  {/* <Grid1 />
                   <Grid2 />
                   <Grid3 />
-                  <Grid4 />
+                  <Grid4 /> */}
                 </div>
               </div>
             ) : value == 1 ? (
               <div className={styles.postContainer}>
+                {/* <Post />
                 <Post />
                 <Post />
                 <Post />
                 <Post />
-                <Post />
-                <Post />
+                <Post /> */}
               </div>
             ) : (
               <></>
