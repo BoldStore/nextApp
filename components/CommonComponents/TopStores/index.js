@@ -2,7 +2,14 @@ import React from "react";
 import Avatar from "@mui/material/Avatar";
 import Skeleton from "react-loading-skeleton";
 import VerifiedIcon from "@mui/icons-material/Verified";
-function TopStores({ storeUrl, storeName }) {
+import { useRouter } from "next/router";
+function TopStores({ storeUrl, storeName, username }) {
+  const router = useRouter();
+
+  const goToStore = () => {
+    router.push(`/store/${username}`);
+  };
+
   return (
     <div
       style={{
@@ -12,6 +19,7 @@ function TopStores({ storeUrl, storeName }) {
         justifyContent: "space-between",
         marginLeft: "1.5rem",
       }}
+      onClick={goToStore}
     >
       {storeUrl ? (
         <Avatar

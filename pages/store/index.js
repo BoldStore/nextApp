@@ -65,6 +65,7 @@ function StoreHomePage() {
             <TopStores
               storeName={store.full_name?.split(" ")[0]}
               storeUrl={store.profile_pic}
+              username={store.username}
               key={index}
             />
           ))}

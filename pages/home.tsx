@@ -12,8 +12,9 @@ const HomePage: NextPage = () => {
     return <Loading />;
   }
 
-  if (profile?.isStore) return <StoreHomePage />;
-  else return <CustomerHomePage />;
+  // if (profile?.isStore) return
+  return <StoreHomePage />;
+  // else return <CustomerHomePage />;
 };
 
 export default HomePage;
