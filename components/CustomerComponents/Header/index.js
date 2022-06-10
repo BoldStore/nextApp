@@ -85,7 +85,18 @@ function CustomerHeader() {
                 }}
               />
             ) : (
-              <User />
+              <User
+                style={{
+                  width: 55,
+                  height: 55,
+                  padding: "0.75rem",
+                  border: "2px solid var(--lightGrey)",
+                  borderRadius: "50%",
+                  cursor: "pointer",
+                  marginLeft: "2.5rem",
+                  color: "var(--lightGrey)",
+                }}
+              />
             )}
           </Link>
         </>
