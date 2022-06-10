@@ -1,20 +1,12 @@
 import React, { useState } from "react";
-import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { Grid, AlignJustify, Bookmark } from "react-feather";
 import styles from "./styles.module.css";
-import Grid1 from "../../components/CommonComponents/Grids/grid1";
-import Grid2 from "../../components/CommonComponents/Grids/grid2";
-import Grid3 from "../../components/CommonComponents/Grids/grid3";
-import Grid4 from "../../components/CommonComponents/Grids/grid4";
-
-import Post from "../../components/CommonComponents/Post";
-import OrderComponent from "../../components/CommonComponents/OrderComponent";
-import NoOrders from "../../components/CommonComponents/isEmptyComponents/NoOrders";
+import NoOrders from "../../components/CommonComponents/IsEmptyComponents/NoOrders";
 import NoSavedItems from "../../components/CommonComponents/IsEmptyComponents/NoSavedPosts";
+
 function OrderPageTabs({ saved }) {
   const [value, setValue] = useState(0);
 

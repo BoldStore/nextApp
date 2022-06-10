@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import React, { useState } from "react";
 import Header from "../../components/CommonComponents/Header";
 import OrderPageTabs from "./tabs";
-import NoOrders from "../../components/CommonComponents/isEmptyComponents/NoOrders";
+import NoOrders from "../../components/CommonComponents/IsEmptyComponents/NoOrders";
 import NoSavedItems from "../../components/CommonComponents/IsEmptyComponents/NoSavedPosts";
 
 function Orders() {
