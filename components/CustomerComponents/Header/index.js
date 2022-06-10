@@ -3,14 +3,16 @@ import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";
 import DrawerComponent from "./DrawerComponent";
 import { useEffect, useState } from "react";
-import { Home, User, Search, ShoppingBag, LogOut } from "react-feather";
+import { Home, User, Search, ShoppingBag, LogOut, LogIn } from "react-feather";
 import CustomerTabs from "../Tabs";
 import { useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useRouter } from "next/router";
 
 function CustomerHeader() {
+  const router = useRouter();
   const profile = useSelector((state) => state.profile);
   const [open, setOpen] = useState(true);
   const [user] = useAuthState(auth);
@@ -39,6 +41,10 @@ function CustomerHeader() {
     window.location.reload();
   };
 
+  const login = () => {
+    router.push("/login");
+  };
+
   return (
     <div className={styles.container}>
       <Link href="/home">
@@ -59,7 +65,11 @@ function CustomerHeader() {
             <Link href="/customer/orders">
               <ShoppingBag className={styles.navLinks} />
             </Link>
-            {user && <LogOut onClick={logout} className={styles.navLinks} />}
+            {user ? (
+              <LogOut onClick={logout} className={styles.navLinks} />
+            ) : (
+              <LogIn onClick={login} className={styles.navLinks} />
+            )}
           </div>
 
           <Link href={user ? "/profile" : "/login"}>
