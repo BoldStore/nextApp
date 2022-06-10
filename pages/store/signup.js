@@ -147,7 +147,7 @@ function StoreSignup() {
                 <span className={styles.link}>Click Here.</span>
               </p>
             </Link>
-            <Link href="/store/login" passHref={true}>
+            <Link href="/login" passHref={true}>
               <p
                 style={{
                   color: "var(--lightGrey)",

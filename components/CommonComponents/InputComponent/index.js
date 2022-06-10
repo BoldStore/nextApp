@@ -8,7 +8,7 @@ function InputComponent({
   placeholder,
   type,
   noText,
-  disable,
+  disable = false,
 }) {
   const [passType, setPassType] = useState("password");
   return (

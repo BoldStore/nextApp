@@ -107,7 +107,7 @@ function CustomerSignup() {
               alignItems: "center",
             }}
           >
-            <Link href="/customer/login" passHref={true}>
+            <Link href="/login" passHref={true}>
               <p
                 style={{
                   color: "var(--lightGrey)",
@@ -118,7 +118,7 @@ function CustomerSignup() {
                 Or Skip Signup
               </p>
             </Link>
-            <Link href="/customer/login" passHref={true}>
+            <Link href="/login" passHref={true}>
               <p
                 style={{
                   color: "var(--lightGrey)",
