@@ -47,14 +47,15 @@ function StoreProfile() {
             }}
           >
             <h1>@{profile?.data?.data?.username}</h1>
-
-            <VerifiedIcon
-              style={{
-                marginLeft: "0.5rem",
-                fontSize: "1.5rem",
-                color: "#1DA1F2",
-              }}
-            />
+            {profile.data?.percentage == 100 && (
+              <VerifiedIcon
+                style={{
+                  marginLeft: "0.5rem",
+                  fontSize: "1.5rem",
+                  color: "#1DA1F2",
+                }}
+              />
+            )}
           </div>
         </div>
         <div className={styles.tabs}>
