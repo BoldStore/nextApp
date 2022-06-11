@@ -53,6 +53,12 @@ function ProfileAddress() {
   }, [profile, profile.data]);
 
   useEffect(() => {
+    if (address.success) {
+      toast("Saved Succesfully!");
+    }
+  }, [address]);
+
+  useEffect(() => {
     if (!profile?.isStore) {
       router.push("/home");
     }
@@ -65,7 +71,15 @@ function ProfileAddress() {
         <div className={styles.container}>
           <h1>Address Details</h1>
           {address.success && (
-            <h1 style={{ color: "green" }}>Saved Succesfully</h1>
+            <p
+              style={{
+                color: "#5cb85c",
+                fontSize: "1rem",
+                textAlign: "center",
+              }}
+            >
+              Saved Succesfully
+            </p>
           )}
           {address.errmess && (
             <h1 style={{ color: "red" }}>{address.errmess}</h1>

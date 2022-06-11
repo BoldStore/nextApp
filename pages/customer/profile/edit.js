@@ -7,6 +7,7 @@ import UsernameComponent from "../../../components/CommonComponents/InputCompone
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../../store/actions/user";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 function Edit() {
   const dispatch = useDispatch();
@@ -47,6 +48,12 @@ function Edit() {
     }
   }, [profile]);
 
+  useEffect(() => {
+    if (userData.success) {
+      toast("Saved Succesfully!");
+    }
+  }, [userData]);
+
   if (!profile?.isStore)
     return (
       <>
@@ -55,7 +62,17 @@ function Edit() {
           {userData.errmess && (
             <p className={styles.error}>{userData.errmess.toString()}</p>
           )}
-          {userData.success && <p className={styles.success}>Saved</p>}
+          {userData.success && (
+            <p
+              style={{
+                color: "#5cb85c",
+                fontSize: "1rem",
+                textAlign: "center",
+              }}
+            >
+              Saved Succesfully
+            </p>
+          )}
           <InputComponent
             type="text"
             setValue={setName}

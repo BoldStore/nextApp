@@ -56,13 +56,27 @@ function ProfileUpi() {
     }
   }, [profile]);
 
+  useEffect(() => {
+    if (storeData.success) {
+      toast("Saved Succesfully!");
+    }
+  }, [storeData]);
+
   if (profile?.isStore)
     return (
       <>
         <Header />
         <div className={styles.container}>
           {storeData.success && (
-            <h1 style={{ color: "green" }}>Saved Succesfully</h1>
+            <p
+              style={{
+                color: "#5cb85c",
+                fontSize: "1rem",
+                textAlign: "center",
+              }}
+            >
+              Saved Succesfully
+            </p>
           )}
           <h1>UPI Details</h1>
           <InputComponent
