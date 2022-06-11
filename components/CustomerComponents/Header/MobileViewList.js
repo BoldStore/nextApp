@@ -5,6 +5,10 @@ import styles from "./styles.module.css";
 import { useSelector } from "react-redux";
 import { User } from "react-feather";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { signOut } from "@firebase/auth";
+import { auth } from "../../../firebaseConfig";
+import { useRouter } from "next/router";
+
 function MobileViewList() {
   const logout = async () => {
     localStorage.removeItem("token");
@@ -17,6 +21,7 @@ function MobileViewList() {
   };
 
   const profile = useSelector((state) => state.profile);
+  const router = useRouter();
   const [user] = useAuthState(auth);
 
   return (

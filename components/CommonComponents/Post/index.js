@@ -82,6 +82,7 @@ function Post({
       </Link>
       <Link href={`/product/${id}`} passHref={true}>
         <div
+          className={styles.imageCover}
           style={{
             overflow: "hidden",
             borderRadius: "1rem",

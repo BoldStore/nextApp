@@ -5,8 +5,12 @@ import styles from "./styles.module.css";
 import { useSelector } from "react-redux";
 import { User } from "react-feather";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../../firebaseConfig";
+import { signOut } from "@firebase/auth";
+import { useRouter } from "next/router";
 
 function MobileViewList() {
+  const router = useRouter();
   const logout = async () => {
     localStorage.removeItem("token");
     await signOut(auth);
@@ -25,7 +29,7 @@ function MobileViewList() {
         {profile.profile_pic ? (
           <Avatar
             alt="Avatar"
-            src={"https://i.ibb.co/Bswp8RS/avi.jpg"}
+            src={profile.profile_pic}
             sx={{
               width: 150,
               height: 150,
