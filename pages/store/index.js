@@ -72,7 +72,12 @@ function StoreHomePage() {
         </div>
         <div className={styles.postContainer}>
           {pageData?.home?.products?.map((product, index) => (
-            <Post postUrl={product.imgUrl} key={index} />
+            <Post
+              id={product.id}
+              postUrl={product.imgUrl}
+              caption={product.caption}
+              key={index}
+            />
           ))}
         </div>
       </div>
