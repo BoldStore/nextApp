@@ -1,19 +1,15 @@
 import React from "react";
 import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Image from "next/image";
 import { Bookmark, Send } from "react-feather";
 import BoldButton from "../BoldButton";
-import Link from "next/link";
-import Post from "../Post";
-import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { RWebShare } from "react-web-share";
 
-function ProductComponent() {
-  const router = useRouter();
+function ProductComponent({ product }) {
   const notify = () => toast("Product Saved!");
+
   return (
     <>
       <div className={styles.productContainer}>
