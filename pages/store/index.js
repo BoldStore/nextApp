@@ -72,7 +72,17 @@ function StoreHomePage() {
         </div>
         <div className={styles.postContainer}>
           {pageData?.home?.products?.map((product, index) => (
-            <Post postUrl={product.imgUrl} key={index} />
+            <Post
+              postUrl={product.imgUrl}
+              key={index}
+              storeUrl={product?.store?.profile_pic}
+              storeLocation={product?.store?.username}
+              storeName={product?.store?.full_name}
+              caption={product.caption}
+              price={product.price}
+              size={product.size}
+              id={product.id}
+            />
           ))}
         </div>
       </div>
