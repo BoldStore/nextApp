@@ -4,21 +4,32 @@ import React from "react";
 import styles from "./styles.module.css";
 import { useSelector } from "react-redux";
 import { User } from "react-feather";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../../firebaseConfig";
+import { signOut } from "@firebase/auth";
+import { useRouter } from "next/router";
 
 function MobileViewList() {
+  const router = useRouter();
   const logout = async () => {
     localStorage.removeItem("token");
     await signOut(auth);
     window.location.replace("/home");
   };
+
+  const login = () => {
+    router.push("/login");
+  };
+
   const profile = useSelector((state) => state.profile);
+  const [user] = useAuthState(auth);
   return (
     <div style={{ backgroundColor: "var(--black)" }}>
       <Link href="/profile">
         {profile.profile_pic ? (
           <Avatar
             alt="Avatar"
-            src={"https://i.ibb.co/Bswp8RS/avi.jpg"}
+            src={profile.profile_pic}
             sx={{
               width: 150,
               height: 150,
@@ -78,9 +89,15 @@ function MobileViewList() {
           <p className={styles.navLinks}>Profile</p>
         </Link>
 
-        <p className={styles.navLinks} onClick={logout}>
-          Logout
-        </p>
+        {user ? (
+          <p className={styles.navLinks} onClick={logout}>
+            Logout
+          </p>
+        ) : (
+          <p className={styles.navLinks} onClick={login}>
+            Login
+          </p>
+        )}
 
         <Link href="https://www.instagram.com/boldstore.in">
           <p className={styles.navLinks}>Instagram</p>

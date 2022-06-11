@@ -48,9 +48,10 @@
 
 .productImg {
   border-radius: 1rem;
-  object-fit: cover;
-  object-position: 50% 50%;
+  height: 100%;
+  width: 100%;
   cursor: pointer;
+  object-fit: cover !important;
   transition: transform 0.4s;
 }
 
@@ -81,19 +82,25 @@
 }
 
 @media (max-width: 1350px) {
-  .postContainer {
-    max-width: 450px;
+  .imageCover {
+    width: 100% !important;
+    height: 100% !important;
   }
 }
 
 @media (max-width: 1050px) {
-  .postContainer {
-    max-width: 550px;
+  .imageCover {
+    width: 100% !important;
+    height: 100% !important;
   }
 }
 
 @media (max-width: 650px) {
   .postContainer {
     max-width: 400px;
+  }
+  .imageCover {
+    width: 100% !important;
+    height: 100% !important;
   }
 }

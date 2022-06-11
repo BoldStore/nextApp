@@ -5,13 +5,17 @@ import FolderIcon from "@mui/icons-material/Folder";
 import RestoreIcon from "@mui/icons-material/Restore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import { Paper } from "@mui/material";
+import { Avatar, Paper } from "@mui/material";
 import { Home, User, Search, ShoppingBag } from "react-feather";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { styled } from "@mui/material/styles";
 import { useRouter } from "next/router";
-
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../../firebaseConfig";
+import { useSelector } from "react-redux";
 export default function CustomerTabs() {
+  const [user] = useAuthState(auth);
+  const profile = useSelector((state) => state.profile);
   const [value, setValue] = React.useState("recents");
   const router = useRouter();
   const handleChange = (event, newValue) => {
@@ -52,17 +56,31 @@ color: #808080;
           <CustomBottomNavigationAction
             value="search"
             icon={<Search />}
-            onClick={() => router.push("/customer/search")}
+            onClick={() => router.push("/search")}
           />
           <CustomBottomNavigationAction
             value="bag"
             icon={<ShoppingBag />}
-            onClick={() => router.push("/customer/bag")}
+            onClick={() => router.push("/bag")}
           />
           <CustomBottomNavigationAction
             value="profile"
-            icon={<User />}
-            onClick={() => router.push("/customer/profile")}
+            icon={
+              user ? (
+                <Avatar
+                  alt="Avatar"
+                  src={profile.profile_pic}
+                  sx={{
+                    width: 35,
+                    height: 35,
+                    cursor: "pointer",
+                  }}
+                />
+              ) : (
+                <User />
+              )
+            }
+            onClick={() => router.push("/profile")}
           />
         </BottomNavigation>
       </Paper>

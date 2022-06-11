@@ -34,7 +34,7 @@ function TopStores({ storeUrl, storeName, username }) {
       ) : (
         <Skeleton circle={true} height={75} width={75} />
       )}
-      {storeName ? (
+      {username ? (
         <div
           style={{
             display: "flex",
@@ -45,16 +45,16 @@ function TopStores({ storeUrl, storeName, username }) {
           <p
             style={{
               color: "var(--lightGrey)",
-              marginTop: "0.6rem",
+              marginTop: "0.65rem",
               fontSize: "0.8rem",
             }}
           >
-            {storeName}
+            {username}
           </p>
           <p>
             <VerifiedIcon
               style={{
-                marginLeft: "0.5rem",
+                marginLeft: "0.3rem",
                 fontSize: "1rem",
                 color: "#1DA1F2",
               }}

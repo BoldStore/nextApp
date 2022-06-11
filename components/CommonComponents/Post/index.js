@@ -21,13 +21,14 @@ function Post({
   caption,
 }) {
   const [video, setVideo] = useState(false);
-  const [text, setText] = useState(caption?.slice(0, 50));
+  const [text, setText] = useState(caption?.slice(0, 35));
   const [readMore, setReadMore] = useState(false);
+
   const notify = () => toast("Product Saved!");
 
   return (
     <div className={styles.postContainer}>
-      <Link href={`/store/profile/${storeName}`} passHref={true}>
+      <Link href={`/store/${storeName}`} passHref={true}>
         <div className={styles.postHeader}>
           <div className={styles.userInfo}>
             {storeUrl ? (
@@ -54,7 +55,7 @@ function Post({
                     justifyContent: "center",
                   }}
                 >
-                  <p style={{ marginLeft: "-1.1rem" }}>{storeName}</p>
+                  <p>{storeName}</p>
                   <p>
                     <VerifiedIcon
                       style={{
@@ -81,10 +82,12 @@ function Post({
       </Link>
       <Link href={`/product/${id}`} passHref={true}>
         <div
+          className={styles.imageCover}
           style={{
             overflow: "hidden",
             borderRadius: "1rem",
-            position: "relative",
+            width: "350px",
+            height: "350px",
           }}
         >
           {postUrl ? (
@@ -100,7 +103,12 @@ function Post({
                 className={styles.productImg}
               />
             ) : (
-              <video src={postUrl} muted autoPlay={false} />
+              <video
+                src={postUrl}
+                muted
+                autoPlay={false}
+                className={styles.productImg}
+              />
             )
           ) : (
             <Skeleton count={1} width={"100%"} height={400} />
@@ -123,29 +131,33 @@ function Post({
         {price && <Bookmark onClick={notify} className={styles.bookmarkIcon} />}
       </div>
 
-      <>
-        <p
-          style={{ marginTop: 0 }}
-          onClick={() => {
-            setReadMore(!readMore);
-          }}
-        >
-          {!readMore ? text : caption}
-          {!readMore && "..."}
+      {caption?.length >= 35 ? (
+        <>
           <p
-            style={{
-              cursor: "pointer",
-              color: "var(--lightGrey)",
-              marginBottom: 0,
-            }}
+            style={{ marginTop: 0 }}
             onClick={() => {
               setReadMore(!readMore);
             }}
           >
-            {readMore ? "Show Less" : " Read More"}
+            {!readMore ? text : caption}
+            {!readMore && "..."}
+            <p
+              style={{
+                cursor: "pointer",
+                color: "var(--lightGrey)",
+                marginBottom: 0,
+              }}
+              onClick={() => {
+                setReadMore(!readMore);
+              }}
+            >
+              {readMore ? "Show Less" : " Read More"}
+            </p>
           </p>
-        </p>
-      </>
+        </>
+      ) : (
+        <p style={{ marginTop: 0 }}>{caption}</p>
+      )}
 
       {price ? (
         <BoldButton text={"Buy Now"} />
