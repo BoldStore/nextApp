@@ -8,6 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../../store/actions/user";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { TextField } from "@mui/material";
 
 function Edit() {
   const dispatch = useDispatch();
@@ -15,7 +19,7 @@ function Edit() {
   const userData = useSelector((state) => state.user);
   const router = useRouter();
   const [name, setName] = useState("");
-  const [age, setAge] = useState("");
+  const [age, setAge] = useState(new Date("2014-08-18T21:11:54"));
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [instagramUsername, setInstagramUsername] = useState("");
@@ -79,12 +83,22 @@ function Edit() {
             value={name}
             placeholder={"Full Name"}
           />
-          <InputComponent
+          {/* <InputComponent
             type="text"
             setValue={setAge}
             value={age}
             placeholder={"Age"}
-          />
+          /> */}
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <MobileDatePicker
+              label="Date Of Birth"
+              inputFormat="dd/MM/yyyy"
+              value={age}
+              onChange={(newValue) => setAge(newValue)}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </LocalizationProvider>
+
           <InputComponent
             type="text"
             setValue={setEmail}
