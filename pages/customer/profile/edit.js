@@ -6,12 +6,13 @@ import styles from "./profile.module.css";
 import UsernameComponent from "../../../components/CommonComponents/InputComponent/username";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../../store/actions/user";
+import { useRouter } from "next/router";
 
 function Edit() {
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.profile);
   const userData = useSelector((state) => state.user);
-
+  const router = useRouter();
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [email, setEmail] = useState("");
@@ -40,94 +41,101 @@ function Edit() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile, profile.data]);
 
-  return (
-    <>
-      <CustomerHeader />
-      <div className={styles.container}>
-        {userData.errmess && (
-          <p className={styles.error}>{userData.errmess.toString()}</p>
-        )}
-        {userData.success && <p className={styles.success}>Saved</p>}
-        <InputComponent
-          type="text"
-          setValue={setName}
-          value={name}
-          placeholder={"Full Name"}
-        />
-        <InputComponent
-          type="text"
-          setValue={setAge}
-          value={age}
-          placeholder={"Age"}
-        />
-        <InputComponent
-          type="text"
-          setValue={setEmail}
-          value={email}
-          placeholder={"Email"}
-          disable={true}
-        />
-        <InputComponent
-          type="text"
-          setValue={setPhoneNumber}
-          value={phoneNumber}
-          placeholder={"Phone Number"}
-        />
-        <UsernameComponent
-          type="text"
-          setValue={setInstagramUsername}
-          value={instagramUsername}
-          placeholder={"Username"}
-        />
-        <p>Preference</p>
-        <div className={styles.chipContainer}>
-          {preferences.map((preference, index) => {
-            var color;
-            var backgroundColor;
-            var border;
-            preference != myPreference
-              ? ((color = "var(--white)"),
-                (backgroundColor = "var(--black)"),
-                (border = "1px solid var(--darkGrey)"))
-              : ((color = "var(--black)"),
-                (backgroundColor = "var(--white)"),
-                (border = "1px solid var(--white)"));
-            return (
-              <div
-                key={index}
-                onClick={() => {
-                  setMyPreference(preference);
-                }}
-                className={styles.sizeChip}
-                style={{
-                  color: color,
-                  backgroundColor: backgroundColor,
-                  borderRadius: 5,
-                  borderColor: "var(--darkGrey)",
-                  border: border,
-                }}
-              >
-                <p
+  useEffect(() => {
+    if (profile?.isStore) {
+      router.push("/home");
+    }
+  }, [profile]);
+
+  if (!profile?.isStore)
+    return (
+      <>
+        <CustomerHeader />
+        <div className={styles.container}>
+          {userData.errmess && (
+            <p className={styles.error}>{userData.errmess.toString()}</p>
+          )}
+          {userData.success && <p className={styles.success}>Saved</p>}
+          <InputComponent
+            type="text"
+            setValue={setName}
+            value={name}
+            placeholder={"Full Name"}
+          />
+          <InputComponent
+            type="text"
+            setValue={setAge}
+            value={age}
+            placeholder={"Age"}
+          />
+          <InputComponent
+            type="text"
+            setValue={setEmail}
+            value={email}
+            placeholder={"Email"}
+            disable={true}
+          />
+          <InputComponent
+            type="text"
+            setValue={setPhoneNumber}
+            value={phoneNumber}
+            placeholder={"Phone Number"}
+          />
+          <UsernameComponent
+            type="text"
+            setValue={setInstagramUsername}
+            value={instagramUsername}
+            placeholder={"Username"}
+          />
+          <p>Preference</p>
+          <div className={styles.chipContainer}>
+            {preferences.map((preference, index) => {
+              var color;
+              var backgroundColor;
+              var border;
+              preference != myPreference
+                ? ((color = "var(--white)"),
+                  (backgroundColor = "var(--black)"),
+                  (border = "1px solid var(--darkGrey)"))
+                : ((color = "var(--black)"),
+                  (backgroundColor = "var(--white)"),
+                  (border = "1px solid var(--white)"));
+              return (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setMyPreference(preference);
+                  }}
+                  className={styles.sizeChip}
                   style={{
-                    textAlign: "center",
                     color: color,
-                    textTransform: "uppercase",
+                    backgroundColor: backgroundColor,
+                    borderRadius: 5,
+                    borderColor: "var(--darkGrey)",
+                    border: border,
                   }}
                 >
-                  {preference}
-                </p>
-              </div>
-            );
-          })}
+                  <p
+                    style={{
+                      textAlign: "center",
+                      color: color,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {preference}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+          <div style={{ marginTop: "3rem" }}></div>
+          <BoldButton
+            text={userData.isLoading ? "Loading" : "Save"}
+            onClick={userData.isLoading ? null : handleSubmit}
+          />
         </div>
-        <div style={{ marginTop: "3rem" }}></div>
-        <BoldButton
-          text={userData.isLoading ? "Loading" : "Save"}
-          onClick={userData.isLoading ? null : handleSubmit}
-        />
-      </div>
-    </>
-  );
+      </>
+    );
 }
 
 export default Edit;
