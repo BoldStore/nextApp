@@ -24,7 +24,7 @@ function Post({
   const notify = () => toast("Product Saved!");
   return (
     <div className={styles.postContainer}>
-      <Link href="/store/profile" passHref={true}>
+      <Link href={`/store/profile/${storeName}`} passHref={true}>
         <div className={styles.postHeader}>
           <div className={styles.userInfo}>
             {storeUrl ? (
