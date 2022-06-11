@@ -5,8 +5,8 @@ import StoreProfile from "./store/profile";
 import CustomerProfile from "./customer/profile";
 import Loading from "../components/Loading";
 
-const Profile: NextPage = () => {
-  const profile = useSelector((state: any) => state.profile);
+const Profile = () => {
+  const profile = useSelector((state) => state.profile);
 
   if (profile?.isLoading) {
     return <Loading />;
