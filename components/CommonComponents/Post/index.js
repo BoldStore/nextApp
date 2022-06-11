@@ -51,7 +51,7 @@ function Post({
                     justifyContent: "center",
                   }}
                 >
-                  <p>{storeName}</p>
+                  <p style={{ marginLeft: "-1.1rem" }}>{storeName}</p>
                   <p>
                     <VerifiedIcon
                       style={{
