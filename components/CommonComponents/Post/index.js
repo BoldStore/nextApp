@@ -19,7 +19,7 @@ function Post({
   size,
   caption,
 }) {
-  const [text, setText] = useState(caption?.slice(0, 50));
+  const [text, setText] = useState(caption?.slice(0, 35));
   const [readMore, setReadMore] = useState(false);
   const notify = () => toast("Product Saved!");
   return (
@@ -81,15 +81,13 @@ function Post({
           style={{
             overflow: "hidden",
             borderRadius: "1rem",
-            position: "relative",
+            height: 450,
           }}
         >
           {postUrl ? (
             <img
               src={postUrl ?? "/assets/shoe2.jpg"}
               alt="item"
-              width="450"
-              height="450"
               className={styles.productImg}
             />
           ) : (
