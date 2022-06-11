@@ -5,6 +5,7 @@ const initState = {
   errmess: null,
   product: null,
   store: null,
+  products: [],
 };
 
 const productsReducer = (state = initState, action: any) => {
@@ -23,6 +24,7 @@ const productsReducer = (state = initState, action: any) => {
         errmess: null,
         product: action.product,
         store: action.store,
+        products: action.products,
       };
 
     case ActionTypes.GET_PRODUCT_FAILED:

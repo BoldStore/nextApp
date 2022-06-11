@@ -15,7 +15,7 @@ function ProductComponent({ product }) {
       <div className={styles.productContainer}>
         <div>
           <Image
-            src="/assets/shoe2.jpg"
+            src={product.product.imgUrl}
             alt="item"
             width="650"
             height="650"
@@ -23,11 +23,13 @@ function ProductComponent({ product }) {
           />
         </div>
         <div className={styles.productInfo}>
-          <h1 style={{ marginTop: 0 }}>Product Title</h1>
+          <h1 style={{ marginTop: 0 }}>
+            {product.product.name ?? `Product By ${product.store.name}`}
+          </h1>
           <div className={styles.userInfo}>
             <Avatar
-              alt="Avatar"
-              src={"https://i.ibb.co/Bswp8RS/avi.jpg"}
+              alt="Store Profile Pic"
+              src={product?.store?.profile_pic}
               sx={{
                 width: 50,
                 height: 50,
@@ -36,20 +38,17 @@ function ProductComponent({ product }) {
               }}
             />
             <div className={styles.nameLocation}>
-              <p>Store_Username</p>
-              <p style={{ opacity: 0.5 }}>New Delhi</p>
+              <p>{product.store.full_name ?? ""}</p>
+              <p style={{ opacity: 0.5 }}>{product.store.username}</p>
             </div>
           </div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
+          <p>{product?.product?.caption ?? ""}</p>
           <div>
             <RWebShare
               data={{
-                text: "Hey, checkout this amazing Thrift Store Product on Bold.",
-                url: `https://www.boldstore.in/product/${1}`,
-                title: "Thrift Store on Bold",
+                text: `Hey, checkout this amazing ${product.store.full_name} Product on Bold.`,
+                url: `https://www.boldstore.in/product/${product.product.id}`,
+                title: `${product.store.full_name} on Bold`,
               }}
               className={styles.share}
               style={{ color: "var(--black) !important" }}

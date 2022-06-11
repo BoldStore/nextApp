@@ -11,18 +11,12 @@ export const getProduct = (productId: string) => {
         GET_PRODUCT + `?productId=${productId}`
       );
 
-      if (response.status == 201) {
-        dispatch({
-          type: ActionTypes.GET_PRODUCT_SUCCESS,
-          product: response.data?.product,
-          store: response.data?.store,
-        });
-      } else {
-        dispatch({
-          type: ActionTypes.GET_PRODUCT_FAILED,
-          error: response.data,
-        });
-      }
+      dispatch({
+        type: ActionTypes.GET_PRODUCT_SUCCESS,
+        product: response.data?.product,
+        store: response.data?.store,
+        products: response.data?.products,
+      });
     } catch (e) {
       dispatch({
         type: ActionTypes.GET_PRODUCT_FAILED,
