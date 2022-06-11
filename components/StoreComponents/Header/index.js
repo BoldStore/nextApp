@@ -45,7 +45,7 @@ function StoreHeader() {
   const logout = async () => {
     localStorage.removeItem("token");
     await signOut(auth);
-    window.location.reload();
+    window.location.replace("/home");
   };
 
   return (
