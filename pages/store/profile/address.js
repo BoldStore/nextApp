@@ -6,6 +6,7 @@ import BoldButton from "../../../components/CommonComponents/BoldButton";
 import { useDispatch, useSelector } from "react-redux";
 import { addAddress } from "../../../store/actions/address";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 function ProfileAddress() {
   const dispatch = useDispatch();
   const address = useSelector((state) => state.addresses);
@@ -70,7 +71,7 @@ function ProfileAddress() {
         <Header />
         <div className={styles.container}>
           <h1>Address Details</h1>
-          {address.success && (
+          {/* {address.success && (
             <p
               style={{
                 color: "#5cb85c",
@@ -80,7 +81,7 @@ function ProfileAddress() {
             >
               Saved Succesfully
             </p>
-          )}
+          )} */}
           {address.errmess && (
             <h1 style={{ color: "red" }}>{address.errmess}</h1>
           )}

@@ -27,9 +27,24 @@ function SignUpComplete() {
         <h2 style={{ textAlign: "center", marginTop: "1rem" }}>
           Complete Your Profile
         </h2>
-        <p style={{ textAlign: "center" }}>
-          <span style={{ color: "#1DA1F2" }}>2 out of 4</span> completed
-        </p>
+
+        {Math.round(profile.data?.percentage) == 33 ? (
+          <p style={{ textAlign: "center" }}>
+            <span style={{ color: "#1DA1F2" }}>1 out of 3</span> completed
+          </p>
+        ) : Math.round(profile.data?.percentage) == 67 ? (
+          <p style={{ textAlign: "center" }}>
+            <span style={{ color: "#1DA1F2" }}>2 out of 3</span> completed
+          </p>
+        ) : Math.round(profile.data?.percentage) == 100 ? (
+          <p style={{ textAlign: "center" }}>
+            <span style={{ color: "#1DA1F2" }}>3 out of 3</span> completed
+          </p>
+        ) : (
+          <p style={{ textAlign: "center" }}>
+            <span style={{ color: "#1DA1F2" }}>0 out of 3</span> completed
+          </p>
+        )}
       </div>
       <div
         style={{

@@ -6,6 +6,7 @@ import BoldButton from "../../../components/CommonComponents/BoldButton";
 import { useDispatch, useSelector } from "react-redux";
 import { updateStore } from "../../../store/actions/store";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 // import { getCookie } from "cookies-next";
 // import { firebaseAdmin } from "../../../firebaseAdmin";
 
@@ -67,7 +68,7 @@ function ProfileUpi() {
       <>
         <Header />
         <div className={styles.container}>
-          {storeData.success && (
+          {/* {storeData.success && (
             <p
               style={{
                 color: "#5cb85c",
@@ -77,7 +78,7 @@ function ProfileUpi() {
             >
               Saved Succesfully
             </p>
-          )}
+          )} */}
           <h1>UPI Details</h1>
           <InputComponent
             type="text"
