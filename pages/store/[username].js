@@ -86,7 +86,7 @@ function StorePage() {
           >
             <h1>@{store?.store?.store?.username}</h1>
 
-            {store.data?.percentage == 100 && (
+            {store?.store?.store?.isCompleted == true && (
               <VerifiedIcon
                 style={{
                   marginLeft: "0.5rem",
