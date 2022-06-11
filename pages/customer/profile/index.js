@@ -8,12 +8,13 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { User } from "react-feather";
 import { addAddress } from "../../../store/actions/address";
+import { useRouter } from "next/router";
 
 function Profile() {
   const dispatch = useDispatch();
   const address = useSelector((state) => state.addresses);
   const profile = useSelector((state) => state.profile);
-
+  const router = useRouter();
   const [title, setTitle] = useState("");
   const [addressString, setAddressString] = useState("");
   const [locality, setLocality] = useState("");
@@ -55,93 +56,102 @@ function Profile() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile, profile.data]);
 
-  return (
-    <>
-      <CustomerHeader />
-      <div className={styles.container}>
-        <div className={styles.customerDetails}>
-          {profile.profile_pic ? (
-            <Avatar
-              alt="Avatar"
-              src={profile.profile_pic}
-              sx={{
-                width: 100,
-                height: 100,
-                cursor: "pointer",
-                border: "2px solid var(--darkGrey)",
-              }}
-            />
-          ) : (
-            <User
-              style={{
-                width: 70,
-                height: 70,
-                cursor: "pointer",
-                border: "2px solid var(--white)",
-                padding: "1rem",
-                borderRadius: "50%",
-              }}
-            />
+  useEffect(() => {
+    if (profile?.isStore) {
+      router.push("/home");
+    }
+  }, [profile]);
+
+  if (!profile?.isStore)
+    return (
+      <>
+        <CustomerHeader />
+        <div className={styles.container}>
+          <div className={styles.customerDetails}>
+            {profile.profile_pic ? (
+              <Avatar
+                alt="Avatar"
+                src={profile.profile_pic}
+                sx={{
+                  width: 100,
+                  height: 100,
+                  cursor: "pointer",
+                  border: "2px solid var(--darkGrey)",
+                }}
+              />
+            ) : (
+              <User
+                style={{
+                  width: 70,
+                  height: 70,
+                  cursor: "pointer",
+                  border: "2px solid var(--white)",
+                  padding: "1rem",
+                  borderRadius: "50%",
+                }}
+              />
+            )}
+            <h1>{profile.name}</h1>
+            <Link href="/customer/profile/edit">
+              <p style={{ color: "var(--lightGrey)" }}>Edit Personal Details</p>
+            </Link>
+          </div>
+          {address.success && (
+            <h1 style={{ color: "green" }}>Saved Succesfully</h1>
           )}
-          <h1>{profile.name}</h1>
-          <Link href="/customer/profile/edit">
-            <p style={{ color: "var(--lightGrey)" }}>Edit Personal Details</p>
-          </Link>
+          {address.errmess && (
+            <h1 style={{ color: "red" }}>{address.errmess}</h1>
+          )}
+          <InputComponent
+            type="text"
+            setValue={setTitle}
+            value={title}
+            placeholder={"Title"}
+          />
+          <InputComponent
+            type="text"
+            setValue={setLocality}
+            value={locality}
+            placeholder={"Locality"}
+          />
+          <InputComponent
+            type="text"
+            setValue={setAppartment}
+            value={appartment}
+            placeholder={"Appartment/Suite"}
+          />
+          <InputComponent
+            type="text"
+            setValue={setCity}
+            value={city}
+            placeholder={"City"}
+          />
+          <InputComponent
+            type="text"
+            setValue={setState}
+            value={state}
+            placeholder={"State"}
+          />
+          <InputComponent
+            type="text"
+            setValue={setPincode}
+            value={pincode}
+            placeholder={"Pincode"}
+          />
+          <InputComponent
+            type="text"
+            setValue={setNotes}
+            value={notes}
+            placeholder={"Notes"}
+          />
+          <div style={{ marginTop: "3rem" }}></div>
+          <BoldButton
+            text={address?.isLoading ? "Loading..." : "Update"}
+            onClick={handleSubmit}
+          />
         </div>
-        {address.success && (
-          <h1 style={{ color: "green" }}>Saved Succesfully</h1>
-        )}
-        {address.errmess && <h1 style={{ color: "red" }}>{address.errmess}</h1>}
-        <InputComponent
-          type="text"
-          setValue={setTitle}
-          value={title}
-          placeholder={"Title"}
-        />
-        <InputComponent
-          type="text"
-          setValue={setLocality}
-          value={locality}
-          placeholder={"Locality"}
-        />
-        <InputComponent
-          type="text"
-          setValue={setAppartment}
-          value={appartment}
-          placeholder={"Appartment/Suite"}
-        />
-        <InputComponent
-          type="text"
-          setValue={setCity}
-          value={city}
-          placeholder={"City"}
-        />
-        <InputComponent
-          type="text"
-          setValue={setState}
-          value={state}
-          placeholder={"State"}
-        />
-        <InputComponent
-          type="text"
-          setValue={setPincode}
-          value={pincode}
-          placeholder={"Pincode"}
-        />
-        <InputComponent
-          type="text"
-          setValue={setNotes}
-          value={notes}
-          placeholder={"Notes"}
-        />
-        <div style={{ marginTop: "3rem" }}></div>
-        <BoldButton
-          text={address?.isLoading ? "Loading..." : "Update"}
-          onClick={handleSubmit}
-        />
-      </div>
-    </>
-  );
+      </>
+    );
 }
 
 export default Profile;

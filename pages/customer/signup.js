@@ -82,11 +82,7 @@ function CustomerSignup() {
       <div className={styles.center}>
         <div className={styles.containerLogin}>
           <p className={styles.heading}>Sign Up As A Customer 😎 </p>
-          {error && <p className={styles.error}>{error}</p>}
-          {signupError && <p className={styles.error}>{signupError.message}</p>}
-          {google_error && (
-            <p className={styles.error}>{google_error.message}</p>
-          )}
+
           <InputComponent
             type="text"
             setValue={setEmail}
@@ -111,7 +107,8 @@ function CustomerSignup() {
           <div className={styles.btn} onClick={handleSubmit}>
             <p>{loading ? "Loading..." : "Signup"}</p>
           </div>
-
+          {error && <p className={styles.error}>{error}</p>}
+          {signupError && <p className={styles.error}>{signupError.message}</p>}
           <div className={styles.whiteBtn} onClick={() => signInWithGoogle()}>
             {loading ? (
               <p>Loading...</p>
@@ -131,6 +128,9 @@ function CustomerSignup() {
               </div>
             )}
           </div>
+          {google_error && (
+            <p className={styles.error}>{google_error.message}</p>
+          )}
           <div
             style={{
               display: "flex",

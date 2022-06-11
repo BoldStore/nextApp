@@ -47,10 +47,7 @@ function CustomerLogin() {
       <div className={styles.center}>
         <div className={styles.containerLogin}>
           <p className={styles.heading}>Login</p>
-          {error && <p className={styles.error}>{error.message}</p>}
-          {google_error && (
-            <p className={styles.error}>{google_error.message}</p>
-          )}
+
           <InputComponent
             type="text"
             setValue={setEmail}
@@ -69,6 +66,7 @@ function CustomerLogin() {
           <div className={styles.btn} onClick={handleSubmit}>
             <p>{loading ? "Loading..." : "Login"}</p>
           </div>
+          {error && <p className={styles.error}>{error.message}</p>}
 
           <p style={{ textAlign: "center", color: "var(--lightGrey)" }}>Or </p>
           <div className={styles.whiteBtn} onClick={() => signInWithGoogle()}>
@@ -90,6 +88,10 @@ function CustomerLogin() {
               </div>
             )}
           </div>
+
+          {google_error && (
+            <p className={styles.error}>{google_error.message}</p>
+          )}
           <div
             style={{
               display: "flex",

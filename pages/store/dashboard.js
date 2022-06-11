@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import BarChart from "../../components/StoreComponents/Dashboard/BarChart";
 import LineChart from "../../components/StoreComponents/Dashboard/LineChart";
 import styles from "./store.module.css";
@@ -8,7 +8,8 @@ import DoughnutChart from "../../components/StoreComponents/Dashboard/DoughnutCh
 import BestPost from "../../components/StoreComponents/Dashboard/BestPost";
 import WorstPost from "../../components/StoreComponents/Dashboard/WorstPost";
 import Header from "../../components/CommonComponents/Header";
-
+import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 // import { getCookie } from "cookies-next";
 // import { firebaseAdmin } from "../../firebaseAdmin";
 
@@ -34,31 +35,40 @@ import Header from "../../components/CommonComponents/Header";
 // }
 
 function Dashboard() {
-  return (
-    <>
-      <Header />
-      <div className={styles.container}>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            marginBottom: "1rem",
-          }}
-        >
-          <h1>Dashboard</h1>
+  const profile = useSelector((state) => state.profile);
+  const router = useRouter();
+  useEffect(() => {
+    if (!profile?.isStore) {
+      router.push("/home");
+    }
+  }, [profile]);
+
+  if (profile?.isStore)
+    return (
+      <>
+        <Header />
+        <div className={styles.container}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              marginBottom: "1rem",
+            }}
+          >
+            <h1>Dashboard</h1>
+          </div>
+          <div className={styles.dashboardContainer}>
+            <LineChart />
+            <BarChart />
+            <PieChart />
+            <DoughnutChart />
+            <BestPost />
+            <WorstPost />
+            <Analytics />
+          </div>
         </div>
-        <div className={styles.dashboardContainer}>
-          <LineChart />
-          <BarChart />
-          <PieChart />
-          <DoughnutChart />
-          <BestPost />
-          <WorstPost />
-          <Analytics />
-        </div>
-      </div>
-    </>
-  );
+      </>
+    );
 }
 
 export default Dashboard;
