@@ -1,33 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputComponent from "../../../components/CommonComponents/InputComponent";
 import Header from "../../../components/CommonComponents/Header";
 import styles from "./profile.module.css";
 import BoldButton from "../../../components/CommonComponents/BoldButton";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
-// import { getCookie } from "cookies-next";
-// import { firebaseAdmin } from "../../../firebaseAdmin";
-
-// export async function getServerSideProps({ req, res }) {
-//   const token = getCookie("token", { req, res });
-//   let user;
-//   try {
-//     user = await firebaseAdmin.auth().verifyIdToken(token);
-//     return {
-//       props: {
-//         user,
-//       },
-//     };
-//   } catch (e) {
-//     return {
-//       redirect: {
-//         permanent: false,
-//         destination: "/store/signup",
-//       },
-//       props: {},
-//     };
-//   }
-// }
 
 function CustomerAddress() {
   const [locality, setLocality] = useState("");
