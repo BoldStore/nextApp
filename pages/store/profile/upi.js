@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 import BoldButton from "../../../components/CommonComponents/BoldButton";
 import { useDispatch, useSelector } from "react-redux";
 import { updateStore } from "../../../store/actions/store";
+import { useRouter } from "next/router";
 // import { getCookie } from "cookies-next";
 // import { firebaseAdmin } from "../../../firebaseAdmin";
 
@@ -33,6 +34,7 @@ function ProfileUpi() {
   const dispatch = useDispatch();
   const storeData = useSelector((state) => state.store);
   const profile = useSelector((state) => state.profile);
+  const router = useRouter();
   const [upi, setUpi] = useState("");
   const [mobile, setMobile] = useState("");
 
@@ -48,36 +50,43 @@ function ProfileUpi() {
     }
   }, [profile, profile.data]);
 
-  return (
-    <>
-      <Header />
-      <div className={styles.container}>
-        {storeData.success && (
-          <h1 style={{ color: "green" }}>Saved Succesfully</h1>
-        )}
-        <h1>UPI Details</h1>
-        <InputComponent
-          type="text"
-          setValue={setUpi}
-          value={upi}
-          placeholder={"upi@bank"}
-          noText={true}
-        />
-        <InputComponent
-          type="text"
-          setValue={setMobile}
-          value={mobile}
-          placeholder={"Mobile Number"}
-          noText={true}
-        />
-        <div style={{ marginTop: "3rem" }}></div>
-        <BoldButton
-          text={storeData.isLoading ? "Loading..." : "Update"}
-          onClick={handleSubmit}
-        />
-      </div>
-    </>
-  );
+  useEffect(() => {
+    if (!profile?.isStore) {
+      router.push("/home");
+    }
+  }, [profile]);
+
+  if (profile?.isStore)
+    return (
+      <>
+        <Header />
+        <div className={styles.container}>
+          {storeData.success && (
+            <h1 style={{ color: "green" }}>Saved Succesfully</h1>
+          )}
+          <h1>UPI Details</h1>
+          <InputComponent
+            type="text"
+            setValue={setUpi}
+            value={upi}
+            placeholder={"upi@bank"}
+            noText={true}
+          />
+          <InputComponent
+            type="text"
+            setValue={setMobile}
+            value={mobile}
+            placeholder={"Mobile Number"}
+            noText={true}
+          />
+          <div style={{ marginTop: "3rem" }}></div>
+          <BoldButton
+            text={storeData.isLoading ? "Loading..." : "Update"}
+            onClick={handleSubmit}
+          />
+        </div>
+      </>
+    );
 }
 
 export default ProfileUpi;

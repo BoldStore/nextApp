@@ -5,12 +5,12 @@ import styles from "./styles.module.css";
 import BoldButton from "../../../components/CommonComponents/BoldButton";
 import { useDispatch, useSelector } from "react-redux";
 import { addAddress } from "../../../store/actions/address";
-
+import { useRouter } from "next/router";
 function ProfileAddress() {
   const dispatch = useDispatch();
   const address = useSelector((state) => state.addresses);
   const profile = useSelector((state) => state.profile);
-
+  const router = useRouter();
   const [title, setTitle] = useState("");
   const [addressString, setAddressString] = useState("");
   const [locality, setLocality] = useState("");
@@ -52,65 +52,74 @@ function ProfileAddress() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile, profile.data]);
 
-  return (
-    <>
-      <Header />
-      <div className={styles.container}>
-        <h1>Address Details</h1>
-        {address.success && (
-          <h1 style={{ color: "green" }}>Saved Succesfully</h1>
-        )}
-        {address.errmess && <h1 style={{ color: "red" }}>{address.errmess}</h1>}
-        <InputComponent
-          type="text"
-          setValue={setTitle}
-          value={title}
-          placeholder={"Title"}
-        />
-        <InputComponent
-          type="text"
-          setValue={setLocality}
-          value={locality}
-          placeholder={"Locality"}
-        />
-        <InputComponent
-          type="text"
-          setValue={setAppartment}
-          value={appartment}
-          placeholder={"Appartment/Suite"}
-        />
-        <InputComponent
-          type="text"
-          setValue={setCity}
-          value={city}
-          placeholder={"City"}
-        />
-        <InputComponent
-          type="text"
-          setValue={setState}
-          value={state}
-          placeholder={"State"}
-        />
-        <InputComponent
-          type="text"
-          setValue={setPincode}
-          value={pincode}
-          placeholder={"Pincode"}
-        />
-        <InputComponent
-          type="text"
-          setValue={setNotes}
-          value={notes}
-          placeholder={"Notes"}
-        />
-        <div style={{ marginTop: "3rem" }}></div>
-        <BoldButton
-          text={address?.isLoading ? "Loading..." : "Update"}
-          onClick={handleSubmit}
-        />
-      </div>
-    </>
-  );
+  useEffect(() => {
+    if (!profile?.isStore) {
+      router.push("/home");
+    }
+  }, [profile]);
+
+  if (profile?.isStore)
+    return (
+      <>
+        <Header />
+        <div className={styles.container}>
+          <h1>Address Details</h1>
+          {address.success && (
+            <h1 style={{ color: "green" }}>Saved Succesfully</h1>
+          )}
+          {address.errmess && (
+            <h1 style={{ color: "red" }}>{address.errmess}</h1>
+          )}
+          <InputComponent
+            type="text"
+            setValue={setTitle}
+            value={title}
+            placeholder={"Title"}
+          />
+          <InputComponent
+            type="text"
+            setValue={setLocality}
+            value={locality}
+            placeholder={"Locality"}
+          />
+          <InputComponent
+            type="text"
+            setValue={setAppartment}
+            value={appartment}
+            placeholder={"Appartment/Suite"}
+          />
+          <InputComponent
+            type="text"
+            setValue={setCity}
+            value={city}
+            placeholder={"City"}
+          />
+          <InputComponent
+            type="text"
+            setValue={setState}
+            value={state}
+            placeholder={"State"}
+          />
+          <InputComponent
+            type="text"
+            setValue={setPincode}
+            value={pincode}
+            placeholder={"Pincode"}
+          />
+          <InputComponent
+            type="text"
+            setValue={setNotes}
+            value={notes}
+            placeholder={"Notes"}
+          />
+          <div style={{ marginTop: "3rem" }}></div>
+          <BoldButton
+            text={address?.isLoading ? "Loading..." : "Update"}
+            onClick={handleSubmit}
+          />
+        </div>
+      </>
+    );
 }
 
 export default ProfileAddress;
