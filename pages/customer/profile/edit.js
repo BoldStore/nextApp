@@ -29,7 +29,7 @@ function Edit() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
-      updateUser(name, phoneNumber, instagramUsername, undefined, undefined)
+      updateUser(name, phoneNumber, instagramUsername, undefined, myPreference)
     );
   };
 
