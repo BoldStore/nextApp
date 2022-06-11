@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
@@ -9,6 +9,7 @@ import BoldButton from "../BoldButton";
 import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
 import VerifiedIcon from "@mui/icons-material/Verified";
+
 function Post({
   id,
   storeUrl,
@@ -19,9 +20,11 @@ function Post({
   size,
   caption,
 }) {
+  const [video, setVideo] = useState(false);
   const [text, setText] = useState(caption?.slice(0, 35));
   const [readMore, setReadMore] = useState(false);
   const notify = () => toast("Product Saved!");
+
   return (
     <div className={styles.postContainer}>
       <Link href={`/store/profile/${storeName}`} passHref={true}>
@@ -76,7 +79,7 @@ function Post({
           <MoreHorizIcon className={styles.moreIcon} />
         </div>
       </Link>
-      <Link href={`/product/₹{id}`} passHref={true}>
+      <Link href={`/product/${id}`} passHref={true}>
         <div
           style={{
             overflow: "hidden",
@@ -85,11 +88,18 @@ function Post({
           }}
         >
           {postUrl ? (
-            <img
-              src={postUrl ?? "/assets/shoe2.jpg"}
-              alt="item"
-              className={styles.productImg}
-            />
+            !video ? (
+              <Image
+                onError={() => {
+                  setVideo(true);
+                }}
+                src={postUrl ?? "/assets/shoe2.jpg"}
+                alt="item"
+                className={styles.productImg}
+              />
+            ) : (
+              <video src={postUrl} muted autoPlay={false} />
+            )
           ) : (
             <Skeleton count={1} width={"100%"} height={400} />
           )}

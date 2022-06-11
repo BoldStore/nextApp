@@ -38,6 +38,9 @@ export const CHECK_DELIVERY = "orders/checkForDelivery";
 // Invite code
 export const ADD_INVITE_CODE = "codes/";
 
+// Product
+export const GET_PRODUCT = "product";
+
 // TEST
 export const SEND_MAIL = "test/sendMail";
 export const PING_SERVER = "test";
