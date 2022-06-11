@@ -28,7 +28,7 @@ function Post({
 
   return (
     <div className={styles.postContainer}>
-      <Link href={`/store/profile/${storeName}`} passHref={true}>
+      <Link href={`/store/${storeName}`} passHref={true}>
         <div className={styles.postHeader}>
           <div className={styles.userInfo}>
             {storeUrl ? (
