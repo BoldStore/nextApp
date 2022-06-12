@@ -33,7 +33,7 @@ function ProductPage() {
       <Header />
       <div className={styles.container}>
         <ProductComponent product={product} />
-        {product.product.length > 0 && (
+        {product?.product?.length > 0 && (
           <>
             <h1>More From the Store </h1>
             <div className={styles.flexDiv}>

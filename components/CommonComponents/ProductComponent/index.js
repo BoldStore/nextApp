@@ -14,8 +14,8 @@ function ProductComponent({ product }) {
     <>
       <div className={styles.productContainer}>
         <div>
-          <Image
-            src={product.product.imgUrl}
+          <img
+            src={product?.product?.imgUrl}
             alt="item"
             width="650"
             height="650"
@@ -24,7 +24,7 @@ function ProductComponent({ product }) {
         </div>
         <div className={styles.productInfo}>
           <h1 style={{ marginTop: 0 }}>
-            {product.product.name ?? `Product By ${product.store.name}`}
+            {product?.product?.name ?? `Product By ${product?.store?.name}`}
           </h1>
           <div className={styles.userInfo}>
             <Avatar
@@ -38,17 +38,17 @@ function ProductComponent({ product }) {
               }}
             />
             <div className={styles.nameLocation}>
-              <p>{product.store.full_name ?? ""}</p>
-              <p style={{ opacity: 0.5 }}>{product.store.username}</p>
+              <p>{product?.store?.full_name ?? ""}</p>
+              <p style={{ opacity: 0.5 }}>{product?.store?.username}</p>
             </div>
           </div>
           <p>{product?.product?.caption ?? ""}</p>
           <div>
             <RWebShare
               data={{
-                text: `Hey, checkout this amazing ${product.store.full_name} Product on Bold.`,
-                url: `https://www.boldstore.in/product/${product.product.id}`,
-                title: `${product.store.full_name} on Bold`,
+                text: `Hey, checkout this amazing ${product?.store?.full_name} Product on Bold.`,
+                url: `https://www.boldstore.in/product/${product?.product?.id}`,
+                title: `${product?.store?.full_name} on Bold`,
               }}
               className={styles.share}
               style={{ color: "var(--black) !important" }}
