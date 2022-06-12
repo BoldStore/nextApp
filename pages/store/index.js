@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import styles from "../../styles/common.module.css";
 import Post from "../../components/CommonComponents/Post";

@@ -13,6 +13,7 @@ import { getProfile } from "../store/actions/profile";
 import Loading from "../components/Loading";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import RouteGuard from "../components/RouteGuard";
 
 function MyApp({ Component, pageProps }) {
   const dispatch = useDispatch();
@@ -145,7 +146,9 @@ function MyApp({ Component, pageProps }) {
 
         <NextNProgress color="#e3e3e3" height={2} />
 
-        <Component {...pageProps} />
+        <RouteGuard>
+          <Component {...pageProps} />
+        </RouteGuard>
       </SkeletonTheme>
     </>
   );
