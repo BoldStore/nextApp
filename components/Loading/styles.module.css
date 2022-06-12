@@ -7,4 +7,5 @@
   align-items: center;
   background-color: var(--black);
   cursor: none;
+  position: absolute;
 }
