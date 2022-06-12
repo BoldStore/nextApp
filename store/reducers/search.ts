@@ -22,7 +22,7 @@ const addressReducer = (state = initState, action: any) => {
         ...state,
         isLoading: false,
         errmess: null,
-        stores: action.data.stores,
+        stores: action.data,
         stores_success: true,
       };
 
@@ -46,7 +46,7 @@ const addressReducer = (state = initState, action: any) => {
         ...state,
         isLoading: false,
         errmess: null,
-        products: action.data.products,
+        products: action.data,
         products_success: true,
       };
 

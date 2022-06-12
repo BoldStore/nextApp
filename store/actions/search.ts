@@ -12,7 +12,7 @@ export const searchStores = (term: string) => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.SEARCH_STORES_REQUEST });
     try {
-      const results = await client.index("startups").search(term);
+      const results = await client.index("stores").search(term);
 
       dispatch({
         type: ActionTypes.SEARCH_STORES_SUCCESS,

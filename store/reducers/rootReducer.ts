@@ -8,6 +8,7 @@ import profileReducer from "./profile";
 import storeReducer from "./store";
 import testReducer from "./test";
 import userReducer from "./user";
+import searchReducer from "./search";
 
 const rootReducer: Reducer<any> = combineReducers({
   store: storeReducer,
@@ -18,6 +19,7 @@ const rootReducer: Reducer<any> = combineReducers({
   pages: pagesReducer,
   profile: profileReducer,
   products: productsReducer,
+  search: searchReducer,
   test: testReducer,
 });
 
