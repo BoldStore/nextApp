@@ -141,18 +141,19 @@ function Post({
           >
             {!readMore ? text : caption}
             {!readMore && "..."}
-            <p
+            <span
               style={{
                 cursor: "pointer",
                 color: "var(--lightGrey)",
                 marginBottom: 0,
+                fontSize: "0.75rem",
               }}
               onClick={() => {
                 setReadMore(!readMore);
               }}
             >
-              {readMore ? "Show Less" : " Read More"}
-            </p>
+              {readMore ? " Show Less" : " Read More"}
+            </span>
           </p>
         </>
       ) : (
