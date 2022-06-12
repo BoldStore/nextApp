@@ -76,7 +76,7 @@ function StoreHomePage() {
               postUrl={product.imgUrl}
               key={index}
               storeUrl={product?.store?.profile_pic}
-              storeLocation={"New Delhi"}
+              storeLocation={product?.store?.city ?? ""}
               storeName={product?.store?.username}
               caption={product.caption}
               price={product.price}
