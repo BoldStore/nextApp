@@ -26,3 +26,22 @@ export const searchStores = (term: string) => {
     }
   };
 };
+
+export const searchProducts = (term: string) => {
+  return async (dispatch: Dispatch) => {
+    dispatch({ type: ActionTypes.SEARCH_PRODUCTS_REQUEST });
+    try {
+      const results = await client.index("products").search(term);
+
+      dispatch({
+        type: ActionTypes.SEARCH_PRODUCTS_SUCCESS,
+        data: results.hits,
+      });
+    } catch (e) {
+      dispatch({
+        type: ActionTypes.SEARCH_PRODUCTS_FAILED,
+        errmess: e,
+      });
+    }
+  };
+};

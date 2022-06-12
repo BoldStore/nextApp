@@ -3,7 +3,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import styles from "./styles.module.css";
 import useDebounce from "../../../hooks/useDebounce";
 import { useDispatch } from "react-redux";
-import { searchStores } from "../../../store/actions/search";
+import { searchProducts, searchStores } from "../../../store/actions/search";
 
 function SearchComponent() {
   const dispatch = useDispatch();
@@ -13,6 +13,7 @@ function SearchComponent() {
   const getData = () => {
     if (term) {
       dispatch(searchStores(term));
+      dispatch(searchProducts(term));
     }
   };
 
