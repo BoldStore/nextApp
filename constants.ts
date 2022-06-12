@@ -41,6 +41,10 @@ export const ADD_INVITE_CODE = "codes/";
 // Product
 export const GET_PRODUCT = "product";
 
+// Search
+export const MEILI_URL = "http://127.0.0.1:7700";
+export const MEILI_API_KEY = "masteKey";
+
 // TEST
 export const SEND_MAIL = "test/sendMail";
 export const PING_SERVER = "test";
