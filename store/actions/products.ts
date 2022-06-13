@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { Dispatch } from "redux";
 import instance from "../../axios";
 import { GET_PRODUCT, SAVE_PRODUCT } from "../../constants";
@@ -40,6 +41,8 @@ export const saveProduct = (productId: string) => {
       dispatch({
         type: ActionTypes.SAVE_PRODUCT_SUCCESS,
       });
+
+      toast("Product Saved!");
     } catch (e) {
       dispatch({
         type: ActionTypes.SAVE_PRODUCT_FAILED,

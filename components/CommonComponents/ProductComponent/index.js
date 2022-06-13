@@ -4,17 +4,21 @@ import Avatar from "@mui/material/Avatar";
 import Image from "next/image";
 import { Bookmark, Send } from "react-feather";
 import BoldButton from "../BoldButton";
-import { toast } from "react-toastify";
 import { RWebShare } from "react-web-share";
+import { useDispatch } from "react-redux";
+import { saveProduct } from "../../../store/actions/products";
 
 function ProductComponent({ product }) {
-  const notify = () => toast("Product Saved!");
+  const dispatch = useDispatch();
+  const saveProductInDb = () => {
+    dispatch(saveProduct(product.id));
+  };
 
   return (
     <>
       <div className={styles.productContainer}>
         <div>
-          <img
+          <Image
             src={product?.product?.imgUrl}
             alt="item"
             width="650"
@@ -57,7 +61,7 @@ function ProductComponent({ product }) {
               <Send className={styles.icon} />
             </RWebShare>
 
-            <Bookmark className={styles.icon} onClick={notify} />
+            <Bookmark className={styles.icon} onClick={saveProductInDb} />
           </div>
           <div className={styles.priceContainer}>
             <p>Price: ₹200</p>
