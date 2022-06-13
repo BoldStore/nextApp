@@ -2,6 +2,7 @@ import * as ActionTypes from "../ActionTypes";
 
 const initState = {
   isLoading: false,
+  saved_success: false,
   errmess: null,
   product: null,
   store: null,
@@ -34,6 +35,53 @@ const productsReducer = (state = initState, action: any) => {
         errmess: action.data?.errmess,
         product: null,
         store: null,
+      };
+
+    case ActionTypes.SAVE_PRODUCT_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        errmess: null,
+        saved_success: false,
+      };
+
+    case ActionTypes.SAVE_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        errmess: null,
+        saved_success: true,
+      };
+
+    case ActionTypes.SAVE_PRODUCT_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        errmess: action.data?.errmess,
+        saved_success: false,
+      };
+
+    case ActionTypes.GET_SAVED_PRODUCTS_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        errmess: null,
+      };
+
+    case ActionTypes.GET_SAVED_PRODUCTS_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        errmess: null,
+        products: action.products,
+      };
+
+    case ActionTypes.GET_SAVED_PRODUCTS_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        errmess: action.data?.errmess,
+        products: [],
       };
 
     default:

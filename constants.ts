@@ -40,6 +40,7 @@ export const ADD_INVITE_CODE = "codes/";
 
 // Product
 export const GET_PRODUCT = "product";
+export const SAVE_PRODUCT = "product/save";
 
 // Search
 export const MEILI_URL = "http://127.0.0.1:7700";
