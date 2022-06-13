@@ -51,6 +51,11 @@ export const saveProduct = (productId: string) => {
           (e as any).response?.data ??
           e,
       });
+      toast(
+        `There was an error - ${
+          (e as any).response?.data?.err?.message ?? "Could not save store data"
+        }`
+      );
     }
   };
 };
