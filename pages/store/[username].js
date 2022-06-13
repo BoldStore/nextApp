@@ -17,6 +17,7 @@ import { storePage } from "../../store/actions/pages";
 import Loading from "../../components/Loading";
 import { Avatar } from "@mui/material";
 import StoreComingSoon from "../../components/StoreComponents/StoreComingSoon";
+import Link from "next/link";
 
 function StorePage() {
   const { query } = useRouter();
@@ -94,7 +95,12 @@ function StorePage() {
               justifyContent: "center",
             }}
           >
-            <h1>@{store?.store?.store?.username}</h1>
+            <Link
+              passHref={true}
+              href={`https://www.instagram.com/${store?.store?.store?.username}`}
+            >
+              <h1>@{store?.store?.store?.username}</h1>
+            </Link>
 
             {store?.store?.store?.isCompleted == true && (
               <VerifiedIcon
