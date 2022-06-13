@@ -35,7 +35,7 @@ function Edit() {
 
   const setData = () => {
     setName(profile?.data?.data?.name ?? "");
-    setAge(profile?.data?.data?.age ?? "");
+    setAge(profile?.data?.data?.birthday ?? "");
     setEmail(profile?.data?.data?.email ?? "");
     setPhoneNumber(profile?.data?.data?.phone ?? "");
     setInstagramUsername(profile?.data?.data?.insta_username ?? "");
