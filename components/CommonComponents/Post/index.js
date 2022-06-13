@@ -9,6 +9,7 @@ import BoldButton from "../BoldButton";
 import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
 import VerifiedIcon from "@mui/icons-material/Verified";
+import { useSelector } from "react-redux";
 
 function Post({
   id,
@@ -23,12 +24,20 @@ function Post({
   const [video, setVideo] = useState(false);
   const [text, setText] = useState(caption?.slice(0, 35));
   const [readMore, setReadMore] = useState(false);
+  const profile = useSelector((state) => state.profile);
 
   const notify = () => toast("Product Saved!");
 
   return (
     <div className={styles.postContainer}>
-      <Link href={`/store/${storeName}`} passHref={true}>
+      <Link
+        href={
+          profile?.data?.data?.username == storeName
+            ? `/profile`
+            : `/store/${storeName}`
+        }
+        passHref={true}
+      >
         <div className={styles.postHeader}>
           <div className={styles.userInfo}>
             {storeUrl ? (

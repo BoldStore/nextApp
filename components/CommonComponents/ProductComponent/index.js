@@ -5,20 +5,21 @@ import Image from "next/image";
 import { Bookmark, Send } from "react-feather";
 import BoldButton from "../BoldButton";
 import { RWebShare } from "react-web-share";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { saveProduct } from "../../../store/actions/products";
-
+import Link from "next/link";
 function ProductComponent({ product }) {
   const dispatch = useDispatch();
   const saveProductInDb = () => {
     dispatch(saveProduct(product.id));
   };
+  const profile = useSelector((state) => state.profile);
 
   return (
     <>
       <div className={styles.productContainer}>
         <div>
-          <Image
+          <img
             src={product?.product?.imgUrl}
             alt="item"
             width="650"
@@ -28,24 +29,34 @@ function ProductComponent({ product }) {
         </div>
         <div className={styles.productInfo}>
           <h1 style={{ marginTop: 0 }}>
-            {product?.product?.name ?? `Product By ${product?.store?.name}`}
+            {product?.product?.name ??
+              `Product By ${product?.store?.full_name}`}
           </h1>
-          <div className={styles.userInfo}>
-            <Avatar
-              alt="Store Profile Pic"
-              src={product?.store?.profile_pic}
-              sx={{
-                width: 50,
-                height: 50,
-                cursor: "pointer",
-                border: "1px solid var(--darkGrey)",
-              }}
-            />
-            <div className={styles.nameLocation}>
-              <p>{product?.store?.full_name ?? ""}</p>
-              <p style={{ opacity: 0.5 }}>{product?.store?.username}</p>
+          <Link
+            passHref={true}
+            href={
+              profile?.data?.data?.username == product?.store?.username
+                ? `/profile`
+                : `/store/${product?.store?.username}`
+            }
+          >
+            <div className={styles.userInfo}>
+              <Avatar
+                alt="Store Profile Pic"
+                src={product?.store?.profile_pic}
+                sx={{
+                  width: 50,
+                  height: 50,
+                  cursor: "pointer",
+                  border: "1px solid var(--darkGrey)",
+                }}
+              />
+              <div className={styles.nameLocation}>
+                <p>{product?.store?.full_name ?? ""}</p>
+                <p style={{ opacity: 0.5 }}>{product?.store?.username}</p>
+              </div>
             </div>
-          </div>
+          </Link>
           <p>{product?.product?.caption ?? ""}</p>
           <div>
             <RWebShare
