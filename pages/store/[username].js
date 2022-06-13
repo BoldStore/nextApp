@@ -24,9 +24,19 @@ function StorePage() {
   const store = useSelector((state) => state.pages);
   const profile = useSelector((state) => state.profile);
   const [value, setValue] = useState(0);
+  const router = useRouter();
   const handleChange = (i) => {
     setValue(i);
   };
+
+  // useEffect(() => {
+  //   if (query?.username) {
+  //     if (query?.username == profile?.data?.data?.username) {
+  //       router.push("/profile");
+  //     }
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [query]);
 
   useEffect(() => {
     if (query?.username) {
