@@ -123,12 +123,19 @@ function StorePage() {
               </div>
             ) : value == 1 ? (
               <div className={styles.postContainer}>
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
+                {store?.store?.products?.map((product, index) => (
+                  <Post
+                    postUrl={product.imgUrl}
+                    key={index}
+                    storeUrl={store?.store?.store?.profile_pic}
+                    storeLocation={store?.store?.store?.city ?? ""}
+                    storeName={store?.store?.store?.username}
+                    caption={product.caption}
+                    price={product.price}
+                    size={product.size}
+                    id={product.id}
+                  />
+                ))}
               </div>
             ) : (
               <></>

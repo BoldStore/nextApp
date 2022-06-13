@@ -72,10 +72,40 @@ function StoreHeader() {
               <ShoppingBag className={styles.navLinks} />
             </Link>
             <Link href="/store/profile/upi">
-              <CreditCard className={styles.navLinks} />
+              <div style={{ position: "relative" }}>
+                <CreditCard className={styles.navLinks} />
+                {!profile?.data?.paymentDetails && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      height: "9px",
+                      width: "9px",
+                      top: -1,
+                      right: 20,
+                      backgroundColor: "#1DA1F2",
+                      borderRadius: "50%",
+                    }}
+                  ></div>
+                )}
+              </div>
             </Link>
             <Link href="/store/profile/address">
-              <Truck className={styles.navLinks} />
+              <div style={{ position: "relative" }}>
+                <Truck className={styles.navLinks} />
+                {!profile?.data?.address && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      height: "9px",
+                      width: "9px",
+                      top: -1,
+                      right: 20,
+                      backgroundColor: "#1DA1F2",
+                      borderRadius: "50%",
+                    }}
+                  ></div>
+                )}
+              </div>
             </Link>
             {user && <LogOut onClick={logout} className={styles.navLinks} />}
           </div>

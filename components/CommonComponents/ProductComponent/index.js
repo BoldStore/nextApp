@@ -8,6 +8,7 @@ import { RWebShare } from "react-web-share";
 import { useDispatch, useSelector } from "react-redux";
 import { saveProduct } from "../../../store/actions/products";
 import Link from "next/link";
+import VerifiedIcon from "@mui/icons-material/Verified";
 function ProductComponent({ product }) {
   const dispatch = useDispatch();
   const saveProductInDb = () => {
@@ -51,9 +52,28 @@ function ProductComponent({ product }) {
                   border: "1px solid var(--darkGrey)",
                 }}
               />
+
               <div className={styles.nameLocation}>
-                <p>{product?.store?.full_name ?? ""}</p>
-                <p style={{ opacity: 0.5 }}>{product?.store?.username}</p>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <p>{product?.store?.full_name ?? ""}</p>
+                  <p>
+                    <VerifiedIcon
+                      style={{
+                        marginLeft: "0.5rem",
+                        fontSize: "1.2rem",
+                        color: "#1DA1F2",
+                        marginBottom: "-0.1rem",
+                      }}
+                    />
+                  </p>
+                </div>
+                <p style={{ opacity: 0.5 }}>{product?.store?.city}</p>
               </div>
             </div>
           </Link>

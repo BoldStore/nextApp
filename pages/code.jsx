@@ -41,8 +41,9 @@ const Code = () => {
     <>
       <Header />
       <div className={styles.container}>
-        {storeData?.isLoading && <Loading />}
-        {!storeData?.success && storeData?.errmess ? (
+        {storeData?.isLoading ? (
+          <></>
+        ) : !storeData?.success && storeData?.errmess ? (
           <div
             style={{
               display: "flex",
@@ -59,11 +60,14 @@ const Code = () => {
           </div>
         ) : (
           <>
-            {/* <p>We're fetching your posts! This may take a while...</p>
+            <p>We&apos;re fetching your posts! This may take a while...</p>
             <div>Code: {code}</div>
             <br />
-            <div>Store: {storeData?.store?.insta_username}</div> */}
+            <div>Store: {storeData?.store?.insta_username}</div>
             <StoreComingSoon text={"Your Posts Are Being Fetched..."} />
+            <h3 style={{ textAlign: "center" }}>
+              Please don&apos;t leave the screen
+            </h3>
           </>
         )}
       </div>

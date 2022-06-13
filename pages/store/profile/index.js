@@ -9,6 +9,7 @@ import VerifiedIcon from "@mui/icons-material/Verified";
 import SignUpComplete from "../../../components/StoreComponents/SignupComplete";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import Post from "../../../components/CommonComponents/Post";
 
 function StoreProfile() {
   const profile = useSelector((state) => state.profile);
@@ -87,12 +88,19 @@ function StoreProfile() {
                 </div>
               ) : value == 1 ? (
                 <div className={styles.postContainer}>
-                  {/* <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post /> */}
+                  {profile?.products?.map((product, index) => (
+                    <Post
+                      postUrl={product.imgUrl}
+                      key={index}
+                      storeUrl={product?.store?.profile_pic}
+                      storeLocation={product?.store?.city ?? ""}
+                      storeName={product?.store?.username}
+                      caption={product.caption}
+                      price={product.price}
+                      size={product.size}
+                      id={product.id}
+                    />
+                  ))}
                 </div>
               ) : (
                 <></>
