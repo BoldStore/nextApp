@@ -67,6 +67,9 @@ function StoreProfile() {
                 />
               )}
             </div>
+            <p style={{ color: "var(--lightGrey)", cursor: "pointer" }}>
+              Refresh Products
+            </p>
           </div>
           <div className={styles.tabs}>
             <TabsStoreProfile />
