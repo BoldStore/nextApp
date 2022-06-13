@@ -17,6 +17,7 @@ import { storePage } from "../../store/actions/pages";
 import Loading from "../../components/Loading";
 import { Avatar } from "@mui/material";
 import StoreComingSoon from "../../components/StoreComponents/StoreComingSoon";
+import Link from "next/link";
 
 function StorePage() {
   const { query } = useRouter();
@@ -25,6 +26,7 @@ function StorePage() {
   const profile = useSelector((state) => state.profile);
   const [value, setValue] = useState(0);
   const router = useRouter();
+  const [products, setProducts] = useState([]);
   const handleChange = (i) => {
     setValue(i);
   };
@@ -38,12 +40,29 @@ function StorePage() {
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [query]);
 
+  function chunk(items, size) {
+    const chunks = [];
+    items = [].concat(...items);
+
+    while (items.length) {
+      chunks.push(items.splice(0, size));
+    }
+
+    return chunks;
+  }
+
   useEffect(() => {
     if (query?.username) {
       dispatch(storePage(query.username));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
+
+  useEffect(() => {
+    if (store?.store?.products) {
+      setProducts(chunk(store?.store?.products, 6));
+    }
+  }, [store?.store?.products]);
 
   if (store.store_loading) {
     return <Loading />;
@@ -94,7 +113,12 @@ function StorePage() {
               justifyContent: "center",
             }}
           >
-            <h1>@{store?.store?.store?.username}</h1>
+            <Link
+              passHref={true}
+              href={`https://www.instagram.com/${store?.store?.store?.username}`}
+            >
+              <h1>@{store?.store?.store?.username}</h1>
+            </Link>
 
             {store?.store?.store?.isCompleted == true && (
               <VerifiedIcon
@@ -115,10 +139,13 @@ function StorePage() {
             value == 0 ? (
               <div className={styles.products}>
                 <div className={styles.productsGrid}>
-                  <Grid1 />
+                  {products.map((arr, i) => (
+                    <Grid1 key={i} products={arr} />
+                  ))}
+                  {/* <Grid1 />
                   <Grid2 />
                   <Grid3 />
-                  <Grid4 />
+                  <Grid4 /> */}
                 </div>
               </div>
             ) : value == 1 ? (

@@ -10,6 +10,7 @@ import SignUpComplete from "../../../components/StoreComponents/SignupComplete";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import Post from "../../../components/CommonComponents/Post";
+import Link from "next/link";
 
 function StoreProfile() {
   const profile = useSelector((state) => state.profile);
@@ -57,7 +58,12 @@ function StoreProfile() {
                 justifyContent: "center",
               }}
             >
-              <h1>@{profile?.data?.data?.username}</h1>
+              <Link
+                passHref={true}
+                href={`https://www.instagram.com/${profile?.data?.data?.username}`}
+              >
+                <h1>@{profile?.data?.data?.username}</h1>
+              </Link>
               {profile.data?.percentage == 100 && (
                 <VerifiedIcon
                   style={{
