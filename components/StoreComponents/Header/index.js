@@ -74,7 +74,7 @@ function StoreHeader() {
             <Link href="/store/profile/upi">
               <div style={{ position: "relative" }}>
                 <CreditCard className={styles.navLinks} />
-                {!profile.data.paymentDetails && (
+                {!profile?.data?.paymentDetails && (
                   <div
                     style={{
                       position: "absolute",
@@ -92,7 +92,7 @@ function StoreHeader() {
             <Link href="/store/profile/address">
               <div style={{ position: "relative" }}>
                 <Truck className={styles.navLinks} />
-                {!profile.data.address && (
+                {!profile?.data?.address && (
                   <div
                     style={{
                       position: "absolute",

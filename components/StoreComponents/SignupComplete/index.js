@@ -54,8 +54,8 @@ function SignUpComplete() {
           flexWrap: "wrap",
         }}
       >
-        {!profile.data.paymentDetails && <UpiCard />}
-        {!profile.data.address && <AddressCard />}
+        {!profile?.data?.paymentDetails && <UpiCard />}
+        {!profile?.data?.address && <AddressCard />}
       </div>
     </div>
   );
