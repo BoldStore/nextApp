@@ -79,11 +79,10 @@ function Post({
               ) : (
                 <Skeleton count={1} width={100} height={12} />
               )}
-              {storeLocation ? (
-                <p style={{ opacity: 0.5 }}>{storeLocation ?? "India"}</p>
-              ) : (
-                <Skeleton count={1} width={50} height={10} />
-              )}
+
+              <p style={{ opacity: 0.5 }}>
+                {storeLocation ? storeLocation : "India"}
+              </p>
             </div>
           </div>
           <MoreHorizIcon className={styles.moreIcon} />
