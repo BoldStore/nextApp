@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import InputComponent from "../../components/CommonComponents/InputComponent";
@@ -23,7 +24,7 @@ function StoreSignup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [strongPassword, setStrongPassword] = useState(false);
+  // const [strongPassword, setStrongPassword] = useState(false);
   const [error, setError] = useState("");
   const [createUserWithEmailAndPassword, user, loading, signupError] =
     useCreateUserWithEmailAndPassword(auth);
@@ -40,7 +41,7 @@ function StoreSignup() {
     const validEmail = isEmail(email);
     const passwordValid = equals(password, confirmPassword);
 
-    if (validEmail && passwordValid && strongPassword) {
+    if (validEmail && passwordValid) {
       return true;
     }
 
@@ -72,11 +73,11 @@ function StoreSignup() {
     }
   }, [user, currentUser]);
 
-  useEffect(() => {
-    if (isStrongPassword(password)) {
-      setStrongPassword(true);
-    }
-  }, [password]);
+  // useEffect(() => {
+  //   if (isStrongPassword(password)) {
+  //     setStrongPassword(true);
+  //   }
+  // }, [password]);
 
   useEffect(() => {
     // 3. Create a new store in the database (open insta access page)
@@ -149,6 +150,7 @@ function StoreSignup() {
                 }}
               >
                 <img
+                  alt="Google Logo"
                   src="/assets/google.png"
                   style={{ height: "2rem", marginRight: "0.5rem" }}
                 />
