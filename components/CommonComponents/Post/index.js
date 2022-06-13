@@ -27,6 +27,17 @@ function Post({
   const profile = useSelector((state) => state.profile);
 
   const notify = () => toast("Product Saved!");
+  const [activeTheme, setActiveTheme] = useState("");
+  const inactiveTheme = activeTheme === "dark" ? "light" : "dark";
+  const [svgMode, setSvgMode] = useState("dark");
+
+  useEffect(() => {
+    if (activeTheme) {
+      document.body.dataset.theme = activeTheme;
+      window.localStorage.setItem("theme", activeTheme);
+      setSvgMode(activeTheme);
+    }
+  }, [activeTheme]);
 
   return (
     <div className={styles.postContainer}>
@@ -66,12 +77,23 @@ function Post({
                 >
                   <p>{storeName}</p>
                   <p>
-                    <VerifiedIcon
+                    {/* <VerifiedIcon
                       style={{
                         marginLeft: "0.5rem",
                         fontSize: "1.2rem",
                         color: "#1DA1F2",
                         marginBottom: "-0.1rem",
+                      }}
+                    /> */}
+                    <Avatar
+                      src={`/assets/VerifiedIcon/${svgMode}.svg`}
+                      alt="verified"
+                      sx={{
+                        width: 12,
+                        height: 12,
+                      }}
+                      style={{
+                        marginLeft: "0.2rem",
                       }}
                     />
                   </p>

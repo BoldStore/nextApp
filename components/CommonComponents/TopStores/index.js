@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Avatar from "@mui/material/Avatar";
 import Skeleton from "react-loading-skeleton";
 import VerifiedIcon from "@mui/icons-material/Verified";
@@ -9,6 +9,18 @@ function TopStores({ storeUrl, storeName, username }) {
   const goToStore = () => {
     router.push(`/store/${username}`);
   };
+
+  const [activeTheme, setActiveTheme] = useState("");
+  const inactiveTheme = activeTheme === "dark" ? "light" : "dark";
+  const [svgMode, setSvgMode] = useState("dark");
+
+  useEffect(() => {
+    if (activeTheme) {
+      document.body.dataset.theme = activeTheme;
+      window.localStorage.setItem("theme", activeTheme);
+      setSvgMode(activeTheme);
+    }
+  }, [activeTheme]);
 
   return (
     <div
@@ -52,11 +64,22 @@ function TopStores({ storeUrl, storeName, username }) {
             {username}
           </p>
           <p>
-            <VerifiedIcon
+            {/* <VerifiedIcon
               style={{
                 marginLeft: "0.3rem",
                 fontSize: "1rem",
                 color: "#1DA1F2",
+              }}
+            /> */}
+            <Avatar
+              src={`/assets/VerifiedIcon/${svgMode}.svg`}
+              alt="verified"
+              sx={{
+                width: 10,
+                height: 10,
+              }}
+              style={{
+                marginLeft: "0.2rem",
               }}
             />
           </p>
