@@ -41,8 +41,9 @@ const Code = () => {
     <>
       <Header />
       <div className={styles.container}>
-        {storeData?.isLoading && <Loading />}
-        {!storeData?.success && storeData?.errmess ? (
+        {storeData?.isLoading ? (
+          <Loading />
+        ) : !storeData?.success && storeData?.errmess ? (
           <div
             style={{
               display: "flex",
