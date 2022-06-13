@@ -37,6 +37,7 @@
   transition: transform 0.4s;
   width: 100%;
   max-width: 700px;
+  min-width: 40vw;
 }
 
 .icon {
