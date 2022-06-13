@@ -8,6 +8,42 @@ const client = new MeiliSearch({
   apiKey: MEILI_API_KEY,
 });
 
+export const explorePage = () => {
+  return async (dispatch: Dispatch) => {
+    dispatch({ type: ActionTypes.EXPLORE_PAGE_REQUEST });
+    try {
+      let data: Array<any> = [];
+      const storeData = await client.index("stores").search("", {
+        limit: 30,
+      });
+      const stores = storeData.hits;
+
+      for (let i = 0; i < stores.length; i++) {
+        const store = stores[i];
+        const productsData = await client.index("products").search("", {
+          limit: 6,
+          filter: [`store = ${store.id}`],
+        });
+
+        data.push({
+          store: store,
+          products: productsData.hits,
+        });
+      }
+
+      dispatch({
+        type: ActionTypes.EXPLORE_PAGE_SUCCESS,
+        data,
+      });
+    } catch (e) {
+      dispatch({
+        type: ActionTypes.EXPLORE_PAGE_FAILED,
+        errmess: e,
+      });
+    }
+  };
+};
+
 export const searchStores = (term: string) => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.SEARCH_STORES_REQUEST });
