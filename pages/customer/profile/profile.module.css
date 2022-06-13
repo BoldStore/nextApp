@@ -52,6 +52,27 @@
   margin-bottom: 0px;
 }
 
+.input {
+  color: var(--white);
+  background-color: var(--black) !important;
+  padding: 1rem;
+  padding-left: 0.5rem;
+  border: 0px;
+  font-size: 1rem;
+  border: 1px solid var(--darkGrey);
+  border-radius: 0.5rem;
+  width: 100%;
+  font-family: "Inter";
+  display: flex;
+  /* padding: 1rem 1rem; */
+  margin-top: 0.5rem;
+}
+
+.input:hover {
+  border-color: var(--lightGrey);
+  transition: 0.3s all;
+}
+
 @media (max-width: 1050px) {
   .sizeChip {
     margin-right: 1.5rem;

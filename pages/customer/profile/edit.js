@@ -89,15 +89,24 @@ function Edit() {
             value={age}
             placeholder={"Age"}
           /> */}
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
+
+          <InputComponent
+            type="date"
+            setValue={setAge}
+            value={age}
+            placeholder={"Birthday"}
+          />
+          {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
             <MobileDatePicker
+              className={styles.input}
+              sx={{ color: "var(--white)" }}
               label="Date Of Birth"
               inputFormat="dd/MM/yyyy"
               value={age}
               onChange={(newValue) => setAge(newValue)}
               renderInput={(params) => <TextField {...params} />}
             />
-          </LocalizationProvider>
+          </LocalizationProvider> */}
 
           <InputComponent
             type="text"

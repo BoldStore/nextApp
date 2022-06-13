@@ -30,6 +30,7 @@ function InputComponent({
         }}
         type={type == "password" ? passType : type}
         placeholder={placeholder}
+        style={{ colorScheme: type == "date" && "dark" }}
       />
       {type == "password" && value.length > 0 && passType != "text" ? (
         <Eye className={styles.eye} onClick={() => setPassType("text")} />
