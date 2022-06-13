@@ -19,6 +19,7 @@ import { Avatar } from "@mui/material";
 import StoreComingSoon from "../../components/StoreComponents/StoreComingSoon";
 import Link from "next/link";
 import OneImg from "../../components/CommonComponents/Grids/oneImg";
+import UsernameTabs from "../../components/StoreComponents/UsernameTabs";
 
 function StorePage() {
   const { query } = useRouter();
@@ -31,15 +32,6 @@ function StorePage() {
   const handleChange = (i) => {
     setValue(i);
   };
-
-  // useEffect(() => {
-  //   if (query?.username) {
-  //     if (query?.username == profile?.data?.data?.username) {
-  //       router.push("/profile");
-  //     }
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [query]);
 
   function randomNumberInRange(min, max) {
     // 👇️ get number between min (inclusive) and max (inclusive)
@@ -138,7 +130,7 @@ function StorePage() {
           </div>
         </div>
         <div className={styles.tabs}>
-          <TabsStoreProfile />
+          <UsernameTabs products={products} profile={profile} store={store} />
         </div>
         <div className={styles.desktopTabs}>
           {profile.data?.percentage == 100 ? (

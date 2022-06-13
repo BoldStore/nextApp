@@ -61,7 +61,7 @@ function ProductComponent({ product }) {
                     justifyContent: "center",
                   }}
                 >
-                  <p>{product?.store?.full_name ?? ""}</p>
+                  <p>{product?.store?.username ?? ""}</p>
                   <p>
                     <VerifiedIcon
                       style={{
@@ -73,21 +73,23 @@ function ProductComponent({ product }) {
                     />
                   </p>
                 </div>
-                <p style={{ opacity: 0.5 }}>{product?.store?.city}</p>
+                <p style={{ opacity: 0.5 }}>
+                  {product?.store?.city ?? "India"}
+                </p>
               </div>
             </div>
           </Link>
-          <p>{product?.product?.caption ?? ""}</p>
+          <p>{product?.product?.caption ?? "No Caption"}</p>
           <div>
             <RWebShare
               data={{
-                text: `Hey, checkout this amazing ${product?.store?.full_name} Product on Bold.`,
+                text: `Hey, checkout this amazing ${product?.store?.username} Product on Bold.`,
                 url: `https://www.boldstore.in/product/${product?.product?.id}`,
                 title: `${product?.store?.full_name} on Bold`,
               }}
               className={styles.share}
               style={{ color: "var(--black) !important" }}
-              onClick={() => console.log("shared successfully!")}
+              onClick={() => console.log("Shared successfully!")}
             >
               <Send className={styles.icon} />
             </RWebShare>
