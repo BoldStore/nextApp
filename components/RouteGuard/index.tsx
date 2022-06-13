@@ -36,6 +36,8 @@ export default function RouteGuard({ children }: any) {
       "/search",
       "/customer/signup",
       "/store/signup",
+      "/store/entercode",
+      "/store/inviteCode",
     ];
     const path = url?.split("?")[0];
     if (!user && !publicPaths.includes(path ?? "")) {

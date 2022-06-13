@@ -12,7 +12,7 @@ function InviteCode() {
     <div className={styles.page}>
       <Header />
       <div className={styles.center}>
-        <div className={styles.container}>
+        <div className={styles.containerLogin}>
           <p className={styles.heading}>Join Bold As A Store 🚀 </p>
           <UsernameComponent
             type="text"
