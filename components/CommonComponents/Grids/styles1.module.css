@@ -155,10 +155,12 @@
 
   .hoverDiv {
     font-size: 0.8rem;
+    border-radius: 5px;
     padding: 0.5rem;
   }
   .individualImg {
     width: 100px;
     height: 100px;
+    border-radius: 5px;
   }
 }

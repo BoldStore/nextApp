@@ -94,4 +94,8 @@
     display: block;
     margin-top: 5rem;
   }
+  .productImg {
+    object-fit: contain;
+    height: 100%;
+  }
 }
