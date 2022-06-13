@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 import { motion } from "framer-motion";
 
-function StoreComingSoon() {
+function StoreComingSoon({ text }) {
   return (
     <motion.div className={styles.imgFlex}>
       <motion.div
@@ -22,7 +22,7 @@ function StoreComingSoon() {
           bounce: 0.4,
         }}
       />
-      <h1>Coming Soon!</h1>
+      <h1>{text ? text : "Coming Soon!"}</h1>
     </motion.div>
   );
 }
