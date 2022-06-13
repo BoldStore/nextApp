@@ -18,6 +18,7 @@ import Loading from "../../components/Loading";
 import { Avatar } from "@mui/material";
 import StoreComingSoon from "../../components/StoreComponents/StoreComingSoon";
 import Link from "next/link";
+import OneImg from "../../components/CommonComponents/Grids/oneImg";
 
 function StorePage() {
   const { query } = useRouter();
@@ -40,6 +41,11 @@ function StorePage() {
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [query]);
 
+  function randomNumberInRange(min, max) {
+    // 👇️ get number between min (inclusive) and max (inclusive)
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
   function chunk(items, size) {
     const chunks = [];
     items = [].concat(...items);
@@ -47,7 +53,7 @@ function StorePage() {
     while (items.length) {
       chunks.push(items.splice(0, size));
     }
-
+    console.log("productsss", chunks);
     return chunks;
   }
 
@@ -139,13 +145,27 @@ function StorePage() {
             value == 0 ? (
               <div className={styles.products}>
                 <div className={styles.productsGrid}>
-                  {products.map((arr, i) => (
-                    <Grid1 key={i} products={arr} />
-                  ))}
-                  {/* <Grid1 />
-                  <Grid2 />
-                  <Grid3 />
-                  <Grid4 /> */}
+                  {products.slice(0, -1).map((arr, i) => {
+                    var num = randomNumberInRange(1, 4);
+                    if (num == 1) {
+                      return <Grid1 key={i} products={arr} />;
+                    } else if (num == 2) {
+                      return <Grid2 key={i} products={arr} />;
+                    } else if (num == 3) {
+                      return <Grid3 key={i} products={arr} />;
+                    } else {
+                      return <Grid4 key={i} products={arr} />;
+                    }
+                  })}
+                  <div className={styles.postContainer}>
+                    {products[products.length - 1]?.length != 6 ? (
+                      products[products.length - 1]?.map((item, i) => (
+                        <OneImg product={item} key={i} />
+                      ))
+                    ) : (
+                      <Grid1 products={products[-1]} />
+                    )}
+                  </div>
                 </div>
               </div>
             ) : value == 1 ? (
