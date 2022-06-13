@@ -77,15 +77,15 @@ function Post({
                 >
                   <p>{storeName}</p>
                   <p>
-                    {/* <VerifiedIcon
+                    <VerifiedIcon
                       style={{
                         marginLeft: "0.5rem",
                         fontSize: "1.2rem",
                         color: "#1DA1F2",
                         marginBottom: "-0.1rem",
                       }}
-                    /> */}
-                    <Avatar
+                    />
+                    {/* <Avatar
                       src={`/assets/VerifiedIcon/${svgMode}.svg`}
                       alt="verified"
                       sx={{
@@ -95,7 +95,7 @@ function Post({
                       style={{
                         marginLeft: "0.2rem",
                       }}
-                    />
+                    /> */}
                   </p>
                 </div>
               ) : (

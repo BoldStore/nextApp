@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";
 import Image from "next/image";
@@ -15,18 +15,31 @@ function ProductComponent({ product }) {
     dispatch(saveProduct(product.id));
   };
   const profile = useSelector((state) => state.profile);
+  const [video, setVideo] = useState(false);
 
   return (
     <>
       <div className={styles.productContainer}>
         <div>
-          <img
-            src={product?.product?.imgUrl}
-            alt="item"
-            width="650"
-            height="650"
-            className={styles.productImg}
-          />
+          {!video ? (
+            <Image
+              onError={() => {
+                setVideo(true);
+              }}
+              src={product?.product?.imgUrl}
+              alt="item"
+              width="650"
+              height="650"
+              className={styles.productImg}
+            />
+          ) : (
+            <video
+              src={product?.product?.imgUrl}
+              muted
+              autoPlay={false}
+              className={styles.productImg}
+            />
+          )}
         </div>
         <div className={styles.productInfo}>
           <h1 style={{ marginTop: 0 }}>

@@ -133,6 +133,7 @@
   .img,
   .bigImg {
     border-radius: 5px;
+    /* background-size: contain; */
   }
   .div1,
   .div2,
@@ -159,8 +160,8 @@
     padding: 0.5rem;
   }
   .individualImg {
-    width: 100px;
-    height: 100px;
+    width: 100px !important;
+    height: 100px !important;
     border-radius: 5px;
   }
 }

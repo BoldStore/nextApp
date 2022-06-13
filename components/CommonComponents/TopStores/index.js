@@ -64,14 +64,14 @@ function TopStores({ storeUrl, storeName, username }) {
             {username}
           </p>
           <p>
-            {/* <VerifiedIcon
+            <VerifiedIcon
               style={{
                 marginLeft: "0.3rem",
                 fontSize: "1rem",
                 color: "#1DA1F2",
               }}
-            /> */}
-            <Avatar
+            />
+            {/* <Avatar
               src={`/assets/VerifiedIcon/${svgMode}.svg`}
               alt="verified"
               sx={{
@@ -81,7 +81,7 @@ function TopStores({ storeUrl, storeName, username }) {
               style={{
                 marginLeft: "0.2rem",
               }}
-            />
+            /> */}
           </p>
         </div>
       ) : (

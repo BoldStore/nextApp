@@ -2,7 +2,6 @@ import { User } from "react-feather";
 import VerticalHeader from "../../components/StoreComponents/VerticalHeader";
 import styles from "./profile/styles.module.css";
 import React, { useEffect, useState } from "react";
-import TabsStoreProfile from "./profile/tabs";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import { useDispatch, useSelector } from "react-redux";
 import Grid1 from "../../components/CommonComponents/Grids/grid1";

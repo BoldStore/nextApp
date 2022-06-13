@@ -6,7 +6,7 @@ import RestoreIcon from "@mui/icons-material/Restore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { Avatar, Paper } from "@mui/material";
-import { Home, User, Search, Layout } from "react-feather";
+import { Home, User, Search, Layout, ShoppingBag } from "react-feather";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { styled } from "@mui/material/styles";
 import { useRouter } from "next/router";
@@ -61,6 +61,11 @@ color: #808080;
             value="dashboard"
             icon={<Layout />}
             onClick={() => router.push("/store/dashboard")}
+          />
+          <CustomBottomNavigationAction
+            value="bag"
+            icon={<ShoppingBag />}
+            onClick={() => router.push("/bag")}
           />
           <CustomBottomNavigationAction
             value="profile"
