@@ -3,6 +3,7 @@ import * as ActionTypes from "../ActionTypes";
 const initState = {
   isLoading: false,
   saved_success: false,
+  delete_success: false,
   errmess: null,
   product: null,
   store: null,
@@ -82,6 +83,30 @@ const productsReducer = (state = initState, action: any) => {
         isLoading: false,
         errmess: action.data?.errmess,
         products: [],
+      };
+
+    case ActionTypes.DELETE_SAVED_PRODUCT_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        errmess: null,
+        delete_success: false,
+      };
+
+    case ActionTypes.DELETE_SAVED_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        errmess: null,
+        delete_success: true,
+      };
+
+    case ActionTypes.DELETE_SAVED_PRODUCT_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        errmess: action.data?.errmess,
+        delete_success: false,
       };
 
     default:

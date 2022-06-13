@@ -73,3 +73,24 @@ export const getSavedProducts = (productId: string) => {
     }
   };
 };
+
+export const deleteSavedProduct = (productId: string) => {
+  return async (dispatch: Dispatch) => {
+    dispatch({ type: ActionTypes.DELETE_SAVED_PRODUCT_REQUEST });
+    try {
+      await instance.delete(SAVE_PRODUCT + `?productId=${productId}`);
+
+      dispatch({
+        type: ActionTypes.DELETE_SAVED_PRODUCT_SUCCESS,
+      });
+    } catch (e) {
+      dispatch({
+        type: ActionTypes.DELETE_SAVED_PRODUCT_FAILED,
+        errmess:
+          (e as any).response?.data?.err?.message ??
+          (e as any).response?.data ??
+          e,
+      });
+    }
+  };
+};
