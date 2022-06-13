@@ -26,6 +26,7 @@ function StorePage() {
   const profile = useSelector((state) => state.profile);
   const [value, setValue] = useState(0);
   const router = useRouter();
+  const [products, setProducts] = useState([]);
   const handleChange = (i) => {
     setValue(i);
   };
@@ -39,12 +40,29 @@ function StorePage() {
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [query]);
 
+  function chunk(items, size) {
+    const chunks = [];
+    items = [].concat(...items);
+
+    while (items.length) {
+      chunks.push(items.splice(0, size));
+    }
+
+    return chunks;
+  }
+
   useEffect(() => {
     if (query?.username) {
       dispatch(storePage(query.username));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
+
+  useEffect(() => {
+    if (store?.store?.products) {
+      setProducts(chunk(store?.store?.products, 6));
+    }
+  }, [store?.store?.products]);
 
   if (store.store_loading) {
     return <Loading />;
@@ -121,10 +139,13 @@ function StorePage() {
             value == 0 ? (
               <div className={styles.products}>
                 <div className={styles.productsGrid}>
-                  <Grid1 />
+                  {products.map((arr, i) => (
+                    <Grid1 products={arr} />
+                  ))}
+                  {/* <Grid1 />
                   <Grid2 />
                   <Grid3 />
-                  <Grid4 />
+                  <Grid4 /> */}
                 </div>
               </div>
             ) : value == 1 ? (
