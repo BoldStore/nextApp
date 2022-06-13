@@ -13,6 +13,7 @@
   z-index: 0;
   border-radius: 50%;
   position: absolute;
+  top: 2rem;
   opacity: 0.1;
 }
 
@@ -25,10 +26,10 @@
   bottom: 0;
 }
 
-.imgFlex p {
-  font-size: 1.2rem;
-  font-weight: 300;
+.imgFlex h1 {
+  font-size: 1.5rem;
   margin: 0;
+  text-align: center;
   margin-top: -3rem;
 }
 
@@ -39,5 +40,14 @@
   }
   50% {
     bottom: 20px;
+  }
+}
+@media (max-width: 750px) {
+  .imgFlex img {
+    width: 120%;
+  }
+  .circle {
+    width: 300px;
+    height: 300px;
   }
 }
