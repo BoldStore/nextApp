@@ -29,6 +29,11 @@ export default function RouteGuard({ children }: any) {
 
   function authCheck(url: string | undefined) {
     // redirect to login page if accessing a private page and not logged in
+    const path = url?.split("?")[0] ?? "";
+
+    // For stores and products
+    const dynamicParam = path.split("/")[2] ?? "";
+
     const publicPaths = [
       "/login",
       "/",
@@ -38,11 +43,12 @@ export default function RouteGuard({ children }: any) {
       "/store/signup",
       "/store/entercode",
       "/store/inviteCode",
-      "/store/[username]",
-      "/product/[id]",
       "/code",
+
+      `/store/${dynamicParam}`,
+      `/product/${dynamicParam}`,
     ];
-    const path = url?.split("?")[0];
+
     if (!user && !publicPaths.includes(path ?? "")) {
       setAuthorized(false);
       router.push({
