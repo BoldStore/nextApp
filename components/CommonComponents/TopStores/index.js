@@ -3,7 +3,7 @@ import Avatar from "@mui/material/Avatar";
 import Skeleton from "react-loading-skeleton";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import { useRouter } from "next/router";
-function TopStores({ storeUrl, storeName, username }) {
+function TopStores({ storeUrl, storeName, username, isCompleted }) {
   const router = useRouter();
 
   const goToStore = () => {
@@ -64,15 +64,16 @@ function TopStores({ storeUrl, storeName, username }) {
           >
             {username}
           </p>
-          <p>
-            <VerifiedIcon
-              style={{
-                marginLeft: "0.3rem",
-                fontSize: "1rem",
-                color: "#1DA1F2",
-              }}
-            />
-            {/* <Avatar
+          {isCompleted && (
+            <p>
+              <VerifiedIcon
+                style={{
+                  marginLeft: "0.3rem",
+                  fontSize: "1rem",
+                  color: "#1DA1F2",
+                }}
+              />
+              {/* <Avatar
               src={`/assets/VerifiedIcon/${svgMode}.svg`}
               alt="verified"
               sx={{
@@ -83,7 +84,8 @@ function TopStores({ storeUrl, storeName, username }) {
                 marginLeft: "0.2rem",
               }}
             /> */}
-          </p>
+            </p>
+          )}
         </div>
       ) : (
         <Skeleton

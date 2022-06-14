@@ -124,7 +124,7 @@ function StoreProfile() {
             </p>
           </div>
           <div className={styles.tabs}>
-            <UsernameTabs products={products} profile={profile} store={store} />
+            <UsernameTabs products={products} profile={true} store={store} />
           </div>
           <div className={styles.desktopTabs}>
             {profile.data?.percentage == 100 ? (
@@ -167,6 +167,7 @@ function StoreProfile() {
                       price={product.price}
                       size={product.size}
                       id={product.id}
+                      isCompleted={store?.store?.store?.isCompleted}
                     />
                   ))}
                 </div>

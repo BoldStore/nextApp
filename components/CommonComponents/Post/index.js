@@ -21,6 +21,7 @@ function Post({
   price,
   size,
   caption,
+  isCompleted,
 }) {
   const [video, setVideo] = useState(false);
   const [text, setText] = useState(caption?.slice(0, 35));
@@ -110,16 +111,17 @@ function Post({
                   }}
                 >
                   <p>{storeName}</p>
-                  <p>
-                    <VerifiedIcon
-                      style={{
-                        marginLeft: "0.5rem",
-                        fontSize: "1.2rem",
-                        color: "#1DA1F2",
-                        marginBottom: "-0.1rem",
-                      }}
-                    />
-                    {/* <Avatar
+                  {isCompleted && (
+                    <p>
+                      <VerifiedIcon
+                        style={{
+                          marginLeft: "0.5rem",
+                          fontSize: "1.2rem",
+                          color: "#1DA1F2",
+                          marginBottom: "-0.1rem",
+                        }}
+                      />
+                      {/* <Avatar
                       src={`/assets/VerifiedIcon/${svgMode}.svg`}
                       alt="verified"
                       sx={{
@@ -130,7 +132,8 @@ function Post({
                         marginLeft: "0.2rem",
                       }}
                     /> */}
-                  </p>
+                    </p>
+                  )}
                 </div>
               ) : (
                 <Skeleton count={1} width={100} height={12} />

@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import OneImg from "../../CommonComponents/Grids/oneImg";
 import { useRouter } from "next/router";
 import { storePage } from "../../../store/actions/pages";
+import StoreComingSoon from "../StoreComingSoon";
 
 function UsernameTabs({ products, profile, store }) {
   const [value, setValue] = useState("1");
@@ -33,7 +34,7 @@ function UsernameTabs({ products, profile, store }) {
 
   return (
     <div>
-      {profile.data?.percentage == 100 ? (
+      {store?.store?.store?.isCompleted ? (
         <Box sx={{ width: "100%", typography: "body1" }}>
           <TabContext value={value}>
             <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -97,6 +98,7 @@ function UsernameTabs({ products, profile, store }) {
                     postUrl={product.imgUrl}
                     key={index}
                     storeUrl={store?.store?.store?.profile_pic}
+                    isCompleted={store?.store?.store?.isCompleted ?? false}
                     storeLocation={store?.store?.store?.city ?? ""}
                     storeName={store?.store?.store?.username}
                     caption={product.caption}
@@ -110,7 +112,7 @@ function UsernameTabs({ products, profile, store }) {
           </TabContext>
         </Box>
       ) : (
-        <SignUpComplete />
+        <>{profile ? <SignUpComplete /> : <StoreComingSoon />}</>
       )}
     </div>
   );

@@ -68,6 +68,7 @@ function StoreHomePage() {
               storeUrl={store.profile_pic}
               username={store.username}
               key={index}
+              isCompleted={store.isCompleted}
             />
           ))}
         </div>
@@ -83,6 +84,7 @@ function StoreHomePage() {
               price={product.price}
               size={product.size}
               id={product.id}
+              isCompleted={product?.store?.isCompleted}
             />
           ))}
         </div>

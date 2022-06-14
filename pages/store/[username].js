@@ -129,10 +129,10 @@ function StorePage() {
           </div>
         </div>
         <div className={styles.tabs}>
-          <UsernameTabs products={products} profile={profile} store={store} />
+          <UsernameTabs products={products} store={store} />
         </div>
         <div className={styles.desktopTabs}>
-          {profile.data?.percentage == 100 ? (
+          {store?.store?.store?.isCompleted ? (
             value == 0 ? (
               <div className={styles.products}>
                 <div className={styles.productsGrid}>
@@ -172,6 +172,7 @@ function StorePage() {
                     price={product.price}
                     size={product.size}
                     id={product.id}
+                    isCompleted={store?.store?.store?.isCompleted}
                   />
                 ))}
               </div>

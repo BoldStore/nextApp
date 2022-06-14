@@ -33,12 +33,23 @@ function ProductPage() {
       <Header />
       <div className={styles.container}>
         <ProductComponent product={product} />
-        {product?.product?.length > 0 && (
+        {product?.products?.length > 0 && (
           <>
             <h1>More From the Store </h1>
             <div className={styles.flexDiv}>
               {product?.products?.map((product, index) => (
-                <Post key={index} />
+                <Post
+                  postUrl={product.imgUrl}
+                  key={index}
+                  storeUrl={product?.store?.profile_pic}
+                  storeLocation={product?.store?.city ?? ""}
+                  storeName={product?.store?.username}
+                  caption={product.caption}
+                  price={product.price}
+                  size={product.size}
+                  id={product.id}
+                  isCompleted={product?.store?.isCompleted}
+                />
               ))}
             </div>
           </>

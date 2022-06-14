@@ -22,7 +22,7 @@ function StoreComingSoon({ text }) {
           bounce: 0.4,
         }}
       />
-      <h1>{text ? text : "Coming Soon!"}</h1>
+      <h1>{text ? text : "Our team is still verifying this store..."}</h1>
     </motion.div>
   );
 }
