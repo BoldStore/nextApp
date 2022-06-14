@@ -55,27 +55,26 @@ function ProductComponent({ product }) {
   return (
     <>
       <div className={styles.productContainer}>
-        <div>
-          {!video ? (
-            <img
-              onError={() => {
-                setVideo(true);
-              }}
-              src={product?.product?.imgUrl}
-              alt="item"
-              width="650"
-              height="650"
-              className={styles.productImg}
-            />
-          ) : (
-            <video
-              src={product?.product?.imgUrl}
-              muted
-              autoPlay={false}
-              className={styles.productImg}
-            />
-          )}
-        </div>
+        {!video ? (
+          <img
+            onError={() => {
+              setVideo(true);
+            }}
+            src={product?.product?.imgUrl}
+            alt="item"
+            width="650"
+            height="650"
+            className={styles.productImg}
+          />
+        ) : (
+          <video
+            src={product?.product?.imgUrl}
+            muted
+            autoPlay={false}
+            className={styles.productImg}
+          />
+        )}
+
         <div className={styles.productInfo}>
           <h1 style={{ marginTop: 0 }}>
             {product?.product?.name ??
@@ -110,16 +109,18 @@ function ProductComponent({ product }) {
                   }}
                 >
                   <p>{product?.store?.username ?? ""}</p>
-                  <p>
-                    <VerifiedIcon
-                      style={{
-                        marginLeft: "0.5rem",
-                        fontSize: "1.2rem",
-                        color: "#1DA1F2",
-                        marginBottom: "-0.1rem",
-                      }}
-                    />
-                  </p>
+                  {product?.store?.isCompleted && (
+                    <p>
+                      <VerifiedIcon
+                        style={{
+                          marginLeft: "0.5rem",
+                          fontSize: "1.2rem",
+                          color: "#1DA1F2",
+                          marginBottom: "-0.1rem",
+                        }}
+                      />
+                    </p>
+                  )}
                 </div>
                 <p style={{ opacity: 0.5 }}>
                   {product?.store?.city ?? "India"}

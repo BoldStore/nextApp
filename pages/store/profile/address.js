@@ -23,18 +23,27 @@ function ProfileAddress() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      addAddress(
-        title,
-        addressString,
-        locality,
-        appartment,
-        city,
-        state,
-        pincode,
-        notes
-      )
-    );
+    if (upi.length == 0 || mobile.length == 0) {
+      setError("Please Enter All Inputs");
+    } else if (mobile.length != 10) {
+      setError("Please Make sure Mobile Number is 10 digits long");
+    } else if (!upi.includes("@")) {
+      setError("Please Enter a valid UPI ID");
+    } else {
+      setError("");
+      dispatch(
+        addAddress(
+          title,
+          addressString,
+          locality,
+          appartment,
+          city,
+          state,
+          pincode,
+          notes
+        )
+      );
+    }
   };
 
   const setData = () => {

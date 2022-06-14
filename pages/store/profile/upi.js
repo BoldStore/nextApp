@@ -38,10 +38,20 @@ function ProfileUpi() {
   const router = useRouter();
   const [upi, setUpi] = useState("");
   const [mobile, setMobile] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateStore(upi, mobile));
+    if (upi.length == 0 || mobile.length == 0) {
+      setError("Please Enter All Inputs");
+    } else if (mobile.length != 10) {
+      setError("Please Make sure Mobile Number is 10 digits long");
+    } else if (!upi.includes("@")) {
+      setError("Please Enter a valid UPI ID");
+    } else {
+      setError("");
+      dispatch(updateStore(upi, mobile));
+    }
   };
 
   useEffect(() => {
@@ -100,6 +110,7 @@ function ProfileUpi() {
             text={storeData.isLoading ? "Loading..." : "Update"}
             onClick={handleSubmit}
           />
+          {error && <p className={styles.error}>{error}</p>}
         </div>
       </>
     );
