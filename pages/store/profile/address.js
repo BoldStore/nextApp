@@ -25,21 +25,6 @@ function ProfileAddress() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-<<<<<<< HEAD
-    dispatch(
-      addAddress(
-        title,
-        addressString,
-        locality,
-        appartment,
-        city,
-        state,
-        pincode,
-        phone,
-        notes
-      )
-    );
-=======
     if (upi.length == 0 || mobile.length == 0) {
       setError("Please Enter All Inputs");
     } else if (mobile.length != 10) {
@@ -57,11 +42,11 @@ function ProfileAddress() {
           city,
           state,
           pincode,
+          phone,
           notes
         )
       );
     }
->>>>>>> 1437453a4a89320d57164d96435bba3c7fab879c
   };
 
   const setData = () => {
@@ -86,6 +71,7 @@ function ProfileAddress() {
       toast("Saved Succesfully!");
       router.push("/profile");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [address]);
 
   useEffect(() => {
