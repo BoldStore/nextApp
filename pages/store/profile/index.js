@@ -17,7 +17,7 @@ import Grid2 from "../../../components/CommonComponents/Grids/grid2";
 import Grid3 from "../../../components/CommonComponents/Grids/grid3";
 import Grid4 from "../../../components/CommonComponents/Grids/grid4";
 import UsernameTabs from "../../../components/StoreComponents/UsernameTabs";
-
+import { getProfile } from "../../../store/actions/profile";
 function StoreProfile() {
   const profile = useSelector((state) => state.profile);
   const store = useSelector((state) => state.pages);
@@ -34,6 +34,10 @@ function StoreProfile() {
       router.push("/home");
     }
   }, [profile]);
+
+  const refresh = () => {
+    dispatch(getProfile());
+  };
 
   function randomNumberInRange(min, max) {
     // 👇️ get number between min (inclusive) and max (inclusive)
@@ -112,7 +116,10 @@ function StoreProfile() {
                 />
               )}
             </div>
-            <p style={{ color: "var(--lightGrey)", cursor: "pointer" }}>
+            <p
+              style={{ color: "var(--lightGrey)", cursor: "pointer" }}
+              onClick={refresh}
+            >
               Refresh Products
             </p>
           </div>

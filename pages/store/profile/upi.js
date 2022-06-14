@@ -60,6 +60,7 @@ function ProfileUpi() {
   useEffect(() => {
     if (storeData.success) {
       toast("Saved Succesfully!");
+      router.push("/profile");
     }
   }, [storeData]);
 

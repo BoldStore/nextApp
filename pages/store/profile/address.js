@@ -56,6 +56,7 @@ function ProfileAddress() {
   useEffect(() => {
     if (address.success) {
       toast("Saved Succesfully!");
+      router.push("/profile");
     }
   }, [address]);
 
