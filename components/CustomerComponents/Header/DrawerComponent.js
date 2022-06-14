@@ -54,7 +54,7 @@ export default function TemporaryDrawer() {
 
   return (
     <div className={styles.menu}>
-      <h2>BOLD.</h2>
+      <h2 style={{ marginBottom: "-0.2rem" }}>BOLD.</h2>
       {["right"].map((anchor) => (
         <React.Fragment key={anchor}>
           <div onClick={toggleDrawer(anchor, true)}>
@@ -65,7 +65,7 @@ export default function TemporaryDrawer() {
               width="24"
               xmlns="http://www.w3.org/2000/svg"
               style={{
-                marginBottom: "-0.3rem",
+                marginBottom: "-0.4rem",
               }}
             >
               <path
