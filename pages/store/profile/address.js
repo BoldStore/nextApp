@@ -7,12 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { addAddress } from "../../../store/actions/address";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+
 function ProfileAddress() {
   const dispatch = useDispatch();
   const address = useSelector((state) => state.addresses);
   const profile = useSelector((state) => state.profile);
   const router = useRouter();
   const [title, setTitle] = useState("");
+  const [phone, setPhone] = useState("");
   const [addressString, setAddressString] = useState("");
   const [locality, setLocality] = useState("");
   const [appartment, setAppartment] = useState("");
@@ -32,6 +34,7 @@ function ProfileAddress() {
         city,
         state,
         pincode,
+        phone,
         notes
       )
     );
@@ -39,6 +42,7 @@ function ProfileAddress() {
 
   const setData = () => {
     setTitle(profile?.data?.address?.title ?? "");
+    setPhone(profile.data?.paymentDetails?.phone ?? "");
     setAddressString(profile?.data?.address?.addressString ?? "");
     setLocality(profile?.data?.address?.addressL1 ?? "");
     setAppartment(profile?.data?.address?.addressL2 ?? "");
@@ -63,6 +67,7 @@ function ProfileAddress() {
     if (!profile?.isStore) {
       router.push("/home");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile]);
 
   if (profile?.isStore)
@@ -90,6 +95,12 @@ function ProfileAddress() {
             setValue={setTitle}
             value={title}
             placeholder={"Title"}
+          />
+          <InputComponent
+            type="text"
+            setValue={setPhone}
+            value={phone}
+            placeholder={"Phone Number"}
           />
           <InputComponent
             type="text"

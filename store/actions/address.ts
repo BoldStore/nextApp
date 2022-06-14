@@ -16,6 +16,7 @@ export const addAddress = (
   city: string,
   state: string,
   pincode: number,
+  phone: string,
   notes: string
 ) => {
   return async (dispatch: Dispatch) => {
@@ -29,6 +30,7 @@ export const addAddress = (
         city,
         state,
         pincode,
+        phone,
         notes,
       });
 
@@ -99,6 +101,7 @@ export const updateAddress = (
   city: string,
   state: string,
   pincode: number,
+  phone: string,
   notes: string
 ) => {
   return async (dispatch: Dispatch) => {
@@ -115,6 +118,7 @@ export const updateAddress = (
           city,
           state,
           pincode,
+          phone,
           notes,
         }
         // {

@@ -22,6 +22,7 @@ function Profile() {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [pincode, setPincode] = useState("");
+  const [phone, setPhone] = useState("");
   const [notes, setNotes] = useState("");
 
   const handleSubmit = (e) => {
@@ -35,6 +36,7 @@ function Profile() {
         city,
         state,
         pincode,
+        phone,
         notes
       )
     );
@@ -42,6 +44,7 @@ function Profile() {
 
   const setData = () => {
     setTitle(profile?.data?.address?.title ?? "");
+    setPhone(profile?.data?.paymentDetails?.phone ?? "");
     setAddressString(profile?.data?.address?.addressString ?? "");
     setLocality(profile?.data?.address?.addressL1 ?? "");
     setAppartment(profile?.data?.address?.addressL2 ?? "");
@@ -60,6 +63,7 @@ function Profile() {
     if (profile?.isStore) {
       router.push("/home");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile]);
 
   if (!profile?.isStore)
@@ -107,6 +111,12 @@ function Profile() {
             setValue={setTitle}
             value={title}
             placeholder={"Title"}
+          />
+          <InputComponent
+            type="text"
+            setValue={setPhone}
+            value={phone}
+            placeholder={"Phone Number"}
           />
           <InputComponent
             type="text"
