@@ -59,6 +59,7 @@ function TopStores({ storeUrl, storeName, username }) {
               color: "var(--lightGrey)",
               marginTop: "0.65rem",
               fontSize: "0.8rem",
+              cursor: "pointer",
             }}
           >
             {username}
