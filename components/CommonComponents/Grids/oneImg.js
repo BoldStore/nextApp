@@ -44,7 +44,7 @@ function OneImg({ product }) {
               bounce: 0.4,
             }}
           >
-            <p>₹{product?.amount}</p> <p>{product?.size}</p>
+            <p>₹{product?.amount ?? 200}</p> <p>{product?.size ?? M}</p>
           </motion.div>
         )}
       </div>

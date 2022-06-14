@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
@@ -10,6 +10,7 @@ import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import { useSelector } from "react-redux";
+import useRazorpay from "react-razorpay";
 
 function Post({
   id,
@@ -38,6 +39,39 @@ function Post({
       setSvgMode(activeTheme);
     }
   }, [activeTheme]);
+
+  const Razorpay = useRazorpay();
+
+  const handlePayment = useCallback(() => {
+    // const order = await createOrder(params);
+
+    const options = {
+      key: "rzp_test_Cvgmp7sLxim68t",
+      amount: "20000",
+      currency: "INR",
+      name: "Bold Store",
+      description: "Proceed to buy this product",
+      image: "https://i.ibb.co/Ct1jrgj/Logo2.png",
+      // order_id: `${product.id}`,
+      handler: (res) => {
+        console.log(res);
+      },
+      prefill: {
+        name: "Piyush Garg",
+        email: "youremail@example.com",
+        contact: "9999999999",
+      },
+      notes: {
+        address: "Bold Store Corporate Office",
+      },
+      theme: {
+        color: "var(--black)",
+      },
+    };
+
+    const rzpay = new Razorpay(options);
+    rzpay.open();
+  }, [Razorpay]);
 
   return (
     <div className={styles.postContainer}>
@@ -190,11 +224,7 @@ function Post({
         <p style={{ marginTop: 0 }}>{caption}</p>
       )}
 
-      {price ? (
-        <BoldButton text={"Buy Now"} />
-      ) : (
-        <Skeleton count={1} width={"100%"} height={35} />
-      )}
+      <BoldButton text={"Buy Now"} onClick={handlePayment} />
     </div>
   );
 }

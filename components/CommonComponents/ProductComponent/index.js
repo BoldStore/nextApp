@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";
 import Image from "next/image";
@@ -9,10 +9,45 @@ import { useDispatch, useSelector } from "react-redux";
 import { saveProduct } from "../../../store/actions/products";
 import Link from "next/link";
 import VerifiedIcon from "@mui/icons-material/Verified";
+import useRazorpay from "react-razorpay";
+
 function ProductComponent({ product }) {
+  const Razorpay = useRazorpay();
+
+  const handlePayment = useCallback(() => {
+    // const order = await createOrder(params);
+
+    const options = {
+      key: "rzp_test_Cvgmp7sLxim68t",
+      amount: "20000",
+      currency: "INR",
+      name: "Bold Store",
+      description: "Proceed to buy this product",
+      image: "https://i.ibb.co/Ct1jrgj/Logo2.png",
+      // order_id: `${product.id}`,
+      handler: (res) => {
+        console.log(res);
+      },
+      prefill: {
+        name: "Piyush Garg",
+        email: "youremail@example.com",
+        contact: "9999999999",
+      },
+      notes: {
+        address: "Bold Store Corporate Office",
+      },
+      theme: {
+        color: "var(--black)",
+      },
+    };
+
+    const rzpay = new Razorpay(options);
+    rzpay.open();
+  }, [Razorpay]);
+
   const dispatch = useDispatch();
   const saveProductInDb = () => {
-    dispatch(saveProduct(product.id));
+    dispatch(saveProduct(product?.product.id));
   };
   const profile = useSelector((state) => state.profile);
   const [video, setVideo] = useState(false);
@@ -22,7 +57,7 @@ function ProductComponent({ product }) {
       <div className={styles.productContainer}>
         <div>
           {!video ? (
-            <Image
+            <img
               onError={() => {
                 setVideo(true);
               }}
@@ -114,10 +149,7 @@ function ProductComponent({ product }) {
             <p>Size: M</p>
           </div>
 
-          <BoldButton
-            text={"Proceed To Buy"}
-            href="/customer/profile/address"
-          />
+          <BoldButton text={"Proceed To Buy"} onClick={handlePayment} />
         </div>
       </div>
     </>

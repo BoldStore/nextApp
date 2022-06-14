@@ -32,7 +32,8 @@ function Grid1({ products }) {
                     bounce: 0.4,
                   }}
                 >
-                  <p>₹{products[0]?.amount}</p> <p>{products[0]?.size}</p>
+                  <p>₹{products[0]?.amount ?? 200}</p>
+                  <p>{products[0]?.size ?? M}</p>
                 </motion.div>
               )}
             </div>
@@ -55,7 +56,8 @@ function Grid1({ products }) {
                     bounce: 0.4,
                   }}
                 >
-                  <p>₹{products[1]?.amount}</p> <p>{products[1]?.size}</p>
+                  <p>₹{products[1]?.amount ?? 200}</p>
+                  <p>{products[1]?.size ?? M}</p>
                 </motion.div>
               )}
             </div>
@@ -78,7 +80,8 @@ function Grid1({ products }) {
                     bounce: 0.4,
                   }}
                 >
-                  <p>₹{products[2]?.amount}</p> <p>{products[2]?.size}</p>
+                  <p>₹{products[2]?.amount ?? 200}</p>
+                  <p>{products[2]?.size ?? M}</p>
                 </motion.div>
               )}
             </div>
@@ -101,7 +104,8 @@ function Grid1({ products }) {
                     bounce: 0.4,
                   }}
                 >
-                  <p>₹{products[3]?.amount}</p> <p>{products[3]?.size}</p>
+                  <p>₹{products[3]?.amount ?? 200}</p>
+                  <p>{products[3]?.size ?? M}</p>
                 </motion.div>
               )}
             </div>
@@ -124,7 +128,8 @@ function Grid1({ products }) {
                     bounce: 0.4,
                   }}
                 >
-                  <p>₹{products[4]?.amount}</p> <p>{products[4]?.size}</p>
+                  <p>₹{products[4]?.amount ?? 200}</p>
+                  <p>{products[4]?.size ?? M}</p>
                 </motion.div>
               )}
             </div>
@@ -147,7 +152,8 @@ function Grid1({ products }) {
                     bounce: 0.4,
                   }}
                 >
-                  <p>₹{products[5]?.amount}</p> <p>{products[5]?.size}</p>
+                  <p>₹{products[5]?.amount ?? 200}</p>
+                  <p>{products[5]?.size ?? M}</p>
                 </motion.div>
               )}
             </div>
