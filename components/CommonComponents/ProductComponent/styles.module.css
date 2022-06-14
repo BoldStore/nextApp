@@ -37,6 +37,7 @@
   transition: transform 0.4s;
   width: 100%;
   max-width: 700px;
+  min-width: 40vw;
 }
 
 .icon {
@@ -67,7 +68,7 @@
   .productContainer {
     margin-top: 5rem;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
   }
   .productInfo {
     margin-left: 1rem;
@@ -76,6 +77,10 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+    width: 30vw;
+    object-fit: contain;
+    border-radius: 1rem;
+    height: auto;
   }
 }
 
@@ -92,5 +97,10 @@
   .mobileContainer {
     display: block;
     margin-top: 5rem;
+  }
+  .productImg {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
   }
 }

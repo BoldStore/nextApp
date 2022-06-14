@@ -46,6 +46,12 @@
 .postContainer {
   padding-top: 1.5rem;
 }
+.error {
+  color: #ed4337;
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 0px;
+}
 
 @media (max-width: 1050px) {
   .tabs {

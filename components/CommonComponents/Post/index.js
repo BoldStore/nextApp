@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
@@ -10,6 +10,7 @@ import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import { useSelector } from "react-redux";
+import useRazorpay from "react-razorpay";
 
 function Post({
   id,
@@ -20,6 +21,7 @@ function Post({
   price,
   size,
   caption,
+  isCompleted,
 }) {
   const [video, setVideo] = useState(false);
   const [text, setText] = useState(caption?.slice(0, 35));
@@ -27,6 +29,50 @@ function Post({
   const profile = useSelector((state) => state.profile);
 
   const notify = () => toast("Product Saved!");
+  const [activeTheme, setActiveTheme] = useState("");
+  const inactiveTheme = activeTheme === "dark" ? "light" : "dark";
+  const [svgMode, setSvgMode] = useState("dark");
+
+  useEffect(() => {
+    if (activeTheme) {
+      document.body.dataset.theme = activeTheme;
+      window.localStorage.setItem("theme", activeTheme);
+      setSvgMode(activeTheme);
+    }
+  }, [activeTheme]);
+
+  const Razorpay = useRazorpay();
+
+  const handlePayment = useCallback(() => {
+    // const order = await createOrder(params);
+
+    const options = {
+      key: "rzp_test_Cvgmp7sLxim68t",
+      amount: "20000",
+      currency: "INR",
+      name: "Bold Store",
+      description: "Proceed to buy this product",
+      image: "https://i.ibb.co/Ct1jrgj/Logo2.png",
+      // order_id: `${product.id}`,
+      handler: (res) => {
+        console.log(res);
+      },
+      prefill: {
+        name: "Piyush Garg",
+        email: "youremail@example.com",
+        contact: "9999999999",
+      },
+      notes: {
+        address: "Bold Store Corporate Office",
+      },
+      theme: {
+        color: "var(--black)",
+      },
+    };
+
+    const rzpay = new Razorpay(options);
+    rzpay.open();
+  }, [Razorpay]);
 
   return (
     <div className={styles.postContainer}>
@@ -65,16 +111,29 @@ function Post({
                   }}
                 >
                   <p>{storeName}</p>
-                  <p>
-                    <VerifiedIcon
-                      style={{
-                        marginLeft: "0.5rem",
-                        fontSize: "1.2rem",
-                        color: "#1DA1F2",
-                        marginBottom: "-0.1rem",
+                  {isCompleted && (
+                    <p>
+                      <VerifiedIcon
+                        style={{
+                          marginLeft: "0.5rem",
+                          fontSize: "1.2rem",
+                          color: "#1DA1F2",
+                          marginBottom: "-0.1rem",
+                        }}
+                      />
+                      {/* <Avatar
+                      src={`/assets/VerifiedIcon/${svgMode}.svg`}
+                      alt="verified"
+                      sx={{
+                        width: 12,
+                        height: 12,
                       }}
-                    />
-                  </p>
+                      style={{
+                        marginLeft: "0.2rem",
+                      }}
+                    /> */}
+                    </p>
+                  )}
                 </div>
               ) : (
                 <Skeleton count={1} width={100} height={12} />
@@ -168,11 +227,7 @@ function Post({
         <p style={{ marginTop: 0 }}>{caption}</p>
       )}
 
-      {price ? (
-        <BoldButton text={"Buy Now"} />
-      ) : (
-        <Skeleton count={1} width={"100%"} height={35} />
-      )}
+      <BoldButton text={"Buy Now"} onClick={handlePayment} />
     </div>
   );
 }

@@ -37,28 +37,45 @@ function StoreSignup() {
   const dispatch = useDispatch();
   const store = useSelector((state) => state.store);
 
-  const validation = () => {
-    const validEmail = isEmail(email);
-    const passwordValid = equals(password, confirmPassword);
+  // const validation = () => {
+  //   const validEmail = isEmail(email);
+  //   const passwordValid = equals(password, confirmPassword);
 
-    if (validEmail && passwordValid) {
-      return true;
-    }
+  //   if (!validEmail) {
+  //     setError("Invalid Email Entered!");
+  //   }
+  //   if (!passwordValid) {
+  //     setError("Passwords do not match!");
+  //   }
 
-    return false;
-  };
+  //   return false;
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validation()) {
-      setError("Please check your inputs");
-      return;
-    }
-    setError("");
-    dispatch(setInviteCodeToState(inviteCode));
+    const validEmail = isEmail(email);
+    const passwordValid = equals(password, confirmPassword);
 
-    // 1. Signup up for firebase auth
-    createUserWithEmailAndPassword(email, password);
+    if (
+      email.length == 0 ||
+      password.length == 0 ||
+      confirmPassword.length == 0 ||
+      inviteCode == 0
+    ) {
+      setError("Please Enter all inputs");
+    } else if (!validEmail) {
+      setError("Invalid Email Entered!");
+    } else if (!passwordValid) {
+      setError("Passwords do not match!");
+    } else if (!inviteCode) {
+      setError("Please enter a valid invite code!");
+    } else {
+      setError("");
+      dispatch(setInviteCodeToState(inviteCode));
+
+      // 1. Signup up for firebase auth
+      createUserWithEmailAndPassword(email, password);
+    }
   };
 
   useEffect(() => {
@@ -89,16 +106,11 @@ function StoreSignup() {
   return (
     <div className={styles.page}>
       <Header />
-      {(loading || google_loading) && <Loading />}
+      {/* {(loading || google_loading) && <Loading />} */}
       <div className={styles.center}>
         <div className={styles.containerLogin}>
           <p className={styles.heading}>Sign Up As A Store 😉 </p>
-          <p className={styles.error}>
-            {(error || signupError || store?.errmess)?.toString()}
-          </p>
-          {google_error && (
-            <p className={styles.error}>{google_error.message}</p>
-          )}
+
           <InputComponent
             type="text"
             setValue={setInviteCode}
@@ -158,6 +170,12 @@ function StoreSignup() {
               </div>
             )}
           </div>
+          <p className={styles.error}>
+            {(error || signupError || store?.errmess)?.toString()}
+          </p>
+          {google_error && (
+            <p className={styles.error}>{google_error.message}</p>
+          )}
           {/* </Link> */}
           <div
             style={{

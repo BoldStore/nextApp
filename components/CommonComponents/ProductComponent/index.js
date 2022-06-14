@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";
 import Image from "next/image";
@@ -9,25 +9,72 @@ import { useDispatch, useSelector } from "react-redux";
 import { saveProduct } from "../../../store/actions/products";
 import Link from "next/link";
 import VerifiedIcon from "@mui/icons-material/Verified";
+import useRazorpay from "react-razorpay";
+
 function ProductComponent({ product }) {
+  const Razorpay = useRazorpay();
+
+  const handlePayment = useCallback(() => {
+    // const order = await createOrder(params);
+
+    const options = {
+      key: "rzp_test_Cvgmp7sLxim68t",
+      amount: "20000",
+      currency: "INR",
+      name: "Bold Store",
+      description: "Proceed to buy this product",
+      image: "https://i.ibb.co/Ct1jrgj/Logo2.png",
+      // order_id: `${product.id}`,
+      handler: (res) => {
+        console.log(res);
+      },
+      prefill: {
+        name: "Piyush Garg",
+        email: "youremail@example.com",
+        contact: "9999999999",
+      },
+      notes: {
+        address: "Bold Store Corporate Office",
+      },
+      theme: {
+        color: "var(--black)",
+      },
+    };
+
+    const rzpay = new Razorpay(options);
+    rzpay.open();
+  }, [Razorpay]);
+
   const dispatch = useDispatch();
   const saveProductInDb = () => {
-    dispatch(saveProduct(product.id));
+    dispatch(saveProduct(product?.product.id));
   };
   const profile = useSelector((state) => state.profile);
+  const [video, setVideo] = useState(false);
 
   return (
     <>
       <div className={styles.productContainer}>
-        <div>
+        {!video ? (
           <img
+            onError={() => {
+              setVideo(true);
+            }}
             src={product?.product?.imgUrl}
             alt="item"
             width="650"
             height="650"
             className={styles.productImg}
           />
-        </div>
+        ) : (
+          <video
+            src={product?.product?.imgUrl}
+            muted
+            autoPlay={false}
+            className={styles.productImg}
+          />
+        )}
+
         <div className={styles.productInfo}>
           <h1 style={{ marginTop: 0 }}>
             {product?.product?.name ??
@@ -61,33 +108,37 @@ function ProductComponent({ product }) {
                     justifyContent: "center",
                   }}
                 >
-                  <p>{product?.store?.full_name ?? ""}</p>
-                  <p>
-                    <VerifiedIcon
-                      style={{
-                        marginLeft: "0.5rem",
-                        fontSize: "1.2rem",
-                        color: "#1DA1F2",
-                        marginBottom: "-0.1rem",
-                      }}
-                    />
-                  </p>
+                  <p>{product?.store?.username ?? ""}</p>
+                  {product?.store?.isCompleted && (
+                    <p>
+                      <VerifiedIcon
+                        style={{
+                          marginLeft: "0.5rem",
+                          fontSize: "1.2rem",
+                          color: "#1DA1F2",
+                          marginBottom: "-0.1rem",
+                        }}
+                      />
+                    </p>
+                  )}
                 </div>
-                <p style={{ opacity: 0.5 }}>{product?.store?.city}</p>
+                <p style={{ opacity: 0.5 }}>
+                  {product?.store?.city ?? "India"}
+                </p>
               </div>
             </div>
           </Link>
-          <p>{product?.product?.caption ?? ""}</p>
+          <p>{product?.product?.caption ?? "No Caption"}</p>
           <div>
             <RWebShare
               data={{
-                text: `Hey, checkout this amazing ${product?.store?.full_name} Product on Bold.`,
+                text: `Hey, checkout this amazing ${product?.store?.username} Product on Bold.`,
                 url: `https://www.boldstore.in/product/${product?.product?.id}`,
                 title: `${product?.store?.full_name} on Bold`,
               }}
               className={styles.share}
               style={{ color: "var(--black) !important" }}
-              onClick={() => console.log("shared successfully!")}
+              onClick={() => console.log("Shared successfully!")}
             >
               <Send className={styles.icon} />
             </RWebShare>
@@ -99,10 +150,7 @@ function ProductComponent({ product }) {
             <p>Size: M</p>
           </div>
 
-          <BoldButton
-            text={"Proceed To Buy"}
-            href="/customer/profile/address"
-          />
+          <BoldButton text={"Proceed To Buy"} onClick={handlePayment} />
         </div>
       </div>
     </>

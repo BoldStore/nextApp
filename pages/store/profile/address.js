@@ -25,6 +25,7 @@ function ProfileAddress() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     dispatch(
       addAddress(
         title,
@@ -38,6 +39,29 @@ function ProfileAddress() {
         notes
       )
     );
+=======
+    if (upi.length == 0 || mobile.length == 0) {
+      setError("Please Enter All Inputs");
+    } else if (mobile.length != 10) {
+      setError("Please Make sure Mobile Number is 10 digits long");
+    } else if (!upi.includes("@")) {
+      setError("Please Enter a valid UPI ID");
+    } else {
+      setError("");
+      dispatch(
+        addAddress(
+          title,
+          addressString,
+          locality,
+          appartment,
+          city,
+          state,
+          pincode,
+          notes
+        )
+      );
+    }
+>>>>>>> 1437453a4a89320d57164d96435bba3c7fab879c
   };
 
   const setData = () => {
@@ -60,6 +84,7 @@ function ProfileAddress() {
   useEffect(() => {
     if (address.success) {
       toast("Saved Succesfully!");
+      router.push("/profile");
     }
   }, [address]);
 

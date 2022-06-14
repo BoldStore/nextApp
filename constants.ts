@@ -47,9 +47,12 @@ export const GET_PRODUCT = "product";
 export const SAVE_PRODUCT = "product/save";
 
 // Search
-export const MEILI_URL = ISPROD
-  ? "http://43.204.122.133/"
-  : "http://127.0.0.1:7700";
+// export const MEILI_URL = ISPROD
+//   ? "http://52.66.214.126/"
+//   : "http://127.0.0.1:7700";
+
+export const MEILI_URL = "http://43.204.122.133/";
+// : "http://127.0.0.1:7700";
 export const MEILI_API_KEY = ISPROD ? process.env.MEILI_KEY : "masteKey";
 
 // TEST

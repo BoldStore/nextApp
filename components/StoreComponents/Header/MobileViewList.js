@@ -80,10 +80,40 @@ function MobileViewList() {
           <p className={styles.navLinks}>My Bag</p>
         </Link>
         <Link href="/store/profile/upi">
-          <p className={styles.navLinks}>Update Payment Details</p>
+          <div style={{ position: "relative" }}>
+            <p className={styles.navLinks}>Update Payment Details</p>
+            {!profile?.data?.paymentDetails && (
+              <div
+                style={{
+                  position: "absolute",
+                  height: "9px",
+                  width: "9px",
+                  top: "25%",
+                  right: 0,
+                  backgroundColor: "#1DA1F2",
+                  borderRadius: "50%",
+                }}
+              ></div>
+            )}
+          </div>
         </Link>
         <Link href="/store/profile/address">
-          <p className={styles.navLinks}>Update Pickup Address</p>
+          <div style={{ position: "relative" }}>
+            <p className={styles.navLinks}>Update Pickup Address</p>
+            {!profile?.data?.address && (
+              <div
+                style={{
+                  position: "absolute",
+                  height: "9px",
+                  width: "9px",
+                  top: "25%",
+                  right: 0,
+                  backgroundColor: "#1DA1F2",
+                  borderRadius: "50%",
+                }}
+              ></div>
+            )}
+          </div>
         </Link>
         <Link href="/profile">
           <p className={styles.navLinks}>Profile</p>

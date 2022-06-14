@@ -3,19 +3,28 @@ import { User } from "react-feather";
 import VerticalHeader from "../../../components/StoreComponents/VerticalHeader";
 import styles from "./styles.module.css";
 import React, { useEffect, useState } from "react";
-import TabsStoreProfile from "./tabs";
 import Header from "../../../components/CommonComponents/Header";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import SignUpComplete from "../../../components/StoreComponents/SignupComplete";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import Post from "../../../components/CommonComponents/Post";
 import Link from "next/link";
-
+import OneImg from "../../../components/CommonComponents/Grids/oneImg";
+import { storePage } from "../../../store/actions/pages";
+import Grid1 from "../../../components/CommonComponents/Grids/grid1";
+import Grid2 from "../../../components/CommonComponents/Grids/grid2";
+import Grid3 from "../../../components/CommonComponents/Grids/grid3";
+import Grid4 from "../../../components/CommonComponents/Grids/grid4";
+import UsernameTabs from "../../../components/StoreComponents/UsernameTabs";
+import { getProfile } from "../../../store/actions/profile";
 function StoreProfile() {
   const profile = useSelector((state) => state.profile);
+  const store = useSelector((state) => state.pages);
   const [value, setValue] = useState(0);
   const router = useRouter();
+  const dispatch = useDispatch();
+  const [products, setProducts] = useState([]);
   const handleChange = (i) => {
     setValue(i);
   };
@@ -25,6 +34,39 @@ function StoreProfile() {
       router.push("/home");
     }
   }, [profile]);
+
+  const refresh = () => {
+    dispatch(getProfile());
+  };
+
+  function randomNumberInRange(min, max) {
+    // 👇️ get number between min (inclusive) and max (inclusive)
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function chunk(items, size) {
+    const chunks = [];
+    items = [].concat(...items);
+
+    while (items.length) {
+      chunks.push(items.splice(0, size));
+    }
+    console.log("productsss", chunks);
+    return chunks;
+  }
+
+  useEffect(() => {
+    if (store?.store?.products) {
+      setProducts(chunk(store?.store?.products, 6));
+    }
+  }, [store?.store?.products]);
+
+  useEffect(() => {
+    if (profile?.data?.data?.username) {
+      dispatch(storePage(profile?.data?.data?.username));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [profile?.data]);
 
   if (profile?.isStore)
     return (
@@ -74,37 +116,58 @@ function StoreProfile() {
                 />
               )}
             </div>
-            <p style={{ color: "var(--lightGrey)", cursor: "pointer" }}>
+            <p
+              style={{ color: "var(--lightGrey)", cursor: "pointer" }}
+              onClick={refresh}
+            >
               Refresh Products
             </p>
           </div>
           <div className={styles.tabs}>
-            <TabsStoreProfile />
+            <UsernameTabs products={products} profile={true} store={store} />
           </div>
           <div className={styles.desktopTabs}>
             {profile.data?.percentage == 100 ? (
               value == 0 ? (
                 <div className={styles.products}>
                   <div className={styles.productsGrid}>
-                    {/* <Grid1 />
-                  <Grid2 />
-                  <Grid3 />
-                  <Grid4 /> */}
+                    {products.slice(0, -1).map((arr, i) => {
+                      var num = randomNumberInRange(1, 4);
+                      if (num == 1) {
+                        return <Grid1 key={i} products={arr} />;
+                      } else if (num == 2) {
+                        return <Grid2 key={i} products={arr} />;
+                      } else if (num == 3) {
+                        return <Grid3 key={i} products={arr} />;
+                      } else {
+                        return <Grid4 key={i} products={arr} />;
+                      }
+                    })}
+                    <div className={styles.postContainer}>
+                      {products[products.length - 1]?.length != 6 ? (
+                        products[products.length - 1]?.map((item, i) => (
+                          <OneImg product={item} key={i} />
+                        ))
+                      ) : (
+                        <Grid1 products={products[-1]} />
+                      )}
+                    </div>
                   </div>
                 </div>
               ) : value == 1 ? (
                 <div className={styles.postContainer}>
-                  {profile?.products?.map((product, index) => (
+                  {store?.store?.products?.map((product, index) => (
                     <Post
                       postUrl={product.imgUrl}
                       key={index}
-                      storeUrl={product?.store?.profile_pic}
-                      storeLocation={product?.store?.city ?? ""}
-                      storeName={product?.store?.username}
+                      storeUrl={store?.store?.store?.profile_pic}
+                      storeLocation={store?.store?.store?.city ?? ""}
+                      storeName={store?.store?.store?.username}
                       caption={product.caption}
                       price={product.price}
                       size={product.size}
                       id={product.id}
+                      isCompleted={store?.store?.store?.isCompleted}
                     />
                   ))}
                 </div>

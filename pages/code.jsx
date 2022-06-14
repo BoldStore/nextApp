@@ -10,11 +10,13 @@ import styles from "../styles/common.module.css";
 import BoldButton from "../components/CommonComponents/BoldButton";
 import Loading from "../components/Loading";
 import StoreComingSoon from "../components/StoreComponents/StoreComingSoon";
+import { getProfile } from "../store/actions/profile";
 const Code = () => {
   const router = useRouter();
   const [code, setCode] = useState("");
   const dispatch = useDispatch();
   const storeData = useSelector((state) => state.store);
+  const profile = useSelector((state) => state.profile);
   const [user] = useAuthState(auth);
   var flag = true;
 
@@ -28,6 +30,7 @@ const Code = () => {
   useEffect(() => {
     console.log(storeData);
     if (storeData?.success) {
+      dispatch(getProfile());
       router.replace("/store");
     }
   }, [storeData, storeData?.success]);

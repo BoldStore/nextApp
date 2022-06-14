@@ -29,8 +29,9 @@
 .imgFlex h1 {
   font-size: 1.5rem;
   margin: 0;
+  font-weight: normal;
   text-align: center;
-  margin-top: -3rem;
+  margin-top: -2rem;
 }
 
 @keyframes moveUpDown {
@@ -49,5 +50,9 @@
   .circle {
     width: 300px;
     height: 300px;
+  }
+
+  .imgFlex h1 {
+    margin-top: -7rem;
   }
 }
