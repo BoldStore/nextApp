@@ -42,6 +42,9 @@ function MobileViewList() {
         <Link href="/login">
           <p className={styles.navLinks}>Login</p>
         </Link>
+        <Link href="/store/signup">
+          <p className={styles.navLinks}>Signup</p>
+        </Link>
         <Link href="https://www.instagram.com/boldstore.in">
           <p className={styles.navLinks}>Instagram</p>
         </Link>

@@ -75,6 +75,9 @@ function Header() {
             <Link href="/login">
               <p className={styles.navLinks}>Login</p>
             </Link>
+            <Link href="/store/signup">
+              <p className={styles.navLinks}>Signup</p>
+            </Link>
           </div>
         </>
       )}
