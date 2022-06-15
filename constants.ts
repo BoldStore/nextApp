@@ -1,3 +1,5 @@
+import { MEILI_KEY } from "./secrets";
+
 export const ENV = process.env.NODE_ENV === "production" ? "prod" : "dev";
 export const ISPROD = ENV === "prod";
 
@@ -51,9 +53,11 @@ export const SAVE_PRODUCT = "product/save";
 //   ? "http://52.66.214.126/"
 //   : "http://127.0.0.1:7700";
 
-export const MEILI_URL = "http://43.204.122.133/";
+export const MEILI_URL = "https://search.boldstore.in";
 // : "http://127.0.0.1:7700";
-export const MEILI_API_KEY = ISPROD ? process.env.MEILI_KEY : "masteKey";
+export const MEILI_API_KEY = ISPROD
+  ? process.env.MEILI_KEY
+  : MEILI_KEY ?? "masteKey";
 
 // TEST
 export const SEND_MAIL = "test/sendMail";
