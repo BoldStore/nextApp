@@ -18,7 +18,7 @@ export const CREATE_STORE = "store/";
 export const UPDATE_STORE = "store/update";
 export const UPDATE_STORE_PRODUCTS = "store/update";
 export const SAVE_STORE_DATA = "store/saveStoreData";
-export const ADD_POTENTIAL_STORE = "store/addPotentialStore";
+export const ADD_POTENTIAL_STORE = "store/potentialStore";
 
 // Users
 export const CREATE_USER = "user/";

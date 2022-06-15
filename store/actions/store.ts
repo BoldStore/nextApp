@@ -120,21 +120,14 @@ export const addPotentialStore = () => {
     try {
       const response = await instance.get(ADD_POTENTIAL_STORE);
 
-      if (response.status == 200) {
-        dispatch({
-          type: ActionTypes.ADD_POTENTIAL_STORE_SUCCESS,
-          data: response.data,
-        });
-      } else {
-        dispatch({
-          type: ActionTypes.ADD_POTENTIAL_STORE_FAILED,
-          error: response.data,
-        });
-      }
+      dispatch({
+        type: ActionTypes.ADD_POTENTIAL_STORE_SUCCESS,
+        data: response.data,
+      });
     } catch (e) {
       dispatch({
         type: ActionTypes.ADD_POTENTIAL_STORE_FAILED,
-        errmess: e,
+        errmess: (e as any)?.response?.data?.err?.message ?? e,
       });
     }
   };
