@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SearchComponent from "../components/CommonComponents/Search";
 import styles from "../styles/common.module.css";
 import Grid from "../components/Grid";
@@ -9,7 +9,7 @@ import { explorePage } from "../store/actions/search";
 function Search() {
   const dispatch = useDispatch();
   const search = useSelector((state) => state.search);
-
+  const [isSearching, setIsSearching] = useState(false);
   console.log("Search Results>>>", search);
 
   useEffect(() => {
@@ -21,10 +21,39 @@ function Search() {
     <>
       <Header />
       <div className={styles.container}>
-        <SearchComponent />
-        <Grid />
-        <Grid />
-        <Grid />
+        <SearchComponent
+          isSearching={isSearching}
+          setIsSearching={setIsSearching}
+        />
+        {isSearching ? (
+          search?.stores.length == 0 ? (
+            <p
+              style={{
+                color: "var(--lightGrey)",
+                textAlign: "center",
+              }}
+            >
+              No Results Found
+            </p>
+          ) : (
+            search?.stores?.map((store, index) => {
+              return <Grid key={index} store={store} />;
+            })
+          )
+        ) : (
+          search.explore.map((exploreItem, index) => {
+            return (
+              exploreItem.store &&
+              exploreItem.products.length > 3 && (
+                <Grid
+                  key={index}
+                  store={exploreItem?.store}
+                  products={exploreItem?.products}
+                />
+              )
+            );
+          })
+        )}
       </div>
     </>
   );

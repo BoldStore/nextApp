@@ -22,15 +22,24 @@ function ProfileAddress() {
   const [state, setState] = useState("");
   const [pincode, setPincode] = useState("");
   const [notes, setNotes] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (upi.length == 0 || mobile.length == 0) {
+    if (
+      title.length == 0 ||
+      phone.length == 0 ||
+      locality.length == 0 ||
+      appartment.length == 0 ||
+      city.length == 0 ||
+      pincode.length == 0 ||
+      state.length == 0
+    ) {
       setError("Please Enter All Inputs");
-    } else if (mobile.length != 10) {
+    } else if (phone.length != 10) {
       setError("Please Make sure Mobile Number is 10 digits long");
-    } else if (!upi.includes("@")) {
-      setError("Please Enter a valid UPI ID");
+    } else if (!isNaN(pincode)) {
+      setError("Please Enter a valid Pincode");
     } else {
       setError("");
       dispatch(
@@ -51,7 +60,7 @@ function ProfileAddress() {
 
   const setData = () => {
     setTitle(profile?.data?.address?.title ?? "");
-    setPhone(profile.data?.paymentDetails?.phone ?? "");
+    setPhone(profile?.data?.paymentDetails?.phone ?? "");
     setAddressString(profile?.data?.address?.addressString ?? "");
     setLocality(profile?.data?.address?.addressL1 ?? "");
     setAppartment(profile?.data?.address?.addressL2 ?? "");
@@ -98,9 +107,7 @@ function ProfileAddress() {
               Saved Succesfully
             </p>
           )} */}
-          {address.errmess && (
-            <h1 style={{ color: "red" }}>{address.errmess}</h1>
-          )}
+
           <InputComponent
             type="text"
             setValue={setTitle}
@@ -115,15 +122,15 @@ function ProfileAddress() {
           />
           <InputComponent
             type="text"
-            setValue={setLocality}
-            value={locality}
-            placeholder={"Locality"}
-          />
-          <InputComponent
-            type="text"
             setValue={setAppartment}
             value={appartment}
             placeholder={"Appartment/Suite"}
+          />
+          <InputComponent
+            type="text"
+            setValue={setLocality}
+            value={locality}
+            placeholder={"Locality"}
           />
           <InputComponent
             type="text"
@@ -149,7 +156,12 @@ function ProfileAddress() {
             value={notes}
             placeholder={"Notes"}
           />
-          <div style={{ marginTop: "3rem" }}></div>
+
+          {address.errmess && (
+            <h1 className={styles.error}>{address.errmess}</h1>
+          )}
+          {error && <p className={styles.error}>{error}</p>}
+          <div style={{ marginTop: "1rem" }}></div>
           <BoldButton
             text={address?.isLoading ? "Loading..." : "Update"}
             onClick={handleSubmit}
