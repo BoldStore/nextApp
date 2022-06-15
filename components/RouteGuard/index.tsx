@@ -44,6 +44,7 @@ export default function RouteGuard({ children }: any) {
       "/store/entercode",
       "/store/inviteCode",
       "/code",
+      "/privacy-policy",
 
       `/store/${dynamicParam}`,
       `/product/${dynamicParam}`,
