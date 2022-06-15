@@ -104,7 +104,7 @@ function Grid({ store, products }) {
                   }}
                 >
                   <p>₹{products[0]?.amount ?? 200}</p>
-                  <p>{products[0]?.size ?? "M"}</p>
+                  <p>{"M"}</p>
                 </motion.div>
               )}
             </div>
@@ -155,7 +155,7 @@ function Grid({ store, products }) {
                       }}
                     >
                       <p>₹{products[1]?.amount ?? 200}</p>
-                      <p>{products[1]?.size ?? "M"}</p>
+                      <p>{"M"}</p>
                     </motion.div>
                   )}
                 </div>
@@ -200,7 +200,7 @@ function Grid({ store, products }) {
                       }}
                     >
                       <p>₹{products[2]?.amount ?? 200}</p>
-                      <p>{products[2]?.size ?? "M"}</p>
+                      <p>{"M"}</p>
                     </motion.div>
                   )}
                 </div>
@@ -243,7 +243,7 @@ function Grid({ store, products }) {
                       }}
                     >
                       <p>₹{products[3]?.amount ?? 200}</p>
-                      <p>{products[3]?.size ?? "M"}</p>
+                      <p>{"M"}</p>
                     </motion.div>
                   )}
                 </div>
@@ -288,7 +288,7 @@ function Grid({ store, products }) {
                       }}
                     >
                       <p>₹{products[4]?.amount ?? 200}</p>
-                      <p>{products[4]?.size ?? "M"}</p>
+                      <p>{"M"}</p>
                     </motion.div>
                   )}
                 </div>
