@@ -15,6 +15,7 @@ export const explorePage = () => {
       let data: Array<any> = [];
       const storeData = await client.index("stores").search("", {
         limit: 30,
+        filter: [`isCompleted = true`],
       });
       const stores = storeData.hits;
 
@@ -48,7 +49,9 @@ export const searchStores = (term: string) => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.SEARCH_STORES_REQUEST });
     try {
-      const results = await client.index("stores").search(term);
+      const results = await client.index("stores").search(term, {
+        filter: [`isCompleted = true`],
+      });
 
       dispatch({
         type: ActionTypes.SEARCH_STORES_SUCCESS,
