@@ -38,7 +38,7 @@ function ProfileAddress() {
       setError("Please Enter All Inputs");
     } else if (phone.length != 10) {
       setError("Please Make sure Mobile Number is 10 digits long");
-    } else if (!isNaN(pincode)) {
+    } else if (isNaN(pincode)) {
       setError("Please Enter a valid Pincode");
     } else {
       setError("");
