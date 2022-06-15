@@ -19,7 +19,7 @@ function ContactUs() {
   const saveData = async () => {
     setLoading(true);
     const url =
-      "https://us-central1-bold-96a92.cloudfunctions.net/stores-addPotentialStore";
+      "https://us-central1-bold-96a92.cloudfunctions.net/app/stores/potentialStore";
     const response = await axios.post(
       url,
       {
