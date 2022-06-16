@@ -33,7 +33,10 @@
 .storeDetails h1 {
   font-size: 1.3rem;
 }
-
+.storeDetails h1:hover {
+  cursor: pointer;
+  color: var(--lightGrey);
+}
 .postContainer {
   display: flex;
   flex-wrap: wrap;

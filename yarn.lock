@@ -3530,7 +3530,7 @@ react-multi-carousel@^2.8.0:
 
 react-razorpay@^1.1.5:
   version "1.1.5"
-  resolved "https://registry.yarnpkg.com/react-razorpay/-/react-razorpay-1.1.5.tgz#450324a9ee7f08c3605ac1c8af32878dcb15496a"
+  resolved "https://registry.npmjs.org/react-razorpay/-/react-razorpay-1.1.5.tgz"
   integrity sha512-jYDGW7k71qyANELOoa8JMgZjdGl1UiqqH/QbmkREl1q2nk7E+W8nyMdvD6ukXm/MPZJxTFoYljBFOJb8zydwTg==
 
 react-redux@^8.0.1:

@@ -98,13 +98,16 @@ function StoreProfile() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                cursor: "pointer",
               }}
             >
               <Link
                 passHref={true}
                 href={`https://www.instagram.com/${profile?.data?.data?.username}`}
               >
-                <h1>@{profile?.data?.data?.username}</h1>
+                <h1 style={{ cursor: "pointer" }}>
+                  @{profile?.data?.data?.username}
+                </h1>
               </Link>
               {profile.data?.percentage == 100 && (
                 <VerifiedIcon
