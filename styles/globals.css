@@ -1,19 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap");
+
+/*This is dev */
 :root {
   --white: #fff;
   --black: #000;
+  --darkGrey: #2f3336;
+  --lightGrey: #808080;
 }
 
 body[data-theme="dark"] {
   --white: #000;
   --black: #fff;
+  --darkGrey: #2f3336;
+  --lightGrey: #808080;
 }
 
 body,
 body[data-theme="light"] {
   --white: #fff;
   --black: #000;
+  --darkGrey: #2f3336;
+  --lightGrey: #808080;
+  --blue: #1d9bf0;
 }
 
 html,
@@ -24,7 +33,7 @@ body {
   color: var(--white);
   overflow-x: hidden;
   background-color: var(--black);
-  cursor: none;
+
   scroll-behavior: smooth;
 }
 
@@ -56,6 +65,7 @@ a {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: var(--white);
+  border-radius: 1rem;
 }
 
 /* Handle on hover */
@@ -126,6 +136,33 @@ img {
   mix-blend-mode: exclusion;
 }
 
+input:-webkit-autofill {
+  color: var(--white) !important;
+  background-color: var(--black) !important;
+  padding: 1rem;
+  padding-left: 0rem;
+  border: 0px;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--lightGrey) !important;
+  width: 100%;
+  font-family: "Inter";
+}
+input:autofill {
+  color: var(--white) !important;
+  background-color: var(--black) !important;
+  padding: 1rem;
+  padding-left: 0rem;
+  border: 0px;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--lightGrey) !important;
+  width: 100%;
+  font-family: "Inter";
+}
+.cursor,
+.cursor2 {
+  display: none;
+}
+
 @media only screen and (max-width: 1000px) {
   .cursor,
   .cursor2,
@@ -140,4 +177,20 @@ img {
   .logo {
     display: none;
   }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  padding-left: 0.5rem !important;
+  border: 2px solid var(--darkGrey) !important;
+  -webkit-text-fill-color: var(--white);
+  -webkit-box-shadow: 0 0 0px 0px #000 inset !important;
+  transition: background-color 5000s ease-in-out 0s;
 }

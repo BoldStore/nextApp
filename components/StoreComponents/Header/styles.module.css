@@ -1,0 +1,111 @@
+.container {
+  padding: 1rem;
+  font-family: "Spline Sans", sans-serif;
+  font-size: 0.9rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--black);
+  z-index: 100;
+  top: 0;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  position: fixed;
+}
+
+.leftContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navLinks {
+  position: relative;
+  margin: 0 1.5rem;
+  cursor: pointer !important;
+  width: fit-content;
+  font-family: "Inter";
+  font-size: 1rem;
+  font-weight: 300;
+  color: #808080;
+}
+
+.navLinks::after {
+  position: absolute;
+  bottom: -6px;
+  content: "";
+  display: block;
+  height: 1px;
+  width: 0;
+  position: absolute;
+  background: var(--white);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.navLinks:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.navLinks:hover {
+  color: var(--white);
+  transition-duration: 0.2s;
+}
+
+.navLinks2:hover {
+  color: var(--white);
+  margin-top: -5px;
+  transition-duration: 0.2s;
+}
+
+.logo {
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  color: var(--white);
+  mix-blend-mode: exclusion;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+  .container {
+    width: 100%;
+    left: 0%;
+    position: fixed;
+    border-bottom: 0px solid var(--black);
+    padding: 15px;
+    background-color: #121212;
+  }
+  .rightContainer {
+    margin-right: auto !important;
+    margin-left: 15px;
+    margin-top: 15px;
+  }
+
+  .container h1 {
+    padding-left: 2rem;
+  }
+  .menu {
+    background-color: #121212;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .menu h2 {
+    margin: 0px;
+  }
+
+  .navLinks {
+    margin-bottom: 2rem;
+  }
+
+  .logo {
+    display: none;
+  }
+}

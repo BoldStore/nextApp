@@ -1,0 +1,120 @@
+.wrapper p {
+  margin-bottom: 1rem;
+  margin-left: 0.5rem;
+}
+
+.input {
+  color: var(--white);
+  background-color: var(--black) !important;
+  padding: 1rem;
+  padding-left: 0.5rem;
+  border: 0px;
+  font-size: 1rem;
+  border: 1px solid var(--darkGrey);
+  border-radius: 0.5rem;
+  width: 100%;
+  font-family: "Inter";
+  display: flex;
+  /* padding: 1rem 1rem; */
+  margin-top: 0.5rem;
+}
+
+.input:hover {
+  border-color: var(--lightGrey);
+  transition: 0.3s all;
+}
+
+.input:focus {
+  outline: none;
+  border: 1px solid var(--white);
+  transition: 0.3s all;
+}
+
+.input:-webkit-autofill {
+  color: var(--white) !important;
+  background-color: var(--black) !important;
+  padding: 1rem;
+  padding-left: 0rem;
+  border: 0px;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--lightGrey) !important;
+  width: 100%;
+  font-family: "Inter";
+}
+.input:autofill {
+  color: var(--white) !important;
+  background-color: var(--black) !important;
+  padding: 1rem;
+  padding-left: 0rem;
+  border: 0px;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--lightGrey) !important;
+  width: 100%;
+  font-family: "Inter";
+}
+
+.flexWrap {
+  display: flex;
+  border: 0px;
+  font-size: 1rem;
+  border: 1px solid var(--darkGrey);
+  border-radius: 0.5rem;
+}
+.flexWrap:hover {
+  border-color: var(--lightGrey);
+  transition: 0.3s all;
+}
+
+.input2 {
+  color: var(--white);
+  background-color: var(--black) !important;
+  padding: 1rem;
+  padding-left: 0rem;
+  border: 0px;
+  font-size: 1rem;
+  width: 100%;
+  font-family: "Inter";
+  display: flex;
+}
+
+.input2:focus {
+  outline: none;
+  transition: 0.3s all;
+}
+
+.input2:-webkit-autofill {
+  color: var(--white) !important;
+  background-color: var(--black) !important;
+  padding: 1rem;
+  padding-left: 0rem;
+  border: 0px;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--lightGrey) !important;
+  width: 100%;
+  font-family: "Inter";
+}
+.input2:autofill {
+  color: var(--white) !important;
+  background-color: var(--black) !important;
+  padding: 1rem;
+  padding-left: 0rem;
+  border: 0px;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--lightGrey) !important;
+  width: 100%;
+  font-family: "Inter";
+}
+
+.eye {
+  position: absolute;
+  right: 1rem;
+  z-index: 100;
+  top: 25%;
+  cursor: pointer;
+  color: var(--lightGrey);
+}
+
+.eye:hover {
+  color: var(--white);
+  transition: all 0.3s;
+}

@@ -1,0 +1,14 @@
+.wrapper {
+  margin: auto;
+  margin-top: 25vh;
+}
+
+.columnFlex {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.5rem;
+}

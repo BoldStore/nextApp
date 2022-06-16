@@ -1,0 +1,45 @@
+.container {
+  position: fixed;
+  display: block;
+  margin-left: auto;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  padding: 3rem;
+  background-color: transparent !important;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icons {
+  border: 2px solid var(--darkGrey);
+  padding: 0.75rem;
+  padding-top: 2rem;
+  padding-bottom: 0rem;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--lightGrey);
+  margin-bottom: 2rem;
+  cursor: pointer;
+}
+
+.icon:hover {
+  color: var(--white);
+  transition: all 0.2s;
+}
+
+@media (max-width: 1050px) {
+  .container {
+    display: none;
+  }
+}

@@ -1,0 +1,40 @@
+.chartContainer {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  min-width: 300px;
+  padding: 1rem;
+  border: 2px solid var(--darkGrey);
+  border-radius: 2rem;
+  margin-right: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.chartContainer h1 {
+  font-size: 1.5rem;
+}
+
+.numberBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.productImg {
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+@media (max-width: 1350px) {
+  .chartContainer {
+    width: 45%;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 550px) {
+  .chartContainer {
+    width: 100%;
+    margin-right: 0;
+  }
+}

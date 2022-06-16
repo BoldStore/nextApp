@@ -1,0 +1,215 @@
+.page {
+  min-height: 100vh;
+}
+.container {
+  width: 80vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.containerLogin {
+  width: 35%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.error {
+  color: #ed4337;
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.center {
+  margin-top: 8rem;
+}
+
+.btn {
+  padding: 0.1rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--black);
+  border: 1px solid var(--lightGrey);
+  border-radius: 10px;
+  color: var(--lightGrey);
+  margin-top: 1rem;
+  cursor: pointer;
+  padding: 0rem 5.5rem;
+  background-color: transparent;
+  border: 1px solid var(--darkGrey);
+  border-radius: 0.5rem;
+  color: var(--white);
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+}
+
+.btn2 {
+  padding: 0rem 5.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--white);
+  border: 1px solid var(--lightGrey);
+  border-radius: 10px;
+  color: var(--darkGrey);
+  cursor: pointer;
+}
+
+.btn:hover {
+  border: 1px solid var(--white);
+  color: var(--white);
+  transition: 0.2s ease-out;
+}
+
+.btn2:hover {
+  border: 1px solid var(--lightGrey);
+  background-color: var(--black);
+  color: var(--lightGrey);
+  transition: 0.2s ease-out;
+}
+
+.whiteBtn {
+  padding: 0rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  /* background-color: var(--white); */
+  border: 1px solid var(--lightGrey);
+  border-radius: 10px;
+  color: var(--lightGrey);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  border: 1px solid var(--darkGrey);
+  border-radius: 0.5rem;
+  color: var(--white);
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.link {
+  position: relative;
+  cursor: pointer !important;
+  width: fit-content;
+  font-family: "Inter";
+  font-size: 1rem;
+  font-weight: 300;
+  color: #808080;
+  padding: 0px !important;
+}
+
+.link:hover {
+  color: var(--white);
+  transition-duration: 0.2s;
+}
+.topStoreContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: auto;
+}
+
+.postContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 2.5rem;
+}
+
+.topStoreContainer {
+  padding: 1rem;
+  border-bottom: 2px solid var(--darkGrey);
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.topStoreContainer::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+.extraBigHeading {
+  text-transform: uppercase;
+  font-family: "Raleway";
+  font-size: 14rem;
+  font-weight: 800;
+  color: var(--black);
+  -webkit-text-stroke: 2px var(--white);
+  line-height: 1;
+  margin-bottom: 0px;
+}
+.whiteHeading {
+  text-transform: uppercase;
+  font-family: "Raleway";
+  font-size: 10rem;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.3;
+}
+
+@media only screen and (max-width: 1250px) {
+  .container {
+    width: 95vw;
+  }
+  .containerLogin {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .container {
+    width: 90vw !important;
+    margin-top: 2rem !important;
+  }
+  .containerLogin {
+    width: 90vw;
+  }
+  .btn,
+  .btn2 {
+    padding: 0rem 2rem;
+    border-radius: 7px;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  .btn {
+    margin-top: 2rem;
+  }
+
+  .btn p,
+  .btn2 p {
+    margin: 0.8rem;
+  }
+  .topStoreContainer {
+    margin-top: 4rem !important;
+    padding-left: 12rem;
+  }
+  .logoImg {
+    margin-bottom: 0px !important;
+  }
+  .extraBigHeading,
+  .whiteHeading {
+    margin-top: 10rem !important;
+    font-size: 5rem;
+  }
+}

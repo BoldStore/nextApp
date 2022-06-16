@@ -1,0 +1,38 @@
+.container {
+  margin-top: 5rem;
+  padding: 5rem;
+  padding-bottom: 0px;
+}
+
+.hugeHeading {
+  text-transform: uppercase;
+  font-family: "Raleway";
+  font-size: 10rem;
+  font-weight: 800;
+  color: var(--black);
+  -webkit-text-stroke: 2px var(--white);
+  line-height: 1;
+}
+
+.midHeading {
+  text-transform: uppercase;
+  font-family: "Raleway";
+  font-size: 10rem;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.3;
+}
+@media only screen and (max-width: 1000px) {
+  .container {
+    margin-top: 0px;
+    padding: 3rem;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  .hugeHeading,
+  .midHeading {
+    font-size: 3rem;
+    line-height: 1.2;
+  }
+}

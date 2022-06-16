@@ -1,0 +1,58 @@
+.imgFlex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.circle {
+  height: 500px;
+  width: 500px;
+  background-color: var(--white);
+  z-index: 0;
+  border-radius: 50%;
+  position: absolute;
+  top: 2rem;
+  opacity: 0.1;
+}
+
+.imgFlex img {
+  z-index: 10;
+  height: 500px;
+  animation: moveUpDown 3s linear infinite;
+  position: relative !important;
+  left: 0;
+  bottom: 0;
+}
+
+.imgFlex h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: normal;
+  text-align: center;
+  margin-top: -2rem;
+}
+
+@keyframes moveUpDown {
+  0%,
+  100% {
+    bottom: 0;
+  }
+  50% {
+    bottom: 20px;
+  }
+}
+@media (max-width: 750px) {
+  .imgFlex img {
+    width: 120%;
+  }
+  .circle {
+    width: 300px;
+    height: 300px;
+  }
+
+  .imgFlex h1 {
+    margin-top: -7rem;
+  }
+}
