@@ -10,6 +10,7 @@ import { saveProduct } from "../../../store/actions/products";
 import Link from "next/link";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import useRazorpay from "react-razorpay";
+import ProductCarousel from "./ProductCarousel";
 
 function ProductComponent({ product }) {
   const Razorpay = useRazorpay();
@@ -55,7 +56,9 @@ function ProductComponent({ product }) {
   return (
     <>
       <div className={styles.productContainer}>
-        {!video ? (
+        {product?.product?.type == "CAROUSEL_ALBUM" ? (
+          <ProductCarousel product={product} />
+        ) : !video ? (
           <img
             onError={() => {
               setVideo(true);
