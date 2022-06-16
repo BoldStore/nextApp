@@ -76,8 +76,8 @@ function OrderComponent({
         <Skeleton count={1} width={80} height={10} />
       )}
       {postUrl ? (
-        <Image
-          src={postUrl}
+        <img
+          src={postUrl ?? "/assets/shoe2.jpg"}
           alt="item"
           width="450"
           height="450"

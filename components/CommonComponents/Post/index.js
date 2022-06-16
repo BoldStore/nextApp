@@ -165,7 +165,7 @@ function Post({
         >
           {postUrl || type == "CAROUSEL_ALBUM" ? (
             !video ? (
-              <Image
+              <img
                 onError={() => {
                   setVideo(true);
                 }}

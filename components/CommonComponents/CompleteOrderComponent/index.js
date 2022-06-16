@@ -15,7 +15,7 @@ function CompleteOrderComponent() {
     <>
       <div className={styles.productContainer}>
         <div>
-          <Image
+          <img
             src="/assets/shoe2.jpg"
             alt="item"
             width="650"

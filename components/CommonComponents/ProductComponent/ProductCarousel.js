@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./styles.module.css";
 
 function ProductCarousel({ product }) {
   const [video, setVideo] = useState(false);
   const [displayUrl, setDisplayUrl] = useState(
-    product?.product?.images[0].imgUrl
+    product?.product?.images
+      ? product?.product?.images[0]?.imgUrl
+      : product?.product?.imgUrl
   );
+
+  useEffect(() => {
+    console.log("imggg", product);
+  }, [product]);
+
   return (
     <div className={styles.carouselFlex}>
       {!video ? (

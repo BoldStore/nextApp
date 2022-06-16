@@ -81,7 +81,7 @@ function Grid({ store, products }) {
               onMouseEnter={() => setFlag0(true)}
               onMouseLeave={() => setFlag0(false)}
             >
-              <Image
+              <img
                 src={
                   products[0]?.imgUrl
                     ? products[0]?.imgUrl
@@ -132,7 +132,7 @@ function Grid({ store, products }) {
                   onMouseEnter={() => setFlag1(true)}
                   onMouseLeave={() => setFlag1(false)}
                 >
-                  <Image
+                  <img
                     src={
                       products[1]?.imgUrl
                         ? products[1]?.imgUrl
@@ -177,7 +177,7 @@ function Grid({ store, products }) {
                   onMouseEnter={() => setFlag2(true)}
                   onMouseLeave={() => setFlag2(false)}
                 >
-                  <Image
+                  <img
                     src={
                       products[2]?.imgUrl
                         ? products[2]?.imgUrl
@@ -220,7 +220,7 @@ function Grid({ store, products }) {
                   onMouseEnter={() => setFlag3(true)}
                   onMouseLeave={() => setFlag3(false)}
                 >
-                  <Image
+                  <img
                     src={
                       products[3]?.imgUrl
                         ? products[3]?.imgUrl
@@ -265,7 +265,7 @@ function Grid({ store, products }) {
                   onMouseEnter={() => setFlag4(true)}
                   onMouseLeave={() => setFlag4(false)}
                 >
-                  <Image
+                  <img
                     src={
                       products[4]?.imgUrl
                         ? products[4]?.imgUrl

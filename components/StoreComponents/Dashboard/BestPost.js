@@ -7,7 +7,7 @@ function BestPost() {
   return (
     <div className={styles.chartContainer}>
       <h1>Most Sold Product</h1>
-      <Image
+      <img
         src="/assets/shoe2.jpg"
         alt="item"
         width="450"
