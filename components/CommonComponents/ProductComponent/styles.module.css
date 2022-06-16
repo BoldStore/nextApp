@@ -157,18 +157,25 @@
     max-height: auto;
     max-width: 100vw;
     width: 100%;
+    object-fit: contain;
   }
   .imagesFlex {
     flex-direction: row;
     margin-top: 1rem;
     margin-bottom: 0rem;
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .imagesFlex::-webkit-scrollbar {
     height: 0px;
   }
   .smallImg {
     max-width: 100px;
+    margin-right: 1rem;
+  }
+}
+@media (max-width: 550px) {
+  .bigImg {
+    object-fit: cover;
   }
 }
