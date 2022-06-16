@@ -18,6 +18,7 @@ import Grid3 from "../../../components/CommonComponents/Grids/grid3";
 import Grid4 from "../../../components/CommonComponents/Grids/grid4";
 import UsernameTabs from "../../../components/StoreComponents/UsernameTabs";
 import { getProfile } from "../../../store/actions/profile";
+import StoreComingSoon from "../../../components/StoreComponents/StoreComingSoon";
 function StoreProfile() {
   const profile = useSelector((state) => state.profile);
   const store = useSelector((state) => state.pages);
@@ -126,63 +127,74 @@ function StoreProfile() {
               Refresh Products
             </p>
           </div>
-          <div className={styles.tabs}>
-            <UsernameTabs products={products} profile={true} store={store} />
-          </div>
-          <div className={styles.desktopTabs}>
-            {profile.data?.percentage == 100 ? (
-              value == 0 ? (
-                <div className={styles.products}>
-                  <div className={styles.productsGrid}>
-                    {products.slice(0, -1).map((arr, i) => {
-                      var num = randomNumberInRange(1, 4);
-                      if (num == 1) {
-                        return <Grid1 key={i} products={arr} />;
-                      } else if (num == 2) {
-                        return <Grid2 key={i} products={arr} />;
-                      } else if (num == 3) {
-                        return <Grid3 key={i} products={arr} />;
-                      } else {
-                        return <Grid4 key={i} products={arr} />;
-                      }
-                    })}
-                    <div className={styles.postContainer}>
-                      {products[products.length - 1]?.length != 6 ? (
-                        products[products.length - 1]?.map((item, i) => (
-                          <OneImg product={item} key={i} />
-                        ))
-                      ) : (
-                        <Grid1 products={products[-1]} />
-                      )}
+          {profile?.data?.data?.postsStatus == "fetching" &&
+          profile.data?.percentage == 100 ? (
+            <StoreComingSoon text={"Posts are being fetched..."} />
+          ) : (
+            <>
+              <div className={styles.tabs}>
+                <UsernameTabs
+                  products={products}
+                  profile={true}
+                  store={store}
+                />
+              </div>
+              <div className={styles.desktopTabs}>
+                {profile.data?.percentage == 100 ? (
+                  value == 0 ? (
+                    <div className={styles.products}>
+                      <div className={styles.productsGrid}>
+                        {products.slice(0, -1).map((arr, i) => {
+                          var num = randomNumberInRange(1, 4);
+                          if (num == 1) {
+                            return <Grid1 key={i} products={arr} />;
+                          } else if (num == 2) {
+                            return <Grid2 key={i} products={arr} />;
+                          } else if (num == 3) {
+                            return <Grid3 key={i} products={arr} />;
+                          } else {
+                            return <Grid4 key={i} products={arr} />;
+                          }
+                        })}
+                        <div className={styles.postContainer}>
+                          {products[products.length - 1]?.length != 6 ? (
+                            products[products.length - 1]?.map((item, i) => (
+                              <OneImg product={item} key={i} />
+                            ))
+                          ) : (
+                            <Grid1 products={products[-1]} />
+                          )}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              ) : value == 1 ? (
-                <div className={styles.postContainer}>
-                  {store?.store?.products?.map((product, index) => (
-                    <Post
-                      postUrl={product.imgUrl}
-                      key={index}
-                      storeUrl={store?.store?.store?.profile_pic}
-                      storeLocation={store?.store?.store?.city ?? ""}
-                      storeName={store?.store?.store?.username}
-                      caption={product.caption}
-                      price={product.price}
-                      size={product.size}
-                      id={product.id}
-                      isCompleted={store?.store?.store?.isCompleted}
-                      type={product.type}
-                      images={product.images}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <></>
-              )
-            ) : (
-              <SignUpComplete />
-            )}
-          </div>
+                  ) : value == 1 ? (
+                    <div className={styles.postContainer}>
+                      {store?.store?.products?.map((product, index) => (
+                        <Post
+                          postUrl={product.imgUrl}
+                          key={index}
+                          storeUrl={store?.store?.store?.profile_pic}
+                          storeLocation={store?.store?.store?.city ?? ""}
+                          storeName={store?.store?.store?.username}
+                          caption={product.caption}
+                          price={product.price}
+                          size={product.size}
+                          id={product.id}
+                          isCompleted={store?.store?.store?.isCompleted}
+                          type={product.type}
+                          images={product.images}
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <></>
+                  )
+                ) : (
+                  <SignUpComplete />
+                )}
+              </div>
+            </>
+          )}
         </div>
       </>
     );

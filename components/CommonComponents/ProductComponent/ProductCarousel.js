@@ -34,14 +34,25 @@ function ProductCarousel({ product }) {
         />
       )}
       <div className={styles.imagesFlex}>
-        {product?.product?.images?.map((img, index) => (
-          <img
-            src={img.imgUrl}
-            className={styles.smallImg}
-            onMouseEnter={() => setDisplayUrl(img.imgUrl)}
-            onClick={() => setDisplayUrl(img.imgUrl)}
-          />
-        ))}
+        {product?.product?.images?.map((img, index) =>
+          !video ? (
+            <img
+              src={img.imgUrl}
+              className={styles.smallImg}
+              onMouseEnter={() => setDisplayUrl(img.imgUrl)}
+              onClick={() => setDisplayUrl(img.imgUrl)}
+            />
+          ) : (
+            <video
+              src={img.imgUrl}
+              muted
+              autoPlay={false}
+              className={styles.smallImg}
+              onMouseEnter={() => setDisplayUrl(img.imgUrl)}
+              onClick={() => setDisplayUrl(img.imgUrl)}
+            />
+          )
+        )}
       </div>
     </div>
   );
