@@ -18,7 +18,11 @@ function OneImg({ product }) {
             onError={() => {
               setVideo(true);
             }}
-            src={product?.imgUrl}
+            src={
+              product?.type == "CAROUSEL_ALBUM"
+                ? product?.images[0]?.imgUrl
+                : product?.imgUrl
+            }
             alt="item"
             width="320"
             height="320"
@@ -26,7 +30,11 @@ function OneImg({ product }) {
           />
         ) : (
           <video
-            src={product?.imgUrl}
+            src={
+              product?.type == "CAROUSEL_ALBUM"
+                ? product?.images[0]?.imgUrl
+                : product?.imgUrl
+            }
             muted
             autoPlay={false}
             className={styles.individualImg}

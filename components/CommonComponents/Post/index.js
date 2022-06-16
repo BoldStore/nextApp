@@ -18,10 +18,12 @@ function Post({
   storeName,
   storeLocation,
   postUrl,
+  images,
   price,
   size,
   caption,
   isCompleted,
+  type,
 }) {
   const [video, setVideo] = useState(false);
   const [text, setText] = useState(caption?.slice(0, 35));
@@ -73,6 +75,10 @@ function Post({
     const rzpay = new Razorpay(options);
     rzpay.open();
   }, [Razorpay]);
+
+  useEffect(() => {
+    console.log("type", type == "CAROUSEL_ALBUM" && images[0]?.imgUrl);
+  }, []);
 
   return (
     <div className={styles.postContainer}>
@@ -157,13 +163,17 @@ function Post({
             height: "350px",
           }}
         >
-          {postUrl ? (
+          {postUrl || type == "CAROUSEL_ALBUM" ? (
             !video ? (
               <Image
                 onError={() => {
                   setVideo(true);
                 }}
-                src={postUrl ?? "/assets/shoe2.jpg"}
+                src={
+                  type == "CAROUSEL_ALBUM"
+                    ? images[0]?.imgUrl
+                    : postUrl ?? "/assets/shoe2.jpg"
+                }
                 alt="item"
                 width="450"
                 height="450"
@@ -171,7 +181,11 @@ function Post({
               />
             ) : (
               <video
-                src={postUrl}
+                src={
+                  type == "CAROUSEL_ALBUM"
+                    ? images[0]?.imgUrl
+                    : postUrl ?? "/assets/shoe2.jpg"
+                }
                 muted
                 autoPlay={false}
                 className={styles.productImg}

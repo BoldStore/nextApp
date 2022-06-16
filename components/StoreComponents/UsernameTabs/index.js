@@ -105,6 +105,8 @@ function UsernameTabs({ products, profile, store }) {
                     price={product.price}
                     size={product.size}
                     id={product.id}
+                    type={product.type}
+                    images={product.images}
                   />
                 ))}
               </div>

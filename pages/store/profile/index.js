@@ -171,6 +171,8 @@ function StoreProfile() {
                       size={product.size}
                       id={product.id}
                       isCompleted={store?.store?.store?.isCompleted}
+                      type={product.type}
+                      images={product.images}
                     />
                   ))}
                 </div>

@@ -48,6 +48,7 @@ function ProductPage() {
                   price={product.price}
                   size={product.size}
                   id={product.id}
+                  type={product.type}
                   isCompleted={product?.store?.isCompleted}
                 />
               ))}

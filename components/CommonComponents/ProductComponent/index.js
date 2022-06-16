@@ -60,7 +60,11 @@ function ProductComponent({ product }) {
             onError={() => {
               setVideo(true);
             }}
-            src={product?.product?.imgUrl}
+            src={
+              product?.product?.type == "CAROUSEL_ALBUM"
+                ? product?.product?.images[0]?.imgUrl
+                : product?.product?.imgUrl
+            }
             alt="item"
             width="650"
             height="650"
@@ -68,7 +72,11 @@ function ProductComponent({ product }) {
           />
         ) : (
           <video
-            src={product?.product?.imgUrl}
+            src={
+              product?.product?.type == "CAROUSEL_ALBUM"
+                ? product?.product?.images[0]?.imgUrl
+                : product?.product?.imgUrl
+            }
             muted
             autoPlay={false}
             className={styles.productImg}

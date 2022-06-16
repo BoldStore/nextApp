@@ -84,6 +84,8 @@ function StoreHomePage() {
               price={product.price}
               size={product.size}
               id={product.id}
+              images={product.images ? product.images : []}
+              type={product.type}
               isCompleted={product?.store?.isCompleted}
             />
           ))}

@@ -20,7 +20,14 @@ function Grid4({ products }) {
               onMouseEnter={() => setFlag1(true)}
               onMouseLeave={() => setFlag1(false)}
             >
-              <img className={styles.bigImg} src={products[0]?.imgUrl} />
+              <img
+                className={styles.bigImg}
+                src={
+                  products[0]?.type == "CAROUSEL_ALBUM"
+                    ? products[0]?.images[0]?.imgUrl
+                    : products[0]?.imgUrl
+                }
+              />
               {flag1 && (
                 <motion.div
                   className={styles.hoverDiv}
@@ -44,7 +51,14 @@ function Grid4({ products }) {
               onMouseEnter={() => setFlag2(true)}
               onMouseLeave={() => setFlag2(false)}
             >
-              <img className={styles.bigImg} src={products[1]?.imgUrl} />
+              <img
+                className={styles.bigImg}
+                src={
+                  products[1]?.type == "CAROUSEL_ALBUM"
+                    ? products[1]?.images[0]?.imgUrl
+                    : products[1]?.imgUrl
+                }
+              />
               {flag2 && (
                 <motion.div
                   className={styles.hoverDiv}
@@ -68,7 +82,14 @@ function Grid4({ products }) {
               onMouseEnter={() => setFlag3(true)}
               onMouseLeave={() => setFlag3(false)}
             >
-              <img className={styles.img} src={products[2]?.imgUrl} />
+              <img
+                className={styles.img}
+                src={
+                  products[2]?.type == "CAROUSEL_ALBUM"
+                    ? products[2]?.images[0]?.imgUrl
+                    : products[2]?.imgUrl
+                }
+              />
               {flag3 && (
                 <motion.div
                   className={styles.hoverDiv}
@@ -92,7 +113,14 @@ function Grid4({ products }) {
               onMouseEnter={() => setFlag4(true)}
               onMouseLeave={() => setFlag4(false)}
             >
-              <img className={styles.img} src={products[3]?.imgUrl} />
+              <img
+                className={styles.img}
+                src={
+                  products[3]?.type == "CAROUSEL_ALBUM"
+                    ? products[3]?.images[0]?.imgUrl
+                    : products[3]?.imgUrl
+                }
+              />
               {flag4 && (
                 <motion.div
                   className={styles.hoverDiv}
@@ -116,7 +144,14 @@ function Grid4({ products }) {
               onMouseEnter={() => setFlag5(true)}
               onMouseLeave={() => setFlag5(false)}
             >
-              <img className={styles.img} src={products[4]?.imgUrl} />
+              <img
+                className={styles.img}
+                src={
+                  products[4]?.type == "CAROUSEL_ALBUM"
+                    ? products[4]?.images[0]?.imgUrl
+                    : products[4]?.imgUrl
+                }
+              />
               {flag5 && (
                 <motion.div
                   className={styles.hoverDiv}
@@ -140,7 +175,14 @@ function Grid4({ products }) {
               onMouseEnter={() => setFlag6(true)}
               onMouseLeave={() => setFlag6(false)}
             >
-              <img className={styles.img} src={products[5]?.imgUrl} />
+              <img
+                className={styles.img}
+                src={
+                  products[5]?.type == "CAROUSEL_ALBUM"
+                    ? products[5]?.images[0]?.imgUrl
+                    : products[5]?.imgUrl
+                }
+              />
               {flag6 && (
                 <motion.div
                   className={styles.hoverDiv}
