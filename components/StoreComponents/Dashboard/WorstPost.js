@@ -7,7 +7,7 @@ function WorstPost() {
   return (
     <div className={styles.chartContainer}>
       <h1>Least Sold Product</h1>
-      <img
+      <Image
         src="/assets/shoe2.jpg"
         alt="item"
         width="450"
