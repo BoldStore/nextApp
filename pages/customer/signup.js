@@ -47,14 +47,23 @@ function CustomerSignup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validation()) {
-      setError("Please check your inputs");
-      return;
+    const validEmail = isEmail(email);
+    const passwordValid = equals(password, confirmPassword);
+    if (
+      email.length == 0 ||
+      password.length == 0 ||
+      confirmPassword.length == 0
+    ) {
+      setError("Please Enter all inputs");
+    } else if (!validEmail) {
+      setError("Invalid Email Entered!");
+    } else if (!passwordValid) {
+      setError("Passwords do not match!");
+    } else {
+      setError("");
+      // 1. Signup up for firebase auth
+      await createUserWithEmailAndPassword(email, password);
     }
-    setError("");
-
-    // 1. Signup up for firebase auth
-    await createUserWithEmailAndPassword(email, password);
   };
 
   useEffect(() => {

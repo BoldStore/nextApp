@@ -29,11 +29,9 @@ function InstagramUsername() {
     <div className={styles.page}>
       <Header />
       <div className={styles.center}>
-        <div className={styles.container}>
+        <div className={styles.containerLogin}>
           <p className={styles.heading}>Connect Your Username 🚀 </p>
-          {userData.errmess && (
-            <p className={styles.error}>{userData.errmess}</p>
-          )}
+
           <UsernameComponent
             type="text"
             setValue={setUsername}
@@ -47,6 +45,9 @@ function InstagramUsername() {
           >
             <p>{!userData.isLoading ? "Continue" : "Loading..."}</p>
           </div>
+          {userData.errmess && (
+            <p className={styles.error}>{userData.errmess}</p>
+          )}
         </div>
       </div>
     </div>
