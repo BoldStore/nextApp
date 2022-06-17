@@ -43,7 +43,7 @@ export const GET_PRODUCT = "product";
 export const SAVE_PRODUCT = "product/save";
 
 // Search
-export const MEILI_URL = "https://search.boldstore.in";
+export const MEILI_URL = "https://searchdev.boldstore.in";
 export const MEILI_API_KEY = process.env.NEXT_PUBLIC_MEILI_KEY;
 
 // TEST
