@@ -31,7 +31,7 @@ const Code = () => {
     console.log(storeData);
     if (storeData?.success) {
       dispatch(getProfile());
-      router.replace("/store");
+      router.replace("/profile");
     }
   }, [storeData, storeData?.success]);
 
@@ -67,10 +67,10 @@ const Code = () => {
             <div>Code: {code}</div>
             <br />
             <div>Store: {storeData?.store?.insta_username}</div>
-            <StoreComingSoon text={"Your Posts Are Being Fetched..."} />
+            {/* <StoreComingSoon text={"Your Posts Are Being Fetched..."} />
             <h3 style={{ textAlign: "center" }}>
               Please don&apos;t leave the screen
-            </h3>
+            </h3> */}
           </>
         )}
       </div>

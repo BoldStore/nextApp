@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addAddress } from "../../../store/actions/address";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import { getProfile } from "../../../store/actions/profile";
 
 function ProfileAddress() {
   const dispatch = useDispatch();
@@ -78,6 +79,7 @@ function ProfileAddress() {
   useEffect(() => {
     if (address.success) {
       toast("Saved Succesfully!");
+      dispatch(getProfile());
       router.push("/profile");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
