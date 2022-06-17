@@ -25,7 +25,7 @@ export default function RouteGuard({ children }: any) {
       router.events.off("routeChangeComplete", authCheck);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+  }, [user, router]);
 
   function authCheck(url: string | undefined) {
     // redirect to login page if accessing a private page and not logged in
@@ -33,6 +33,8 @@ export default function RouteGuard({ children }: any) {
 
     // For stores and products
     const dynamicParam = path.split("/")[2] ?? "";
+
+    const unAuthPaths = ["/login", "/customer/signup", "/store/signup"];
 
     const publicPaths = [
       "/login",
@@ -42,8 +44,6 @@ export default function RouteGuard({ children }: any) {
       "/customer/signup",
       "/store/signup",
       "/store/entercode",
-      "/store/inviteCode",
-      "/code",
       "/privacy-policy",
 
       `/store/${dynamicParam}`,
@@ -57,7 +57,11 @@ export default function RouteGuard({ children }: any) {
         query: { returnUrl: router.asPath },
       });
     } else {
-      setAuthorized(true);
+      if (user && unAuthPaths.includes(path ?? "")) {
+        setAuthorized(false);
+      } else {
+        setAuthorized(true);
+      }
     }
   }
 
