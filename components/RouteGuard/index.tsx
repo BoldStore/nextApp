@@ -57,11 +57,7 @@ export default function RouteGuard({ children }: any) {
         query: { returnUrl: router.asPath },
       });
     } else {
-      if (user && unAuthPaths.includes(path ?? "")) {
-        setAuthorized(false);
-      } else {
-        setAuthorized(true);
-      }
+      setAuthorized(true);
     }
   }
 
