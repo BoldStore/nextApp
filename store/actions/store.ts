@@ -8,6 +8,7 @@ import {
 import instance from "../../axios";
 import { Dispatch } from "redux";
 import * as ActionTypes from "../ActionTypes";
+import { getProfile } from "./profile";
 
 // We really gotta test it
 export const createStore = (inviteCode: string) => {
@@ -48,30 +49,17 @@ export const updateStore = (upi_id: string, phone_number: string) => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.UPDATE_STORE_REQUEST });
     try {
-      const response = await instance.post(
-        UPDATE_STORE,
-        {
-          upi_id: upi_id,
-          phone_number: phone_number,
-        }
-        // {
-        //   headers: {
-        //     Authorization: firebase().auth().currentUser.getIdToken(),
-        //   },
-        // }
-      );
+      const response = await instance.post(UPDATE_STORE, {
+        upi_id: upi_id,
+        phone_number: phone_number,
+      });
 
-      if (response.status == 200) {
-        dispatch({
-          type: ActionTypes.UPDATE_STORE_SUCCESS,
-          data: response.data,
-        });
-      } else {
-        dispatch({
-          type: ActionTypes.UPDATE_STORE_FAILED,
-          error: response.data,
-        });
-      }
+      dispatch({
+        type: ActionTypes.UPDATE_STORE_SUCCESS,
+        data: response.data,
+      });
+
+      getProfile();
     } catch (e) {
       dispatch({
         type: ActionTypes.UPDATE_STORE_FAILED,
@@ -85,26 +73,14 @@ export const updateStoreProducts = () => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.UPDATE_STORE_PRODUCTS_REQUEST });
     try {
-      const response = await instance.get(
-        UPDATE_STORE
-        // {
-        //   headers: {
-        //     Authorization: firebase().auth().currentUser.getIdToken(),
-        //   },
-        // }
-      );
+      const response = await instance.get(UPDATE_STORE);
 
-      if (response.status == 200) {
-        dispatch({
-          type: ActionTypes.UPDATE_STORE_PRODUCTS_SUCCESS,
-          data: response.data,
-        });
-      } else {
-        dispatch({
-          type: ActionTypes.UPDATE_STORE_PRODUCTS_FAILED,
-          error: response.data,
-        });
-      }
+      dispatch({
+        type: ActionTypes.UPDATE_STORE_PRODUCTS_SUCCESS,
+        data: response.data,
+      });
+
+      getProfile();
     } catch (e) {
       dispatch({
         type: ActionTypes.UPDATE_STORE_PRODUCTS_FAILED,
@@ -141,17 +117,11 @@ export const saveStoreData = (insta_code: string) => {
         code: insta_code,
       });
 
-      if (response.status == 200) {
-        dispatch({
-          type: ActionTypes.SAVE_STORE_DATA_SUCCESS,
-          data: response.data,
-        });
-      } else {
-        dispatch({
-          type: ActionTypes.SAVE_STORE_DATA_FAILED,
-          error: response.data,
-        });
-      }
+      dispatch({
+        type: ActionTypes.SAVE_STORE_DATA_SUCCESS,
+        data: response.data,
+      });
+      getProfile();
     } catch (e) {
       dispatch({
         type: ActionTypes.SAVE_STORE_DATA_FAILED,

@@ -7,6 +7,7 @@ import {
   USER_ADDRESSES,
 } from "../../constants";
 import * as ActionTypes from "../ActionTypes";
+import { getProfile } from "./profile";
 
 export const addAddress = (
   title: string,
@@ -50,6 +51,7 @@ export const addAddress = (
           error: response.data,
         });
       }
+      getProfile();
     } catch (e) {
       dispatch({
         type: ActionTypes.ADD_ADDRESS_FAILED,
@@ -107,38 +109,24 @@ export const updateAddress = (
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.UPDATE_ADDRESS_REQUEST });
     try {
-      const response = await instance.patch(
-        UPDATE_ADDRESS,
-        {
-          id: addressId,
-          title,
-          addressString,
-          addressL1,
-          addressL2,
-          city,
-          state,
-          pincode,
-          phone,
-          notes,
-        }
-        // {
-        //   headers: {
-        //     Authorization: firebase().auth().currentUser.getIdToken(),
-        //   },
-        // }
-      );
+      const response = await instance.patch(UPDATE_ADDRESS, {
+        id: addressId,
+        title,
+        addressString,
+        addressL1,
+        addressL2,
+        city,
+        state,
+        pincode,
+        phone,
+        notes,
+      });
+      dispatch({
+        type: ActionTypes.UPDATE_ADDRESS_SUCCESS,
+        data: response.data,
+      });
 
-      if (response.status == 200) {
-        dispatch({
-          type: ActionTypes.UPDATE_ADDRESS_SUCCESS,
-          data: response.data,
-        });
-      } else {
-        dispatch({
-          type: ActionTypes.UPDATE_ADDRESS_FAILED,
-          data: response.data,
-        });
-      }
+      getProfile();
     } catch (e) {
       dispatch({
         type: ActionTypes.UPDATE_ADDRESS_FAILED,
@@ -152,29 +140,16 @@ export const deleteAddress = (addressId: string) => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.DELETE_ADDRESS_REQUEST });
     try {
-      const response = await instance.post(
-        DELETE_ADDRESS,
-        {
-          id: addressId,
-        }
-        // {
-        //   headers: {
-        //     Authorization: firebase().auth().currentUser.getIdToken(),
-        //   },
-        // }
-      );
+      const response = await instance.post(DELETE_ADDRESS, {
+        id: addressId,
+      });
 
-      if (response.status == 200) {
-        dispatch({
-          type: ActionTypes.DELETE_ADDRESS_SUCCESS,
-          data: response.data,
-        });
-      } else {
-        dispatch({
-          type: ActionTypes.DELETE_ADDRESS_FAILED,
-          data: response.data,
-        });
-      }
+      dispatch({
+        type: ActionTypes.DELETE_ADDRESS_SUCCESS,
+        data: response.data,
+      });
+
+      getProfile();
     } catch (e) {
       dispatch({
         type: ActionTypes.DELETE_ADDRESS_FAILED,
