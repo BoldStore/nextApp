@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Avatar } from "@mui/material";
 import { User } from "react-feather";
 import VerticalHeader from "../../../components/StoreComponents/VerticalHeader";
@@ -19,6 +20,8 @@ import Grid4 from "../../../components/CommonComponents/Grids/grid4";
 import UsernameTabs from "../../../components/StoreComponents/UsernameTabs";
 import { getProfile } from "../../../store/actions/profile";
 import StoreComingSoon from "../../../components/StoreComponents/StoreComingSoon";
+import { INSTAGRAM_URL } from "../../../constants";
+
 function StoreProfile() {
   const profile = useSelector((state) => state.profile);
   const store = useSelector((state) => state.pages);
@@ -52,7 +55,6 @@ function StoreProfile() {
     while (items.length) {
       chunks.push(items.splice(0, size));
     }
-    console.log("productsss", chunks);
     return chunks;
   }
 
@@ -100,32 +102,43 @@ function StoreProfile() {
                 alignItems: "center",
                 justifyContent: "center",
                 cursor: "pointer",
+                marginTop: "2rem",
               }}
             >
-              <Link
-                passHref={true}
-                href={`https://www.instagram.com/${profile?.data?.data?.username}`}
-              >
-                <h1 style={{ cursor: "pointer" }}>
-                  @{profile?.data?.data?.username}
-                </h1>
-              </Link>
-              {profile.data?.percentage == 100 && (
-                <VerifiedIcon
-                  style={{
-                    marginLeft: "0.5rem",
-                    fontSize: "1.5rem",
-                    color: "#1DA1F2",
-                  }}
-                />
+              {!profile?.data?.data?.username ? (
+                <Link href={INSTAGRAM_URL} passHref={true}>
+                  <p style={{ color: "var(--lightGrey)", cursor: "pointer" }}>
+                    Connect to Instagram
+                  </p>
+                </Link>
+              ) : (
+                <>
+                  <Link
+                    passHref={true}
+                    href={`https://www.instagram.com/${profile?.data?.data?.username}`}
+                  >
+                    <h1 style={{ cursor: "pointer" }}>
+                      @{profile?.data?.data?.username}
+                    </h1>
+                  </Link>
+                  {profile.data?.percentage == 100 && (
+                    <VerifiedIcon
+                      style={{
+                        marginLeft: "0.5rem",
+                        fontSize: "1.5rem",
+                        color: "#1DA1F2",
+                      }}
+                    />
+                  )}
+                  <p
+                    style={{ color: "var(--lightGrey)", cursor: "pointer" }}
+                    onClick={refresh}
+                  >
+                    Refresh Products
+                  </p>
+                </>
               )}
             </div>
-            <p
-              style={{ color: "var(--lightGrey)", cursor: "pointer" }}
-              onClick={refresh}
-            >
-              Refresh Products
-            </p>
           </div>
           {profile?.data?.data?.postsStatus == "fetching" &&
           profile.data?.percentage == 100 ? (
