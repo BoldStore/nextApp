@@ -69,7 +69,7 @@ function ProfileUpi() {
   }, [profile]);
 
   useEffect(() => {
-    if (storeData.success) {
+    if (storeData.update_success) {
       toast("Saved Succesfully!");
       dispatch(getProfile());
       router.push("/profile");

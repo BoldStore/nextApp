@@ -8,6 +8,7 @@ const initState = {
   insta_id: "",
   store: null,
   inviteCode: "",
+  update_success: false,
 };
 
 const storeReducer = (state = initState, action: any) => {
@@ -99,7 +100,7 @@ const storeReducer = (state = initState, action: any) => {
         ...state,
         isLoading: true,
         errmess: null,
-        success: false,
+        update_success: false,
       };
 
     case ActionTypes.UPDATE_STORE_SUCCESS:
@@ -107,7 +108,7 @@ const storeReducer = (state = initState, action: any) => {
         ...state,
         isLoading: false,
         errmess: null,
-        success: true,
+        update_success: true,
       };
 
     case ActionTypes.UPDATE_STORE_FAILED:
@@ -115,7 +116,7 @@ const storeReducer = (state = initState, action: any) => {
         ...state,
         isLoading: false,
         errmess: (action.errmess || action.data.message)?.toString(),
-        success: false,
+        update_success: false,
       };
     default:
       return state;
