@@ -76,10 +76,6 @@ function Post({
     rzpay.open();
   }, [Razorpay]);
 
-  useEffect(() => {
-    console.log("type", type == "CAROUSEL_ALBUM" && images[0]?.imgUrl);
-  }, []);
-
   return (
     <div className={styles.postContainer}>
       <Link

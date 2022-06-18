@@ -19,10 +19,6 @@ function StoreHomePage() {
     getData();
   }, []);
 
-  useEffect(() => {
-    console.log(pageData);
-  }, [pageData]);
-
   if (pageData?.home_loading) {
     return (
       <>

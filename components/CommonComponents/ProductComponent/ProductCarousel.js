@@ -10,13 +10,10 @@ function ProductCarousel({ product }) {
       : product?.product?.imgUrl
   );
 
-  useEffect(() => {
-    console.log("imggg", product);
-  }, [product]);
-
   return (
     <div className={styles.carouselFlex}>
       {!videoBig ? (
+        // eslint-disable-next-line @next/next/no-img-element
         <img
           onError={() => {
             setVideoBig(true);

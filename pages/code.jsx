@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,15 +9,13 @@ import Header from "../components/CommonComponents/Header";
 import { toast } from "react-toastify";
 import styles from "../styles/common.module.css";
 import BoldButton from "../components/CommonComponents/BoldButton";
-import Loading from "../components/Loading";
-import StoreComingSoon from "../components/StoreComponents/StoreComingSoon";
 import { getProfile } from "../store/actions/profile";
+
 const Code = () => {
   const router = useRouter();
   const [code, setCode] = useState("");
   const dispatch = useDispatch();
   const storeData = useSelector((state) => state.store);
-  const profile = useSelector((state) => state.profile);
   const [user] = useAuthState(auth);
   var flag = true;
 
@@ -28,7 +27,6 @@ const Code = () => {
   }, [router, user]);
 
   useEffect(() => {
-    console.log(storeData);
     if (storeData?.success) {
       dispatch(getProfile());
       router.replace("/profile");
@@ -59,7 +57,7 @@ const Code = () => {
             <h1 className={styles.error}>Error: {storeData?.errmess}</h1>
             <br />
             <br />
-            <BoldButton text="Try Again" onClick={() => console.log("hi")} />
+            <BoldButton text="Try Again" onClick={() => {}} />
           </div>
         ) : (
           <>

@@ -44,7 +44,6 @@ function StorePage() {
     while (items.length) {
       chunks.push(items.splice(0, size));
     }
-    console.log("productsss", chunks);
     return chunks;
   }
 

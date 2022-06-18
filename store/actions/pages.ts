@@ -24,7 +24,7 @@ export const homePage = () => {
     } catch (e) {
       dispatch({
         type: ActionTypes.HOME_PAGE_FAILED,
-        errmess: (e as any).response.data,
+        errmess: (e as any)?.response?.data,
       });
     }
   };

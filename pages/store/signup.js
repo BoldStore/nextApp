@@ -78,20 +78,32 @@ function StoreSignup() {
   };
 
   useEffect(() => {
-    if (user || currentUser) {
+    if (currentUser) {
       if (store.inviteCode) {
         dispatch(createStore(store.inviteCode));
       } else {
-        router.replace("/profile");
+        let auth_using_google = false;
+        // Check if user logged in using google
+        for (let i = 0; i < currentUser?.providerData?.length; i++) {
+          const providerId = currentUser?.providerData[i]?.providerId;
+          if (providerId == "google.com") {
+            auth_using_google = true;
+            break;
+          }
+        }
+        if (auth_using_google) {
+          router.replace("/store/entercode");
+        } else {
+          router.replace("/profile");
+        }
       }
 
       if (!store.success) {
-        console.log(store);
         setError(store?.errmess?.toString());
         return;
       }
     }
-  }, [user, currentUser, store.inviteCode]);
+  }, [currentUser, store.inviteCode]);
 
   // useEffect(() => {
   //   if (isStrongPassword(password)) {
