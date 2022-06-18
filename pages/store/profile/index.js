@@ -18,9 +18,9 @@ import Grid2 from "../../../components/CommonComponents/Grids/grid2";
 import Grid3 from "../../../components/CommonComponents/Grids/grid3";
 import Grid4 from "../../../components/CommonComponents/Grids/grid4";
 import UsernameTabs from "../../../components/StoreComponents/UsernameTabs";
-import { getProfile } from "../../../store/actions/profile";
 import StoreComingSoon from "../../../components/StoreComponents/StoreComingSoon";
 import { INSTAGRAM_URL } from "../../../constants";
+import { updateStoreProducts } from "../../../store/actions/store";
 
 function StoreProfile() {
   const profile = useSelector((state) => state.profile);
@@ -40,7 +40,7 @@ function StoreProfile() {
   }, [profile]);
 
   const refresh = () => {
-    dispatch(getProfile());
+    dispatch(updateStoreProducts());
   };
 
   function randomNumberInRange(min, max) {
