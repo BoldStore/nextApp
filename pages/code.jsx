@@ -20,10 +20,7 @@ const Code = () => {
   var flag = true;
 
   useEffect(() => {
-    if (router.query.code && user?.email) {
-      setCode(router.query.code.toString());
-      dispatch(saveStoreData(router.query.code.toString().split("#")[0]));
-    }
+    saveData();
   }, [router, user]);
 
   useEffect(() => {
@@ -37,6 +34,19 @@ const Code = () => {
     flag && toast("Woohoo! Almost There 🥳 ");
     flag = false;
   }, []);
+
+  const saveData = () => {
+    if (router.query.code && user?.email) {
+      setCode(router.query.code.toString());
+      dispatch(saveStoreData(router.query.code.toString().split("#")[0]));
+    } else {
+      router.replace("/home");
+    }
+  };
+
+  const tryAgain = () => {
+    saveData();
+  };
 
   return (
     <>
@@ -57,7 +67,7 @@ const Code = () => {
             <h1 className={styles.error}>Error: {storeData?.errmess}</h1>
             <br />
             <br />
-            <BoldButton text="Try Again" onClick={() => {}} />
+            <BoldButton text="Try Again" onClick={tryAgain} />
           </div>
         ) : (
           <>
