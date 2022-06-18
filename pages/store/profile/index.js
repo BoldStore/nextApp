@@ -71,7 +71,7 @@ function StoreProfile() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile?.data]);
 
-  if (profile?.isStore)
+  if (profile?.isStore) {
     return (
       <>
         <Header />
@@ -96,23 +96,28 @@ function StoreProfile() {
             ) : (
               <User />
             )}
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-                marginTop: "2rem",
-              }}
-            >
-              {!profile?.data?.data?.username ? (
-                <Link href={INSTAGRAM_URL} passHref={true}>
-                  <p style={{ color: "var(--lightGrey)", cursor: "pointer" }}>
-                    Connect to Instagram
-                  </p>
-                </Link>
-              ) : (
-                <>
+            {!profile?.data?.data?.username ? (
+              <Link href={INSTAGRAM_URL} passHref={true}>
+                <p
+                  style={{
+                    color: "var(--lightGrey)",
+                    cursor: "pointer",
+                    marginTop: "2rem",
+                  }}
+                >
+                  Connect to Instagram
+                </p>
+              </Link>
+            ) : (
+              <>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                  }}
+                >
                   <Link
                     passHref={true}
                     href={`https://www.instagram.com/${profile?.data?.data?.username}`}
@@ -130,15 +135,21 @@ function StoreProfile() {
                       }}
                     />
                   )}
+                </div>
+                {profile?.data?.data?.postsStatus === "fetching" ? (
+                  <p style={{ color: "yellow" }}>
+                    Your posts are still fetching...
+                  </p>
+                ) : (
                   <p
                     style={{ color: "var(--lightGrey)", cursor: "pointer" }}
                     onClick={refresh}
                   >
                     Refresh Products
                   </p>
-                </>
-              )}
-            </div>
+                )}
+              </>
+            )}
           </div>
           {profile?.data?.data?.postsStatus == "fetching" &&
           profile.data?.percentage == 100 ? (
@@ -211,6 +222,9 @@ function StoreProfile() {
         </div>
       </>
     );
+  } else {
+    router.push("/profile");
+  }
 }
 
 export default StoreProfile;
