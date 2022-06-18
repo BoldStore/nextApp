@@ -16,7 +16,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { createStore, setInviteCodeToState } from "../../store/actions/store";
 import { INSTAGRAM_URL } from "../../constants";
 import { useRouter } from "next/router";
-import Loading from "../../components/Loading";
 
 function StoreSignup() {
   const router = useRouter();
@@ -80,7 +79,11 @@ function StoreSignup() {
 
   useEffect(() => {
     if (user || currentUser) {
-      dispatch(createStore(store.inviteCode));
+      if (store.inviteCode) {
+        dispatch(createStore(store.inviteCode));
+      } else {
+        router.replace("/profile");
+      }
 
       if (!store.success) {
         console.log(store);
@@ -88,7 +91,7 @@ function StoreSignup() {
         return;
       }
     }
-  }, [user, currentUser]);
+  }, [user, currentUser, store.inviteCode]);
 
   // useEffect(() => {
   //   if (isStrongPassword(password)) {

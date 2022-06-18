@@ -9,6 +9,7 @@ import instance from "../../axios";
 import { Dispatch } from "redux";
 import * as ActionTypes from "../ActionTypes";
 import { getProfile } from "./profile";
+import { toast } from "react-toastify";
 
 // We really gotta test it
 export const createStore = (inviteCode: string) => {
@@ -31,6 +32,8 @@ export const createStore = (inviteCode: string) => {
         });
       }
     } catch (e) {
+      dispatch(removeInviteCodeFromState());
+      toast((e as any)?.response?.data?.err ?? "Something went wrong");
       dispatch({
         type: ActionTypes.CREATE_STORE_FAILED,
         data: (e as any)?.response?.data?.err ?? "Something went wrong",
@@ -42,6 +45,12 @@ export const createStore = (inviteCode: string) => {
 export const setInviteCodeToState = (inviteCode: string) => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.INVITE_CODE_STATE, code: inviteCode });
+  };
+};
+
+export const removeInviteCodeFromState = () => {
+  return async (dispatch: Dispatch) => {
+    dispatch({ type: ActionTypes.INVITE_CODE_STATE, code: null });
   };
 };
 
