@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 
 // We really gotta test it
 export const createStore = (inviteCode: string) => {
-  return async (dispatch: Dispatch) => {
+  return async (dispatch: Dispatch<any>) => {
     dispatch({ type: ActionTypes.CREATE_STORE_REQUEST });
     try {
       const response = await instance.post(CREATE_STORE, {
