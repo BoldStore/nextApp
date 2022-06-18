@@ -96,6 +96,9 @@ function Profile() {
               />
             )}
             <h1>{profile.name}</h1>
+            <Link href="/store/entercode">
+              <p style={{ color: "var(--lightGrey)" }}>Have a store?</p>
+            </Link>
             <Link href="/customer/profile/edit">
               <p style={{ color: "var(--lightGrey)" }}>Edit Personal Details</p>
             </Link>
