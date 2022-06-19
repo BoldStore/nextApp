@@ -4,37 +4,51 @@ import instance from "../../axios";
 import { Dispatch } from "redux";
 import * as ActionTypes from "../ActionTypes";
 
-export const homePage = () => {
+export const homePage = (cursor?: string) => {
   return async (dispatch: Dispatch) => {
-    dispatch({ type: ActionTypes.HOME_PAGE_REQUEST });
-    try {
-      const response = await instance.get(HOME_PAGE);
+    if (!cursor) {
+      dispatch({ type: ActionTypes.HOME_PAGE_REQUEST, home_loading: true });
+      dispatch({
+        type: ActionTypes.NEW_HOME,
+      });
+    } else {
+      dispatch({ type: ActionTypes.HOME_PAGE_REQUEST, home_loading: false });
+    }
 
-      if (response.status == 200) {
-        dispatch({
-          type: ActionTypes.HOME_PAGE_SUCCESS,
-          data: response.data,
-        });
-      } else {
-        dispatch({
-          type: ActionTypes.HOME_PAGE_FAILED,
-          error: response.data,
-        });
-      }
+    try {
+      const url = cursor ? HOME_PAGE + "?cursor=" + cursor + "&&" : HOME_PAGE;
+      const response = await instance.get(url + "?numberPerPage=10");
+      dispatch({
+        type: ActionTypes.HOME_PAGE_SUCCESS,
+        data: response.data,
+      });
     } catch (e) {
       dispatch({
         type: ActionTypes.HOME_PAGE_FAILED,
-        errmess: (e as any)?.response?.data,
+        errmess:
+          (e as any)?.response?.data?.err?.message ??
+          (e as any)?.response?.data ??
+          e,
       });
     }
   };
 };
 
-export const storePage = (username: string) => {
+export const storePage = (username: string, cursor?: string) => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.STORE_PAGE_REQUEST });
+    if (!cursor) {
+      dispatch({
+        type: ActionTypes.NEW_STORE,
+      });
+    }
+
     try {
-      const response = await instance.get(STORE_PAGE + `?username=${username}`);
+      const url = cursor
+        ? STORE_PAGE + `?username=${username}&&cursor=${cursor}`
+        : STORE_PAGE + `?username=${username}`;
+
+      const response = await instance.get(url);
 
       dispatch({
         type: ActionTypes.STORE_PAGE_SUCCESS,

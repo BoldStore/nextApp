@@ -11,7 +11,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfile } from "../store/actions/profile";
 import Loading from "../components/Loading";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RouteGuard from "../components/RouteGuard";
 
@@ -45,21 +45,21 @@ function MyApp({ Component, pageProps }) {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
         setCookies("token", await user.getIdToken());
-        dispatch(getProfile());
+        if (!profile.isLoading) dispatch(getProfile());
       } else {
         removeCookies("token");
       }
     });
 
-    return auth.onIdTokenChanged(async (user) => {
-      if (!user) {
-        removeCookies("token");
-      } else {
-        const token = await user.getIdToken();
-        setCookies("token", token);
-        dispatch(getProfile());
-      }
-    });
+    // return auth.onIdTokenChanged(async (user) => {
+    //   if (!user) {
+    //     removeCookies("token");
+    //   } else {
+    //     const token = await user.getIdToken();
+    //     setCookies("token", token);
+    //     dispatch(getProfile());
+    //   }
+    // });
   }, []);
 
   if (profile?.isLoading) {

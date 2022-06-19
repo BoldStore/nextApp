@@ -17,6 +17,8 @@ export const STORE_PAGE_SUCCESS = "STORE_PAGE_SUCCESS";
 export const STORE_PAGE_FAILED = "STORE_PAGE_FAILED";
 
 export const INVITE_CODE_STATE = "INVITE_CODE_STATE";
+export const NEW_STORE = "NEW STORE";
+export const NEW_HOME = "NEW_HOME";
 
 // Stores
 export const GET_STORE_REQUEST = "GET_STORE_REQUEST";
