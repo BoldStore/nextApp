@@ -53,8 +53,8 @@ export const storePage = (username: string, cursor?: string) => {
     try {
       const url = cursor
         ? STORE_PAGE +
-          `?username=${username}&&cursor=${cursor}&&numberPerPage=6`
-        : STORE_PAGE + `?username=${username}&&numberPerPage=6`;
+          `?username=${username}&&cursor=${cursor}&&numberPerPage=7`
+        : STORE_PAGE + `?username=${username}&&numberPerPage=7`;
 
       const response = await instance.get(url);
 

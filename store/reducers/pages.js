@@ -18,7 +18,7 @@ const initState = {
   store_products_loading: false,
 };
 
-const pagesReducer = (state = initState, action: any) => {
+const pagesReducer = (state = initState, action) => {
   switch (action.type) {
     case ActionTypes.NEW_HOME:
       return {
