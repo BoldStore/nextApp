@@ -15,6 +15,7 @@ const initState = {
   store_products: [],
   store_end: false,
   store_lastDoc: null,
+  store_products_loading: false,
 };
 
 const pagesReducer = (state = initState, action: any) => {
@@ -26,6 +27,15 @@ const pagesReducer = (state = initState, action: any) => {
         home_products: [],
         home_end: false,
         home_lastDoc: null,
+      };
+
+    case ActionTypes.NEW_STORE:
+      return {
+        ...state,
+        store: null,
+        store_products: [],
+        store_end: false,
+        store_lastDoc: null,
       };
 
     case ActionTypes.NEW_STORE:
@@ -78,18 +88,31 @@ const pagesReducer = (state = initState, action: any) => {
     case ActionTypes.STORE_PAGE_REQUEST:
       return {
         ...state,
-        store_loading: true,
+        store_loading: action.store_loading,
+        store_products_loading: true,
         store_errmess: null,
       };
 
     case ActionTypes.STORE_PAGE_SUCCESS:
+      let store_prods = [];
+      for (let i = 0; i < action?.data?.products?.length; i++) {
+        let flag = true;
+        for (let j = 0; j < state?.store_products.length; j++) {
+          if (state?.store_products[j]?.id === action?.data?.products[i]?.id) {
+            flag = false;
+            break;
+          }
+        }
+        if (flag) store_prods.push(action?.data?.products[i]);
+      }
       return {
         ...state,
+        store_products_loading: false,
         store_loading: false,
         store_errmess: null,
         store: action.data,
         store_products: [
-          ...new Set([...state.store_products, ...action.data.products]),
+          ...new Set([...state?.store_products, ...store_prods]),
         ],
         store_end: action.data.end,
         store_lastDoc: action.data.lastDoc,
@@ -99,6 +122,7 @@ const pagesReducer = (state = initState, action: any) => {
       return {
         ...state,
         store_loading: false,
+        store_products_loading: false,
         store_errmess: (action?.data?.message || action?.errmess)?.toString(),
       };
     default:

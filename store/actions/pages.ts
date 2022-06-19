@@ -36,7 +36,14 @@ export const homePage = (cursor?: string) => {
 
 export const storePage = (username: string, cursor?: string) => {
   return async (dispatch: Dispatch) => {
-    dispatch({ type: ActionTypes.STORE_PAGE_REQUEST });
+    if (!cursor) {
+      dispatch({ type: ActionTypes.STORE_PAGE_REQUEST, store_loading: true });
+      dispatch({
+        type: ActionTypes.NEW_STORE,
+      });
+    } else {
+      dispatch({ type: ActionTypes.STORE_PAGE_REQUEST, store_loading: false });
+    }
     if (!cursor) {
       dispatch({
         type: ActionTypes.NEW_STORE,
@@ -45,8 +52,9 @@ export const storePage = (username: string, cursor?: string) => {
 
     try {
       const url = cursor
-        ? STORE_PAGE + `?username=${username}&&cursor=${cursor}`
-        : STORE_PAGE + `?username=${username}`;
+        ? STORE_PAGE +
+          `?username=${username}&&cursor=${cursor}&&numberPerPage=6`
+        : STORE_PAGE + `?username=${username}&&numberPerPage=6`;
 
       const response = await instance.get(url);
 
