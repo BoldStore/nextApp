@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Facebook, GitHub, Instagram, Linkedin } from "react-feather";
 import BoldButton from "../BoldButton";
+import { motion } from "framer-motion";
 
 function Footer() {
   const [instaUsername, setInstaUsername] = useState("");
@@ -77,7 +78,13 @@ function Footer() {
           <h1>We&apos;ll get in touch!</h1>
           <input className={styles.input} placeholder="@ Instagram Username" />
           <input className={styles.input} placeholder="Your Email Address" />
-          <button className={styles.button}>Submit</button>
+          <motion.button
+            className={styles.button}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            Submit
+          </motion.button>
         </div>
       </div>
 
