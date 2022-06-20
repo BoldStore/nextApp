@@ -11,6 +11,7 @@ function Footer() {
   const [email, setEmail] = useState("");
   const date = new Date();
   const year = date.getFullYear();
+  const [flag, setFlag] = useState(false);
 
   return (
     <div className={styles.container}>
@@ -63,6 +64,9 @@ function Footer() {
         </div>
         <div className={styles.links}>
           <h1>Contact Us</h1>
+
+          <p onClick={() => setFlag(!flag)}>Want to join Bold? Click Here.</p>
+
           <Link href={"#"} passHref={true}>
             <p>Mail Us</p>
           </Link>
@@ -74,18 +78,25 @@ function Footer() {
           </Link>
         </div>
 
-        <div className={styles.contactContainer}>
-          <h1>We&apos;ll get in touch!</h1>
-          <input className={styles.input} placeholder="@ Instagram Username" />
-          <input className={styles.input} placeholder="Your Email Address" />
-          <motion.button
-            className={styles.button}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+        {flag && (
+          <motion.div
+            className={styles.contactContainer}
+            onClick={() => setFlag(!flag)}
           >
-            Submit
-          </motion.button>
-        </div>
+            <h1>Let&apos;s Get In Touch!</h1>
+            <input
+              className={styles.input}
+              placeholder="@ Instagram Username"
+            />
+            <input className={styles.input} placeholder="Your Email Address" />
+            <motion.button
+              className={styles.button}
+              onClick={() => setFlag(!flag)}
+            >
+              Submit
+            </motion.button>
+          </motion.div>
+        )}
       </div>
 
       <div
@@ -95,12 +106,12 @@ function Footer() {
           marginTop: "2rem",
         }}
       >
-        <div
+        {/* <div
           style={{
             borderTop: "1px solid var(--darkGrey)",
             width: "20rem",
           }}
-        ></div>
+        ></div> */}
       </div>
       <div
         style={{
