@@ -98,25 +98,12 @@ function Footer() {
           </motion.div>
         )}
       </div>
-
       <div
         style={{
           display: "flex",
           justifyContent: "center",
-          marginTop: "2rem",
-        }}
-      >
-        {/* <div
-          style={{
-            borderTop: "1px solid var(--darkGrey)",
-            width: "20rem",
-          }}
-        ></div> */}
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
+          marginTop: "1rem",
+          marginBottom: "1rem",
         }}
       >
         <p
