@@ -34,10 +34,10 @@ function Footer() {
           <Link href={"/search"} passHref={true}>
             <p>Search</p>
           </Link>
-          <Link href={"#"} passHref={true}>
+          <Link href={"/bag"} passHref={true}>
             <p>My Bag</p>
           </Link>
-          <Link href={"#"} passHref={true}>
+          <Link href={"/profile"} passHref={true}>
             <p>Profile</p>
           </Link>
         </div>
