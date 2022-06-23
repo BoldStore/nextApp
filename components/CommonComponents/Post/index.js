@@ -11,6 +11,7 @@ import Skeleton from "react-loading-skeleton";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import { useSelector } from "react-redux";
 import useRazorpay from "react-razorpay";
+import { useRouter } from "next/router";
 
 function Post({
   id,
@@ -25,6 +26,7 @@ function Post({
   isCompleted,
   type,
 }) {
+  const router = useRouter();
   const [video, setVideo] = useState(false);
   const [text, setText] = useState(caption?.slice(0, 35));
   const [readMore, setReadMore] = useState(false);
@@ -47,6 +49,14 @@ function Post({
 
   const handlePayment = useCallback(() => {
     // const order = await createOrder(params);
+    const address = profile?.data?.address;
+
+    // TODO: Add address
+
+    if (!address) {
+      router.push("/profile");
+      return;
+    }
 
     const options = {
       key: "rzp_test_Cvgmp7sLxim68t",
