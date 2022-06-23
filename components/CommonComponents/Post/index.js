@@ -151,7 +151,6 @@ function Post({
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center",
                   }}
                 >
                   <p>{storeName}</p>
