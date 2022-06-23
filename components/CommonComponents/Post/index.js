@@ -13,10 +13,10 @@ import { useDispatch, useSelector } from "react-redux";
 import useRazorpay from "react-razorpay";
 import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { signInAnonymously } from "firebase/auth";
 import { auth } from "../../../firebaseConfig";
 import { createOrder, verifyOrder } from "../../../store/actions/order";
 import { CALLBACK } from "../../../constants";
+import Image from "next/image";
 
 function Post({
   id,
@@ -201,7 +201,7 @@ function Post({
         >
           {postUrl || type == "CAROUSEL_ALBUM" ? (
             !video ? (
-              <img
+              <Image
                 onError={() => {
                   setVideo(true);
                 }}
