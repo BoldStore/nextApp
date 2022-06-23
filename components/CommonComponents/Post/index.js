@@ -1,17 +1,22 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import Image from "next/image";
 import { toast } from "react-toastify";
 import { Bookmark } from "react-feather";
 import BoldButton from "../BoldButton";
 import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
 import VerifiedIcon from "@mui/icons-material/Verified";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useRazorpay from "react-razorpay";
 import { useRouter } from "next/router";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { signInAnonymously } from "firebase/auth";
+import { auth } from "../../../firebaseConfig";
+import { createOrder, verifyOrder } from "../../../store/actions/order";
+import { CALLBACK } from "../../../constants";
 
 function Post({
   id,
@@ -26,30 +31,38 @@ function Post({
   isCompleted,
   type,
 }) {
+  const Razorpay = useRazorpay();
   const router = useRouter();
+  const dispatch = useDispatch();
+  const [user] = useAuthState(auth);
   const [video, setVideo] = useState(false);
-  const [text, setText] = useState(caption?.slice(0, 35));
   const [readMore, setReadMore] = useState(false);
   const profile = useSelector((state) => state.profile);
+  const orders = useSelector((state) => state.orders);
+  const text = caption?.slice(0, 35);
 
   const notify = () => toast("Product Saved!");
-  const [activeTheme, setActiveTheme] = useState("");
-  const inactiveTheme = activeTheme === "dark" ? "light" : "dark";
-  const [svgMode, setSvgMode] = useState("dark");
 
   useEffect(() => {
-    if (activeTheme) {
-      document.body.dataset.theme = activeTheme;
-      window.localStorage.setItem("theme", activeTheme);
-      setSvgMode(activeTheme);
+    if (orders?.orders?.length > 0) {
+      if (orders?.success) {
+        openRazorpay();
+      }
     }
-  }, [activeTheme]);
+  }, [orders.orders, orders, orders.isLoading]);
 
-  const Razorpay = useRazorpay();
-
-  const handlePayment = useCallback(() => {
-    // const order = await createOrder(params);
+  const handlePayment = useCallback(async () => {
+    if (orders.isLoading) {
+      return;
+    }
     const address = profile?.data?.address;
+
+    if (!user) {
+      router.push({
+        pathname: "/login",
+        query: { returnUrl: router.asPath },
+      });
+    }
 
     // TODO: Add address
 
@@ -58,21 +71,33 @@ function Post({
       return;
     }
 
+    dispatch(createOrder(id, address.id));
+  }, []);
+
+  const openRazorpay = () => {
+    const order = orders.orders[0];
     const options = {
-      key: "rzp_test_Cvgmp7sLxim68t",
-      amount: "20000",
-      currency: "INR",
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY ?? "rzp_test_L92bj18kAlvXKx",
+      amount: order.amount,
+      currency: order.currency,
       name: "Bold Store",
       description: "Proceed to buy this product",
       image: "https://i.ibb.co/Ct1jrgj/Logo2.png",
-      // order_id: `${product.id}`,
+      order_id: order.orderId,
       handler: (res) => {
         console.log(res);
+        dispatch(
+          verifyOrder(
+            res.razorpay_payment_id,
+            res.razorpay_order_id,
+            res.razorpay_signature
+          )
+        );
       },
       prefill: {
-        name: "Piyush Garg",
-        email: "youremail@example.com",
-        contact: "9999999999",
+        name: profile?.data?.name ?? profile.data.full_name,
+        email: profile?.data?.email,
+        contact: profile?.data?.address?.phone,
       },
       notes: {
         address: "Bold Store Corporate Office",
@@ -80,11 +105,16 @@ function Post({
       theme: {
         color: "var(--black)",
       },
+      callback_url: CALLBACK,
     };
 
     const rzpay = new Razorpay(options);
     rzpay.open();
-  }, [Razorpay]);
+
+    rzpay.on("payment.success", (res) => {
+      console.log("WOHOOOO", res);
+    });
+  };
 
   return (
     <div className={styles.postContainer}>
@@ -247,7 +277,10 @@ function Post({
         <p style={{ marginTop: 0 }}>{caption}</p>
       )}
 
-      <BoldButton text={"Buy Now"} onClick={handlePayment} />
+      <BoldButton
+        text={!orders.isLoading ? "Buy Now" : "Loading..."}
+        onClick={handlePayment}
+      />
     </div>
   );
 }

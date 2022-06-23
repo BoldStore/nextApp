@@ -12,34 +12,22 @@ export const createOrder = (product_id: string, address_id: string) => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.CREATE_ORDER_REQUEST });
     try {
-      const response = await instance.post(
-        CREATE_ORDER,
-        {
-          product_id,
-          address_id,
-        }
-        // {
-        //   headers: {
-        //     Authorization: firebase().auth().currentUser.getIdToken(),
-        //   },
-        // }
-      );
+      const response = await instance.post(CREATE_ORDER, {
+        product_id,
+        address_id,
+      });
 
-      if (response.status == 201) {
-        dispatch({
-          type: ActionTypes.CREATE_ORDER_SUCCESS,
-          data: response.data,
-        });
-      } else {
-        dispatch({
-          type: ActionTypes.CREATE_ORDER_FAILED,
-          error: response.data,
-        });
-      }
+      dispatch({
+        type: ActionTypes.CREATE_ORDER_SUCCESS,
+        data: response.data,
+      });
     } catch (e) {
       dispatch({
         type: ActionTypes.CREATE_ORDER_FAILED,
-        errmess: e,
+        errmess:
+          (e as any)?.response?.data?.err?.message ??
+          (e as any)?.response?.data ??
+          (e as any).toString(),
       });
     }
   };
@@ -50,6 +38,7 @@ export const verifyOrder = (
   razorpay_order_id: string,
   razorpay_signature: string
 ) => {
+  console.log(razorpay_payment_id, razorpay_order_id, razorpay_signature);
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.VERIFY_ORDER_REQUEST });
     try {
@@ -81,7 +70,8 @@ export const verifyOrder = (
     } catch (e) {
       dispatch({
         type: ActionTypes.VERIFY_ORDER_FAILED,
-        errmess: e,
+        errmess:
+          (e as any).response?.data?.err?.message ?? (e as any).toString(),
       });
     }
   };

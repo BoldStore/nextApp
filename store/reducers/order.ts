@@ -6,6 +6,7 @@ const initState = {
   orders: null,
   verified: null,
   deliveryData: null,
+  success: false,
 };
 
 const orderReducer = (state = initState, action: any) => {
@@ -22,14 +23,15 @@ const orderReducer = (state = initState, action: any) => {
         ...state,
         isLoading: false,
         errmess: null,
-        orders: [...state.orders!, action.data.order],
+        orders: [...(state?.orders ?? []), action?.data?.order],
+        success: true,
       };
 
     case ActionTypes.CREATE_ORDER_FAILED:
       return {
         ...state,
         isLoading: false,
-        errmess: action.data.message,
+        errmess: action?.data?.errmess ?? action?.errmess,
       };
 
     case ActionTypes.VERIFY_ORDER_REQUEST:
@@ -51,7 +53,7 @@ const orderReducer = (state = initState, action: any) => {
       return {
         ...state,
         isLoading: false,
-        errmess: action.data.message,
+        errmess: action?.data?.errmess ?? action?.errmess,
       };
 
     case ActionTypes.PAST_ORDERS_REQUEST:
@@ -73,7 +75,7 @@ const orderReducer = (state = initState, action: any) => {
       return {
         ...state,
         isLoading: false,
-        errmess: action.data.message,
+        errmess: action?.data?.message,
       };
 
     case ActionTypes.CHECK_DELIVERY_REQUEST:
@@ -88,14 +90,14 @@ const orderReducer = (state = initState, action: any) => {
         ...state,
         isLoading: false,
         errmess: null,
-        deliveryData: action.data.data,
+        deliveryData: action?.data?.data,
       };
 
     case ActionTypes.CHECK_DELIVERY_FAILED:
       return {
         ...state,
         isLoading: false,
-        errmess: action.data.message,
+        errmess: action?.data?.message,
       };
     default:
       return state;
