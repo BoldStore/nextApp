@@ -47,6 +47,8 @@ function Post({
     if (orders?.orders?.length > 0) {
       if (orders?.success) {
         openRazorpay();
+      } else {
+        toast(orders.errmess ?? "Something went wrong!");
       }
     }
   }, [orders.orders, orders, orders.isLoading]);
