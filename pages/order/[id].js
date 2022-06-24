@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./styles.module.css";
+import styles from "../bag/styles.module.css";
 import Header from "../../components/CommonComponents/Header";
 import Post from "../../components/CommonComponents/Post";
 import CompleteOrderComponent from "../../components/CommonComponents/CompleteOrderComponent";

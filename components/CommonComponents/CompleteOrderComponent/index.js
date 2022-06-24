@@ -14,15 +14,14 @@ function CompleteOrderComponent() {
   return (
     <>
       <div className={styles.productContainer}>
-        <div>
-          <img
-            src="/assets/shoe2.jpg"
-            alt="item"
-            width="650"
-            height="650"
-            className={styles.productImg}
-          />
-        </div>
+        <img
+          src="/assets/shoe2.jpg"
+          alt="item"
+          width="650"
+          height="650"
+          className={styles.productImg}
+        />
+
         <div className={styles.productInfo}>
           <h1 style={{ marginTop: 0, marginBottom: 0 }}>Product Title</h1>
           <p style={{ opacity: 0.5 }}>Order Id : #ABCDE123</p>

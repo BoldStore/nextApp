@@ -46,7 +46,8 @@ export default function RouteGuard({ children }: any) {
       "/store/signup",
       "/store/entercode",
       "/privacy-policy",
-
+      "/order/review",
+      `/order/${dynamicParam}`,
       `/store/${dynamicParam}`,
       `/product/${dynamicParam}`,
     ];

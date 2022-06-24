@@ -41,20 +41,32 @@ function OrderComponent({
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center",
                 }}
               >
                 <p>{storeName}</p>
-                <p>
-                  <VerifiedIcon
-                    style={{
-                      marginLeft: "0.5rem",
-                      fontSize: "1.2rem",
-                      color: "#1DA1F2",
-                      marginBottom: "-0.1rem",
-                    }}
-                  />
-                </p>
+                {isCompleted && (
+                  <p>
+                    <VerifiedIcon
+                      style={{
+                        marginLeft: "0.5rem",
+                        fontSize: "1.2rem",
+                        color: "#1DA1F2",
+                        marginBottom: "-0.1rem",
+                      }}
+                    />
+                    {/* <Avatar
+                   src={`/assets/VerifiedIcon/${svgMode}.svg`}
+                   alt="verified"
+                   sx={{
+                     width: 12,
+                     height: 12,
+                   }}
+                   style={{
+                     marginLeft: "0.2rem",
+                   }}
+                 /> */}
+                  </p>
+                )}
               </div>
             ) : (
               <Skeleton count={1} width={100} height={12} />
@@ -118,7 +130,7 @@ function OrderComponent({
         </div>
       </div> */}
       {id ? (
-        <Link href={`/bag/${id}`} passHref={true}>
+        <Link href={`/order/${id}`} passHref={true}>
           <BoldButton text={"View Order Details"} />
         </Link>
       ) : (
