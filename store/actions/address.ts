@@ -10,7 +10,7 @@ import * as ActionTypes from "../ActionTypes";
 import { getProfile } from "./profile";
 
 export const addAddress = (
-  title: string,
+  name: string,
   address: string,
   addressL1: string,
   addressL2: string,
@@ -24,7 +24,7 @@ export const addAddress = (
     dispatch({ type: ActionTypes.ADD_ADDRESS_REQUEST });
     try {
       const response = await instance.post(ADD_ADDRESS, {
-        title,
+        name,
         address,
         addressL1,
         addressL2,
@@ -96,7 +96,7 @@ export const getUserAddresses = () => {
 
 export const updateAddress = (
   addressId: string,
-  title: string,
+  name: string,
   addressString: string,
   addressL1: string,
   addressL2: string,
@@ -111,7 +111,7 @@ export const updateAddress = (
     try {
       const response = await instance.patch(UPDATE_ADDRESS, {
         id: addressId,
-        title,
+        name,
         addressString,
         addressL1,
         addressL2,

@@ -14,7 +14,7 @@ function ProfileAddress() {
   const address = useSelector((state) => state.addresses);
   const profile = useSelector((state) => state.profile);
   const router = useRouter();
-  const [title, setTitle] = useState("");
+  const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [addressString, setAddressString] = useState("");
   const [locality, setLocality] = useState("");
@@ -28,7 +28,7 @@ function ProfileAddress() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
-      title.length == 0 ||
+      name.length == 0 ||
       phone.length == 0 ||
       locality.length == 0 ||
       appartment.length == 0 ||
@@ -45,7 +45,7 @@ function ProfileAddress() {
       setError("");
       dispatch(
         addAddress(
-          title,
+          name,
           addressString,
           locality,
           appartment,
@@ -60,7 +60,7 @@ function ProfileAddress() {
   };
 
   const setData = () => {
-    setTitle(profile?.data?.address?.title ?? "");
+    setName(profile?.data?.address?.name ?? "");
     setPhone(profile?.data?.paymentDetails?.phone ?? "");
     setAddressString(profile?.data?.address?.addressString ?? "");
     setLocality(profile?.data?.address?.addressL1 ?? "");
@@ -72,6 +72,7 @@ function ProfileAddress() {
   };
 
   useEffect(() => {
+    if (profile?.name) setName(profile?.name);
     if (profile?.data?.address) setData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile, profile.data]);
@@ -112,9 +113,9 @@ function ProfileAddress() {
 
           <InputComponent
             type="text"
-            setValue={setTitle}
-            value={title}
-            placeholder={"Title"}
+            setValue={setName}
+            value={name}
+            placeholder={"Name"}
           />
           <InputComponent
             type="text"
