@@ -8,6 +8,9 @@ const initState = {
   product: null,
   store: null,
   products: [],
+
+  saved_end: false,
+  saved_cursor: null,
 };
 
 const productsReducer = (state = initState, action: any) => {
@@ -75,6 +78,8 @@ const productsReducer = (state = initState, action: any) => {
         isLoading: false,
         errmess: null,
         products: action.products,
+        saved_end: action?.data?.end,
+        saved_cursor: action?.data?.lastDoc ?? action?.data?.cursor,
       };
 
     case ActionTypes.GET_SAVED_PRODUCTS_FAILED:

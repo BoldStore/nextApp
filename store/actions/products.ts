@@ -69,6 +69,7 @@ export const getSavedProducts = (productId: string) => {
       dispatch({
         type: ActionTypes.GET_SAVED_PRODUCTS_SUCCESS,
         products: response.data?.products,
+        data: response.data,
       });
     } catch (e) {
       dispatch({

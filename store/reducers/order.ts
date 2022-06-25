@@ -7,6 +7,9 @@ const initState = {
   verified: null,
   deliveryData: null,
   success: false,
+
+  past_orders_end: false,
+  past_orders_cursor: null,
 };
 
 const orderReducer = (state = initState, action: any) => {
@@ -69,6 +72,8 @@ const orderReducer = (state = initState, action: any) => {
         isLoading: false,
         errmess: null,
         orders: action.data.orders,
+        past_orders_end: action.data?.end,
+        past_orders_cursor: action.data?.cursor ?? action.data?.lastDoc,
       };
 
     case ActionTypes.PAST_ORDERS_FAILED:
