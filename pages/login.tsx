@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import InputComponent from "../components/CommonComponents/InputComponent";
 import Header from "../components/LandingPageComponents/Header";
@@ -31,7 +32,7 @@ function CustomerLogin() {
   };
 
   useEffect(() => {
-    if (currentUser) {
+    if (currentUser && !currentUser?.isAnonymous) {
       router.replace("/home");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -83,6 +84,7 @@ function CustomerLogin() {
                 <img
                   src="/assets/google.png"
                   style={{ height: "2rem", marginRight: "0.5rem" }}
+                  alt="Google logo"
                 />
                 <p>Continue With Google</p>
               </div>
