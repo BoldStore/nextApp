@@ -81,7 +81,8 @@ export const pastOrders = (cursor?: string) => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.PAST_ORDERS_REQUEST });
     try {
-      const response = await instance.get(PAST_ORDERS + "?cursor=" + cursor);
+      const url = cursor ? PAST_ORDERS + "?cursor=" + cursor : PAST_ORDERS;
+      const response = await instance.get(url);
 
       dispatch({
         type: ActionTypes.PAST_ORDERS_SUCCESS,
