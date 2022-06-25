@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { Dispatch } from "redux";
 import instance from "../../axios";
 import {
@@ -22,6 +23,7 @@ export const createOrder = (product_id: string, address_id: string) => {
         data: response.data,
       });
     } catch (e) {
+      toast((e as any)?.response?.data?.err?.message ?? "Something went wrong");
       dispatch({
         type: ActionTypes.CREATE_ORDER_FAILED,
         errmess:

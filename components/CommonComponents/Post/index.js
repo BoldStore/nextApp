@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
@@ -10,13 +10,12 @@ import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import { useDispatch, useSelector } from "react-redux";
-import useRazorpay from "react-razorpay";
 import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../firebaseConfig";
-import { createOrder, verifyOrder } from "../../../store/actions/order";
-import { CALLBACK } from "../../../constants";
 import Image from "next/image";
+import { signInAnonymously } from "firebase/auth";
+import * as ActionTypes from "../../../store/ActionTypes";
 
 function Post({
   id,
@@ -31,7 +30,6 @@ function Post({
   isCompleted,
   type,
 }) {
-  const Razorpay = useRazorpay();
   const router = useRouter();
   const dispatch = useDispatch();
   const [user] = useAuthState(auth);
@@ -43,80 +41,22 @@ function Post({
 
   const notify = () => toast("Product Saved!");
 
-  useEffect(() => {
-    if (orders?.orders?.length > 0) {
-      if (orders?.success) {
-        openRazorpay();
-      } else {
-        toast(orders.errmess ?? "Something went wrong!");
-      }
-    }
-  }, [orders.orders, orders, orders.isLoading]);
-
   const handlePayment = useCallback(async () => {
     if (orders.isLoading) {
       return;
     }
-    const address = profile?.data?.address;
 
     if (!user) {
-      router.push({
-        pathname: "/login",
-        query: { returnUrl: router.asPath },
-      });
+      await signInAnonymously(auth);
     }
 
-    // TODO: Add address
-
-    if (!address) {
-      router.push("/profile");
-      return;
-    }
-
-    dispatch(createOrder(id, address.id));
-  }, []);
-
-  const openRazorpay = () => {
-    const order = orders.orders[0];
-    const options = {
-      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY ?? "rzp_test_L92bj18kAlvXKx",
-      amount: order.amount,
-      currency: order.currency,
-      name: "Bold Store",
-      description: "Proceed to buy this product",
-      image: "https://i.ibb.co/Ct1jrgj/Logo2.png",
-      order_id: order.orderId,
-      handler: (res) => {
-        console.log(res);
-        dispatch(
-          verifyOrder(
-            res.razorpay_payment_id,
-            res.razorpay_order_id,
-            res.razorpay_signature
-          )
-        );
-      },
-      prefill: {
-        name: profile?.data?.name ?? profile.data.full_name,
-        email: profile?.data?.email,
-        contact: profile?.data?.address?.phone,
-      },
-      notes: {
-        address: "Bold Store Corporate Office",
-      },
-      theme: {
-        color: "var(--black)",
-      },
-      callback_url: CALLBACK,
-    };
-
-    const rzpay = new Razorpay(options);
-    rzpay.open();
-
-    rzpay.on("payment.success", (res) => {
-      console.log("WOHOOOO", res);
+    dispatch({
+      type: ActionTypes.ADD_PRODUCT_TO_STATE,
+      productId: id,
     });
-  };
+
+    router.push("/address");
+  }, []);
 
   return (
     <div className={styles.postContainer}>
