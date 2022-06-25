@@ -7,6 +7,7 @@ const initState = {
   isStore: false,
   profile_pic: null,
   name: null,
+  link_success: false,
 };
 
 const profileReducer = (state = initState, action: any) => {
@@ -39,6 +40,24 @@ const profileReducer = (state = initState, action: any) => {
         isStore: false,
         profile_pic: null,
         name: null,
+      };
+
+    case ActionTypes.LINK_REQUEST:
+      return {
+        ...state,
+        errmess: null,
+      };
+
+    case ActionTypes.LINK_SUCCESS:
+      return {
+        ...state,
+        link_success: true,
+      };
+
+    case ActionTypes.LINK_FAILED:
+      return {
+        ...state,
+        link_success: false,
       };
     default:
       return state;

@@ -65,14 +65,14 @@ function CustomerHeader() {
             <Link href="/bag">
               <ShoppingBag className={styles.navLinks} />
             </Link>
-            {user ? (
+            {user && !user?.isAnonymous ? (
               <LogOut onClick={logout} className={styles.navLinks} />
             ) : (
               <LogIn onClick={login} className={styles.navLinks} />
             )}
           </div>
 
-          <Link href={user ? "/profile" : "/login"}>
+          <Link href={user && !user?.isAnonymous ? "/profile" : "/login"}>
             {profile.profile_pic ? (
               <Avatar
                 alt="Avatar"
