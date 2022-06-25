@@ -79,21 +79,30 @@ function Footer() {
         </div>
 
         {flag && (
-          <motion.div
-            className={styles.contactContainer}
-            onClick={() => setFlag(!flag)}
-          >
+          <motion.div className={styles.contactContainer}>
             <h1>Let&apos;s Get In Touch!</h1>
             <input
               className={styles.input}
               placeholder="@ Instagram Username"
+              onClick={() => setFlag(true)}
             />
-            <input className={styles.input} placeholder="Your Email Address" />
+            <input
+              className={styles.input}
+              placeholder="Your Email Address"
+              onClick={() => setFlag(true)}
+            />
             <motion.button
               className={styles.button}
-              onClick={() => setFlag(!flag)}
+              onClick={() => setFlag(false)}
             >
               Submit
+            </motion.button>
+            <motion.button
+              className={styles.button}
+              onClick={() => setFlag(false)}
+              style={{ marginTop: 16 }}
+            >
+              Exit
             </motion.button>
           </motion.div>
         )}

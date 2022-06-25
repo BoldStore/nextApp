@@ -113,7 +113,6 @@ function StoreHomePage() {
               <Post />
               <Post />
               <Post />
-              <Post />
             </>
           )}
         </div>
