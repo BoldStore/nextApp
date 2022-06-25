@@ -22,6 +22,16 @@ export const createOrder = (product_id: string, address_id: string) => {
         type: ActionTypes.CREATE_ORDER_SUCCESS,
         data: response.data,
       });
+
+      dispatch({
+        type: ActionTypes.ADD_ADDRESS_TO_STATE,
+        address: null,
+      });
+
+      dispatch({
+        type: ActionTypes.ADD_PRODUCT_TO_STATE,
+        productId: null,
+      });
     } catch (e) {
       toast((e as any)?.response?.data?.err?.message ?? "Something went wrong");
       dispatch({
