@@ -77,34 +77,23 @@ export const verifyOrder = (
   };
 };
 
-export const pastOrders = () => {
+export const pastOrders = (cursor?: string) => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.PAST_ORDERS_REQUEST });
     try {
-      const response = await instance.get(
-        PAST_ORDERS
-        // {
-        //   headers: {
-        //     Authorization: firebase().auth().currentUser.getIdToken(),
-        //   },
-        // }
-      );
+      const response = await instance.get(PAST_ORDERS + "?cursor=" + cursor);
 
-      if (response.status == 200) {
-        dispatch({
-          type: ActionTypes.PAST_ORDERS_SUCCESS,
-          data: response.data,
-        });
-      } else {
-        dispatch({
-          type: ActionTypes.PAST_ORDERS_FAILED,
-          error: response.data,
-        });
-      }
+      dispatch({
+        type: ActionTypes.PAST_ORDERS_SUCCESS,
+        data: response.data,
+      });
     } catch (e) {
       dispatch({
         type: ActionTypes.PAST_ORDERS_FAILED,
-        errmess: e,
+        errmess:
+          (e as any)?.response?.data?.err?.message ??
+          (e as any)?.response?.data ??
+          e,
       });
     }
   };

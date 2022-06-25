@@ -60,11 +60,11 @@ export const saveProduct = (productId: string) => {
   };
 };
 
-export const getSavedProducts = (productId: string) => {
+export const getSavedProducts = (cursor?: string) => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: ActionTypes.GET_SAVED_PRODUCTS_REQUEST });
     try {
-      const response = await instance.get(SAVE_PRODUCT);
+      const response = await instance.get(SAVE_PRODUCT + "?cursor=" + cursor);
 
       dispatch({
         type: ActionTypes.GET_SAVED_PRODUCTS_SUCCESS,

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import VerticalHeader from "../../components/StoreComponents/VerticalHeader";
 import styles from "./styles.module.css";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Header from "../../components/CommonComponents/Header";
 import OrderPageTabs from "./tabs";
 import NoOrders from "../../components/CommonComponents/IsEmptyComponents/NoOrders";
@@ -22,13 +22,41 @@ function Orders() {
   };
 
   const getData = () => {
-    dispatch(pastOrders());
-    dispatch(getSavedProducts());
+    dispatch(pastOrders(orders.past_orders_cursor));
+    dispatch(getSavedProducts(products.saved_cursor));
   };
 
   useEffect(() => {
     getData();
   }, []);
+
+  // Check for products
+  const prodObserver = useRef(null);
+  const lastProductElementRef = useCallback((node) => {
+    if (products?.products?.length <= 0) return;
+    if (products.isLoading || products.products_loading) return;
+    if (prodObserver.current) prodObserver.current.disconnect();
+    prodObserver.current = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !products.saved_end) {
+        dispatch(getSavedProducts(products.saved_cursor));
+      }
+    });
+    if (node) prodObserver.current.observe(node);
+  });
+
+  // Check for orders
+  const orderObserver = useRef(null);
+  const lastOrderElementRef = useCallback((node) => {
+    if (products?.products?.length <= 0) return;
+    if (products.isLoading || products.products_loading) return;
+    if (orderObserver.current) orderObserver.current.disconnect();
+    orderObserver.current = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !products.past_orders_end) {
+        dispatch(getSavedProducts(products.past_orders_cursor));
+      }
+    });
+    if (node) orderObserver.current.observe(node);
+  });
 
   return (
     <>
@@ -57,7 +85,16 @@ function Orders() {
           <div className={styles.postContainer}>
             {orders.orders?.length > 0 ? (
               orders?.orders?.map((order, index) => (
-                <OrderComponent key={index} />
+                <div
+                  key={index}
+                  ref={
+                    orders?.orders?.length == index + 1
+                      ? lastOrderElementRef
+                      : null
+                  }
+                >
+                  <OrderComponent />
+                </div>
               ))
             ) : (
               <NoOrders />
@@ -67,20 +104,28 @@ function Orders() {
           <div className={styles.postContainer}>
             {products.products?.length > 0 ? (
               products?.products?.map((product, index) => (
-                <Post
-                  caption={product.caption}
-                  id={product.id}
-                  images={product.images}
-                  isCompleted={product?.store?.isCompleted}
-                  postUrl={product?.imgUrl}
-                  price={product?.amount}
-                  size={product?.size}
-                  storeLocation={product?.store?.city}
-                  storeName={product?.store?.username}
-                  storeUrl={product?.store?.profile_pic}
-                  type={product?.mediaType}
+                <div
                   key={index}
-                />
+                  ref={
+                    products?.products?.length == index + 1
+                      ? lastProductElementRef
+                      : null
+                  }
+                >
+                  <Post
+                    caption={product.caption}
+                    id={product.id}
+                    images={product.images}
+                    isCompleted={product?.store?.isCompleted}
+                    postUrl={product?.imgUrl}
+                    price={product?.amount}
+                    size={product?.size}
+                    storeLocation={product?.store?.city}
+                    storeName={product?.store?.username}
+                    storeUrl={product?.store?.profile_pic}
+                    type={product?.mediaType}
+                  />
+                </div>
               ))
             ) : (
               <NoSavedItems />
