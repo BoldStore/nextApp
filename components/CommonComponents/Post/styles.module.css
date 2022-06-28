@@ -98,6 +98,8 @@
 @media (max-width: 650px) {
   .postContainer {
     max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .imageCover {
     width: 100% !important;
