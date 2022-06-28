@@ -97,13 +97,14 @@ export default function Captions() {
           }
         }
 
+        //////////////////// THIS IS FOR SIZE IN LETTERS LIKE S , M , L
         console.log("size2==", forSizeStr[j]);
       }
 
       var matches = caption.slice(i).match(/(\d+)/); //slicing from the position of the list and no clue what match does (stackoverflow helped)
       if (matches) {
         console.log("size==", matches[0]);
-        //matches is an array for some reason we need the first number.
+        //////////////////// THIS IS FOR SIZE IN NUMBERS, HAVE TO CONVERT TO THE CHART
       }
     }
   });
