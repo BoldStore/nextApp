@@ -54,7 +54,7 @@ function CustomerSignup() {
       return true;
     }
 
-    return true;
+    return false;
   };
 
   const handleSubmit = async (e) => {
