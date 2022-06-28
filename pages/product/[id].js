@@ -51,8 +51,6 @@ function ProductPage() {
       if (router?.query?.id == order?.product) {
         dispatch(createOrder(order?.product, order?.address));
       }
-    } else {
-      router.push("/address");
     }
   };
 

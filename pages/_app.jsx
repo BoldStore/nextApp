@@ -9,16 +9,22 @@ import { removeCookies, setCookies } from "cookies-next";
 import { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getProfile } from "../store/actions/profile";
+import { getProfile, linkUser } from "../store/actions/profile";
 import Loading from "../components/Loading";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RouteGuard from "../components/RouteGuard";
+<<<<<<< HEAD
 import Captions from "../components/functions/caption";
+=======
+import { useAuthState } from "react-firebase-hooks/auth";
+import { signInAnonymously } from "firebase/auth";
+>>>>>>> 47703adda27c1dac39dd11b7f815c6a753b495d3
 
 function MyApp({ Component, pageProps }) {
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.profile);
+  const [currentUser, loading] = useAuthState(auth);
   var cursor;
   var cursor2;
 
@@ -45,12 +51,22 @@ function MyApp({ Component, pageProps }) {
 
     auth.onAuthStateChanged(async (user) => {
       if (user) {
-        setCookies("token", await user.getIdToken());
+        if (!user.isAnonymous) {
+          dispatch(linkUser(user.uid));
+          removeCookies("anonymousToken");
+        }
+        const token = await user.getIdToken();
+        setCookies("token", token);
+        if (user.isAnonymous) {
+          setCookies("anonymousToken", token);
+        }
+
         if (!profile.isLoading) dispatch(getProfile());
       } else {
         removeCookies("token");
       }
     });
+<<<<<<< HEAD
 
     // return auth.onIdTokenChanged(async (user) => {
     //   if (!user) {
@@ -62,7 +78,15 @@ function MyApp({ Component, pageProps }) {
     //   }
     // });
     Captions();
+=======
+>>>>>>> 47703adda27c1dac39dd11b7f815c6a753b495d3
   }, []);
+
+  useEffect(() => {
+    if (!loading && !currentUser) {
+      signInAnonymously(auth);
+    }
+  }, [currentUser, loading]);
 
   if (profile?.isLoading) {
     return <Loading />;
