@@ -55,5 +55,5 @@ export const PING_SERVER = "test";
 export const CHECK_LOGIN = "test/checkLogin";
 
 const REDIRECT_URL = "https://boldstore.in/code";
-const CLIENT_ID = "566716771479973";
+const CLIENT_ID = "551125670004277";
 export const INSTAGRAM_URL = `https://www.instagram.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL}&scope=user_profile%2Cuser_media&response_type=code`;
