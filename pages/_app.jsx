@@ -14,6 +14,7 @@ import Loading from "../components/Loading";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RouteGuard from "../components/RouteGuard";
+import Captions from "../components/functions/caption";
 
 function MyApp({ Component, pageProps }) {
   const dispatch = useDispatch();
@@ -60,6 +61,7 @@ function MyApp({ Component, pageProps }) {
     //     dispatch(getProfile());
     //   }
     // });
+    Captions();
   }, []);
 
   if (profile?.isLoading) {
