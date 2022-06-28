@@ -61,7 +61,7 @@ function ProfileAddress() {
 
   const setData = () => {
     setName(profile?.data?.address?.name ?? "");
-    setPhone(profile?.data?.paymentDetails?.phone ?? "");
+    setPhone(profile?.data?.address?.phone ?? "");
     setAddressString(profile?.data?.address?.addressString ?? "");
     setLocality(profile?.data?.address?.addressL1 ?? "");
     setAppartment(profile?.data?.address?.addressL2 ?? "");
@@ -73,6 +73,8 @@ function ProfileAddress() {
 
   useEffect(() => {
     if (profile?.name) setName(profile?.name);
+    if (profile?.data?.paymentDetails?.phone)
+      setPhone(profile?.data?.paymentDetails?.phone);
     if (profile?.data?.address) setData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile, profile.data]);
