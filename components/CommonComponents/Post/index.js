@@ -1,16 +1,21 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useCallback, useState } from "react";
 import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import Image from "next/image";
 import { toast } from "react-toastify";
 import { Bookmark } from "react-feather";
 import BoldButton from "../BoldButton";
 import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
 import VerifiedIcon from "@mui/icons-material/Verified";
-import { useSelector } from "react-redux";
-import useRazorpay from "react-razorpay";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../../firebaseConfig";
+import Image from "next/image";
+import { signInAnonymously } from "firebase/auth";
+import * as ActionTypes from "../../../store/ActionTypes";
 
 function Post({
   id,
@@ -25,59 +30,32 @@ function Post({
   isCompleted,
   type,
 }) {
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const [user] = useAuthState(auth);
   const [video, setVideo] = useState(false);
-  const [text, setText] = useState(caption?.slice(0, 35));
   const [readMore, setReadMore] = useState(false);
   const profile = useSelector((state) => state.profile);
+  const orders = useSelector((state) => state.orders);
+  const text = caption?.slice(0, 35);
 
   const notify = () => toast("Product Saved!");
-  const [activeTheme, setActiveTheme] = useState("");
-  const inactiveTheme = activeTheme === "dark" ? "light" : "dark";
-  const [svgMode, setSvgMode] = useState("dark");
 
-  useEffect(() => {
-    if (activeTheme) {
-      document.body.dataset.theme = activeTheme;
-      window.localStorage.setItem("theme", activeTheme);
-      setSvgMode(activeTheme);
+  const handlePayment = useCallback(async () => {
+    if (orders.isLoading) {
+      return;
     }
-  }, [activeTheme]);
 
-  const Razorpay = useRazorpay();
+    if (!user) {
+      await signInAnonymously(auth);
+    }
 
-  const handlePayment = useCallback(() => {
-    // const order = await createOrder(params);
+    dispatch({
+      type: ActionTypes.ADD_PRODUCT_TO_STATE,
+      productId: id,
+    });
 
-    const options = {
-      key: "rzp_test_Cvgmp7sLxim68t",
-      amount: "20000",
-      currency: "INR",
-      name: "Bold Store",
-      description: "Proceed to buy this product",
-      image: "https://i.ibb.co/Ct1jrgj/Logo2.png",
-      // order_id: `${product.id}`,
-      handler: (res) => {
-        console.log(res);
-      },
-      prefill: {
-        name: "Piyush Garg",
-        email: "youremail@example.com",
-        contact: "9999999999",
-      },
-      notes: {
-        address: "Bold Store Corporate Office",
-      },
-      theme: {
-        color: "var(--black)",
-      },
-    };
-
-    const rzpay = new Razorpay(options);
-    rzpay.open();
-  }, [Razorpay]);
-
-  useEffect(() => {
-    console.log("type", type == "CAROUSEL_ALBUM" && images[0]?.imgUrl);
+    router.push("/address");
   }, []);
 
   return (
@@ -113,7 +91,6 @@ function Post({
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center",
                   }}
                 >
                   <p>{storeName}</p>
@@ -165,7 +142,7 @@ function Post({
         >
           {postUrl || type == "CAROUSEL_ALBUM" ? (
             !video ? (
-              <img
+              <Image
                 onError={() => {
                   setVideo(true);
                 }}
@@ -241,7 +218,10 @@ function Post({
         <p style={{ marginTop: 0 }}>{caption}</p>
       )}
 
-      <BoldButton text={"Buy Now"} onClick={handlePayment} />
+      <BoldButton
+        text={!orders.isLoading ? "Buy Now" : "Loading..."}
+        onClick={handlePayment}
+      />
     </div>
   );
 }

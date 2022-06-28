@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import InputComponent from "../../../components/CommonComponents/InputComponent";
 import Header from "../../../components/CommonComponents/Header";
@@ -7,6 +8,7 @@ import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
 function CustomerAddress() {
+  const [name, setName] = useState("");
   const [locality, setLocality] = useState("");
   const [appartment, setAppartment] = useState("");
   const [city, setCity] = useState("");
@@ -28,6 +30,12 @@ function CustomerAddress() {
         <Header />
         <div className={styles.container}>
           <h1>Address Details</h1>
+          <InputComponent
+            type="text"
+            setValue={setName}
+            value={name}
+            placeholder={"Name"}
+          />
           <InputComponent
             type="text"
             setValue={setLocality}

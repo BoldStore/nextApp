@@ -1,5 +1,3 @@
-import { NextPage } from "next";
-import React from "react";
 import { useSelector } from "react-redux";
 import StoreProfile from "./store/profile";
 import CustomerProfile from "./customer/profile";

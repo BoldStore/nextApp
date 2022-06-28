@@ -10,6 +10,7 @@ function Grid1({ products }) {
   const [flag4, setFlag4] = useState(false);
   const [flag5, setFlag5] = useState(false);
   const [flag6, setFlag6] = useState(false);
+
   if (products?.length == 6)
     return (
       <div className={styles.gridWrapper}>

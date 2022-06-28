@@ -1,11 +1,12 @@
 .button {
-  padding: 0rem 5.5rem;
+  padding: 0rem 1.5rem;
   background-color: transparent;
-  border: 1px solid var(--darkGrey);
+  border: 1px solid var(--white);
   border-radius: 0.5rem;
   color: var(--white);
   cursor: pointer;
   font-family: "Inter", sans-serif;
+  width: 100%;
 }
 
 .button:hover {

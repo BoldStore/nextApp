@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateStore } from "../../../store/actions/store";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import { getProfile } from "../../../store/actions/profile";
 // import { getCookie } from "cookies-next";
 // import { firebaseAdmin } from "../../../firebaseAdmin";
 
@@ -68,8 +69,9 @@ function ProfileUpi() {
   }, [profile]);
 
   useEffect(() => {
-    if (storeData.success) {
+    if (storeData.update_success) {
       toast("Saved Succesfully!");
+      dispatch(getProfile());
       router.push("/profile");
     }
   }, [storeData]);

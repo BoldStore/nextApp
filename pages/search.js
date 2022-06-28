@@ -10,7 +10,6 @@ function Search() {
   const dispatch = useDispatch();
   const search = useSelector((state) => state.search);
   const [isSearching, setIsSearching] = useState(false);
-  console.log("Search Results>>>", search);
 
   useEffect(() => {
     dispatch(explorePage());

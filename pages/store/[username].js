@@ -1,7 +1,7 @@
 import { User } from "react-feather";
 import VerticalHeader from "../../components/StoreComponents/VerticalHeader";
 import styles from "./profile/styles.module.css";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import { useDispatch, useSelector } from "react-redux";
 import Grid1 from "../../components/CommonComponents/Grids/grid1";
@@ -26,11 +26,23 @@ function StorePage() {
   const store = useSelector((state) => state.pages);
   const profile = useSelector((state) => state.profile);
   const [value, setValue] = useState(0);
-  const router = useRouter();
   const [products, setProducts] = useState([]);
   const handleChange = (i) => {
     setValue(i);
   };
+
+  const observer = useRef(null);
+  const lastPostElementRef = useCallback((node) => {
+    if (store?.store_products?.length <= 0) return;
+    if (store.store_loading || store.store_products_loading) return;
+    if (observer.current) observer.current.disconnect();
+    observer.current = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !store.store_end) {
+        dispatch(storePage(query.username, store.store_lastDoc));
+      }
+    });
+    if (node) observer.current.observe(node);
+  });
 
   function randomNumberInRange(min, max) {
     // 👇️ get number between min (inclusive) and max (inclusive)
@@ -44,7 +56,6 @@ function StorePage() {
     while (items.length) {
       chunks.push(items.splice(0, size));
     }
-    console.log("productsss", chunks);
     return chunks;
   }
 
@@ -56,10 +67,10 @@ function StorePage() {
   }, [query]);
 
   useEffect(() => {
-    if (store?.store?.products) {
-      setProducts(chunk(store?.store?.products, 6));
+    if (store?.store_products) {
+      setProducts(chunk(store?.store_products, 6));
     }
-  }, [store?.store?.products]);
+  }, [store?.store_products]);
 
   if (store.store_loading) {
     return <Loading />;
@@ -161,22 +172,39 @@ function StorePage() {
               </div>
             ) : value == 1 ? (
               <div className={styles.postContainer}>
-                {store?.store?.products?.map((product, index) => (
-                  <Post
-                    postUrl={product.imgUrl}
+                {store?.store_products?.map((product, index) => (
+                  <div
+                    ref={
+                      store?.store_products?.length == index + 1
+                        ? lastPostElementRef
+                        : null
+                    }
                     key={index}
-                    storeUrl={store?.store?.store?.profile_pic}
-                    storeLocation={store?.store?.store?.city ?? ""}
-                    storeName={store?.store?.store?.username}
-                    caption={product.caption}
-                    price={product.price}
-                    size={product.size}
-                    id={product.id}
-                    isCompleted={store?.store?.store?.isCompleted}
-                    type={product.type}
-                    images={product.images}
-                  />
+                  >
+                    <Post
+                      postUrl={product.imgUrl}
+                      key={index}
+                      storeUrl={store?.store?.store?.profile_pic}
+                      storeLocation={store?.store?.store?.city ?? ""}
+                      storeName={store?.store?.store?.username}
+                      caption={product.caption}
+                      price={product.price}
+                      size={product.size}
+                      id={product.id}
+                      isCompleted={store?.store?.store?.isCompleted}
+                      type={product.type}
+                      images={product.images}
+                    />
+                  </div>
                 ))}
+                {store.store_products_loading && (
+                  <>
+                    <Post />
+                    <Post />
+                    <Post />
+                    <Post />
+                  </>
+                )}
               </div>
             ) : (
               <></>

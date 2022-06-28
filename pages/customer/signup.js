@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import InputComponent from "../../components/CommonComponents/InputComponent";
@@ -33,12 +34,23 @@ function CustomerSignup() {
 
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.user);
+  const profile = useSelector((state) => state.profile);
 
   const validation = () => {
     const validEmail = isEmail(email);
     const passwordValid = equals(password, confirmPassword);
-
-    if (validEmail && passwordValid) {
+    if (
+      email.length == 0 ||
+      password.length == 0 ||
+      confirmPassword.length == 0
+    ) {
+      setError("Please Enter all inputs");
+    } else if (!validEmail) {
+      setError("Invalid Email Entered!");
+    } else if (!passwordValid) {
+      setError("Passwords do not match!");
+    } else {
+      setError("");
       return true;
     }
 
@@ -47,19 +59,18 @@ function CustomerSignup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validation()) {
-      setError("Please check your inputs");
-      return;
+    if (validation()) {
+      await createUserWithEmailAndPassword(email, password);
     }
-    setError("");
-
-    // 1. Signup up for firebase auth
-    await createUserWithEmailAndPassword(email, password);
   };
 
   useEffect(() => {
-    if (user) {
-      dispatch(createUser());
+    if (user && !user?.isAnonymous) {
+      if (profile?.email) {
+        router.replace("/home");
+      } else {
+        dispatch(createUser());
+      }
     }
   }, [user, auth_user, google_user]);
 
@@ -123,6 +134,7 @@ function CustomerSignup() {
                 <img
                   src="/assets/google.png"
                   style={{ height: "2rem", marginRight: "0.5rem" }}
+                  alt="Google Logo"
                 />
                 <p>Continue With Google</p>
               </div>

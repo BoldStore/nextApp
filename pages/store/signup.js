@@ -5,7 +5,7 @@ import InputComponent from "../../components/CommonComponents/InputComponent";
 import Header from "../../components/LandingPageComponents/Header";
 import styles from "../../styles/common.module.css";
 import Link from "next/link";
-import { isEmail, isStrongPassword, equals } from "validator";
+import { isEmail, equals } from "validator";
 import {
   useAuthState,
   useCreateUserWithEmailAndPassword,
@@ -24,7 +24,6 @@ function StoreSignup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  // const [strongPassword, setStrongPassword] = useState(false);
   const [error, setError] = useState("");
   const [createUserWithEmailAndPassword, user, loading, signupError] =
     useCreateUserWithEmailAndPassword(auth);
@@ -37,22 +36,7 @@ function StoreSignup() {
   const dispatch = useDispatch();
   const store = useSelector((state) => state.store);
 
-  // const validation = () => {
-  //   const validEmail = isEmail(email);
-  //   const passwordValid = equals(password, confirmPassword);
-
-  //   if (!validEmail) {
-  //     setError("Invalid Email Entered!");
-  //   }
-  //   if (!passwordValid) {
-  //     setError("Passwords do not match!");
-  //   }
-
-  //   return false;
-  // };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const validation = () => {
     const validEmail = isEmail(email);
     const passwordValid = equals(password, confirmPassword);
 
@@ -71,30 +55,47 @@ function StoreSignup() {
       setError("Please enter a valid invite code!");
     } else {
       setError("");
-      dispatch(setInviteCodeToState(inviteCode));
+      return true;
+    }
 
-      // 1. Signup up for firebase auth
+    return false;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (validation()) {
+      dispatch(setInviteCodeToState(inviteCode));
       createUserWithEmailAndPassword(email, password);
     }
   };
 
   useEffect(() => {
-    if (user || currentUser) {
-      dispatch(createStore(store.inviteCode));
+    if (currentUser && !currentUser.isAnonymous) {
+      if (store.inviteCode) {
+        dispatch(createStore(store.inviteCode));
+      } else {
+        let auth_using_google = false;
+        // Check if user logged in using google
+        for (let i = 0; i < currentUser?.providerData?.length; i++) {
+          const providerId = currentUser?.providerData[i]?.providerId;
+          if (providerId == "google.com") {
+            auth_using_google = true;
+            break;
+          }
+        }
+        if (auth_using_google) {
+          router.replace("/store/entercode");
+        } else {
+          router.replace("/profile");
+        }
+      }
 
       if (!store.success) {
-        console.log(store);
         setError(store?.errmess?.toString());
         return;
       }
     }
-  }, [user, currentUser]);
-
-  // useEffect(() => {
-  //   if (isStrongPassword(password)) {
-  //     setStrongPassword(true);
-  //   }
-  // }, [password]);
+  }, [currentUser, store.inviteCode]);
 
   useEffect(() => {
     // 3. Create a new store in the database (open insta access page)
@@ -102,6 +103,8 @@ function StoreSignup() {
       router.replace(INSTAGRAM_URL);
     }
   }, [store, store.success]);
+
+  if (google_loading) return <Loading />;
 
   return (
     <div className={styles.page}>
@@ -118,13 +121,6 @@ function StoreSignup() {
             placeholder={"Invite Code"}
             noText={true}
           />
-          {/* <InputComponent
-            type="text"
-            setValue={setFullName}
-            value={fullName}
-            placeholder={"Full Name"}
-            noText={true}
-          /> */}
           <InputComponent
             type="text"
             setValue={setEmail}
@@ -146,7 +142,6 @@ function StoreSignup() {
             placeholder={"Confirm Password"}
             noText={true}
           />
-          {/* <Link href="/store/" passHref={true}> */}
           <div className={styles.btn} onClick={handleSubmit}>
             <p>{loading || store.isLoading ? "Loading...." : "Signup"}</p>
           </div>
@@ -176,7 +171,6 @@ function StoreSignup() {
           {google_error && (
             <p className={styles.error}>{google_error.message}</p>
           )}
-          {/* </Link> */}
           <div
             style={{
               display: "flex",
@@ -197,18 +191,6 @@ function StoreSignup() {
                 <span className={styles.link}>Click Here.</span>
               </p>
             </Link>
-            {/* <Link href="/login" passHref={true}>
-              <p
-                style={{
-                  color: "var(--lightGrey)",
-                  cursor: "pointer",
-                  marginBottom: 0,
-                }}
-              >
-                Have An Account Already?{" "}
-                <span className={styles.link}>Login.</span>
-              </p>
-            </Link> */}
             <Link href="/customer/signup" passHref={true}>
               <p
                 style={{

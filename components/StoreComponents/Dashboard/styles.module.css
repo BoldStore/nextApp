@@ -28,7 +28,8 @@
 @media (max-width: 1350px) {
   .chartContainer {
     width: 45%;
-    margin-right: 0;
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 

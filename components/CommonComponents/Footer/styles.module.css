@@ -1,0 +1,157 @@
+.container {
+  padding: 0rem 4rem;
+  border-top: 2px solid var(--darkGrey);
+  display: flex;
+  flex-direction: column;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.linksContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.icons {
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.links h1 {
+  font-size: 1rem;
+}
+
+.links p {
+  font-size: 0.8rem;
+  color: var(--lightGrey);
+}
+
+.links p:hover {
+  color: var(--white);
+  text-decoration: underline;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.input {
+  width: 40%;
+  background: transparent;
+  border: 2px solid var(--darkGrey);
+  border-radius: 0.8rem;
+  margin-bottom: 1rem;
+  color: var(--white);
+  padding: 1rem 1rem;
+  font-family: "Inter", "sans-serif";
+  font-size: 1rem;
+}
+
+.input:focus {
+  border: 2px solid var(--white);
+  outline: none;
+}
+
+.contactContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0%;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+}
+
+.contactContainer h1 {
+  font-size: 4rem;
+  margin-top: 0px;
+}
+
+.button {
+  background-color: transparent;
+  border: 2px solid var(--darkGrey);
+  color: var(--lightGrey);
+  width: 40%;
+  padding: 1rem;
+  border-radius: 0.8rem;
+  font-size: 1rem;
+}
+
+.button:hover {
+  border-color: var(--lightGrey);
+  cursor: pointer;
+  color: var(--white);
+  transition: all 0.5s;
+}
+
+@media (max-width: 1024px) {
+  .links h1 {
+    font-size: 0.9rem;
+  }
+  .links p {
+    font-size: 0.7rem;
+  }
+  .contactContainer h1 {
+    font-size: 0.9rem;
+  }
+  .linksContainer {
+    padding: 0rem 2rem;
+  }
+  .container {
+    padding: 0rem 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .links h1 {
+    font-size: 1rem;
+  }
+  .links p {
+    font-size: 0.8rem;
+  }
+  .contactContainer h1 {
+    font-size: 2rem;
+    text-align: left;
+  }
+  .container {
+    padding: 0rem 1rem;
+    align-items: flex-start;
+  }
+  .logoContainer {
+    flex-direction: column;
+  }
+  .linksContainer {
+    flex-direction: column;
+    margin-top: 1rem;
+    padding: 0rem;
+  }
+  .links {
+    margin-left: 0.5rem;
+    margin-top: 1rem;
+  }
+  .contactContainer {
+    margin-top: 1rem;
+  }
+  .socials {
+    margin-top: -1rem;
+    margin-left: -2rem;
+  }
+  .input,
+  .button {
+    width: 90%;
+  }
+}

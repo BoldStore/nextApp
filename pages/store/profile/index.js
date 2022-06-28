@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Avatar } from "@mui/material";
 import { User } from "react-feather";
 import VerticalHeader from "../../../components/StoreComponents/VerticalHeader";
@@ -17,8 +18,10 @@ import Grid2 from "../../../components/CommonComponents/Grids/grid2";
 import Grid3 from "../../../components/CommonComponents/Grids/grid3";
 import Grid4 from "../../../components/CommonComponents/Grids/grid4";
 import UsernameTabs from "../../../components/StoreComponents/UsernameTabs";
-import { getProfile } from "../../../store/actions/profile";
 import StoreComingSoon from "../../../components/StoreComponents/StoreComingSoon";
+import { INSTAGRAM_URL } from "../../../constants";
+import { updateStoreProducts } from "../../../store/actions/store";
+
 function StoreProfile() {
   const profile = useSelector((state) => state.profile);
   const store = useSelector((state) => state.pages);
@@ -37,7 +40,7 @@ function StoreProfile() {
   }, [profile]);
 
   const refresh = () => {
-    dispatch(getProfile());
+    dispatch(updateStoreProducts());
   };
 
   function randomNumberInRange(min, max) {
@@ -52,7 +55,6 @@ function StoreProfile() {
     while (items.length) {
       chunks.push(items.splice(0, size));
     }
-    console.log("productsss", chunks);
     return chunks;
   }
 
@@ -69,7 +71,7 @@ function StoreProfile() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile?.data]);
 
-  if (profile?.isStore)
+  if (profile?.isStore) {
     return (
       <>
         <Header />
@@ -94,38 +96,60 @@ function StoreProfile() {
             ) : (
               <User />
             )}
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-              }}
-            >
-              <Link
-                passHref={true}
-                href={`https://www.instagram.com/${profile?.data?.data?.username}`}
-              >
-                <h1 style={{ cursor: "pointer" }}>
-                  @{profile?.data?.data?.username}
-                </h1>
-              </Link>
-              {profile.data?.percentage == 100 && (
-                <VerifiedIcon
+            {!profile?.data?.data?.username ? (
+              <Link href={INSTAGRAM_URL} passHref={true}>
+                <p
                   style={{
-                    marginLeft: "0.5rem",
-                    fontSize: "1.5rem",
-                    color: "#1DA1F2",
+                    color: "var(--lightGrey)",
+                    cursor: "pointer",
+                    marginTop: "2rem",
                   }}
-                />
-              )}
-            </div>
-            <p
-              style={{ color: "var(--lightGrey)", cursor: "pointer" }}
-              onClick={refresh}
-            >
-              Refresh Products
-            </p>
+                >
+                  Connect to Instagram
+                </p>
+              </Link>
+            ) : (
+              <>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                  }}
+                >
+                  <Link
+                    passHref={true}
+                    href={`https://www.instagram.com/${profile?.data?.data?.username}`}
+                  >
+                    <h1 style={{ cursor: "pointer" }}>
+                      @{profile?.data?.data?.username}
+                    </h1>
+                  </Link>
+                  {profile.data?.percentage == 100 && (
+                    <VerifiedIcon
+                      style={{
+                        marginLeft: "0.5rem",
+                        fontSize: "1.5rem",
+                        color: "#1DA1F2",
+                      }}
+                    />
+                  )}
+                </div>
+                {profile?.data?.data?.postsStatus === "fetching" ? (
+                  <p style={{ color: "yellow" }}>
+                    Your posts are still fetching...
+                  </p>
+                ) : (
+                  <p
+                    style={{ color: "var(--lightGrey)", cursor: "pointer" }}
+                    onClick={refresh}
+                  >
+                    Refresh Products
+                  </p>
+                )}
+              </>
+            )}
           </div>
           {profile?.data?.data?.postsStatus == "fetching" &&
           profile.data?.percentage == 100 ? (
@@ -198,6 +222,9 @@ function StoreProfile() {
         </div>
       </>
     );
+  } else {
+    router.push("/profile");
+  }
 }
 
 export default StoreProfile;

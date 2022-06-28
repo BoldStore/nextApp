@@ -9,6 +9,9 @@ export default function RouteGuard({ children }: any) {
   const [authorized, setAuthorized] = useState(false);
 
   useEffect(() => {
+    if (loading) {
+      return;
+    }
     // on initial load - run auth check
     authCheck(router.asPath);
 
@@ -25,7 +28,7 @@ export default function RouteGuard({ children }: any) {
       router.events.off("routeChangeComplete", authCheck);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+  }, [user, router, loading]);
 
   function authCheck(url: string | undefined) {
     // redirect to login page if accessing a private page and not logged in
@@ -42,10 +45,9 @@ export default function RouteGuard({ children }: any) {
       "/customer/signup",
       "/store/signup",
       "/store/entercode",
-      "/store/inviteCode",
-      "/code",
       "/privacy-policy",
-
+      "/order/review",
+      `/order/${dynamicParam}`,
       `/store/${dynamicParam}`,
       `/product/${dynamicParam}`,
     ];

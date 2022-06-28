@@ -15,7 +15,7 @@ function Profile() {
   const address = useSelector((state) => state.addresses);
   const profile = useSelector((state) => state.profile);
   const router = useRouter();
-  const [title, setTitle] = useState("");
+  const [name, setName] = useState("");
   const [addressString, setAddressString] = useState("");
   const [locality, setLocality] = useState("");
   const [appartment, setAppartment] = useState("");
@@ -29,7 +29,7 @@ function Profile() {
     e.preventDefault();
     dispatch(
       addAddress(
-        title,
+        name,
         addressString,
         locality,
         appartment,
@@ -43,7 +43,7 @@ function Profile() {
   };
 
   const setData = () => {
-    setTitle(profile?.data?.address?.title ?? "");
+    setName(profile?.data?.address?.name ?? "");
     setPhone(profile?.data?.paymentDetails?.phone ?? "");
     setAddressString(profile?.data?.address?.addressString ?? "");
     setLocality(profile?.data?.address?.addressL1 ?? "");
@@ -55,6 +55,7 @@ function Profile() {
   };
 
   useEffect(() => {
+    if (profile?.name) setName(profile?.name);
     if (profile?.data?.address) setData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile, profile.data]);
@@ -96,6 +97,9 @@ function Profile() {
               />
             )}
             <h1>{profile.name}</h1>
+            <Link href="/store/entercode">
+              <p style={{ color: "var(--lightGrey)" }}>Have a store?</p>
+            </Link>
             <Link href="/customer/profile/edit">
               <p style={{ color: "var(--lightGrey)" }}>Edit Personal Details</p>
             </Link>
@@ -108,9 +112,9 @@ function Profile() {
           )}
           <InputComponent
             type="text"
-            setValue={setTitle}
-            value={title}
-            placeholder={"Title"}
+            setValue={setName}
+            value={name}
+            placeholder={"Name"}
           />
           <InputComponent
             type="text"

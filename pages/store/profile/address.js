@@ -7,13 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { addAddress } from "../../../store/actions/address";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import { getProfile } from "../../../store/actions/profile";
 
 function ProfileAddress() {
   const dispatch = useDispatch();
   const address = useSelector((state) => state.addresses);
   const profile = useSelector((state) => state.profile);
   const router = useRouter();
-  const [title, setTitle] = useState("");
+  const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [addressString, setAddressString] = useState("");
   const [locality, setLocality] = useState("");
@@ -27,7 +28,7 @@ function ProfileAddress() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
-      title.length == 0 ||
+      name.length == 0 ||
       phone.length == 0 ||
       locality.length == 0 ||
       appartment.length == 0 ||
@@ -44,7 +45,7 @@ function ProfileAddress() {
       setError("");
       dispatch(
         addAddress(
-          title,
+          name,
           addressString,
           locality,
           appartment,
@@ -59,8 +60,8 @@ function ProfileAddress() {
   };
 
   const setData = () => {
-    setTitle(profile?.data?.address?.title ?? "");
-    setPhone(profile?.data?.paymentDetails?.phone ?? "");
+    setName(profile?.data?.address?.name ?? "");
+    setPhone(profile?.data?.address?.phone ?? "");
     setAddressString(profile?.data?.address?.addressString ?? "");
     setLocality(profile?.data?.address?.addressL1 ?? "");
     setAppartment(profile?.data?.address?.addressL2 ?? "");
@@ -71,6 +72,9 @@ function ProfileAddress() {
   };
 
   useEffect(() => {
+    if (profile?.name) setName(profile?.name);
+    if (profile?.data?.paymentDetails?.phone)
+      setPhone(profile?.data?.paymentDetails?.phone);
     if (profile?.data?.address) setData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile, profile.data]);
@@ -78,6 +82,7 @@ function ProfileAddress() {
   useEffect(() => {
     if (address.success) {
       toast("Saved Succesfully!");
+      dispatch(getProfile());
       router.push("/profile");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -110,9 +115,9 @@ function ProfileAddress() {
 
           <InputComponent
             type="text"
-            setValue={setTitle}
-            value={title}
-            placeholder={"Title"}
+            setValue={setName}
+            value={name}
+            placeholder={"Name"}
           />
           <InputComponent
             type="text"

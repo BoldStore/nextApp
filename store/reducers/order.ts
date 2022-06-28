@@ -4,12 +4,32 @@ const initState = {
   isLoading: false,
   errmess: null,
   orders: null,
+  order: null,
   verified: null,
   deliveryData: null,
+  success: false,
+
+  past_orders_end: false,
+  past_orders_cursor: null,
+
+  product: null,
+  address: null,
 };
 
 const orderReducer = (state = initState, action: any) => {
   switch (action.type) {
+    case ActionTypes.ADD_PRODUCT_TO_STATE:
+      return {
+        ...state,
+        product: action.productId,
+      };
+
+    case ActionTypes.ADD_ADDRESS_TO_STATE:
+      return {
+        ...state,
+        address: action.address,
+      };
+
     case ActionTypes.CREATE_ORDER_REQUEST:
       return {
         ...state,
@@ -22,14 +42,15 @@ const orderReducer = (state = initState, action: any) => {
         ...state,
         isLoading: false,
         errmess: null,
-        orders: [...state.orders!, action.data.order],
+        order: action?.data?.order,
+        success: true,
       };
 
     case ActionTypes.CREATE_ORDER_FAILED:
       return {
         ...state,
         isLoading: false,
-        errmess: action.data.message,
+        errmess: action?.data?.errmess ?? action?.errmess,
       };
 
     case ActionTypes.VERIFY_ORDER_REQUEST:
@@ -51,7 +72,7 @@ const orderReducer = (state = initState, action: any) => {
       return {
         ...state,
         isLoading: false,
-        errmess: action.data.message,
+        errmess: action?.data?.errmess ?? action?.errmess,
       };
 
     case ActionTypes.PAST_ORDERS_REQUEST:
@@ -67,13 +88,15 @@ const orderReducer = (state = initState, action: any) => {
         isLoading: false,
         errmess: null,
         orders: action.data.orders,
+        past_orders_end: action.data?.end,
+        past_orders_cursor: action.data?.cursor ?? action.data?.lastDoc,
       };
 
     case ActionTypes.PAST_ORDERS_FAILED:
       return {
         ...state,
         isLoading: false,
-        errmess: action.data.message,
+        errmess: action?.data?.message,
       };
 
     case ActionTypes.CHECK_DELIVERY_REQUEST:
@@ -88,14 +111,14 @@ const orderReducer = (state = initState, action: any) => {
         ...state,
         isLoading: false,
         errmess: null,
-        deliveryData: action.data.data,
+        deliveryData: action?.data?.data,
       };
 
     case ActionTypes.CHECK_DELIVERY_FAILED:
       return {
         ...state,
         isLoading: false,
-        errmess: action.data.message,
+        errmess: action?.data?.message,
       };
     default:
       return state;

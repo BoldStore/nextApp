@@ -3,6 +3,7 @@ export const API_URL = "https://us-central1-bold-96a92.cloudfunctions.net/app/";
 // export const API_URL = "http://localhost:5003/bold-96a92/us-central1/app/";
 
 export const PROFILE = "profile";
+export const LINK = "profile/link";
 
 // Pages
 export const HOME_PAGE = "pages/home";
@@ -30,10 +31,12 @@ export const UPDATE_ADDRESS = "address/";
 export const DELETE_ADDRESS = "address/delete";
 
 // Orders
-export const CREATE_ORDER = "orders/createOrder";
-export const PAST_ORDERS = "orders/previousOrders";
-export const VERIFY_ORDER = "orders/verifyOrder";
-export const CHECK_DELIVERY = "orders/checkForDelivery";
+export const CREATE_ORDER = "order";
+export const PAST_ORDERS = "order";
+export const VERIFY_ORDER = "order/verify";
+export const CHECK_DELIVERY = "order/checkForDelivery";
+
+export const CALLBACK = API_URL + "order/callback";
 
 // Invite code
 export const ADD_INVITE_CODE = "codes/";
@@ -43,7 +46,7 @@ export const GET_PRODUCT = "product";
 export const SAVE_PRODUCT = "product/save";
 
 // Search
-export const MEILI_URL = "https://search.boldstore.in";
+export const MEILI_URL = "https://searchdev.boldstore.in";
 export const MEILI_API_KEY = process.env.NEXT_PUBLIC_MEILI_KEY;
 
 // TEST
