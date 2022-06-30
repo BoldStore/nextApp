@@ -179,7 +179,7 @@
 @media only screen and (max-width: 800px) {
   .container {
     width: 90vw !important;
-    margin-top: 2rem !important;
+    margin-top: 4rem !important;
   }
   .containerLogin {
     width: 90vw;

@@ -1,6 +1,7 @@
 import Chart from "chart.js/auto";
 import React from "react";
 import { Bar } from "react-chartjs-2";
+import BoldButton from "../../CommonComponents/BoldButton";
 import styles from "./styles.module.css";
 
 function BarChart({ topic, array }) {
@@ -33,6 +34,7 @@ function BarChart({ topic, array }) {
         <p>Average Monthly Sales</p>
         <p>20</p>
       </div>
+      <BoldButton text={"Show All Sales"} href="/sales" />
     </div>
   );
 }
