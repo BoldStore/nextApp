@@ -14,17 +14,22 @@
 
 .table td,
 .table th {
-  border: 1px solid var(--lightGrey);
+  border-top: 1px solid var(--darkGrey);
+  border-bottom: 1px solid var(--darkGrey);
   padding: 8px;
 }
 
 .table tr:nth-child(even) {
   background-color: var(--black);
   color: var(--white);
+  border-left: 1px solid var(--darkGrey);
+  border-right: 1px solid var(--darkGrey);
 }
 .table tr:nth-child(odd) {
   background-color: var(--black);
   color: var(--white);
+  border-left: 1px solid var(--darkGrey);
+  border-right: 1px solid var(--darkGrey);
 }
 /* 
   .table tr:hover {
