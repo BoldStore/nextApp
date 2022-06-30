@@ -1,4 +1,4 @@
-export const API_URL = "https://us-central1-bold-96a92.cloudfunctions.net/app/";
+export const API_URL = "https://us-central1-bold-a1e8e.cloudfunctions.net/app/";
 // To use firebase emulator
 // export const API_URL = "http://localhost:5003/bold-96a92/us-central1/app/";
 
@@ -46,7 +46,7 @@ export const GET_PRODUCT = "product";
 export const SAVE_PRODUCT = "product/save";
 
 // Search
-export const MEILI_URL = "https://searchdev.boldstore.in";
+export const MEILI_URL = "https://search.boldstore.in";
 export const MEILI_API_KEY = process.env.NEXT_PUBLIC_MEILI_KEY;
 
 // TEST
@@ -54,6 +54,6 @@ export const SEND_MAIL = "test/sendMail";
 export const PING_SERVER = "test";
 export const CHECK_LOGIN = "test/checkLogin";
 
-const REDIRECT_URL = "https://dev.boldstore.in/code";
-const CLIENT_ID = "716956792630660";
+const REDIRECT_URL = "https://boldstore.in/code";
+const CLIENT_ID = "551125670004277";
 export const INSTAGRAM_URL = `https://www.instagram.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL}&scope=user_profile%2Cuser_media&response_type=code`;

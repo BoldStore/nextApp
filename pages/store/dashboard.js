@@ -58,8 +58,8 @@ function Dashboard() {
             <h1>Dashboard</h1>
           </div>
           <div className={styles.dashboardContainer}>
-            <LineChart />
             <BarChart />
+            <LineChart />
             <PieChart />
             <DoughnutChart />
             <BestPost />
