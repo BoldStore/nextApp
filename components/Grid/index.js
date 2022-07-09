@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";

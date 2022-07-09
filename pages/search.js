@@ -9,7 +9,7 @@ import { explorePage } from "../store/actions/search";
 function Search() {
   const dispatch = useDispatch();
   const search = useSelector((state) => state.search);
-  const [isSearching, setIsSearching] = useState(false);
+  const [term, setTerm] = useState("");
 
   useEffect(() => {
     dispatch(explorePage());
@@ -20,11 +20,8 @@ function Search() {
     <>
       <Header />
       <div className={styles.container}>
-        <SearchComponent
-          isSearching={isSearching}
-          setIsSearching={setIsSearching}
-        />
-        {isSearching ? (
+        <SearchComponent term={term} setTerm={setTerm} />
+        {!search.isLoading && term ? (
           search?.stores.length == 0 ? (
             <p
               style={{
