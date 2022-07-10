@@ -22,6 +22,52 @@ function ProductComponent({ product, onClick, orderLoading }) {
   return (
     <>
       <div className={styles.productContainer}>
+        <Link
+          passHref={true}
+          href={
+            profile?.data?.data?.username == product?.store?.username
+              ? `/profile`
+              : `/store/${product?.store?.username}`
+          }
+        >
+          <div className={styles.userInfoMobile}>
+            <Avatar
+              alt="Store Profile Pic"
+              src={product?.store?.profile_pic}
+              sx={{
+                width: 50,
+                height: 50,
+                cursor: "pointer",
+                border: "1px solid var(--darkGrey)",
+              }}
+            />
+
+            <div className={styles.nameLocation}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <p>{product?.store?.username ?? ""}</p>
+                {product?.store?.isCompleted && (
+                  <p>
+                    <VerifiedIcon
+                      style={{
+                        marginLeft: "0.5rem",
+                        fontSize: "1.2rem",
+                        color: "#1DA1F2",
+                        marginBottom: "-0.1rem",
+                      }}
+                    />
+                  </p>
+                )}
+              </div>
+              <p style={{ opacity: 0.5 }}>{product?.store?.city ?? "India"}</p>
+            </div>
+          </div>
+        </Link>
         {product?.product?.type == "CAROUSEL_ALBUM" ? (
           <ProductCarousel product={product} />
         ) : !video ? (
