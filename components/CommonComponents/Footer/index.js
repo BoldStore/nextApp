@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./styles.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import { Facebook, GitHub, Instagram, Linkedin } from "react-feather";
+import { Facebook, GitHub, Instagram, Linkedin, Mail } from "react-feather";
 import BoldButton from "../BoldButton";
 import { motion } from "framer-motion";
 
@@ -18,10 +18,25 @@ function Footer() {
       <div className={styles.logoContainer}>
         <Image src={"/assets/logo.svg"} width="200" height="150" alt="logo" />
         <div className={styles.socials}>
-          <Instagram className={styles.icons} />
+          <a
+            href="https://www.instagram.com/boldstore.in/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Instagram className={styles.icons} />
+          </a>
+          <a href="mailto:boldstorecontact@gmail.com">
+            <Mail className={styles.icons} />
+          </a>
           <Facebook className={styles.icons} />
           <Linkedin className={styles.icons} />
-          <GitHub className={styles.icons} />
+          <a
+            href="https://github.com/BoldStore"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <GitHub className={styles.icons} />
+          </a>
         </div>
       </div>
 
