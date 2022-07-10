@@ -177,6 +177,13 @@
     max-width: 100px;
     margin-right: 1rem;
   }
+  .userInfo {
+    display: none;
+  }
+  .userInfoMobile {
+    display: flex;
+    align-items: center;
+  }
 }
 @media (max-width: 550px) {
   .bigImg {
@@ -187,12 +194,5 @@
   }
   .imagesFlex {
     flex-direction: row;
-  }
-  .userInfo {
-    display: none;
-  }
-  .userInfoMobile {
-    display: flex;
-    align-items: center;
   }
 }
