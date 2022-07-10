@@ -150,13 +150,37 @@ function StorePage() {
                   {products.slice(0, -1).map((arr, i) => {
                     var num = randomNumberInRange(1, 4);
                     if (num == 1) {
-                      return <Grid1 key={i} products={arr} />;
+                      return (
+                        <Grid1
+                          key={i}
+                          products={arr}
+                          refVal={lastPostElementRef}
+                        />
+                      );
                     } else if (num == 2) {
-                      return <Grid2 key={i} products={arr} />;
+                      return (
+                        <Grid2
+                          key={i}
+                          products={arr}
+                          refVal={lastPostElementRef}
+                        />
+                      );
                     } else if (num == 3) {
-                      return <Grid3 key={i} products={arr} />;
+                      return (
+                        <Grid3
+                          key={i}
+                          products={arr}
+                          refVal={lastPostElementRef}
+                        />
+                      );
                     } else {
-                      return <Grid4 key={i} products={arr} />;
+                      return (
+                        <Grid4
+                          key={i}
+                          products={arr}
+                          refVal={lastPostElementRef}
+                        />
+                      );
                     }
                   })}
                   <div className={styles.postContainer}>
@@ -165,7 +189,10 @@ function StorePage() {
                         <OneImg product={item} key={i} />
                       ))
                     ) : (
-                      <Grid1 products={products[-1]} />
+                      <Grid1
+                        products={products[-1]}
+                        refVal={lastPostElementRef}
+                      />
                     )}
                   </div>
                 </div>
