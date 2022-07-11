@@ -100,7 +100,10 @@ function ProductComponent({ product, onClick, orderLoading }) {
         )}
 
         <div className={styles.productInfo}>
-          <h1 style={{ marginTop: 0 }}>
+          <h1
+            className={styles.productName}
+            style={{ marginTop: 0, textTransform: "uppercase" }}
+          >
             {product?.product?.name ??
               `Product By ${product?.store?.full_name}`}
           </h1>

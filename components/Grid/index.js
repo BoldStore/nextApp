@@ -109,12 +109,7 @@ function Grid({ store, products }) {
               )}
             </div>
           ) : (
-            <Skeleton
-              count={1}
-              width={"72vw"}
-              height={600}
-              className={styles.productImg}
-            />
+            <></>
           )}
 
           <div className={styles.gridImageContainer}>
@@ -160,12 +155,7 @@ function Grid({ store, products }) {
                   )}
                 </div>
               ) : (
-                <Skeleton
-                  count={1}
-                  width={0}
-                  height={300}
-                  className={styles.productImg}
-                />
+                <></>
               )}
               <div
                 className={styles.gapBox}
@@ -205,12 +195,7 @@ function Grid({ store, products }) {
                   )}
                 </div>
               ) : (
-                <Skeleton
-                  count={1}
-                  width={0}
-                  height={300}
-                  className={styles.productImg}
-                />
+                <></>
               )}
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
@@ -248,12 +233,7 @@ function Grid({ store, products }) {
                   )}
                 </div>
               ) : (
-                <Skeleton
-                  count={1}
-                  width={0}
-                  height={300}
-                  className={styles.productImg}
-                />
+                <></>
               )}
               <div
                 className={styles.gapBox}
@@ -293,12 +273,7 @@ function Grid({ store, products }) {
                   )}
                 </div>
               ) : (
-                <Skeleton
-                  count={1}
-                  width={0}
-                  height={300}
-                  className={styles.productImg}
-                />
+                <></>
               )}
             </div>
           </div>

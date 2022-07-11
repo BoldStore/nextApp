@@ -183,6 +183,7 @@
   .userInfoMobile {
     display: flex;
     align-items: center;
+    padding-bottom: 0.5rem;
   }
 }
 @media (max-width: 550px) {
@@ -194,5 +195,10 @@
   }
   .imagesFlex {
     flex-direction: row;
+  }
+
+  .productName {
+    margin-top: 2rem !important;
+    margin-bottom: 1rem;
   }
 }
