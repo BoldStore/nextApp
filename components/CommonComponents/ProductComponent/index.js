@@ -178,6 +178,13 @@ function ProductComponent({ product, onClick, orderLoading }) {
           </div>
 
           <BoldButton
+            disabled={
+              !product?.product?.available
+                ? true
+                : product?.product?.sold
+                ? true
+                : false
+            }
             text={orderLoading ? "Loading..." : "Proceed To Buy"}
             onClick={onClick}
           />

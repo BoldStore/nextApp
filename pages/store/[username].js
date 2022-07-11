@@ -195,7 +195,9 @@ function StorePage() {
                       storeLocation={store?.store?.store?.city ?? ""}
                       storeName={store?.store?.store?.username}
                       caption={product.caption}
-                      price={product.price}
+                      price={product.amount}
+                      available={product.available}
+                      sold={product.sold}
                       size={product.size}
                       id={product.id}
                       isCompleted={store?.store?.store?.isCompleted}

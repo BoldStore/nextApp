@@ -94,6 +94,8 @@ function StoreHomePage() {
               key={index}
             >
               <Post
+                available={product.available}
+                sold={product.sold}
                 postUrl={product.imgUrl}
                 storeUrl={product?.store?.profile_pic}
                 storeLocation={product?.store?.city ?? ""}

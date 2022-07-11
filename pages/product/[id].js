@@ -146,6 +146,8 @@ function ProductPage() {
                   storeName={product?.store?.username}
                   caption={product.caption}
                   price={product.price}
+                  sold={product.sold}
+                  available={product.available}
                   size={product.size}
                   id={product.id}
                   type={product.type}

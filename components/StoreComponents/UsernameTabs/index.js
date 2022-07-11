@@ -102,11 +102,13 @@ function UsernameTabs({ products, profile, store }) {
                     storeLocation={store?.store?.store?.city ?? ""}
                     storeName={store?.store?.store?.username}
                     caption={product.caption}
-                    price={product.price}
+                    price={product.amount}
                     size={product.size}
                     id={product.id}
                     type={product.type}
                     images={product.images}
+                    available={product.available}
+                    sold={product.sold}
                   />
                 ))}
               </div>
