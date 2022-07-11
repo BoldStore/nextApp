@@ -173,7 +173,7 @@ function ProductComponent({ product, onClick, orderLoading }) {
             <Bookmark className={styles.icon} onClick={saveProductInDb} />
           </div>
           <div className={styles.priceContainer}>
-            <p>Price: ₹200</p>
+            <p>Price: ₹{product?.product?.amount}</p>
             <p>Size: M</p>
           </div>
 
