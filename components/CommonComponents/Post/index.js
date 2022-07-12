@@ -28,6 +28,8 @@ function Post({
   size,
   caption,
   isCompleted,
+  available,
+  sold,
   type,
 }) {
   const router = useRouter();
@@ -219,6 +221,7 @@ function Post({
       )}
 
       <BoldButton
+        disabled={sold || !available}
         text={!orders.isLoading ? "Buy Now" : "Loading..."}
         onClick={handlePayment}
       />

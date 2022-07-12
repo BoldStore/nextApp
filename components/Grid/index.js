@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";
@@ -75,18 +76,14 @@ function Grid({ store, products }) {
       </div>
       {products && (
         <div className={styles.productContainer}>
-          {products[0]?.imgUrl ? (
+          {products[0]?.imgUrl ?? products[0].images.length > 0 ? (
             <div
               className={styles.divImg}
               onMouseEnter={() => setFlag0(true)}
               onMouseLeave={() => setFlag0(false)}
             >
               <img
-                src={
-                  products[0]?.imgUrl
-                    ? products[0]?.imgUrl
-                    : "/assets/shoe2.jpg"
-                }
+                src={products[0]?.imgUrl ?? products[0].images[0].imgUrl}
                 alt="item"
                 width="600"
                 height="600"
@@ -109,12 +106,7 @@ function Grid({ store, products }) {
               )}
             </div>
           ) : (
-            <Skeleton
-              count={1}
-              width={"72vw"}
-              height={600}
-              className={styles.productImg}
-            />
+            <></>
           )}
 
           <div className={styles.gridImageContainer}>
@@ -126,7 +118,7 @@ function Grid({ store, products }) {
                 marginRight: "0.5rem",
               }}
             >
-              {products[1]?.imgUrl ? (
+              {products[1]?.imgUrl ?? products[1].images.length > 0 ? (
                 <div
                   className={styles.divImg}
                   onMouseEnter={() => setFlag1(true)}
@@ -134,9 +126,9 @@ function Grid({ store, products }) {
                 >
                   <img
                     src={
-                      products[1]?.imgUrl
-                        ? products[1]?.imgUrl
-                        : "/assets/shoe2.jpg"
+                      products[1]?.imgUrl ??
+                      products[1]?.images[0].imgUrl ??
+                      "/assets/shoe2.jpg"
                     }
                     alt="item"
                     width="300"
@@ -160,18 +152,13 @@ function Grid({ store, products }) {
                   )}
                 </div>
               ) : (
-                <Skeleton
-                  count={1}
-                  width={0}
-                  height={300}
-                  className={styles.productImg}
-                />
+                <></>
               )}
               <div
                 className={styles.gapBox}
                 style={{ marginBottom: "0.5rem" }}
               ></div>
-              {products[2]?.imgUrl ? (
+              {products[2]?.imgUrl ?? products[2].images.length > 0 ? (
                 <div
                   className={styles.divImg}
                   onMouseEnter={() => setFlag2(true)}
@@ -179,9 +166,9 @@ function Grid({ store, products }) {
                 >
                   <img
                     src={
-                      products[2]?.imgUrl
-                        ? products[2]?.imgUrl
-                        : "/assets/shoe2.jpg"
+                      products[2]?.imgUrl ??
+                      products[2]?.images[0]?.imgUrl ??
+                      "/assets/shoe2.jpg"
                     }
                     alt="item"
                     width="300"
@@ -205,16 +192,11 @@ function Grid({ store, products }) {
                   )}
                 </div>
               ) : (
-                <Skeleton
-                  count={1}
-                  width={0}
-                  height={300}
-                  className={styles.productImg}
-                />
+                <></>
               )}
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
-              {products[3]?.imgUrl ? (
+              {products[3]?.imgUrl ?? products[3].images.length > 0 ? (
                 <div
                   className={styles.divImg}
                   onMouseEnter={() => setFlag3(true)}
@@ -222,9 +204,9 @@ function Grid({ store, products }) {
                 >
                   <img
                     src={
-                      products[3]?.imgUrl
-                        ? products[3]?.imgUrl
-                        : "/assets/shoe2.jpg"
+                      products[3]?.imgUrl ??
+                      products[3]?.images[0].imgUrl ??
+                      "/assets/shoe2.jpg"
                     }
                     alt="item"
                     width="300"
@@ -248,18 +230,13 @@ function Grid({ store, products }) {
                   )}
                 </div>
               ) : (
-                <Skeleton
-                  count={1}
-                  width={0}
-                  height={300}
-                  className={styles.productImg}
-                />
+                <></>
               )}
               <div
                 className={styles.gapBox}
                 style={{ marginBottom: "0.5rem" }}
               ></div>
-              {products[4]?.imgUrl ? (
+              {products[4]?.imgUrl ?? products[4].images.length > 0 ? (
                 <div
                   className={styles.divImg}
                   onMouseEnter={() => setFlag4(true)}
@@ -267,9 +244,9 @@ function Grid({ store, products }) {
                 >
                   <img
                     src={
-                      products[4]?.imgUrl
-                        ? products[4]?.imgUrl
-                        : "/assets/shoe2.jpg"
+                      products[4]?.imgUrl ??
+                      products[4]?.images[0].imgUrl ??
+                      "/assets/shoe2.jpg"
                     }
                     alt="item"
                     width="300"
@@ -293,12 +270,7 @@ function Grid({ store, products }) {
                   )}
                 </div>
               ) : (
-                <Skeleton
-                  count={1}
-                  width={0}
-                  height={300}
-                  className={styles.productImg}
-                />
+                <></>
               )}
             </div>
           </div>

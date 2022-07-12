@@ -11,6 +11,9 @@ import * as ActionTypes from "../ActionTypes";
 
 export const createOrder = (product_id: string, address_id: string) => {
   return async (dispatch: Dispatch) => {
+    dispatch({
+      type: ActionTypes.CLEAR_ORDER_FROM_STATE,
+    });
     dispatch({ type: ActionTypes.CREATE_ORDER_REQUEST });
     try {
       const response = await instance.post(CREATE_ORDER, {

@@ -38,15 +38,15 @@ function CustomerAddress() {
           />
           <InputComponent
             type="text"
-            setValue={setLocality}
-            value={locality}
-            placeholder={"Locality"}
-          />
-          <InputComponent
-            type="text"
             setValue={setAppartment}
             value={appartment}
             placeholder={"Appartment/Suite"}
+          />
+          <InputComponent
+            type="text"
+            setValue={setLocality}
+            value={locality}
+            placeholder={"Locality"}
           />
           <InputComponent
             type="text"
