@@ -16,6 +16,10 @@
   transition: 0.5s ease-out;
 }
 
+.button p {
+  font-weight: 600;
+}
+
 @media (max-width: 750px) {
   .button {
     padding: 0rem !important;

@@ -22,6 +22,52 @@ function ProductComponent({ product, onClick, orderLoading }) {
   return (
     <>
       <div className={styles.productContainer}>
+        <Link
+          passHref={true}
+          href={
+            profile?.data?.data?.username == product?.store?.username
+              ? `/profile`
+              : `/store/${product?.store?.username}`
+          }
+        >
+          <div className={styles.userInfoMobile}>
+            <Avatar
+              alt="Store Profile Pic"
+              src={product?.store?.profile_pic}
+              sx={{
+                width: 50,
+                height: 50,
+                cursor: "pointer",
+                border: "1px solid var(--darkGrey)",
+              }}
+            />
+
+            <div className={styles.nameLocation}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <p>{product?.store?.username ?? ""}</p>
+                {product?.store?.isCompleted && (
+                  <p>
+                    <VerifiedIcon
+                      style={{
+                        marginLeft: "0.5rem",
+                        fontSize: "1.2rem",
+                        color: "#1DA1F2",
+                        marginBottom: "-0.1rem",
+                      }}
+                    />
+                  </p>
+                )}
+              </div>
+              <p style={{ opacity: 0.5 }}>{product?.store?.city ?? "India"}</p>
+            </div>
+          </div>
+        </Link>
         {product?.product?.type == "CAROUSEL_ALBUM" ? (
           <ProductCarousel product={product} />
         ) : !video ? (
@@ -54,7 +100,10 @@ function ProductComponent({ product, onClick, orderLoading }) {
         )}
 
         <div className={styles.productInfo}>
-          <h1 style={{ marginTop: 0 }}>
+          <h1
+            className={styles.productName}
+            style={{ marginTop: 0, textTransform: "uppercase" }}
+          >
             {product?.product?.name ??
               `Product By ${product?.store?.full_name}`}
           </h1>
@@ -124,11 +173,18 @@ function ProductComponent({ product, onClick, orderLoading }) {
             <Bookmark className={styles.icon} onClick={saveProductInDb} />
           </div>
           <div className={styles.priceContainer}>
-            <p>Price: ₹200</p>
+            <p>Price: ₹{product?.product?.amount}</p>
             <p>Size: M</p>
           </div>
 
           <BoldButton
+            disabled={
+              !product?.product?.available
+                ? true
+                : product?.product?.sold
+                ? true
+                : false
+            }
             text={orderLoading ? "Loading..." : "Proceed To Buy"}
             onClick={onClick}
           />

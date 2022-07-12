@@ -27,6 +27,7 @@ function StorePage() {
   const profile = useSelector((state) => state.profile);
   const [value, setValue] = useState(0);
   const [products, setProducts] = useState([]);
+  const router = useRouter();
   const handleChange = (i) => {
     setValue(i);
   };
@@ -64,6 +65,12 @@ function StorePage() {
       dispatch(storePage(query.username));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query]);
+
+  useEffect(() => {
+    if (query?.username == profile?.data?.data?.username) {
+      router.push("/profile");
+    }
   }, [query]);
 
   useEffect(() => {
@@ -215,7 +222,9 @@ function StorePage() {
                       storeLocation={store?.store?.store?.city ?? ""}
                       storeName={store?.store?.store?.username}
                       caption={product.caption}
-                      price={product.price}
+                      price={product.amount}
+                      available={product.available}
+                      sold={product.sold}
                       size={product.size}
                       id={product.id}
                       isCompleted={store?.store?.store?.isCompleted}

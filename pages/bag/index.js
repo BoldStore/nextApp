@@ -124,6 +124,8 @@ function Orders() {
                     storeName={product?.store?.username}
                     storeUrl={product?.store?.profile_pic}
                     type={product?.mediaType}
+                    available={product.available}
+                    sold={product.sold}
                   />
                 </div>
               ))

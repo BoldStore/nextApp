@@ -94,12 +94,14 @@ function StoreHomePage() {
               key={index}
             >
               <Post
+                available={product.available}
+                sold={product.sold}
                 postUrl={product.imgUrl}
                 storeUrl={product?.store?.profile_pic}
                 storeLocation={product?.store?.city ?? ""}
                 storeName={product?.store?.username}
                 caption={product.caption}
-                price={product.price}
+                price={product?.amount}
                 size={product.size}
                 id={product.id}
                 images={product.images ? product.images : []}
