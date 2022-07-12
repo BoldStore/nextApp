@@ -54,7 +54,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <SkeletonTheme baseColor="#0f0f0f" highlightColor="#111">
+      <SkeletonTheme baseColor="#1c1c1d" highlightColor="rgb(42,42,42)">
         <ToastContainer autoClose={false} />
         <Head>
           <title>Bold Store</title>
