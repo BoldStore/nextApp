@@ -221,7 +221,7 @@ function Post({
       )}
 
       <BoldButton
-        disabled={!available ? true : sold ? true : false}
+        disabled={sold || !available}
         text={!orders.isLoading ? "Buy Now" : "Loading..."}
         onClick={handlePayment}
       />
