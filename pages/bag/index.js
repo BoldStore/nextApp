@@ -93,7 +93,15 @@ function Orders() {
                       : null
                   }
                 >
-                  <OrderComponent />
+                  <OrderComponent
+                    id={""}
+                    storeUrl={""}
+                    storeName={""}
+                    storeLocation={""}
+                    postUrl={""}
+                    price={""}
+                    size={""}
+                  />
                 </div>
               ))
             ) : (

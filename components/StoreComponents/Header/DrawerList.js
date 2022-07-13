@@ -26,50 +26,68 @@ function DrawerList() {
   return (
     <div style={{ backgroundColor: "var(--black)" }}>
       <Link href="/profile">
-        {profile.profile_pic ? (
-          <Avatar
-            alt="Avatar"
-            src={profile.profile_pic}
-            sx={{
-              width: 150,
-              height: 150,
-              cursor: "pointer",
-              display: "block",
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginTop: "2rem",
-            }}
-          />
-        ) : (
-          <User
+        <>
+          {profile.profile_pic ? (
+            <Avatar
+              alt="Avatar"
+              src={profile.profile_pic}
+              sx={{
+                width: 150,
+                height: 150,
+                cursor: "pointer",
+                display: "block",
+                marginLeft: "auto",
+                marginRight: "auto",
+                marginTop: "2rem",
+              }}
+            />
+          ) : (
+            <User
+              style={{
+                width: 70,
+                height: 70,
+                cursor: "pointer",
+                display: "block",
+                marginLeft: "auto",
+                marginRight: "auto",
+                marginTop: "5rem",
+                color: "var(--lightGrey)",
+                border: " 2px solid var(--lightGrey)",
+                padding: "1rem",
+                borderRadius: "50%",
+              }}
+            />
+          )}
+          <p
             style={{
-              width: 70,
-              height: 70,
-              cursor: "pointer",
-              display: "block",
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginTop: "5rem",
-              color: "var(--lightGrey)",
-              border: " 2px solid var(--lightGrey)",
-              padding: "1rem",
-              borderRadius: "50%",
+              margin: "1rem",
+              color: "var(--white)",
+              textAlign: "center",
             }}
-          />
-        )}
+          >
+            @{profile.data.data.username}
+          </p>
+        </>
       </Link>
 
       <div
         style={{
           padding: "2rem",
           paddingLeft: "1.2rem",
-          top: "22vh",
+          top: "24vh",
           position: "absolute",
         }}
       >
+        <Link href="/profile">
+          <p className={styles.navLinks} style={{ margin: "1rem" }}>
+            Visit Profile
+          </p>
+        </Link>
         <Link href="/store/profile/upi">
           <div style={{ position: "relative" }}>
-            <p className={styles.navLinks}>Update Payment Details</p>
+            <p className={styles.navLinks} style={{ margin: "1rem" }}>
+              Update Payment Details
+            </p>
             {!profile?.data?.paymentDetails && (
               <div
                 style={{
@@ -87,7 +105,9 @@ function DrawerList() {
         </Link>
         <Link href="/store/profile/address">
           <div style={{ position: "relative" }}>
-            <p className={styles.navLinks}>Update Pickup Address</p>
+            <p className={styles.navLinks} style={{ margin: "1rem" }}>
+              Update Pickup Address
+            </p>
             {!profile?.data?.address && (
               <div
                 style={{
@@ -104,16 +124,29 @@ function DrawerList() {
           </div>
         </Link>
 
+        <Link href="/store/profile/upi">
+          <p className={styles.navLinks} style={{ margin: "1rem" }}>
+            Settings
+          </p>
+        </Link>
+
         {user ? (
-          <p className={styles.navLinks} onClick={logout}>
+          <p
+            className={styles.navLinks}
+            style={{ margin: "1rem" }}
+            onClick={logout}
+          >
             Logout
           </p>
         ) : (
-          <p className={styles.navLinks} onClick={login}>
+          <p
+            className={styles.navLinks}
+            style={{ margin: "1rem" }}
+            onClick={login}
+          >
             Login
           </p>
         )}
-
       </div>
     </div>
   );

@@ -32,7 +32,7 @@
   color: #808080;
 }
 
-.navLinks::after {
+/* .navLinks::after {
   position: absolute;
   bottom: -6px;
   content: "";
@@ -47,7 +47,7 @@
 .navLinks:hover::after {
   width: 100%;
   left: 0;
-}
+} */
 
 .navLinks:hover {
   color: var(--white);
@@ -60,13 +60,13 @@
   transition-duration: 0.2s;
 }
 
-.button{
+.button {
   padding: 0;
-border: none;
-background-color: transparent;
-height: 50px;
-width: 50px;
-border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
 }
 
 .logo {

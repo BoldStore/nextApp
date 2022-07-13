@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@mui/material/Avatar";
 import DrawerComponent from "./DrawerComponent";
-import DrawerList from './DrawerList';
+import DrawerList from "./DrawerList";
 import { useEffect, useState } from "react";
 import ToolTip from "../../CommonComponents/ToolTip/ToolTip";
 // import Tooltip from "@mui/material/Tooltip";
@@ -25,8 +25,7 @@ import { useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Drawer } from '@mui/material';
-
+import { Drawer } from "@mui/material";
 
 const useStyles = makeStyles({
   list: {
@@ -113,14 +112,22 @@ function StoreHeader() {
       {open && (
         <>
           <div className={styles.leftContainer}>
-            <ToolTip title="Home" href="/home"><Home className={styles.navLinks} /></ToolTip>
+            <ToolTip title="Home" href="/home">
+              <Home className={styles.navLinks} />
+            </ToolTip>
 
-            <ToolTip title="Search" href="/search"><Search className={styles.navLinks} /></ToolTip>
+            <ToolTip title="Search" href="/search">
+              <Search className={styles.navLinks} />
+            </ToolTip>
 
-            <ToolTip title="Dashboard" href="/store/dashboard"><Layout className={styles.navLinks} /></ToolTip>
+            <ToolTip title="Dashboard" href="/store/dashboard">
+              <Layout className={styles.navLinks} />
+            </ToolTip>
 
-            <ToolTip title="Bag" href="/bag"><ShoppingBag className={styles.navLinks} /></ToolTip>
-
+            <ToolTip title="Bag" href="/bag">
+              <ShoppingBag className={styles.navLinks} />
+            </ToolTip>
+            {/* 
             <ToolTip title="UPI" href="/store/profile/upi">
               <div style={{ position: "relative" }}>
                 <CreditCard className={styles.navLinks} />
@@ -157,38 +164,42 @@ function StoreHeader() {
                   ></div>
                 )}
               </div>
-            </ToolTip>
+            </ToolTip> */}
 
-            {user && <ToolTip title="Sign Out"><LogOut onClick={logout} className={styles.navLinks} /></ToolTip>}
+            {/* {user && (
+              <ToolTip title="Sign Out">
+                <LogOut onClick={logout} className={styles.navLinks} />
+              </ToolTip>
+            )} */}
           </div>
 
           {["right"].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <div onClick={toggleDrawer(anchor, true)}>
-          {profile.profile_pic ? (
-              <Avatar
-                alt="Avatar"
-                src={profile.profile_pic}
-                sx={{
-                  width: 50,
-                  height: 50,
-                  cursor: "pointer",
-                  marginLeft: "2.5rem",
-                }}
-              />
-            ) : (
-              <User />
-            )}
-          </div>
-          <Drawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-          >
-            {list(anchor)}
-          </Drawer>
-        </React.Fragment>
-      ))}
+            <React.Fragment key={anchor}>
+              <div onClick={toggleDrawer(anchor, true)}>
+                {profile.profile_pic ? (
+                  <Avatar
+                    alt="Avatar"
+                    src={profile.profile_pic}
+                    sx={{
+                      width: 50,
+                      height: 50,
+                      cursor: "pointer",
+                      marginLeft: "2.5rem",
+                    }}
+                  />
+                ) : (
+                  <User />
+                )}
+              </div>
+              <Drawer
+                anchor={anchor}
+                open={state[anchor]}
+                onClose={toggleDrawer(anchor, false)}
+              >
+                {list(anchor)}
+              </Drawer>
+            </React.Fragment>
+          ))}
           {/* <Link href="/profile" >
             {profile.profile_pic ? (
               <Avatar
