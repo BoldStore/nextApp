@@ -27,13 +27,13 @@ function OrderPageTabs({ saved }) {
                 padding: 0,
               }}
             >
-              <Tab
+              {/* <Tab
                 icon={<Grid />}
                 value={0}
                 style={{
                   color: "var(--white)",
                 }}
-              />
+              /> */}
               <Tab
                 icon={<AlignJustify />}
                 value={1}

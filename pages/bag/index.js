@@ -71,17 +71,7 @@ function Orders() {
         <div className={styles.tabs}>
           <OrderPageTabs saved={true} />
         </div>
-        {value == 0 ? (
-          <div className={styles.products}>
-            <div className={styles.productsGrid}>
-              {/* <Grid1 />
-              <Grid2 />
-              <Grid3 />
-              <Grid4 /> */}
-              <NoOrders />
-            </div>
-          </div>
-        ) : value == 1 ? (
+        {value == 1 ? (
           <div className={styles.postContainer}>
             {orders.orders?.length > 0 ? (
               orders?.orders?.map((order, index) => (
@@ -124,9 +114,9 @@ function Orders() {
                   <Post
                     caption={product.caption}
                     id={product.id}
-                    images={product.images}
+                    images={product?.images}
                     isCompleted={product?.store?.isCompleted}
-                    postUrl={product?.imgUrl ?? product?.images[0].imgUrl}
+                    postUrl={product?.imgUrl}
                     price={product?.amount}
                     size={product?.size}
                     storeLocation={product?.store?.city}
