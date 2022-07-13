@@ -4,12 +4,12 @@ import styles from "../../styles/Sales.module.css";
 import BoldButton from '../../components/CommonComponents/BoldButton'
 import Info from '../../components/CommonComponents/Info';
 
-function Sales() {
+function pendingsales() {
   return (
     <div>
       <Header />
       <div className={styles.container}>
-        <h1>All Sales</h1>
+        <h1>Pending Sales</h1>
         <div className={styles.tableContainer}>
           <table className={styles.table}>
             {/* <tr>
@@ -72,11 +72,11 @@ function Sales() {
             </tr> */}
           </table>
         </div>
-        <BoldButton text={"Show pending sales"} href="/store/pendingsales" />
+        <BoldButton text={"Show All Sales"} href="/store/sales" />
 
       </div>
     </div>
   );
 }
 
-export default Sales;
+export default pendingsales;

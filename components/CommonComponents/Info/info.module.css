@@ -1,0 +1,23 @@
+
+.img{
+    width: 69px;
+    height: 69px;
+    border-radius: 100% ;
+    background-color: aliceblue;
+  }
+
+  .container
+  {
+    display: flex;
+    margin: 0;
+  }
+
+  .details{
+    margin: auto;
+  }
+  .details p
+  {
+    font-size: smaller;
+    color: gray;
+    margin: 0;
+  }

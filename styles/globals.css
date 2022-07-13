@@ -19,7 +19,7 @@ body[data-theme="dark"] {
 body,
 body[data-theme="light"] {
   --white: #fff;
-  --black: #000;
+  --black: rgb(14, 13, 13);
   --darkGrey: #2f3336;
   --lightGrey: #808080;
   --blue: #1d9bf0;

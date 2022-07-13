@@ -1,8 +1,12 @@
 import Link from "next/link";
+import React from "react";
+import clsx from "clsx";
 import styles from "./styles.module.css";
+import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@mui/material/Avatar";
 import DrawerComponent from "./DrawerComponent";
 import { useEffect, useState } from "react";
+import DrawerList from "./DrawerList";
 import {
   Home,
   User,
@@ -18,11 +22,47 @@ import { useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { Drawer } from '@mui/material';
+
+
+const useStyles = makeStyles({
+  list: {
+    width: 300,
+    backgroundColor: "var(--white)",
+    color: "var(--black)",
+    height: "100%",
+    fontWeight: "500 !important",
+  },
+  fullList: {
+    width: "auto",
+    backgroundColor: "var(--white)",
+    color: "var(--black)",
+    fontWeight: "500 !important",
+  },
+});
 
 function StoreHeader() {
   const profile = useSelector((state) => state.profile);
   const [open, setOpen] = useState(true);
+  const classes = useStyles();
   const [user] = useAuthState(auth);
+  const [state, setState] = React.useState({
+    left: false,
+  });
+
+  const list = (anchor) => (
+    <div
+      className={clsx(classes.list, {
+        [classes.fullList]: anchor === "top" || anchor === "bottom",
+      })}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+      style={{ backgroundColor: "var(--black)" }}
+    >
+      <DrawerList />
+    </div>
+  );
 
   useEffect(() => {
     if (!(typeof window === "undefined")) {
@@ -48,6 +88,17 @@ function StoreHeader() {
     window.location.replace("/home");
   };
 
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
+
   return (
     <div className={styles.container}>
       <Link href="/home">
@@ -71,7 +122,7 @@ function StoreHeader() {
             <Link href="/bag">
               <ShoppingBag className={styles.navLinks} />
             </Link>
-            <Link href="/store/profile/upi">
+            {/* <Link href="/store/profile/upi">
               <div style={{ position: "relative" }}>
                 <CreditCard className={styles.navLinks} />
                 {!profile?.data?.paymentDetails && (
@@ -107,10 +158,37 @@ function StoreHeader() {
                 )}
               </div>
             </Link>
-            {user && <LogOut onClick={logout} className={styles.navLinks} />}
+            {user && <LogOut onClick={logout} className={styles.navLinks} />} */}
           </div>
 
-          <Link href="/profile">
+          {["right"].map((anchor) => (
+        <React.Fragment key={anchor}>
+          <div onClick={toggleDrawer(anchor, true)}>
+          {profile.profile_pic ? (
+              <Avatar
+                alt="Avatar"
+                src={profile.profile_pic}
+                sx={{
+                  width: 50,
+                  height: 50,
+                  cursor: "pointer",
+                  marginLeft: "2.5rem",
+                }}
+              />
+            ) : (
+              <User />
+            )}
+          </div>
+          <Drawer
+            anchor={anchor}
+            open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+          >
+            {list(anchor)}
+          </Drawer>
+        </React.Fragment>
+      ))}
+          {/* <Link href="/profile" >
             {profile.profile_pic ? (
               <Avatar
                 alt="Avatar"
@@ -125,7 +203,7 @@ function StoreHeader() {
             ) : (
               <User />
             )}
-          </Link>
+          </Link> */}
         </>
       )}
       {!open && (

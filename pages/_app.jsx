@@ -25,25 +25,25 @@ function MyApp({ Component, pageProps }) {
   var cursor2;
 
   useEffect(() => {
-    cursor = document.getElementById("cursor");
+    // cursor = document.getElementById("cursor");
 
-    document.body.addEventListener("mousemove", function (e) {
-      (cursor.style.left = e.clientX + "px"),
-        (cursor.style.top = e.clientY + "px");
-    });
+    // document.body.addEventListener("mousemove", function (e) {
+    //   (cursor.style.left = e.clientX + "px"),
+    //     (cursor.style.top = e.clientY + "px");
+    // });
 
-    cursor2 = document.getElementById("cursor2");
-    document.body.addEventListener("mousemove", function (e) {
-      (cursor2.style.left = e.clientX + "px"),
-        (cursor2.style.top = e.clientY + "px");
-    });
+    // cursor2 = document.getElementById("cursor2");
+    // document.body.addEventListener("mousemove", function (e) {
+    //   (cursor2.style.left = e.clientX + "px"),
+    //     (cursor2.style.top = e.clientY + "px");
+    // });
 
-    document.addEventListener("mousedown", function (e) {
-      (cursor.style.height = "50px"), (cursor.style.width = "50px");
-    });
-    document.addEventListener("mouseup", function (e) {
-      (cursor.style.height = "35px"), (cursor.style.width = "35px");
-    });
+    // document.addEventListener("mousedown", function (e) {
+    //   (cursor.style.height = "50px"), (cursor.style.width = "50px");
+    // });
+    // document.addEventListener("mouseup", function (e) {
+    //   (cursor.style.height = "35px"), (cursor.style.width = "35px");
+    // });
 
     auth.onAuthStateChanged(async (user) => {
       if (user) {
@@ -76,7 +76,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <SkeletonTheme baseColor="#0f0f0f" highlightColor="#111">
+      <SkeletonTheme baseColor="#1c1c1d" highlightColor="rgb(42,42,42)">
         <ToastContainer autoClose={false} />
         <Head>
           <title>Bold Store</title>
