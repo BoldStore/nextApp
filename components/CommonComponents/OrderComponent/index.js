@@ -16,6 +16,7 @@ function OrderComponent({
   postUrl,
   price,
   size,
+  isCompleted,
 }) {
   return (
     <div className={styles.postContainer}>
@@ -24,7 +25,7 @@ function OrderComponent({
           {storeUrl ? (
             <Avatar
               alt="Avatar"
-              src={"https://i.ibb.co/myvq6GR/aryan.jpg"}
+              src={storeUrl}
               sx={{
                 width: 50,
                 height: 50,
@@ -92,7 +93,7 @@ function OrderComponent({
           src={postUrl ?? "/assets/shoe2.jpg"}
           alt="item"
           width="450"
-          height="450"
+          height="350"
           className={styles.productImg}
         />
       ) : (
@@ -110,16 +111,7 @@ function OrderComponent({
             style={{ marginTop: "1rem", marginBottom: "1rem" }}
           />
         )}
-        {size ? (
-          <p>{size}</p>
-        ) : (
-          <Skeleton
-            count={1}
-            width={50}
-            height={12}
-            style={{ marginTop: "1rem", marginBottom: "1rem" }}
-          />
-        )}
+        {size ? <p>{size}</p> : <></>}
       </div>
       {/* <div style={{ marginTop: "-1rem" }}>
         {/* <p>Order Details:</p>

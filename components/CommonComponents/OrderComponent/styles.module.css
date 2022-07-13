@@ -46,7 +46,8 @@
 
 .productImg {
   border-radius: 1rem;
-  object-fit: cover;
+  object-fit: contain;
+  width: 100%;
 }
 
 .priceContainer {

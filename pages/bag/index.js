@@ -94,13 +94,14 @@ function Orders() {
                   }
                 >
                   <OrderComponent
-                    id={""}
-                    storeUrl={""}
-                    storeName={""}
-                    storeLocation={""}
-                    postUrl={""}
-                    price={""}
-                    size={""}
+                    id={order.id}
+                    storeUrl={order.store.profile_pic}
+                    storeName={order.store.username}
+                    storeLocation={order.store.city}
+                    postUrl={order.product.imgUrl}
+                    price={order.amount}
+                    size={order.product.size}
+                    isCompleted={order.store.isCompleted}
                   />
                 </div>
               ))
@@ -125,7 +126,7 @@ function Orders() {
                     id={product.id}
                     images={product.images}
                     isCompleted={product?.store?.isCompleted}
-                    postUrl={product?.imgUrl}
+                    postUrl={product?.imgUrl ?? product?.images[0].imgUrl}
                     price={product?.amount}
                     size={product?.size}
                     storeLocation={product?.store?.city}
