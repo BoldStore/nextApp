@@ -5,8 +5,11 @@ import styles from "./styles.module.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@mui/material/Avatar";
 import DrawerComponent from "./DrawerComponent";
+import DrawerList from './DrawerList';
 import { useEffect, useState } from "react";
-import DrawerList from "./DrawerList";
+import ToolTip from "../../CommonComponents/ToolTip/ToolTip";
+// import Tooltip from "@mui/material/Tooltip";
+
 import {
   Home,
   User,
@@ -110,19 +113,15 @@ function StoreHeader() {
       {open && (
         <>
           <div className={styles.leftContainer}>
-            <Link href="/home">
-              <Home className={styles.navLinks} />
-            </Link>
-            <Link href="/search">
-              <Search className={styles.navLinks} />
-            </Link>
-            <Link href="/store/dashboard">
-              <Layout className={styles.navLinks} />
-            </Link>
-            <Link href="/bag">
-              <ShoppingBag className={styles.navLinks} />
-            </Link>
-            {/* <Link href="/store/profile/upi">
+            <ToolTip title="Home" href="/home"><Home className={styles.navLinks} /></ToolTip>
+
+            <ToolTip title="Search" href="/search"><Search className={styles.navLinks} /></ToolTip>
+
+            <ToolTip title="Dashboard" href="/store/dashboard"><Layout className={styles.navLinks} /></ToolTip>
+
+            <ToolTip title="Bag" href="/bag"><ShoppingBag className={styles.navLinks} /></ToolTip>
+
+            <ToolTip title="UPI" href="/store/profile/upi">
               <div style={{ position: "relative" }}>
                 <CreditCard className={styles.navLinks} />
                 {!profile?.data?.paymentDetails && (
@@ -139,9 +138,10 @@ function StoreHeader() {
                   ></div>
                 )}
               </div>
-            </Link>
-            <Link href="/store/profile/address">
-              <div style={{ position: "relative" }}>
+            </ToolTip>
+
+            <ToolTip title="Address" href="/store/profile/address">
+            <div style={{ position: "relative" }}>
                 <Truck className={styles.navLinks} />
                 {!profile?.data?.address && (
                   <div
@@ -157,8 +157,9 @@ function StoreHeader() {
                   ></div>
                 )}
               </div>
-            </Link>
-            {user && <LogOut onClick={logout} className={styles.navLinks} />} */}
+            </ToolTip>
+
+            {user && <ToolTip title="Sign Out"><LogOut onClick={logout} className={styles.navLinks} /></ToolTip>}
           </div>
 
           {["right"].map((anchor) => (

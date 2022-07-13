@@ -21,30 +21,8 @@ function MyApp({ Component, pageProps }) {
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.profile);
   const [currentUser, loading] = useAuthState(auth);
-  var cursor;
-  var cursor2;
 
   useEffect(() => {
-    // cursor = document.getElementById("cursor");
-
-    // document.body.addEventListener("mousemove", function (e) {
-    //   (cursor.style.left = e.clientX + "px"),
-    //     (cursor.style.top = e.clientY + "px");
-    // });
-
-    // cursor2 = document.getElementById("cursor2");
-    // document.body.addEventListener("mousemove", function (e) {
-    //   (cursor2.style.left = e.clientX + "px"),
-    //     (cursor2.style.top = e.clientY + "px");
-    // });
-
-    // document.addEventListener("mousedown", function (e) {
-    //   (cursor.style.height = "50px"), (cursor.style.width = "50px");
-    // });
-    // document.addEventListener("mouseup", function (e) {
-    //   (cursor.style.height = "35px"), (cursor.style.width = "35px");
-    // });
-
     auth.onAuthStateChanged(async (user) => {
       if (user) {
         if (!user.isAnonymous) {

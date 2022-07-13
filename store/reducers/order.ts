@@ -18,6 +18,9 @@ const initState = {
 
 const orderReducer = (state = initState, action: any) => {
   switch (action.type) {
+    case ActionTypes.CLEAR_ORDER_FROM_STATE:
+      return initState;
+
     case ActionTypes.ADD_PRODUCT_TO_STATE:
       return {
         ...state,

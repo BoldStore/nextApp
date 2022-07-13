@@ -201,12 +201,14 @@ function StoreProfile() {
                           storeLocation={store?.store?.store?.city ?? ""}
                           storeName={store?.store?.store?.username}
                           caption={product.caption}
-                          price={product.price}
+                          price={product.amount}
                           size={product.size}
                           id={product.id}
                           isCompleted={store?.store?.store?.isCompleted}
                           type={product.type}
                           images={product.images}
+                          available={product.available}
+                          sold={product.sold}
                         />
                       ))}
                     </div>

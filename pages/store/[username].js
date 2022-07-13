@@ -27,6 +27,7 @@ function StorePage() {
   const profile = useSelector((state) => state.profile);
   const [value, setValue] = useState(0);
   const [products, setProducts] = useState([]);
+  const router = useRouter();
   const handleChange = (i) => {
     setValue(i);
   };
@@ -64,6 +65,12 @@ function StorePage() {
       dispatch(storePage(query.username));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query]);
+
+  useEffect(() => {
+    if (query?.username == profile?.data?.data?.username) {
+      router.push("/profile");
+    }
   }, [query]);
 
   useEffect(() => {
@@ -150,13 +157,37 @@ function StorePage() {
                   {products.slice(0, -1).map((arr, i) => {
                     var num = randomNumberInRange(1, 4);
                     if (num == 1) {
-                      return <Grid1 key={i} products={arr} />;
+                      return (
+                        <Grid1
+                          key={i}
+                          products={arr}
+                          refVal={lastPostElementRef}
+                        />
+                      );
                     } else if (num == 2) {
-                      return <Grid2 key={i} products={arr} />;
+                      return (
+                        <Grid2
+                          key={i}
+                          products={arr}
+                          refVal={lastPostElementRef}
+                        />
+                      );
                     } else if (num == 3) {
-                      return <Grid3 key={i} products={arr} />;
+                      return (
+                        <Grid3
+                          key={i}
+                          products={arr}
+                          refVal={lastPostElementRef}
+                        />
+                      );
                     } else {
-                      return <Grid4 key={i} products={arr} />;
+                      return (
+                        <Grid4
+                          key={i}
+                          products={arr}
+                          refVal={lastPostElementRef}
+                        />
+                      );
                     }
                   })}
                   <div className={styles.postContainer}>
@@ -165,7 +196,10 @@ function StorePage() {
                         <OneImg product={item} key={i} />
                       ))
                     ) : (
-                      <Grid1 products={products[-1]} />
+                      <Grid1
+                        products={products[-1]}
+                        refVal={lastPostElementRef}
+                      />
                     )}
                   </div>
                 </div>
@@ -188,7 +222,9 @@ function StorePage() {
                       storeLocation={store?.store?.store?.city ?? ""}
                       storeName={store?.store?.store?.username}
                       caption={product.caption}
-                      price={product.price}
+                      price={product.amount}
+                      available={product.available}
+                      sold={product.sold}
                       size={product.size}
                       id={product.id}
                       isCompleted={store?.store?.store?.isCompleted}

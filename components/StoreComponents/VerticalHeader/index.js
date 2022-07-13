@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import { Grid, AlignJustify, Send, Bookmark } from "react-feather";
 import { RWebShare } from "react-web-share";
 
-function VerticalHeader({ value, setValue, handleChange, saved }) {
+function VerticalHeader({ value, handleChange, saved }) {
   return (
     <div className={styles.container}>
       <div className={styles.icons}>

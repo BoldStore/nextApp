@@ -1,9 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 import { motion } from "framer-motion";
 import Link from "next/link";
 import React, { useState } from "react";
-import Skeleton from "react-loading-skeleton";
 import styles from "./styles1.module.css";
-function Grid1({ products }) {
+
+function Grid1({ products, refValue }) {
   const [flag1, setFlag1] = useState(false);
   const [flag2, setFlag2] = useState(false);
   const [flag3, setFlag3] = useState(false);
@@ -28,6 +29,7 @@ function Grid1({ products }) {
                     ? products[0]?.images[0]?.imgUrl
                     : products[0]?.imgUrl
                 }
+                alt="product"
               />
               {flag1 && (
                 <motion.div
@@ -59,6 +61,7 @@ function Grid1({ products }) {
                     ? products[1]?.images[0]?.imgUrl
                     : products[1]?.imgUrl
                 }
+                alt="product"
               />
               {flag2 && (
                 <motion.div
@@ -90,6 +93,7 @@ function Grid1({ products }) {
                     ? products[2]?.images[0]?.imgUrl
                     : products[2]?.imgUrl
                 }
+                alt="product"
               />
               {flag3 && (
                 <motion.div
@@ -121,6 +125,7 @@ function Grid1({ products }) {
                     ? products[3]?.images[0]?.imgUrl
                     : products[3]?.imgUrl
                 }
+                alt="product"
               />
               {flag4 && (
                 <motion.div
@@ -152,6 +157,7 @@ function Grid1({ products }) {
                     ? products[3]?.images[0]?.imgUrl
                     : products[3]?.imgUrl
                 }
+                alt="product"
               />
               {flag5 && (
                 <motion.div
@@ -175,6 +181,7 @@ function Grid1({ products }) {
               className={styles.div6}
               onMouseEnter={() => setFlag6(true)}
               onMouseLeave={() => setFlag6(false)}
+              ref={refValue}
             >
               <img
                 className={styles.img}
@@ -183,6 +190,7 @@ function Grid1({ products }) {
                     ? products[5]?.images[0]?.imgUrl
                     : products[5]?.imgUrl
                 }
+                alt="product"
               />
               {flag6 && (
                 <motion.div

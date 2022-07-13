@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import React, { useState } from "react";
 import styles from "./styles2.module.css";
-function Grid2({ products }) {
+function Grid2({ products, refValue }) {
   const [flag1, setFlag1] = useState(false);
   const [flag2, setFlag2] = useState(false);
   const [flag3, setFlag3] = useState(false);
@@ -173,6 +173,7 @@ function Grid2({ products }) {
               className={styles.div6}
               onMouseEnter={() => setFlag6(true)}
               onMouseLeave={() => setFlag6(false)}
+              ref={refValue}
             >
               <img
                 className={styles.img}

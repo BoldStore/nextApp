@@ -43,6 +43,15 @@ function ProductPage() {
     }
   }, [order.success]);
 
+  useEffect(() => {
+    if (order?.verified) {
+      dispatch({
+        type: ActionTypes.CLEAR_ORDER_FROM_STATE,
+      });
+      router.replace("/bag");
+    }
+  }, [order.verified]);
+
   const buyProd = () => {
     if (order.isLoading) {
       return;
@@ -77,6 +86,9 @@ function ProductPage() {
 
   const openRazorpay = () => {
     const orderData = order.order;
+    dispatch({
+      type: ActionTypes.CLEAR_ORDER_FROM_STATE,
+    });
     const options = {
       key: process.env.NEXT_PUBLIC_RAZORPAY_KEY ?? "rzp_test_L92bj18kAlvXKx",
       amount: orderData?.amount,
@@ -115,6 +127,16 @@ function ProductPage() {
     const rzpay = new Razorpay(options);
     rzpay.open();
 
+    rzpay.on("payment.failed", function (response) {
+      console.log(response.error.code);
+      console.log(response.error.description);
+      console.log(response.error.source);
+      console.log(response.error.step);
+      console.log(response.error.reason);
+      console.log(response.error.metadata.order_id);
+      console.log(response.error.metadata.payment_id);
+    });
+
     rzpay.on("payment.success", (res) => {
       console.log("WOHOOOO", res);
     });
@@ -146,6 +168,8 @@ function ProductPage() {
                   storeName={product?.store?.username}
                   caption={product.caption}
                   price={product.price}
+                  sold={product.sold}
+                  available={product.available}
                   size={product.size}
                   id={product.id}
                   type={product.type}

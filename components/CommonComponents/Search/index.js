@@ -5,9 +5,8 @@ import useDebounce from "../../../hooks/useDebounce";
 import { useDispatch } from "react-redux";
 import { searchProducts, searchStores } from "../../../store/actions/search";
 
-function SearchComponent({ isSearching, setIsSearching }) {
+function SearchComponent({ term, setTerm }) {
   const dispatch = useDispatch();
-  const [term, setTerm] = useState("");
   useDebounce(() => getData(), 200, [term]);
 
   const getData = () => {
@@ -16,13 +15,6 @@ function SearchComponent({ isSearching, setIsSearching }) {
       dispatch(searchProducts(term));
     }
   };
-  useEffect(() => {
-    if (term.length == 0) {
-      setIsSearching(false);
-    } else {
-      setIsSearching(true);
-    }
-  }, [term]);
 
   return (
     <div className={styles.searchContainer}>

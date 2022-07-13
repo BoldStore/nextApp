@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import React, { useState } from "react";
 import styles from "./styles3.module.css";
-function Grid3({ products }) {
+function Grid3({ products, refValue }) {
   const [flag1, setFlag1] = useState(false);
   const [flag2, setFlag2] = useState(false);
   const [flag3, setFlag3] = useState(false);
@@ -173,6 +173,7 @@ function Grid3({ products }) {
               className={styles.div6}
               onMouseEnter={() => setFlag6(true)}
               onMouseLeave={() => setFlag6(false)}
+              ref={refValue}
             >
               <img
                 className={styles.bigImg}
