@@ -19,7 +19,7 @@ import { storePage } from "../../../store/actions/pages";
 import StoreComingSoon from "../StoreComingSoon";
 
 function UsernameTabs({ products, profile, store }) {
-  const [value, setValue] = useState("1");
+  const [value, setValue] = useState("0");
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
