@@ -135,6 +135,7 @@
   /* min-width: 100vw; */
   border-bottom: 2px solid var(--darkGrey);
   padding: 0rem 0.5rem;
+  overflow-y: hidden;
 }
 
 .postContainer {
