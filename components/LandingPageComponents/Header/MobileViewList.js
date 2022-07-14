@@ -12,7 +12,7 @@ function MobileViewList() {
   return (
     <div style={{ backgroundColor: "var(--black)" }}>
       <img
-        src={"https://i.ibb.co/Ct1jrgj/Logo2.png"}
+        src={"https://i.ibb.co/p00nXKJ/Logo1.png"}
         style={{
           width: "80%",
           display: "block",
