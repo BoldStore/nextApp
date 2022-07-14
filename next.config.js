@@ -3,8 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: [
-      "products-bold.s3.ap-south-1.amazonaws.com",
-      "profile-pics-bold.s3.ap-south-1.amazonaws.com",
+      "products-boldstore.s3.ap-south-1.amazonaws.com",
+      "profile-pics-boldstore.s3.ap-south-1.amazonaws.com",
     ],
   },
 };
