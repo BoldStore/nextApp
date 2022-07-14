@@ -39,7 +39,7 @@ function Post({
   const [readMore, setReadMore] = useState(false);
   const profile = useSelector((state) => state.profile);
   const orders = useSelector((state) => state.orders);
-  const text = caption?.slice(0, 35);
+  const text = caption?.slice(0, 30);
 
   const notify = () => toast("Product Saved!");
 
