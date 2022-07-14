@@ -15,7 +15,7 @@ import { signInAnonymously } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import * as ActionTypes from "../../store/ActionTypes";
 import { CALLBACK } from "../../constants";
-
+import SeoProduct from "./seo";
 function ProductPage() {
   const Razorpay = useRazorpay();
   const dispatch = useDispatch();
@@ -148,6 +148,7 @@ function ProductPage() {
 
   return (
     <>
+      <SeoProduct product={product} />
       <Header />
       <div className={styles.container}>
         <ProductComponent

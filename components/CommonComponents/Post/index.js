@@ -188,7 +188,7 @@ function Post({
           />
         )}
         {/* {size && <p>{size}</p>} */}
-        {price && <Bookmark onClick={notify} className={styles.bookmarkIcon} />}
+        <Bookmark onClick={notify} className={styles.bookmarkIcon} />
       </div>
 
       {caption?.length >= 35 ? (

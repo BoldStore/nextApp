@@ -26,6 +26,7 @@
     "firebase": "^9.8.1",
     "firebase-admin": "^10.2.0",
     "framer-motion": "^6.3.3",
+    "javascript-time-ago": "^2.5.6",
     "meilisearch": "^0.25.1",
     "next": "12.1.6",
     "next-redux-wrapper": "^7.0.5",

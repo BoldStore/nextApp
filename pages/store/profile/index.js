@@ -76,6 +76,7 @@ function StoreProfile() {
       <>
         <Header />
         <VerticalHeader
+          store={store}
           value={value}
           setValue={setValue}
           handleChange={handleChange}

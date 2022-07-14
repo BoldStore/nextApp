@@ -19,6 +19,7 @@ import StoreComingSoon from "../../components/StoreComponents/StoreComingSoon";
 import Link from "next/link";
 import OneImg from "../../components/CommonComponents/Grids/oneImg";
 import UsernameTabs from "../../components/StoreComponents/UsernameTabs";
+import StoreSeo from "../../components/StoreComponents/StoreSeo";
 
 function StorePage() {
   const { query } = useRouter();
@@ -89,10 +90,12 @@ function StorePage() {
 
   return (
     <>
+      <StoreSeo store={store.store.store} />
       {profile?.isStore ? <StoreHeader /> : <CustomerHeader />}
 
       <VerticalHeader
         value={value}
+        store={store}
         setValue={setValue}
         handleChange={handleChange}
       />

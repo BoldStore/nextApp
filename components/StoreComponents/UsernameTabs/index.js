@@ -17,6 +17,8 @@ import OneImg from "../../CommonComponents/Grids/oneImg";
 import { useRouter } from "next/router";
 import { storePage } from "../../../store/actions/pages";
 import StoreComingSoon from "../StoreComingSoon";
+import { toast } from "react-toastify";
+import { RWebShare } from "react-web-share";
 
 function UsernameTabs({ products, profile, store }) {
   const [value, setValue] = useState("0");
@@ -59,6 +61,25 @@ function UsernameTabs({ products, profile, store }) {
                   value="2"
                   style={{ color: "var(--white)" }}
                 />
+                <RWebShare
+                  data={{
+                    text: "Hey, checkout this amazing Thrift Store on Bold.",
+                    url: `https://www.boldstore.in/store/${store?.store?.store?.username}`,
+                    title: "Thrift Store on Bold",
+                  }}
+                  className={styles.share}
+                  style={{ color: "var(--black) !important" }}
+                  onClick={() => console.log("shared successfully!")}
+                >
+                  <Tab
+                    icon={<Send />}
+                    value={"3"}
+                    style={{ color: "var(--white)" }}
+                    onClick={() => {
+                      toast("Link Copied!");
+                    }}
+                  />
+                </RWebShare>
               </TabList>
             </Box>
             <TabPanel value="1" style={{ padding: 0 }}>
