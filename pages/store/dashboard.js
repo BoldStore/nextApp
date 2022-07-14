@@ -25,86 +25,74 @@ function Sales() {
             </tr> */}
             <tr>
               <td>
-                <Info></Info>
+                <Info />
               </td>
-              <td>22/22/22 10:00PM</td>
+              <td>22/22/22 </td>
+              <td>10:00PM</td>
+              <td style={{ minWidth: "120px" }}>Payment ID:</td>
+              <td>#17276381812</td>
+              <td>Paid</td>
+              <td style={{ minWidth: "130px" }}>Shiprocket ID:</td>
+              <td>#123447762</td>
+              <td>Delivered</td>
               <td>
-                <button className={styles.button}>Paid</button>
+                <button className={styles.button}>More Details</button>
               </td>
-              <td>Shiprocket ID: abuaygugs</td>
+            </tr>
+
+            <tr>
               <td>
-                <button className={styles.button}>Delivered</button>
+                <Info />
               </td>
+              <td>22/22/22 </td>
+              <td>10:00PM</td>
+              <td style={{ minWidth: "120px" }}>Payment ID:</td>
+              <td>#17276381812</td>
+              <td>Paid</td>
+              <td style={{ minWidth: "130px" }}>Shiprocket ID:</td>
+              <td>#123447762</td>
+              <td>Delivered</td>
               <td>
-                <BoldButton text="See Product"></BoldButton>
+                <button className={styles.button}>More Details</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <Info />
+              </td>
+              <td>22/22/22 </td>
+              <td>10:00PM</td>
+              <td style={{ minWidth: "120px" }}>Payment ID:</td>
+              <td>#17276381812</td>
+              <td>Paid</td>
+              <td style={{ minWidth: "130px" }}>Shiprocket ID:</td>
+              <td>#123447762</td>
+              <td>Delivered</td>
+              <td>
+                <button className={styles.button}>More Details</button>
               </td>
             </tr>
             <tr>
               <td>
-                <Info></Info>
+                <Info />
               </td>
-              <td>22/22/22 10:00PM</td>
+              <td>22/22/22 </td>
+              <td>10:00PM</td>
+              <td style={{ minWidth: "120px" }}>Payment ID:</td>
+              <td>#17276381812</td>
+              <td>Paid</td>
+              <td style={{ minWidth: "130px" }}>Shiprocket ID:</td>
+              <td>#123447762</td>
+              <td>Delivered</td>
               <td>
-                <button className={styles.button}>Paid</button>
-              </td>
-              <td>Shiprocket ID: abuaygugs</td>
-              <td>
-                <button className={styles.button}>Delivered</button>
-              </td>
-              <td>
-                <BoldButton text="See Product"></BoldButton>
+                <button className={styles.button}>More Details</button>
               </td>
             </tr>
-            <tr>
-              <td>
-                <Info></Info>
-              </td>
-              <td>22/22/22 10:00PM</td>
-              <td>
-                <button className={styles.button}>Paid</button>
-              </td>
-              <td>Shiprocket ID: abuaygugs</td>
-              <td>
-                <button className={styles.button}>Delivered</button>
-              </td>
-              <td>
-                <BoldButton text="See Product"></BoldButton>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Info></Info>
-              </td>
-              <td>22/22/22 10:00PM</td>
-              <td>
-                <button className={styles.button}>Paid</button>
-              </td>
-              <td>Shiprocket ID: abuaygugs</td>
-              <td>
-                <button className={styles.button}>Delivered</button>
-              </td>
-              <td>
-                <BoldButton text="See Product"></BoldButton>
-              </td>
-            </tr>
-            {/* <tr>
-              <td>12345VHW</td>
-              <td>Jeans</td>
-              <td>$2200</td>
-              <td>
-                <a href="https://www.instagram.com/avi_vashishta">
-                  @avi_vashishta
-                </a>
-              </td>
-              <td>22/07/22</td>
-              <td>Completed</td>
-              <td>12345VHW</td>
-              <td>Delivery Pending</td>
-              <td>1234NQWHW</td>
-            </tr> */}
           </table>
         </div>
-        <BoldButton text={"Show Pending Sales"} href="/store/pendingsales" />
+        <div style={{ marginTop: "3rem" }}></div>
+        {/* <BoldButton text={"Show Pending Sales"} href="/store/pendingsales" /> */}
       </div>
     </div>
   );

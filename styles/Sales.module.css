@@ -1,5 +1,5 @@
 .container {
-  width: 80vw;
+  width: 90vw;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -12,7 +12,6 @@
   width: 100%;
 }
 
-
 .table td,
 .table th {
   /* border-top: 1px solid var(--darkGrey);
@@ -23,12 +22,16 @@
 .table tr:nth-child(even) {
   background-color: var(--black);
   color: var(--white);
+  text-align: center;
+  min-width: 500px;
   /* border-left: 1px solid var(--darkGrey);
   border-right: 1px solid var(--darkGrey); */
 }
 .table tr:nth-child(odd) {
   background-color: var(--black);
   color: var(--white);
+  min-width: 500px;
+  text-align: center;
   /* border-left: 1px solid var(--darkGrey); */
   /* border-right: 1px solid var(--darkGrey); */
 }
@@ -44,15 +47,14 @@
   background-color: var(--darkGrey);
   color: var(--white);
 }
+.tableContainer {
+  overflow-x: scroll;
+  padding-bottom: 1rem;
+}
 
 @media only screen and (max-width: 1250px) {
   .container {
     width: 95vw;
-  }
-
-  .tableContainer {
-    overflow-x: scroll;
-    padding-bottom: 1rem;
   }
 
   .tableContainer::-webkit-scrollbar {
@@ -63,19 +65,23 @@
 @media only screen and (max-width: 800px) {
   .container {
     width: 90vw !important;
-    margin-top: 4rem !important;
+    margin-top: 5rem !important;
   }
 }
 
 .button {
-  padding: 0rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   background-color: transparent;
   border: 1px solid var(--white);
-  border-radius: 0.5rem;
+  border-radius: 10rem;
   color: var(--white);
   cursor: pointer;
   font-family: "Inter", sans-serif;
   width: 100%;
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  min-width: 150px;
 }
 
 .button:hover {
@@ -87,12 +93,9 @@
 
 @media (max-width: 750px) {
   .button {
-    padding: 0rem !important;
-  }
-}
-
-@media (max-width: 750px) {
-  .button {
     width: 100%;
+  }
+  .table td {
+    min-width: 100px;
   }
 }
