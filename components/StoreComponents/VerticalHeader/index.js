@@ -7,11 +7,6 @@ function VerticalHeader({ value, handleChange, saved }) {
   return (
     <div className={styles.container}>
       <div className={styles.icons}>
-        <Grid
-          className={styles.icon}
-          onClick={() => handleChange(0)}
-          style={{ color: value == 0 && "var(--white)" }}
-        />
         <AlignJustify
           className={styles.icon}
           onClick={() => handleChange(1)}

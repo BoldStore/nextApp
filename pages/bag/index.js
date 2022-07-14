@@ -69,72 +69,74 @@ function Orders() {
       />
       <div className={styles.container}>
         <div className={styles.tabs}>
-          <OrderPageTabs saved={true} />
+          <OrderPageTabs saved={true} orders={orders} products={products} />
         </div>
-        {value == 1 ? (
-          <div className={styles.postContainer}>
-            {orders.orders?.length > 0 ? (
-              orders?.orders?.map((order, index) => (
-                <div
-                  key={index}
-                  ref={
-                    orders?.orders?.length == index + 1
-                      ? lastOrderElementRef
-                      : null
-                  }
-                >
-                  <OrderComponent
-                    id={order.id}
-                    storeUrl={order.store.profile_pic}
-                    storeName={order.store.username}
-                    storeLocation={order.store.city}
-                    postUrl={order.product.imgUrl}
-                    price={order.amount}
-                    size={order.product.size}
-                    isCompleted={order.store.isCompleted}
-                  />
-                </div>
-              ))
-            ) : (
-              <NoOrders />
-            )}
-          </div>
-        ) : value == 2 ? (
-          <div className={styles.postContainer}>
-            {products.products?.length > 0 ? (
-              products?.products?.map((product, index) => (
-                <div
-                  key={index}
-                  ref={
-                    products?.products?.length == index + 1
-                      ? lastProductElementRef
-                      : null
-                  }
-                >
-                  <Post
-                    caption={product.caption}
-                    id={product.id}
-                    images={product?.images}
-                    isCompleted={product?.store?.isCompleted}
-                    postUrl={product?.imgUrl}
-                    price={product?.amount}
-                    size={product?.size}
-                    storeLocation={product?.store?.city}
-                    storeName={product?.store?.username}
-                    storeUrl={product?.store?.profile_pic}
-                    type={product?.mediaType}
-                    available={product.available}
-                    sold={product.sold}
-                  />
-                </div>
-              ))
-            ) : (
-              <NoSavedItems />
-            )}
-          </div>
-        ) : (
-          <></>
-        )}
+        <div className={styles.desktopTabs}>
+          {value == 1 ? (
+            <div className={styles.postContainer}>
+              {orders.orders?.length > 0 ? (
+                orders?.orders?.map((order, index) => (
+                  <div
+                    key={index}
+                    ref={
+                      orders?.orders?.length == index + 1
+                        ? lastOrderElementRef
+                        : null
+                    }
+                  >
+                    <OrderComponent
+                      id={order.id}
+                      storeUrl={order.store.profile_pic}
+                      storeName={order.store.username}
+                      storeLocation={order.store.city}
+                      postUrl={order.product.imgUrl}
+                      price={order.amount}
+                      size={order.product.size}
+                      isCompleted={order.store.isCompleted}
+                    />
+                  </div>
+                ))
+              ) : (
+                <NoOrders />
+              )}
+            </div>
+          ) : value == 2 ? (
+            <div className={styles.postContainer}>
+              {products.products?.length > 0 ? (
+                products?.products?.map((product, index) => (
+                  <div
+                    key={index}
+                    ref={
+                      products?.products?.length == index + 1
+                        ? lastProductElementRef
+                        : null
+                    }
+                  >
+                    <Post
+                      caption={product.caption}
+                      id={product.id}
+                      images={product?.images}
+                      isCompleted={product?.store?.isCompleted}
+                      postUrl={product?.imgUrl}
+                      price={product?.amount}
+                      size={product?.size}
+                      storeLocation={product?.store?.city}
+                      storeName={product?.store?.username}
+                      storeUrl={product?.store?.profile_pic}
+                      type={product?.type}
+                      available={product.available}
+                      sold={product.sold}
+                    />
+                  </div>
+                ))
+              ) : (
+                <NoSavedItems />
+              )}
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
     </>
   );

@@ -149,7 +149,7 @@ function Post({
                   setVideo(true);
                 }}
                 src={
-                  type == "CAROUSEL_ALBUM"
+                  type == "CAROUSEL_ALBUM" && images
                     ? images[0]?.imgUrl
                     : postUrl ?? "/assets/shoe2.jpg"
                 }
