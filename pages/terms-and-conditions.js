@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Header from "../components/LandingPageComponents/Header";
 import styles from "../styles/Policy.module.css";
@@ -18,6 +19,7 @@ function TermsAndConditions() {
             marginTop: "6rem",
             marginBottom: "3rem",
           }}
+          alt="Bold logo"
         />
       </div>
       <div
@@ -130,7 +132,7 @@ function TermsAndConditions() {
           bomb or any other material which is malicious, technologically
           harmful, in breach of confidence or in any way offensive or obscene;
           hack into any aspect of the Service; corrupt data; cause annoyance to
-          other users; infringe upon the rights of any other person's
+          other users; infringe upon the rights of any other person&apos;s
           proprietary rights; send any unsolicited advertising or promotional
           material, commonly referred to as &quot;spam&quot;; or attempt to
           affect the performance or functionality of any computer facilities of
@@ -207,7 +209,7 @@ function TermsAndConditions() {
           will treat the order as cancelled. If you cancel and you have already
           paid for the goods, you may or may not receive a full refund. Delivery
           costs will be charged in addition; such additional charges are clearly
-          displayed where applicable and included in the 'Total Cost'.
+          displayed where applicable and included in the &apos;Total Cost&apos;.
         </p>
         <p>
           (c) Payment Upon receiving your order we carry out a standard
@@ -242,7 +244,7 @@ function TermsAndConditions() {
           materials posted thereon, irrespective of whether such damages were
           foreseeable or arise in contract, tort, equity, restitution, by
           statute, at common law or otherwise. This does not affect
-          [https://boldstore.in/]'s liability for death or personal injury
+          [https://boldstore.in/]&apos;s liability for death or personal injury
           arising from its negligence, fraudulent misrepresentation,
           misrepresentation as to a fundamental matter or any other liability
           which cannot be excluded or limited under applicable law.
