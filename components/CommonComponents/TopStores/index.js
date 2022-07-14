@@ -29,7 +29,7 @@ function TopStores({ storeUrl, storeName, username, isCompleted }) {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "space-between",
-        marginLeft: "1.5rem",
+        marginRight: "1rem",
       }}
       onClick={goToStore}
     >

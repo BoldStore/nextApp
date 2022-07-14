@@ -126,9 +126,15 @@
 }
 .topStoreContainer {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   overflow-x: auto;
+  height: 8rem;
+  /* min-width: 100vw; */
+  border-bottom: 2px solid var(--darkGrey);
+  padding: 0rem 0.5rem;
 }
 
 .postContainer {
@@ -139,12 +145,6 @@
   padding-top: 2.5rem;
 }
 
-.topStoreContainer {
-  padding: 1rem;
-  border-bottom: 2px solid var(--darkGrey);
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  scrollbar-width: none; /* Firefox */
-}
 .topStoreContainer::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }
@@ -201,8 +201,8 @@
     margin: 0.8rem;
   }
   .topStoreContainer {
-    margin-top: 4rem !important;
-    padding-left: 12rem;
+    margin-top: 1rem !important;
+    /* padding-left: 12rem; */
   }
   .logoImg {
     margin-bottom: 0px !important;
