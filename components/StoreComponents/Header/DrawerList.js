@@ -3,7 +3,15 @@ import Link from "next/link";
 import React from "react";
 import styles from "./styles.module.css";
 import { useSelector } from "react-redux";
-import { User ,  CreditCard , Truck , Settings , LogOut, Layout , PieChart} from "react-feather";
+import {
+  User,
+  CreditCard,
+  Truck,
+  Settings,
+  LogOut,
+  Layout,
+  PieChart,
+} from "react-feather";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../firebaseConfig";
 import { signOut } from "@firebase/auth";
@@ -74,13 +82,12 @@ function DrawerList() {
         style={{
           padding: "2rem",
           paddingLeft: "1.2rem",
-          top: "30vh",
-          position: "absolute",
+          marginTop: "1rem",
         }}
       >
         <Link href="/profile">
           <p className={styles.navLinks} style={{ margin: "1rem" }}>
-          <User className={styles.icon} />
+            <User className={styles.icon} />
             Visit Profile
           </p>
         </Link>
@@ -88,7 +95,7 @@ function DrawerList() {
           <div style={{ position: "relative" }}>
             <p className={styles.navLinks} style={{ margin: "1rem" }}>
               <CreditCard className={styles.icon}></CreditCard>
-                Payment Details
+              Payment Details
             </p>
             {!profile?.data?.paymentDetails && (
               <div
@@ -108,10 +115,12 @@ function DrawerList() {
         <Link href="/store/profile/address">
           <div style={{ position: "relative" }}>
             <p className={styles.navLinks} style={{ margin: "1rem" }}>
-            <span className={styles.icon}><Truck/></span>
+              <span className={styles.icon}>
+                <Truck />
+              </span>
               Pickup Address
             </p>
-            {/* {!profile?.data?.address && (
+            {!profile?.data?.address && (
               <div
                 style={{
                   position: "absolute",
@@ -123,21 +132,20 @@ function DrawerList() {
                   borderRadius: "50%",
                 }}
               ></div>
-            )} */}
+            )}
           </div>
         </Link>
 
         <Link href="/store/analytics">
           <p className={styles.navLinks} style={{ margin: "1rem" }}>
-          <PieChart className={styles.icon} />
+            <PieChart className={styles.icon} />
             Analytics
           </p>
         </Link>
 
-
         <Link href="/store/profile/upi">
           <p className={styles.navLinks} style={{ margin: "1rem" }}>
-          <Settings className={styles.icon} />
+            <Settings className={styles.icon} />
             Settings
           </p>
         </Link>
@@ -148,7 +156,7 @@ function DrawerList() {
             style={{ margin: "1rem" }}
             onClick={logout}
           >
-             <LogOut className={styles.icon} />
+            <LogOut className={styles.icon} />
             Logout
           </p>
         ) : (
@@ -160,7 +168,7 @@ function DrawerList() {
             Login
           </p>
         )}
-        </div>
+      </div>
     </div>
   );
 }
