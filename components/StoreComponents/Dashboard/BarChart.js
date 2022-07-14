@@ -34,7 +34,7 @@ function BarChart({ topic, array }) {
         <p>Average Monthly Sales</p>
         <p>20</p>
       </div>
-      <BoldButton text={"Show All Sales"} href="/sales" />
+      <BoldButton text={"Show All Sales"} href="/store/dashboard" />
     </div>
   );
 }

@@ -46,7 +46,8 @@
 
 .productImg {
   border-radius: 1rem;
-  object-fit: cover;
+  object-fit: contain;
+  width: 100%;
 }
 
 .priceContainer {
@@ -83,4 +84,16 @@
   color: var(--lightGrey);
   font-size: 0.8rem;
   margin-bottom: 0;
+}
+
+@media (max-width: 650px) {
+  .productImg {
+    object-fit: cover;
+  }
+
+  .postContainer {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    padding-top: 0px;
+  }
 }

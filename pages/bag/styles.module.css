@@ -82,4 +82,7 @@
   .container2 {
     margin-top: 3rem;
   }
+  .desktopTabs {
+    display: none;
+  }
 }

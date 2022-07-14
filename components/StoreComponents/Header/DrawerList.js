@@ -4,23 +4,20 @@ import React from "react";
 import styles from "./styles.module.css";
 import { useSelector } from "react-redux";
 import {
-  CreditCard,
-  Home,
-  Layout,
-  LogIn,
-  LogOut,
-  PieChart,
-  Search,
-  ShoppingBag,
-  Truck,
   User,
+  CreditCard,
+  Truck,
+  Settings,
+  LogOut,
+  Layout,
+  PieChart,
 } from "react-feather";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../firebaseConfig";
 import { signOut } from "@firebase/auth";
 import { useRouter } from "next/router";
 
-function MobileViewList() {
+function DrawerList() {
   const router = useRouter();
   const logout = async () => {
     localStorage.removeItem("token");
@@ -88,40 +85,16 @@ function MobileViewList() {
           marginTop: "1rem",
         }}
       >
-        <Link href="/home">
-          <p className={styles.navLinks}>
-            <Home className={styles.icon} />
-            Home
-          </p>
-        </Link>
-        <Link href="/search">
-          <p className={styles.navLinks}>
-            <Search className={styles.icon} />
-            Search
-          </p>
-        </Link>
-        <Link href="/store/dashboard">
-          <p className={styles.navLinks}>
-            <Layout className={styles.icon} />
-            Dashboard
-          </p>
-        </Link>
-        <Link href="/bag">
-          <p className={styles.navLinks}>
-            <ShoppingBag className={styles.icon} />
-            My Bag
-          </p>
-        </Link>
-        <Link href="/store/analytics">
-          <p className={styles.navLinks}>
-            <PieChart className={styles.icon} />
-            Analytics
+        <Link href="/profile">
+          <p className={styles.navLinks} style={{ margin: "1rem" }}>
+            <User className={styles.icon} />
+            Visit Profile
           </p>
         </Link>
         <Link href="/store/profile/upi">
           <div style={{ position: "relative" }}>
-            <p className={styles.navLinks}>
-              <CreditCard className={styles.icon} />
+            <p className={styles.navLinks} style={{ margin: "1rem" }}>
+              <CreditCard className={styles.icon}></CreditCard>
               Payment Details
             </p>
             {!profile?.data?.paymentDetails && (
@@ -141,8 +114,10 @@ function MobileViewList() {
         </Link>
         <Link href="/store/profile/address">
           <div style={{ position: "relative" }}>
-            <p className={styles.navLinks}>
-              <Truck className={styles.icon} />
+            <p className={styles.navLinks} style={{ margin: "1rem" }}>
+              <span className={styles.icon}>
+                <Truck />
+              </span>
               Pickup Address
             </p>
             {!profile?.data?.address && (
@@ -160,30 +135,42 @@ function MobileViewList() {
             )}
           </div>
         </Link>
-        <Link href="/profile">
-          <p className={styles.navLinks}>
-            <User className={styles.icon} />
-            Profile
+
+        <Link href="/store/analytics">
+          <p className={styles.navLinks} style={{ margin: "1rem" }}>
+            <PieChart className={styles.icon} />
+            Analytics
+          </p>
+        </Link>
+
+        <Link href="/store/profile/upi">
+          <p className={styles.navLinks} style={{ margin: "1rem" }}>
+            <Settings className={styles.icon} />
+            Settings
           </p>
         </Link>
 
         {user ? (
-          <p className={styles.navLinks} onClick={logout}>
+          <p
+            className={styles.navLinks}
+            style={{ margin: "1rem" }}
+            onClick={logout}
+          >
             <LogOut className={styles.icon} />
             Logout
           </p>
         ) : (
-          <p className={styles.navLinks} onClick={login}>
-            <LogIn className={styles.icon} /> Login
+          <p
+            className={styles.navLinks}
+            style={{ margin: "1rem" }}
+            onClick={login}
+          >
+            Login
           </p>
         )}
-
-        {/* <Link href="https://www.instagram.com/boldstore.in">
-          <p className={styles.navLinks}>Instagram</p>
-        </Link> */}
       </div>
     </div>
   );
 }
 
-export default MobileViewList;
+export default DrawerList;

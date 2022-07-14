@@ -39,7 +39,7 @@ function Post({
   const [readMore, setReadMore] = useState(false);
   const profile = useSelector((state) => state.profile);
   const orders = useSelector((state) => state.orders);
-  const text = caption?.slice(0, 35);
+  const text = caption?.slice(0, 30);
 
   const notify = () => toast("Product Saved!");
 
@@ -149,7 +149,7 @@ function Post({
                   setVideo(true);
                 }}
                 src={
-                  type == "CAROUSEL_ALBUM"
+                  type == "CAROUSEL_ALBUM" && images
                     ? images[0]?.imgUrl
                     : postUrl ?? "/assets/shoe2.jpg"
                 }
@@ -188,7 +188,7 @@ function Post({
           />
         )}
         {/* {size && <p>{size}</p>} */}
-        {price && <Bookmark onClick={notify} className={styles.bookmarkIcon} />}
+        <Bookmark onClick={notify} className={styles.bookmarkIcon} />
       </div>
 
       {caption?.length >= 35 ? (
@@ -221,7 +221,7 @@ function Post({
       )}
 
       <BoldButton
-        disabled={!available ? true : sold ? true : false}
+        disabled={sold || !available}
         text={!orders.isLoading ? "Buy Now" : "Loading..."}
         onClick={handlePayment}
       />

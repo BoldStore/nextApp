@@ -41,6 +41,7 @@ function StoreProfile() {
 
   const refresh = () => {
     dispatch(updateStoreProducts());
+    router.reload();
   };
 
   function randomNumberInRange(min, max) {
@@ -76,6 +77,7 @@ function StoreProfile() {
       <>
         <Header />
         <VerticalHeader
+          store={store}
           value={value}
           setValue={setValue}
           handleChange={handleChange}

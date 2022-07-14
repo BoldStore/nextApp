@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import { Grid, AlignJustify, Send, Bookmark } from "react-feather";
 import { RWebShare } from "react-web-share";
 
-function VerticalHeader({ value, handleChange, saved }) {
+function VerticalHeader({ value, handleChange, saved, store }) {
   return (
     <div className={styles.container}>
       <div className={styles.icons}>
@@ -27,7 +27,7 @@ function VerticalHeader({ value, handleChange, saved }) {
           <RWebShare
             data={{
               text: "Hey, checkout this amazing Thrift Store on Bold.",
-              url: "https://www.boldstore.in/",
+              url: `https://www.boldstore.in/store/${store?.store?.store?.username}`,
               title: "Thrift Store on Bold",
             }}
             className={styles.share}

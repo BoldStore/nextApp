@@ -1,0 +1,31 @@
+.img {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 100%;
+  background-color: var(--lightGrey);
+  margin: 1rem;
+}
+
+.container {
+  display: flex;
+  margin: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.details {
+  margin: auto;
+}
+.details p {
+  font-size: smaller;
+  color: gray;
+  margin-top: 0.5rem;
+  text-align: left;
+}
+
+@media (max-width: 1050px) {
+  .details p,
+  .img {
+    display: none;
+  }
+}

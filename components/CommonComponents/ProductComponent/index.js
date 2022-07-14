@@ -10,6 +10,10 @@ import { saveProduct } from "../../../store/actions/products";
 import Link from "next/link";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import ProductCarousel from "./ProductCarousel";
+import TimeAgo from "javascript-time-ago";
+
+// English.
+import en from "javascript-time-ago/locale/en";
 
 function ProductComponent({ product, onClick, orderLoading }) {
   const dispatch = useDispatch();
@@ -18,6 +22,12 @@ function ProductComponent({ product, onClick, orderLoading }) {
   };
   const profile = useSelector((state) => state.profile);
   const [video, setVideo] = useState(false);
+
+  TimeAgo.addDefaultLocale(en);
+
+  // Create formatter (English).
+  const timeAgo = new TimeAgo("en-US");
+  const date = new Date(product?.product?.postedOn ?? null);
 
   return (
     <>
@@ -156,6 +166,12 @@ function ProductComponent({ product, onClick, orderLoading }) {
             </div>
           </Link>
           <p>{product?.product?.caption ?? "No Caption"}</p>
+          <p style={{ marginTop: 0, color: "var(--lightGrey)" }}>
+            Posted{" "}
+            {product?.product?.postedOn
+              ? timeAgo.format(new Date(product?.product?.postedOn))
+              : ""}
+          </p>
           <div>
             <RWebShare
               data={{
@@ -178,13 +194,7 @@ function ProductComponent({ product, onClick, orderLoading }) {
           </div>
 
           <BoldButton
-            disabled={
-              !product?.product?.available
-                ? true
-                : product?.product?.sold
-                ? true
-                : false
-            }
+            disabled={product?.product?.sold || !product?.product?.available}
             text={orderLoading ? "Loading..." : "Proceed To Buy"}
             onClick={onClick}
           />
