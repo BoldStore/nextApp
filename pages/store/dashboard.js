@@ -9,7 +9,7 @@ function Sales() {
     <div>
       <Header />
       <div className={styles.container}>
-        <h1>Pending Sales</h1>
+        <h1>Dashboard</h1>
         <div className={styles.tableContainer}>
           <table className={styles.table}>
             {/* <tr>
@@ -104,7 +104,7 @@ function Sales() {
             </tr> */}
           </table>
         </div>
-        <BoldButton text={"Show all sales"} href="/store/pendingsales" />
+        <BoldButton text={"Show Pending Sales"} href="/store/pendingsales" />
       </div>
     </div>
   );

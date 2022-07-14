@@ -55,7 +55,7 @@ function Dashboard() {
               marginBottom: "1rem",
             }}
           >
-            <h1>Dashboard</h1>
+            <h1>Analytics</h1>
           </div>
           <div className={styles.dashboardContainer}>
             <BarChart />

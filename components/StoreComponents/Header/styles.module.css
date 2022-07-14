@@ -20,7 +20,11 @@
   justify-content: space-between;
   align-items: center;
 }
-
+.icon{
+  margin: 0 1rem;
+  position: relative;
+  top: 5px;
+}
 .navLinks {
   position: relative;
   margin: 0 1.5rem;

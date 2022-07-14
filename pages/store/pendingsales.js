@@ -72,7 +72,7 @@ function pendingsales() {
             </tr> */}
           </table>
         </div>
-        <BoldButton text={"Show All Sales"} href="/store/sales" />
+        <BoldButton text={"Dashboard"} href="/store/dashboard" />
 
       </div>
     </div>
