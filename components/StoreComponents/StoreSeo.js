@@ -51,7 +51,7 @@ function StoreSeo({ store }) {
       />
       <meta property="og:type" content="Thrift Store" />
       <meta property="og:title" content="Bold Store" />
-      <meta property="og:image" content={store.profile_pic} />
+      <meta property="og:image" content={store?.profile_pic} />
       <meta
         property="og:description"
         content={`Checkout this Store By @${store?.username} on Bold Store!`}
