@@ -28,7 +28,7 @@ function StoreSeo({ store }) {
       />
       <meta
         name="keywords"
-        content={`Bold Store, Avi Vashishta, Jayesh Sadhwani, Bold , Thrift Store, Boldstore , Bold.in, Thrifting india , ${store.username}`}
+        content={`Bold Store, Avi Vashishta, Jayesh Sadhwani, Bold , Thrift Store, Boldstore , Bold.in, Thrifting india , ${store?.username}`}
       />
       <meta name="author" content="Bold Store" />
 
@@ -51,7 +51,7 @@ function StoreSeo({ store }) {
       />
       <meta property="og:type" content="Thrift Store" />
       <meta property="og:title" content="Bold Store" />
-      <meta property="og:image" content={store.profile_pic} />
+      <meta property="og:image" content={store?.profile_pic} />
       <meta
         property="og:description"
         content={`Checkout this Store By @${store?.username} on Bold Store!`}
