@@ -90,7 +90,7 @@ function StorePage() {
 
   return (
     <>
-      <StoreSeo store={store.store.store} />
+      <StoreSeo store={store?.store?.store} />
       {profile?.isStore ? <StoreHeader /> : <CustomerHeader />}
 
       <VerticalHeader
