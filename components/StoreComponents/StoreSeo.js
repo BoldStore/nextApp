@@ -28,7 +28,7 @@ function StoreSeo({ store }) {
       />
       <meta
         name="keywords"
-        content={`Bold Store, Avi Vashishta, Jayesh Sadhwani, Bold , Thrift Store, Boldstore , Bold.in, Thrifting india , ${store.username}`}
+        content={`Bold Store, Avi Vashishta, Jayesh Sadhwani, Bold , Thrift Store, Boldstore , Bold.in, Thrifting india , ${store?.username}`}
       />
       <meta name="author" content="Bold Store" />
 
