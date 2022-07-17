@@ -65,7 +65,7 @@ function Sales() {
               <td>#123447762</td>
               <td>Delivered</td>
               <td>
-                <button className={styles.buttonFilled}>More Details</button>
+                <button className={styles.button}>More Details</button>
               </td>
             </tr>
 
@@ -82,7 +82,7 @@ function Sales() {
               <td>#123447762</td>
               <td>Delivered</td>
               <td>
-                <button className={styles.buttonFilled}>More Details</button>
+                <button className={styles.button}>More Details</button>
               </td>
             </tr>
 
@@ -99,7 +99,7 @@ function Sales() {
               <td>#123447762</td>
               <td>Delivered</td>
               <td>
-                <button className={styles.buttonFilled}>More Details</button>
+                <button className={styles.button}>More Details</button>
               </td>
             </tr>
             <tr>
@@ -115,7 +115,7 @@ function Sales() {
               <td>#123447762</td>
               <td>Delivered</td>
               <td>
-                <button className={styles.buttonFilled}>More Details</button>
+                <button className={styles.button}>More Details</button>
               </td>
             </tr>
           </table>
