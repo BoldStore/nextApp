@@ -3,13 +3,14 @@ import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";
 import DrawerComponent from "./DrawerComponent";
 import { useEffect, useState } from "react";
-import { Home, User, Search, ShoppingBag, LogOut, LogIn } from "react-feather";
+import { Home, User, Search, ShoppingBag, LogOut, LogIn, Tool } from "react-feather";
 import CustomerTabs from "../Tabs";
 import { useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
+import ToolTip from "../../CommonComponents/ToolTip/ToolTip";
 
 function CustomerHeader() {
   const router = useRouter();
@@ -56,19 +57,22 @@ function CustomerHeader() {
       {open && (
         <>
           <div className={styles.leftContainer}>
-            <Link href="/home">
+            <ToolTip title="Home" href="/home">
               <Home className={styles.navLinks} />
-            </Link>
-            <Link href="/search">
+            </ToolTip>
+            
+            <ToolTip title="Search" href="/search">
               <Search className={styles.navLinks} />
-            </Link>
-            <Link href="/bag">
+            </ToolTip>
+
+            <ToolTip title="Bag" href="/bag">
               <ShoppingBag className={styles.navLinks} />
-            </Link>
+            </ToolTip>
+
             {user && !user?.isAnonymous ? (
-              <LogOut onClick={logout} className={styles.navLinks} />
+              <ToolTip title="Log Out"><LogOut onClick={logout} className={styles.navLinks} /></ToolTip>
             ) : (
-              <LogIn onClick={login} className={styles.navLinks} />
+              <ToolTip title="Log In"><LogIn onClick={login} className={styles.navLinks} /></ToolTip>
             )}
           </div>
 

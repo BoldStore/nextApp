@@ -88,8 +88,30 @@
   border: 1px solid var(--white);
   background-color: var(--white);
   color: var(--black);
-  transition: 0.5s ease-out;
+  transition: 0.3s ease-out;
 }
+
+.buttonFilled {
+  padding: 0.5rem 1.5rem;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 10rem;
+  color: black;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  min-width: 150px;
+}
+
+/* .buttonFilled:hover {
+  border: 1px solid var(--white);
+  background-color: white;
+  color: black;
+  transition: 0.3s ease-out;
+} */
 
 @media (max-width: 750px) {
   .button {
