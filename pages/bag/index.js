@@ -47,12 +47,12 @@ function Orders() {
   // Check for orders
   const orderObserver = useRef(null);
   const lastOrderElementRef = useCallback((node) => {
-    if (products?.products?.length <= 0) return;
-    if (products.isLoading || products.products_loading) return;
+    if (orders.orders?.length <= 0) return;
+    if (orders.isLoading || products.products_loading) return;
     if (orderObserver.current) orderObserver.current.disconnect();
     orderObserver.current = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting && !products.past_orders_end) {
-        dispatch(getSavedProducts(products.past_orders_cursor));
+        dispatch(pastOrders(products.past_orders_cursor));
       }
     });
     if (node) orderObserver.current.observe(node);
