@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
@@ -17,7 +17,10 @@ function OrderComponent({
   price,
   size,
   isCompleted,
+  images,
+  type,
 }) {
+  const [video, setVideo] = useState(false);
   return (
     <div className={styles.postContainer}>
       <div className={styles.postHeader}>
@@ -88,17 +91,39 @@ function OrderComponent({
       ) : (
         <Skeleton count={1} width={80} height={10} />
       )}
-      {postUrl ? (
-        <img
-          src={postUrl ?? "/assets/shoe2.jpg"}
-          alt="item"
-          width="450"
-          height="350"
-          className={styles.productImg}
-        />
+
+      {postUrl || type == "CAROUSEL_ALBUM" ? (
+        !video ? (
+          <Image
+            onError={() => {
+              setVideo(true);
+            }}
+            src={
+              type == "CAROUSEL_ALBUM" && images
+                ? images[0]?.imgUrl
+                : postUrl ?? "/assets/shoe2.jpg"
+            }
+            alt="item"
+            width="450"
+            height="350"
+            className={styles.productImg}
+          />
+        ) : (
+          <video
+            src={
+              type == "CAROUSEL_ALBUM"
+                ? images[0]?.imgUrl
+                : postUrl ?? "/assets/shoe2.jpg"
+            }
+            muted
+            autoPlay={false}
+            className={styles.productImg}
+          />
+        )
       ) : (
         <Skeleton count={1} width={"100%"} height={400} />
       )}
+
       {/* <Send className={styles.sendIcon} /> */}
       <div className={styles.priceContainer}>
         {price ? (

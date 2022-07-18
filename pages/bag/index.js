@@ -62,6 +62,7 @@ function Orders() {
     <>
       <Header />
       <VerticalHeader
+        bag={true}
         value={value}
         setValue={setValue}
         handleChange={handleChange}
@@ -69,7 +70,12 @@ function Orders() {
       />
       <div className={styles.container}>
         <div className={styles.tabs}>
-          <OrderPageTabs saved={true} orders={orders} products={products} />
+          <OrderPageTabs
+            saved={true}
+            orders={orders}
+            products={products}
+            bag={true}
+          />
         </div>
         <div className={styles.desktopTabs}>
           {value == 1 ? (
@@ -89,7 +95,12 @@ function Orders() {
                       storeUrl={order.store.profile_pic}
                       storeName={order.store.username}
                       storeLocation={order.store.city}
-                      postUrl={order.product.imgUrl}
+                      images={order.product.images}
+                      postUrl={
+                        order.product.imgUrl ??
+                        order?.product?.images[0]?.imgUrl
+                      }
+                      type={order.product.type}
                       price={order.amount}
                       size={order.product.size}
                       isCompleted={order.store.isCompleted}

@@ -25,7 +25,7 @@ import { updateStoreProducts } from "../../../store/actions/store";
 function StoreProfile() {
   const profile = useSelector((state) => state.profile);
   const store = useSelector((state) => state.pages);
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(1);
   const router = useRouter();
   const dispatch = useDispatch();
   const [products, setProducts] = useState([]);

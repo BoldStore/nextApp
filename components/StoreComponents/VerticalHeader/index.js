@@ -3,20 +3,23 @@ import styles from "./styles.module.css";
 import { Grid, AlignJustify, Send, Bookmark } from "react-feather";
 import { RWebShare } from "react-web-share";
 
-function VerticalHeader({ value, handleChange, saved, store }) {
+function VerticalHeader({ value, handleChange, saved, store, bag }) {
   return (
     <div className={styles.container}>
       <div className={styles.icons}>
-        <Grid
-          className={styles.icon}
-          onClick={() => handleChange(0)}
-          style={{ color: value == 0 && "var(--white)" }}
-        />
         <AlignJustify
           className={styles.icon}
           onClick={() => handleChange(1)}
           style={{ color: value == 1 && "var(--white)" }}
         />
+        {!bag && (
+          <Grid
+            className={styles.icon}
+            onClick={() => handleChange(0)}
+            style={{ color: value == 0 && "var(--white)" }}
+          />
+        )}
+
         {saved ? (
           <Bookmark
             className={styles.icon}
