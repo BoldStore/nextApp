@@ -16,6 +16,10 @@ import { auth } from "../../../firebaseConfig";
 import { signOut } from "@firebase/auth";
 import { useRouter } from "next/router";
 
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+
 function DrawerList() {
   const router = useRouter();
   const logout = async () => {
@@ -32,7 +36,7 @@ function DrawerList() {
   const [user] = useAuthState(auth);
   return (
     <div style={{ backgroundColor: "var(--black)" }}>
-      <Link href="/profile">
+      <Link href={user ? "/profile" : "/login"}>
         <>
           {profile.profile_pic ? (
             <Avatar
@@ -70,9 +74,12 @@ function DrawerList() {
               margin: "1rem",
               color: "var(--white)",
               textAlign: "center",
+              cursor: "pointer",
             }}
           >
-            @{profile.data.data.username}
+            {profile?.data?.data?.insta_username
+              ? `@${profile?.data?.data?.insta_username}`
+              : "Login"}
           </p>
         </>
       </Link>
@@ -128,14 +135,7 @@ function DrawerList() {
           </p>
         </Link>
 
-        <Link href="/store/profile/upi">
-          <p className={styles.navLinks} style={{ margin: "1rem" }}>
-            <Settings className={styles.icon} />
-            Settings
-          </p>
-        </Link>
-
-        {user ? (
+        {user && profile?.data ? (
           <p
             className={styles.navLinks}
             style={{ margin: "1rem" }}
@@ -153,6 +153,43 @@ function DrawerList() {
             Login
           </p>
         )}
+
+        <Accordion sx={{ backgroundColor: "var(--black)", padding: 0 }}>
+          <AccordionSummary
+            expandIcon={false}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+            sx={{ backgroundColor: "var(--black)", padding: 0 }}
+          >
+            <p
+              className={styles.navLinks}
+              style={{ margin: "1rem", marginTop: "-0.5rem" }}
+            >
+              <Settings className={styles.icon} />
+              Settings
+            </p>
+          </AccordionSummary>
+          <AccordionDetails sx={{ padding: "0rem", paddingLeft: "1rem" }}>
+            <Link href="/">
+              <p
+                className={styles.navLinks}
+                style={{ margin: "1rem", marginTop: "-0.5rem" }}
+              >
+                About Us
+              </p>
+            </Link>
+            <Link href="/privacy-policy">
+              <p className={styles.navLinks} style={{ margin: "1rem" }}>
+                Privacy Policy
+              </p>
+            </Link>
+            <Link href="/terms-and-conditions">
+              <p className={styles.navLinks} style={{ margin: "1rem" }}>
+                Terms
+              </p>
+            </Link>
+          </AccordionDetails>
+        </Accordion>
       </div>
     </div>
   );

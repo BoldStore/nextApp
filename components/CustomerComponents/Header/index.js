@@ -1,11 +1,19 @@
-import React from 'react';
+import React from "react";
 import Link from "next/link";
 import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";
 import DrawerComponent from "./DrawerComponent";
 import { makeStyles } from "@material-ui/core/styles";
 import { useEffect, useState } from "react";
-import { Home, User, Search, ShoppingBag, LogOut, LogIn, Tool } from "react-feather";
+import {
+  Home,
+  User,
+  Search,
+  ShoppingBag,
+  LogOut,
+  LogIn,
+  Tool,
+} from "react-feather";
 import CustomerTabs from "../Tabs";
 import { useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
@@ -14,9 +22,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 import ToolTip from "../../CommonComponents/ToolTip/ToolTip";
 import { Drawer } from "@mui/material";
-import DrawerList from './DrawerList';
-import clsx from 'clsx';
-
+import DrawerList from "./DrawerList";
+import clsx from "clsx";
 
 const useStyles = makeStyles({
   list: {
@@ -50,14 +57,12 @@ function CustomerHeader() {
         [classes.fullList]: anchor === "top" || anchor === "bottom",
       })}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
       style={{ backgroundColor: "var(--black)" }}
     >
       <DrawerList />
     </div>
   );
-
 
   useEffect(() => {
     if (!(typeof window === "undefined")) {
@@ -94,7 +99,6 @@ function CustomerHeader() {
     setState({ ...state, [anchor]: open });
   };
 
-
   const login = () => {
     router.push("/login");
   };
@@ -113,7 +117,7 @@ function CustomerHeader() {
             <ToolTip title="Home" href="/home">
               <Home className={styles.navLinks} />
             </ToolTip>
-            
+
             <ToolTip title="Search" href="/search">
               <Search className={styles.navLinks} />
             </ToolTip>
@@ -123,14 +127,16 @@ function CustomerHeader() {
             </ToolTip>
 
             {user && !user?.isAnonymous ? (
-              <ToolTip title="Log Out"><LogOut onClick={logout} className={styles.navLinks} /></ToolTip>
+              <ToolTip title="Log Out">
+                <LogOut onClick={logout} className={styles.navLinks} />
+              </ToolTip>
             ) : (
-              <ToolTip title="Log In"><LogIn onClick={login} className={styles.navLinks} /></ToolTip>
+              <ToolTip title="Log In">
+                <LogIn onClick={login} className={styles.navLinks} />
+              </ToolTip>
             )}
           </div>
 
-        
-        
           {["right"].map((anchor) => (
             <React.Fragment key={anchor}>
               <div onClick={toggleDrawer(anchor, true)}>
@@ -158,8 +164,7 @@ function CustomerHeader() {
               </Drawer>
             </React.Fragment>
           ))}
-        
-        
+
           {/* <Link href={user && !user?.isAnonymous ? "/profile" : "/login"}>
             {profile.profile_pic ? (
               <Avatar
