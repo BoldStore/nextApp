@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../../components/CommonComponents/Header";
 import styles from "../../styles/Sales.module.css";
 import { ChevronRight } from "react-feather";
-import Info from "../../components/CommonComponents/Info/Info";
+import Info from "../../components/CommonComponents/Info";
 
 // const darkTheme = createTheme({
 //   palette: {

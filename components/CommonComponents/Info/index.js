@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./Info.module.css";
-import User from "../../../public/assets/user.jpg";
-import BoldButton from "../BoldButton";
 import Avatar from "@mui/material/Avatar";
+
 function Info() {
   return (
     <div className={styles.container}>
