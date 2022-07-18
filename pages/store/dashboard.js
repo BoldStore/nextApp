@@ -1,15 +1,40 @@
 import React from "react";
 import Header from "../../components/CommonComponents/Header";
 import styles from "../../styles/Sales.module.css";
-import BoldButton from "../../components/CommonComponents/BoldButton";
+import { ChevronRight } from "react-feather";
 import Info from "../../components/CommonComponents/Info";
+
+// const darkTheme = createTheme({
+//   palette: {
+//     mode: "dark",
+//   },
+// });
 
 function Sales() {
   return (
     <div>
       <Header />
       <div className={styles.container}>
+        {/* <ThemeProvider theme={darkTheme}>
+        <Box sx={{width:"20%" ,margin : 'auto', typography : "body1"}}>
+        <TabContext >
+          <Box sx={{ borderBottom: 1, borderColor: 'divider'}}>
+          <TabList centered aria-label="lab API tabs example">
+            <Tab label="Dashboard" value="1" />
+            <Tab label="Pending Sales" value="2" />
+          </TabList>
+          </Box>
+          <TabPanel value="1">Item One</TabPanel>
+        <TabPanel value="2">Item Two</TabPanel>
+        </TabContext>
+        </Box>
+      </ThemeProvider> */}
+
         <h1>Dashboard</h1>
+        {/* <div className={styles.tableContainer}>
+          <SalesList />
+        </div> */}
+
         <div className={styles.tableContainer}>
           <table className={styles.table}>
             {/* <tr>
@@ -23,22 +48,6 @@ function Sales() {
               <th>Shiprocket Status</th>
               <th>Shiprocket Id</th>
             </tr> */}
-            <tr>
-              <td>
-                <Info />
-              </td>
-              <td>22/22/22 </td>
-              <td>10:00PM</td>
-              <td style={{ minWidth: "120px" }}>Payment ID:</td>
-              <td>#17276381812</td>
-              <td>Paid</td>
-              <td style={{ minWidth: "130px" }}>Shiprocket ID:</td>
-              <td>#123447762</td>
-              <td>Delivered</td>
-              <td>
-                <button className={styles.button}>More Details</button>
-              </td>
-            </tr>
 
             <tr>
               <td>
@@ -46,53 +55,14 @@ function Sales() {
               </td>
               <td>22/22/22 </td>
               <td>10:00PM</td>
-              <td style={{ minWidth: "120px" }}>Payment ID:</td>
-              <td>#17276381812</td>
-              <td>Paid</td>
-              <td style={{ minWidth: "130px" }}>Shiprocket ID:</td>
-              <td>#123447762</td>
-              <td>Delivered</td>
+              <td>Delivery Pending</td>
+              <td>#21626791</td>
               <td>
-                <button className={styles.button}>More Details</button>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <Info />
-              </td>
-              <td>22/22/22 </td>
-              <td>10:00PM</td>
-              <td style={{ minWidth: "120px" }}>Payment ID:</td>
-              <td>#17276381812</td>
-              <td>Paid</td>
-              <td style={{ minWidth: "130px" }}>Shiprocket ID:</td>
-              <td>#123447762</td>
-              <td>Delivered</td>
-              <td>
-                <button className={styles.button}>More Details</button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Info />
-              </td>
-              <td>22/22/22 </td>
-              <td>10:00PM</td>
-              <td style={{ minWidth: "120px" }}>Payment ID:</td>
-              <td>#17276381812</td>
-              <td>Paid</td>
-              <td style={{ minWidth: "130px" }}>Shiprocket ID:</td>
-              <td>#123447762</td>
-              <td>Delivered</td>
-              <td>
-                <button className={styles.button}>More Details</button>
+                <ChevronRight className={styles.icon} />
               </td>
             </tr>
           </table>
         </div>
-        <div style={{ marginTop: "3rem" }}></div>
-        {/* <BoldButton text={"Show Pending Sales"} href="/store/pendingsales" /> */}
       </div>
     </div>
   );

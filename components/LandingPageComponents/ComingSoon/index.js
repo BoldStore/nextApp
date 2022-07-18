@@ -22,6 +22,7 @@ function ComingSoon() {
 
   return (
     <div
+      id="comingsoon"
       className={styles.container}
       onMouseEnter={() => {
         changeMouse();

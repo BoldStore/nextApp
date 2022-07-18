@@ -14,11 +14,15 @@ import {
   ShoppingBag,
   Truck,
   User,
+  Settings,
 } from "react-feather";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../firebaseConfig";
 import { signOut } from "@firebase/auth";
 import { useRouter } from "next/router";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
 
 function MobileViewList() {
   const router = useRouter();
@@ -36,7 +40,7 @@ function MobileViewList() {
   const [user] = useAuthState(auth);
   return (
     <div style={{ backgroundColor: "var(--black)" }}>
-      <Link href="/profile">
+      {/* <Link href="/profile">
         <>
           {profile.profile_pic ? (
             <Avatar
@@ -79,12 +83,12 @@ function MobileViewList() {
             @{profile.data.data.username}
           </p>
         </>
-      </Link>
+      </Link> */}
 
       <div
         style={{
           padding: "2rem",
-          paddingLeft: "1.2rem",
+          paddingLeft: 0,
           marginTop: "1rem",
         }}
       >
@@ -118,48 +122,6 @@ function MobileViewList() {
             Analytics
           </p>
         </Link>
-        <Link href="/store/profile/upi">
-          <div style={{ position: "relative" }}>
-            <p className={styles.navLinks}>
-              <CreditCard className={styles.icon} />
-              Payment Details
-            </p>
-            {!profile?.data?.paymentDetails && (
-              <div
-                style={{
-                  position: "absolute",
-                  height: "9px",
-                  width: "9px",
-                  top: "25%",
-                  right: 0,
-                  backgroundColor: "#1DA1F2",
-                  borderRadius: "50%",
-                }}
-              ></div>
-            )}
-          </div>
-        </Link>
-        <Link href="/store/profile/address">
-          <div style={{ position: "relative" }}>
-            <p className={styles.navLinks}>
-              <Truck className={styles.icon} />
-              Pickup Address
-            </p>
-            {!profile?.data?.address && (
-              <div
-                style={{
-                  position: "absolute",
-                  height: "9px",
-                  width: "9px",
-                  top: "25%",
-                  right: 0,
-                  backgroundColor: "#1DA1F2",
-                  borderRadius: "50%",
-                }}
-              ></div>
-            )}
-          </div>
-        </Link>
         <Link href="/profile">
           <p className={styles.navLinks}>
             <User className={styles.icon} />
@@ -177,6 +139,71 @@ function MobileViewList() {
             <LogIn className={styles.icon} /> Login
           </p>
         )}
+
+        <Accordion sx={{ backgroundColor: "var(--black)", padding: 0 }}>
+          <AccordionSummary
+            expandIcon={false}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+            sx={{ backgroundColor: "var(--black)", padding: 0 }}
+          >
+            <p
+              className={styles.navLinks}
+              style={{ margin: "1.5rem", marginTop: "-0.5rem" }}
+            >
+              <Settings className={styles.icon} />
+              Settings
+            </p>
+          </AccordionSummary>
+          <AccordionDetails sx={{ padding: "0rem", paddingLeft: "1rem" }}>
+            <Link href="/store/profile/upi">
+              <div style={{ position: "relative" }}>
+                <p className={styles.navLinks}>Payment Details</p>
+                {!profile?.data?.paymentDetails && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      height: "9px",
+                      width: "9px",
+                      top: "25%",
+                      right: 0,
+                      backgroundColor: "#1DA1F2",
+                      borderRadius: "50%",
+                    }}
+                  ></div>
+                )}
+              </div>
+            </Link>
+            <Link href="/store/profile/address">
+              <div style={{ position: "relative" }}>
+                <p className={styles.navLinks}>Pickup Address</p>
+                {!profile?.data?.address && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      height: "9px",
+                      width: "9px",
+                      top: "25%",
+                      right: 0,
+                      backgroundColor: "#1DA1F2",
+                      borderRadius: "50%",
+                    }}
+                  ></div>
+                )}
+              </div>
+            </Link>
+
+            <Link href="/">
+              <p className={styles.navLinks}>About Us</p>
+            </Link>
+            <Link href="/privacy-policy">
+              <p className={styles.navLinks}>Privacy Policy</p>
+            </Link>
+            <Link href="/terms-and-conditions">
+              <p className={styles.navLinks}>Terms of Service</p>
+            </Link>
+          </AccordionDetails>
+        </Accordion>
 
         {/* <Link href="https://www.instagram.com/boldstore.in">
           <p className={styles.navLinks}>Instagram</p>

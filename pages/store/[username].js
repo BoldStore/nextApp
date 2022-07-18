@@ -26,7 +26,7 @@ function StorePage() {
   const dispatch = useDispatch();
   const store = useSelector((state) => state.pages);
   const profile = useSelector((state) => state.profile);
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(1);
   const [products, setProducts] = useState([]);
   const router = useRouter();
   const handleChange = (i) => {

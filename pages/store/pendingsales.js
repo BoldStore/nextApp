@@ -1,8 +1,8 @@
 import React from "react";
 import Header from "../../components/CommonComponents/Header";
 import styles from "../../styles/Sales.module.css";
-import BoldButton from '../../components/CommonComponents/BoldButton'
-import Info from '../../components/CommonComponents/Info';
+import BoldButton from "../../components/CommonComponents/BoldButton";
+import Info from "../../components/CommonComponents/Info";
 
 function pendingsales() {
   return (
@@ -24,36 +24,68 @@ function pendingsales() {
               <th>Shiprocket Id</th>
             </tr> */}
             <tr>
-              <td><Info></Info></td>
+              <td>
+                <Info></Info>
+              </td>
               <td>22/22/22 10:00PM</td>
-              <td><button className={styles.button}>Paid</button></td>
+              <td>
+                <button className={styles.button}>Paid</button>
+              </td>
               <td>Shiprocket ID: abuaygugs</td>
-              <td><button className={styles.button}>Delivered</button></td>
-              <td><BoldButton text='See Product'></BoldButton></td>
+              <td>
+                <button className={styles.button}>Delivered</button>
+              </td>
+              <td>
+                <BoldButton text="See Product"></BoldButton>
+              </td>
             </tr>
             <tr>
-              <td><Info></Info></td>
+              <td>
+                <Info></Info>
+              </td>
               <td>22/22/22 10:00PM</td>
-              <td><button className={styles.button}>Paid</button></td>
+              <td>
+                <button className={styles.button}>Paid</button>
+              </td>
               <td>Shiprocket ID: abuaygugs</td>
-              <td><button className={styles.button}>Delivered</button></td>
-              <td><BoldButton text='See Product'></BoldButton></td>
+              <td>
+                <button className={styles.button}>Delivered</button>
+              </td>
+              <td>
+                <BoldButton text="See Product"></BoldButton>
+              </td>
             </tr>
             <tr>
-              <td><Info></Info></td>
+              <td>
+                <Info></Info>
+              </td>
               <td>22/22/22 10:00PM</td>
-              <td><button className={styles.button}>Paid</button></td>
+              <td>
+                <button className={styles.button}>Paid</button>
+              </td>
               <td>Shiprocket ID: abuaygugs</td>
-              <td><button className={styles.button}>Delivered</button></td>
-              <td><BoldButton text='See Product'></BoldButton></td>
+              <td>
+                <button className={styles.button}>Delivered</button>
+              </td>
+              <td>
+                <BoldButton text="See Product"></BoldButton>
+              </td>
             </tr>
             <tr>
-              <td><Info></Info></td>
+              <td>
+                <Info></Info>
+              </td>
               <td>22/22/22 10:00PM</td>
-              <td><button className={styles.button}>Paid</button></td>
+              <td>
+                <button className={styles.button}>Paid</button>
+              </td>
               <td>Shiprocket ID: abuaygugs</td>
-              <td><button className={styles.button}>Delivered</button></td>
-              <td><BoldButton text='See Product'></BoldButton></td>
+              <td>
+                <button className={styles.button}>Delivered</button>
+              </td>
+              <td>
+                <BoldButton text="See Product"></BoldButton>
+              </td>
             </tr>
             {/* <tr>
               <td>12345VHW</td>
@@ -73,7 +105,6 @@ function pendingsales() {
           </table>
         </div>
         <BoldButton text={"Dashboard"} href="/store/dashboard" />
-
       </div>
     </div>
   );
