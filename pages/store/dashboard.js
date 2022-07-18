@@ -3,7 +3,7 @@ import Header from "../../components/CommonComponents/Header";
 import styles from "../../styles/Sales.module.css";
 import { ChevronRight } from "react-feather";
 import Info from "../../components/CommonComponents/Info/Info";
-import Avatar from "@mui/material/Avatar";
+
 // const darkTheme = createTheme({
 //   palette: {
 //     mode: "dark",
