@@ -13,6 +13,7 @@ function TopStores({ storeUrl, storeName, username, isCompleted }) {
   const [activeTheme, setActiveTheme] = useState("");
   const inactiveTheme = activeTheme === "dark" ? "light" : "dark";
   const [svgMode, setSvgMode] = useState("dark");
+  const text = username?.slice(0, 9);
 
   useEffect(() => {
     if (activeTheme) {
@@ -62,7 +63,7 @@ function TopStores({ storeUrl, storeName, username, isCompleted }) {
               cursor: "pointer",
             }}
           >
-            {username}
+            {username.length > 9 ? `${text}...` : username}
           </p>
           {isCompleted && (
             <p>
