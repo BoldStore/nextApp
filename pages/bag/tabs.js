@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { pastOrders } from "../../store/actions/order";
 import { getSavedProducts } from "../../store/actions/products";
 
-function OrderPageTabs({ saved, orders, products }) {
+function OrderPageTabs({ saved, orders, products, bag }) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };

@@ -1,5 +1,4 @@
 .container {
-  padding: 1rem;
   font-family: "Spline Sans", sans-serif;
   font-size: 0.9rem;
   width: 100%;
@@ -20,7 +19,11 @@
   justify-content: space-between;
   align-items: center;
 }
-
+.icon {
+  margin: 0 1rem;
+  position: relative;
+  top: 5px;
+}
 .navLinks {
   position: relative;
   margin: 0 1.5rem;
@@ -32,7 +35,7 @@
   color: #808080;
 }
 
-.navLinks::after {
+/* .navLinks::after {
   position: absolute;
   bottom: -6px;
   content: "";
@@ -47,7 +50,7 @@
 .navLinks:hover::after {
   width: 100%;
   left: 0;
-}
+} */
 
 .navLinks:hover {
   color: var(--white);
@@ -58,6 +61,15 @@
   color: var(--white);
   margin-top: -5px;
   transition-duration: 0.2s;
+}
+
+.button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
 }
 
 .logo {

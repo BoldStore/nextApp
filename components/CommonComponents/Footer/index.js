@@ -17,7 +17,7 @@ function Footer() {
     <div className={styles.container}>
       <div className={styles.logoContainer}>
         <Image src={"/assets/logo.svg"} width="200" height="150" alt="logo" />
-        <div className={styles.socials}>
+        {/* <div className={styles.socials}>
           <a
             href="https://www.instagram.com/boldstore.in/"
             target="_blank"
@@ -37,7 +37,7 @@ function Footer() {
           >
             <GitHub className={styles.icons} />
           </a>
-        </div>
+        </div> */}
       </div>
 
       <div className={styles.linksContainer}>
@@ -61,19 +61,19 @@ function Footer() {
           <Link href={"/privacy-policy"} passHref={true}>
             <p>Privacy Policy</p>
           </Link>
-          <Link href={"#"} passHref={true}>
+          <Link href={"/terms-and-conditions"} passHref={true}>
             <p>Terms and Conditions</p>
           </Link>
-          <Link href={"#"} passHref={true}>
+          <Link href={"/#aboutus"} passHref={true}>
             <p>About Us</p>
           </Link>
         </div>
         <div className={styles.links}>
           <h1>App</h1>
-          <Link href={"#"} passHref={true}>
+          <Link href={"/#app"} passHref={true}>
             <p>Walkthrough</p>
           </Link>
-          <Link href={"#"} passHref={true}>
+          <Link href={"/#comingsoon"} passHref={true}>
             <p>Download</p>
           </Link>
         </div>

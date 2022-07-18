@@ -1,30 +1,43 @@
-.img {
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 100%;
-  background-color: var(--lightGrey);
-  margin: 1rem;
-}
-
 .container {
   display: flex;
   margin: 0;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: space-around;
+  align-items: center;
+  gap: 3rem;
+  padding: 0.8rem 0.2rem;
+  border: none;
 }
 
-.details {
-  margin: auto;
+.user {
+  display: flex;
+  gap: 1rem;
 }
-.details p {
+
+.userName {
+  max-width: 400px;
+}
+
+.userImage img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.userName {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.userName p {
   font-size: smaller;
-  color: gray;
+  color: var(--lightGrey);
   margin-top: 0.5rem;
   text-align: left;
 }
 
 @media (max-width: 1050px) {
-  .details p,
+  .user p,
   .img {
     display: none;
   }

@@ -21,7 +21,7 @@ import { toast } from "react-toastify";
 import { RWebShare } from "react-web-share";
 
 function UsernameTabs({ products, profile, store }) {
-  const [value, setValue] = useState("0");
+  const [value, setValue] = useState("1");
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -50,17 +50,18 @@ function UsernameTabs({ products, profile, store }) {
                 }}
               >
                 <Tab
-                  icon={<Grid />}
+                  icon={<AlignJustify />}
                   value="1"
+                  style={{ color: "var(--white)" }}
+                />
+                <Tab
+                  icon={<Grid />}
+                  value="2"
                   style={{
                     color: "var(--white)",
                   }}
                 />
-                <Tab
-                  icon={<AlignJustify />}
-                  value="2"
-                  style={{ color: "var(--white)" }}
-                />
+
                 <RWebShare
                   data={{
                     text: "Hey, checkout this amazing Thrift Store on Bold.",
@@ -82,7 +83,7 @@ function UsernameTabs({ products, profile, store }) {
                 </RWebShare>
               </TabList>
             </Box>
-            <TabPanel value="1" style={{ padding: 0 }}>
+            <TabPanel value="2" style={{ padding: 0 }}>
               <div
                 className={styles.container}
                 style={{ marginTop: 20, marginLeft: 0 }}
@@ -112,7 +113,7 @@ function UsernameTabs({ products, profile, store }) {
                 </div>
               </div>
             </TabPanel>
-            <TabPanel value="2" style={{ padding: 0, paddingTop: 20 }}>
+            <TabPanel value="1" style={{ padding: 0, paddingTop: 20 }}>
               <div className={styles.postContainer}>
                 {store?.store?.products?.map((product, index) => (
                   <Post
