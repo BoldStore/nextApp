@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Info.module.css";
+import styles from "./info.module.css";
 import Avatar from "@mui/material/Avatar";
 
 function Info() {
