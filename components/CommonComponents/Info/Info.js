@@ -2,14 +2,20 @@ import React from "react";
 import styles from "./Info.module.css";
 import User from "../../../public/assets/user.jpg";
 import BoldButton from "../BoldButton";
-
+import Avatar from "@mui/material/Avatar";
 function Info() {
   return (
     <div className={styles.container}>
-
       <div className={styles.user}>
         <div className={styles.userImage}>
-          <img src={"https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"} alt="profile"/>
+          <Avatar
+            alt="Avatar"
+            src={""}
+            sx={{
+              width: 50,
+              height: 50,
+            }}
+          />
         </div>
 
         <div className={styles.userName}>
@@ -17,18 +23,16 @@ function Info() {
           <p>Avi Vashishta</p>
         </div>
       </div>
-
+      {/* 
       <div>22/22/22</div>
 
       <div>10:00 PM</div>
 
-      <div>#17276381812</div>
+      <div>Delivery Pending</div>
 
-      <div>Paid</div>
-
-      <div>#123447762</div>
-
-      <div><BoldButton text="More Details" /></div>
+      <div>
+        <BoldButton text="More Details" />
+      </div> */}
     </div>
   );
 }

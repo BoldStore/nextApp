@@ -1,16 +1,9 @@
 import React from "react";
 import Header from "../../components/CommonComponents/Header";
 import styles from "../../styles/Sales.module.css";
-import BoldButton from "../../components/CommonComponents/BoldButton";
+import { ChevronRight } from "react-feather";
 import Info from "../../components/CommonComponents/Info/Info";
-import { Box } from "@mui/material";
-import Tab from '@mui/material/Tab';
-import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
-import TabPanel from '@mui/lab/TabPanel';
-import { ThemeProvider, createTheme} from "@mui/material/styles";
-import SalesList from "../../components/StoreComponents/Dashboard/SalesList";
-
+import Avatar from "@mui/material/Avatar";
 // const darkTheme = createTheme({
 //   palette: {
 //     mode: "dark",
@@ -22,7 +15,7 @@ function Sales() {
     <div>
       <Header />
       <div className={styles.container}>
-      {/* <ThemeProvider theme={darkTheme}>
+        {/* <ThemeProvider theme={darkTheme}>
         <Box sx={{width:"20%" ,margin : 'auto', typography : "body1"}}>
         <TabContext >
           <Box sx={{ borderBottom: 1, borderColor: 'divider'}}>
@@ -36,11 +29,39 @@ function Sales() {
         </TabContext>
         </Box>
       </ThemeProvider> */}
-        
-        
+
         <h1>Dashboard</h1>
-        <div className={styles.tableContainer}>
+        {/* <div className={styles.tableContainer}>
           <SalesList />
+        </div> */}
+
+        <div className={styles.tableContainer}>
+          <table className={styles.table}>
+            {/* <tr>
+              <th>Order ID</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Customer</th>
+              <th>Date</th>
+              <th>Payment Status</th>
+              <th>Payment Id</th>
+              <th>Shiprocket Status</th>
+              <th>Shiprocket Id</th>
+            </tr> */}
+
+            <tr>
+              <td>
+                <Info />
+              </td>
+              <td>22/22/22 </td>
+              <td>10:00PM</td>
+              <td>Delivery Pending</td>
+              <td>#21626791</td>
+              <td>
+                <ChevronRight className={styles.icon} />
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
