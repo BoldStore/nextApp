@@ -142,7 +142,7 @@ function Post({
             height: "350px",
           }}
         >
-          {postUrl || images.length > 0 ? (
+          {postUrl || images?.length > 0 ? (
             <Image
               src={postUrl != "" ? postUrl : images[0].imgUrl}
               alt="item"
