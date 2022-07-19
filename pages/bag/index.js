@@ -22,6 +22,7 @@ function Orders() {
   };
 
   const getData = () => {
+    alert("Call");
     dispatch(pastOrders(orders.past_orders_cursor));
     dispatch(getSavedProducts(products.saved_cursor));
   };

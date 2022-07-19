@@ -28,7 +28,7 @@ function OrderPage() {
     <>
       <Header />
       <div className={styles.container2}>
-        <CompleteOrderComponent order={orders.order} />
+        {orders.order && <CompleteOrderComponent order={orders.order} />}
         {orders?.more_from_store?.length > 0 && (
           <>
             <h1>More From the Store </h1>
