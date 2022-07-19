@@ -95,12 +95,11 @@ function Orders() {
                       storeUrl={order.store.profile_pic}
                       storeName={order.store.username}
                       storeLocation={order.store.city}
-                      images={order.product.images}
                       postUrl={
-                        order.product.imgUrl ??
-                        order?.product?.images[0]?.imgUrl
+                        order?.product?.imgUrl != ""
+                          ? order?.product?.imgUrl
+                          : order?.product?.images[0]?.imgUrl
                       }
-                      type={order.product.type}
                       price={order.amount}
                       size={order.product.size}
                       isCompleted={order.store.isCompleted}
@@ -128,7 +127,7 @@ function Orders() {
                       id={product.id}
                       images={product?.images}
                       isCompleted={product?.store?.isCompleted}
-                      postUrl={product?.imgUrl}
+                      postUrl={product?.imgUrl ?? product?.images[0].url}
                       price={product?.amount}
                       size={product?.size}
                       storeLocation={product?.store?.city}
