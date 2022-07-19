@@ -22,7 +22,6 @@ function Orders() {
   };
 
   const getData = () => {
-    alert("Call");
     dispatch(pastOrders(orders.past_orders_cursor));
     dispatch(getSavedProducts(products.saved_cursor));
   };
@@ -76,6 +75,8 @@ function Orders() {
             orders={orders}
             products={products}
             bag={true}
+            lastOrderElementRef={lastOrderElementRef}
+            lastProductElementRef={lastProductElementRef}
           />
         </div>
         <div className={styles.desktopTabs}>

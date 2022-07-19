@@ -116,7 +116,7 @@ const orderReducer = (state = initState, action: any) => {
         ...state,
         isLoading: false,
         errmess: null,
-        orders: action.data.orders,
+        orders: [state.orders, ...action.data.orders],
         past_orders_end: action.data?.end,
         past_orders_cursor: action.data?.cursor ?? action.data?.lastDoc,
       };

@@ -1,62 +1,25 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
-import { Grid, AlignJustify, Bookmark } from "react-feather";
+import { AlignJustify, Bookmark } from "react-feather";
 import styles from "./styles.module.css";
 import NoOrders from "../../components/CommonComponents/IsEmptyComponents/NoOrders";
 import NoSavedItems from "../../components/CommonComponents/IsEmptyComponents/NoSavedPosts";
 import OrderComponent from "../../components/CommonComponents/OrderComponent";
 import Post from "../../components/CommonComponents/Post";
-import { useDispatch, useSelector } from "react-redux";
-import { pastOrders } from "../../store/actions/order";
-import { getSavedProducts } from "../../store/actions/products";
 
-function OrderPageTabs({ saved, orders, products, bag }) {
+function OrderPageTabs({
+  saved,
+  orders,
+  products,
+  lastOrderElementRef,
+  lastProductElementRef,
+}) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  const dispatch = useDispatch();
   const [value, setValue] = useState(1);
-
-  const getData = () => {
-    dispatch(pastOrders(orders.past_orders_cursor));
-    dispatch(getSavedProducts(products.saved_cursor));
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
-
-  // Check for products
-
-  const prodObserver = useRef(null);
-  const lastProductElementRef = useCallback((node) => {
-    if (products?.products?.length <= 0) return;
-    if (products.isLoading || products.products_loading) return;
-    if (prodObserver.current) prodObserver.current.disconnect();
-    prodObserver.current = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && !products.saved_end) {
-        dispatch(getSavedProducts(products.saved_cursor));
-      }
-    });
-    if (node) prodObserver.current.observe(node);
-  });
-
-  // Check for orders
-  const orderObserver = useRef(null);
-  const lastOrderElementRef = useCallback((node) => {
-    if (products?.products?.length <= 0) return;
-    if (products.isLoading || products.products_loading) return;
-    if (orderObserver.current) orderObserver.current.disconnect();
-    orderObserver.current = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && !products.past_orders_end) {
-        dispatch(getSavedProducts(products.past_orders_cursor));
-      }
-    });
-    if (node) orderObserver.current.observe(node);
-  });
 
   return (
     <div>
@@ -72,13 +35,6 @@ function OrderPageTabs({ saved, orders, products, bag }) {
                 padding: 0,
               }}
             >
-              {/* <Tab
-                icon={<Grid />}
-                value={0}
-                style={{
-                  color: "var(--white)",
-                }}
-              /> */}
               <Tab
                 icon={<AlignJustify />}
                 value={1}
@@ -110,7 +66,11 @@ function OrderPageTabs({ saved, orders, products, bag }) {
                       storeUrl={order.store.profile_pic}
                       storeName={order.store.username}
                       storeLocation={order.store.city}
-                      postUrl={order.product.imgUrl}
+                      postUrl={
+                        order?.product?.imgUrl
+                          ? order?.product?.imgUrl
+                          : order?.product.images[0].imgUrl
+                      }
                       price={order.amount}
                       size={order.product.size}
                       isCompleted={order.store.isCompleted}
@@ -140,7 +100,7 @@ function OrderPageTabs({ saved, orders, products, bag }) {
                         id={product.id}
                         images={product?.images}
                         isCompleted={product?.store?.isCompleted}
-                        postUrl={product?.imgUrl}
+                        postUrl={product?.imgUrl ?? product?.images[0].imgUrl}
                         price={product?.amount}
                         size={product?.size}
                         storeLocation={product?.store?.city}
