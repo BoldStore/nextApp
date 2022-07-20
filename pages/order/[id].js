@@ -32,7 +32,7 @@ function OrderPage() {
         {orders?.more_from_store?.length > 0 && (
           <>
             <h1>More From the Store </h1>
-            <div className={styles.postContainer}>
+            <div className={styles.overflowContainer}>
               {orders.more_from_store.map((product, index) => (
                 <Post
                   available={product.available}
