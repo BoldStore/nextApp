@@ -43,8 +43,7 @@
   }
 }
 @media (max-width: 750px) {
-  .userInfo {
-    width: 35px;
-    height: 35px;
+  .userImage {
+    display: none;
   }
 }

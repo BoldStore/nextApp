@@ -10,6 +10,7 @@ import {
   Settings,
   LogOut,
   Bookmark,
+  LogIn,
 } from "react-feather";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../firebaseConfig";
@@ -150,6 +151,7 @@ function DrawerList() {
             style={{ margin: "1rem" }}
             onClick={login}
           >
+            <LogIn className={styles.icon} />
             Login
           </p>
         )}
