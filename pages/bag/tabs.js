@@ -51,7 +51,7 @@ function OrderPageTabs({
           </Box>
           <TabPanel value={1} style={{ padding: 0, paddingTop: 20 }}>
             <div className={styles.postContainer}>
-              {orders.orders?.length > 0 ? (
+              {orders?.orders?.length > 0 ? (
                 orders?.orders?.map((order, index) => (
                   <div
                     key={index}
@@ -62,18 +62,18 @@ function OrderPageTabs({
                     }
                   >
                     <OrderComponent
-                      id={order.id}
-                      storeUrl={order.store.profile_pic}
-                      storeName={order.store.username}
-                      storeLocation={order.store.city}
+                      id={order?.id}
+                      storeUrl={order?.store?.profile_pic}
+                      storeName={order?.store?.username}
+                      storeLocation={order?.store?.city}
                       postUrl={
                         order?.product?.imgUrl
                           ? order?.product?.imgUrl
-                          : order?.product.images[0].imgUrl
+                          : order?.product?.images[0]?.imgUrl
                       }
-                      price={order.amount}
-                      size={order.product.size}
-                      isCompleted={order.store.isCompleted}
+                      price={order?.amount}
+                      size={order?.product?.size}
+                      isCompleted={order?.store?.isCompleted}
                     />
                   </div>
                 ))

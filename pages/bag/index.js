@@ -93,18 +93,18 @@ function Orders() {
                     }
                   >
                     <OrderComponent
-                      id={order.id}
-                      storeUrl={order.store.profile_pic}
-                      storeName={order.store.username}
-                      storeLocation={order.store.city}
+                      id={order?.id}
+                      storeUrl={order?.store?.profile_pic}
+                      storeName={order?.store?.username}
+                      storeLocation={order?.store?.city}
                       postUrl={
                         order?.product?.imgUrl != ""
                           ? order?.product?.imgUrl
                           : order?.product?.images[0]?.imgUrl
                       }
-                      price={order.amount}
-                      size={order.product.size}
-                      isCompleted={order.store.isCompleted}
+                      price={order?.amount}
+                      size={order?.product?.size}
+                      isCompleted={order?.store?.isCompleted}
                     />
                   </div>
                 ))
