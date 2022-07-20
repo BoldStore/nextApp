@@ -188,6 +188,9 @@ function DrawerList() {
                 Terms
               </p>
             </Link>
+            <p className={styles.navLinks} style={{ margin: "1rem" }}>
+              Light Mode
+            </p>
           </AccordionDetails>
         </Accordion>
       </div>
