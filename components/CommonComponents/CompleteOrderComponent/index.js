@@ -4,8 +4,15 @@ import Avatar from "@mui/material/Avatar";
 import Image from "next/image";
 import { Bookmark, Send } from "react-feather";
 import BoldButton from "../BoldButton";
+import TimeAgo from "javascript-time-ago";
 
+// English.
+import en from "javascript-time-ago/locale/en";
 function CompleteOrderComponent({ order }) {
+  TimeAgo.addDefaultLocale(en);
+
+  // Create formatter (English).
+  const timeAgo = new TimeAgo("en-US");
   return (
     <>
       <div className={styles.productContainer}>
@@ -43,7 +50,7 @@ function CompleteOrderComponent({ order }) {
             </div>
           </div>
           <p style={{ opacity: 0.5 }}>
-            Order Date : {order?.createdAt?.toString()}
+            {order?.createdAt ? order?.createdAt?.toString() : ""}
           </p>
           <p style={{ opacity: 0.5, marginTop: 0 }}>Status : {order?.status}</p>
           <p style={{ marginTop: 0 }}>{order?.product?.caption}</p>
