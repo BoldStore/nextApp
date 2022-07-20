@@ -42,3 +42,9 @@
     display: none;
   }
 }
+@media (max-width: 750px) {
+  .userInfo {
+    width: 35px;
+    height: 35px;
+  }
+}
