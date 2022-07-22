@@ -8,17 +8,41 @@ import Link from "next/link";
 import { auth } from "../firebaseConfig";
 import {
   useAuthState,
+  useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 import Loading from "../components/Loading";
+import { toast } from "react-toastify";
+import { Modal, Typography } from "@mui/material";
+import { Box } from "@mui/system";
+import BoldButton from "../components/CommonComponents/BoldButton";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "var(--black)",
+  border: "2px solid grey",
+  borderRadius: "5px",
+  boxShadow: 24,
+  p: 4,
+};
 
 function CustomerLogin() {
   const router = useRouter();
   const [email, setEmail] = useState("");
+
+  const [forgotEmail, setForgotEmail] = useState("");
+  const [open, setOpen] = useState(false);
+
   const [password, setPassword] = useState("");
   const [currentUser] = useAuthState(auth);
+  const [sendPasswordResetEmail, sending, password_error] =
+    useSendPasswordResetEmail(auth);
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
@@ -29,6 +53,14 @@ function CustomerLogin() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     await signInWithEmailAndPassword(email, password);
+  };
+
+  const passwordReset = async () => {
+    await sendPasswordResetEmail(forgotEmail);
+    if (!password_error) {
+      setOpen(false);
+      toast("Reset mail sent.");
+    }
   };
 
   useEffect(() => {
@@ -48,6 +80,53 @@ function CustomerLogin() {
       <div className={styles.center}>
         <div className={styles.containerLogin}>
           <p className={styles.heading}>Login</p>
+
+          {open && (
+            <Modal
+              open={open}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={style} borderColor={"grey"}>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                  Forgot Password
+                </Typography>
+                {password_error && (
+                  <Typography variant="body2" color="error">
+                    {password_error.message}
+                  </Typography>
+                )}
+                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                  We&apos;ll send the password reset link to this email
+                </Typography>
+                <InputComponent
+                  type="email"
+                  setValue={setForgotEmail}
+                  value={forgotEmail}
+                  placeholder={"Please Enter your Email"}
+                  noText={true}
+                />
+
+                <div className={styles.spacing} />
+
+                <BoldButton
+                  text={sending ? "Sending..." : "Submit"}
+                  onClick={passwordReset}
+                  disabled={false}
+                  href=""
+                />
+
+                <div className={styles.spacing} />
+
+                <BoldButton
+                  text={"Cancel"}
+                  onClick={() => setOpen(false)}
+                  disabled={false}
+                  href=""
+                />
+              </Box>
+            </Modal>
+          )}
 
           <InputComponent
             type="text"
@@ -102,7 +181,7 @@ function CustomerLogin() {
               alignItems: "center",
             }}
           >
-            <Link href="#" passHref={true}>
+            <div onClick={() => setOpen(true)}>
               <p
                 style={{
                   color: "var(--lightGrey)",
@@ -113,7 +192,7 @@ function CustomerLogin() {
                 Forgot your password?{" "}
                 <span className={styles.link}>Click Here.</span>
               </p>
-            </Link>
+            </div>
           </div>
 
           <Link href="/customer/signup" passHref={true}>

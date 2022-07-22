@@ -1,34 +1,42 @@
 import React from "react";
 import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Image from "next/image";
 import { Bookmark, Send } from "react-feather";
 import BoldButton from "../BoldButton";
-import Link from "next/link";
-import Post from "../Post";
-import { useRouter } from "next/router";
+import TimeAgo from "javascript-time-ago";
 
-function CompleteOrderComponent() {
-  const router = useRouter();
+// English.
+import en from "javascript-time-ago/locale/en";
+function CompleteOrderComponent({ order }) {
+  TimeAgo.addDefaultLocale(en);
+
+  // Create formatter (English).
+  const timeAgo = new TimeAgo("en-US");
   return (
     <>
       <div className={styles.productContainer}>
-        <img
-          src="/assets/shoe2.jpg"
-          alt="item"
+        <Image
+          src={
+            order?.product?.imgUrl != ""
+              ? order?.product?.imgUrl
+              : order?.product?.images[0]?.imgUrl
+          }
+          alt={order?.product?.name}
           width="650"
           height="650"
           className={styles.productImg}
         />
 
         <div className={styles.productInfo}>
-          <h1 style={{ marginTop: 0, marginBottom: 0 }}>Product Title</h1>
-          <p style={{ opacity: 0.5 }}>Order Id : #ABCDE123</p>
+          <h1 style={{ marginTop: 0, marginBottom: 0 }}>
+            {order?.product?.name ?? `Product By ${order?.store?.username}`}
+          </h1>
+          <p style={{ opacity: 0.5 }}>Order Id : #{order?.id}</p>
           <div className={styles.userInfo}>
             <Avatar
               alt="Avatar"
-              src={"https://i.ibb.co/Bswp8RS/avi.jpg"}
+              src={order?.store?.profile_pic}
               sx={{
                 width: 50,
                 height: 50,
@@ -37,23 +45,22 @@ function CompleteOrderComponent() {
               }}
             />
             <div className={styles.nameLocation}>
-              <p>Store_Username</p>
-              <p style={{ opacity: 0.5 }}>New Delhi</p>
+              <p>{order?.store?.username}</p>
+              <p style={{ opacity: 0.5 }}>{order?.store?.city}</p>
             </div>
           </div>
-          <p style={{ opacity: 0.5 }}>Order Date : 22 July 2022 , 7:55 PM</p>
-          <p style={{ opacity: 0.5, marginTop: 0 }}>Status : Delivered</p>
-          <p style={{ marginTop: 0 }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <p style={{ opacity: 0.5 }}>
+            {order?.createdAt ? order?.createdAt?.toString() : ""}
           </p>
+          <p style={{ opacity: 0.5, marginTop: 0 }}>Status : {order?.status}</p>
+          <p style={{ marginTop: 0 }}>{order?.product?.caption}</p>
           <div>
             <Send className={styles.icon} />
             <Bookmark className={styles.icon} />
           </div>
           <div className={styles.priceContainer}>
-            <p>Price: ₹200</p>
-            <p>Size: M</p>
+            <p>Price: ₹{order?.amount}</p>
+            <p>Size: {order?.product?.size}</p>
           </div>
 
           <BoldButton text={"Download Receipt"} />

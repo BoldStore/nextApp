@@ -32,6 +32,7 @@ export const DELETE_ADDRESS = "address/delete";
 
 // Orders
 export const CREATE_ORDER = "order";
+export const GET_ORDER = "order/get";
 export const PAST_ORDERS = "order";
 export const VERIFY_ORDER = "order/verify";
 export const CHECK_DELIVERY = "order/checkForDelivery";

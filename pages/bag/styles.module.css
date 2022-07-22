@@ -60,6 +60,14 @@
   justify-content: space-between;
 }
 
+.overflowContainer {
+  width: 100%;
+  overflow-x: scroll;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
 @media (max-width: 1050px) {
   .tabs {
     display: block;

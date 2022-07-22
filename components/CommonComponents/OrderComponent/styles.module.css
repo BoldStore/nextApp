@@ -46,7 +46,7 @@
 
 .productImg {
   border-radius: 1rem;
-  object-fit: contain;
+  object-fit: cover;
   width: 100%;
 }
 

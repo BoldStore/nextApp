@@ -172,6 +172,7 @@ function MobileViewList() {
             <Link href="/terms-and-conditions">
               <p className={styles.navLinks}>Terms of Service</p>
             </Link>
+            <p className={styles.navLinks}>Light Mode</p>
           </AccordionDetails>
         </Accordion>
 

@@ -4,6 +4,7 @@ import instance from "../../axios";
 import {
   CHECK_DELIVERY,
   CREATE_ORDER,
+  GET_ORDER,
   PAST_ORDERS,
   VERIFY_ORDER,
 } from "../../constants";
@@ -147,6 +148,25 @@ export const checkForDelivery = (postCode: string, productId: string) => {
       dispatch({
         type: ActionTypes.CHECK_DELIVERY_FAILED,
         errmess: e,
+      });
+    }
+  };
+};
+
+export const getOrder = (orderId: string) => {
+  return async (dispatch: Dispatch) => {
+    dispatch({ type: ActionTypes.GET_ORDER_REQUEST });
+    try {
+      const response = await instance.get(GET_ORDER + "?orderId=" + orderId);
+
+      dispatch({
+        type: ActionTypes.GET_ORDER_SUCCESS,
+        data: response.data,
+      });
+    } catch (e) {
+      dispatch({
+        type: ActionTypes.GET_ORDER_FAILED,
+        errmess: (e as any).response.data,
       });
     }
   };

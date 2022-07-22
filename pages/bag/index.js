@@ -75,6 +75,8 @@ function Orders() {
             orders={orders}
             products={products}
             bag={true}
+            lastOrderElementRef={lastOrderElementRef}
+            lastProductElementRef={lastProductElementRef}
           />
         </div>
         <div className={styles.desktopTabs}>
@@ -91,19 +93,18 @@ function Orders() {
                     }
                   >
                     <OrderComponent
-                      id={order.id}
-                      storeUrl={order.store.profile_pic}
-                      storeName={order.store.username}
-                      storeLocation={order.store.city}
-                      images={order.product.images}
+                      id={order?.id}
+                      storeUrl={order?.store?.profile_pic}
+                      storeName={order?.store?.username}
+                      storeLocation={order?.store?.city}
                       postUrl={
-                        order.product.imgUrl ??
-                        order?.product?.images[0]?.imgUrl
+                        order?.product?.imgUrl != ""
+                          ? order?.product?.imgUrl
+                          : order?.product?.images[0]?.imgUrl
                       }
-                      type={order.product.type}
-                      price={order.amount}
-                      size={order.product.size}
-                      isCompleted={order.store.isCompleted}
+                      price={order?.amount}
+                      size={order?.product?.size}
+                      isCompleted={order?.store?.isCompleted}
                     />
                   </div>
                 ))
@@ -128,7 +129,7 @@ function Orders() {
                       id={product.id}
                       images={product?.images}
                       isCompleted={product?.store?.isCompleted}
-                      postUrl={product?.imgUrl}
+                      postUrl={product?.imgUrl ?? product?.images[0].url}
                       price={product?.amount}
                       size={product?.size}
                       storeLocation={product?.store?.city}
