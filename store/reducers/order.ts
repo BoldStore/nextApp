@@ -14,6 +14,7 @@ const initState = {
 
   product: null,
   address: null,
+  more_from_store: [],
 };
 
 const orderReducer = (state = initState, action: any) => {
@@ -56,6 +57,31 @@ const orderReducer = (state = initState, action: any) => {
         errmess: action?.data?.errmess ?? action?.errmess,
       };
 
+    case ActionTypes.GET_ORDER_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        errmess: null,
+        order: null,
+      };
+
+    case ActionTypes.GET_ORDER_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        errmess: null,
+        order: action?.data?.order,
+        more_from_store: action?.data?.products,
+        success: true,
+      };
+
+    case ActionTypes.GET_ORDER_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        errmess: action?.data?.errmess ?? action?.errmess,
+      };
+
     case ActionTypes.VERIFY_ORDER_REQUEST:
       return {
         ...state,
@@ -90,7 +116,7 @@ const orderReducer = (state = initState, action: any) => {
         ...state,
         isLoading: false,
         errmess: null,
-        orders: action.data.orders,
+        orders: [state.orders, ...action.data.orders],
         past_orders_end: action.data?.end,
         past_orders_cursor: action.data?.cursor ?? action.data?.lastDoc,
       };

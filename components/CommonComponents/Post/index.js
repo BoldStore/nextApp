@@ -142,34 +142,14 @@ function Post({
             height: "350px",
           }}
         >
-          {postUrl || type == "CAROUSEL_ALBUM" ? (
-            !video ? (
-              <Image
-                onError={() => {
-                  setVideo(true);
-                }}
-                src={
-                  type == "CAROUSEL_ALBUM" && images
-                    ? images[0]?.imgUrl
-                    : postUrl ?? "/assets/shoe2.jpg"
-                }
-                alt="item"
-                width="450"
-                height="450"
-                className={styles.productImg}
-              />
-            ) : (
-              <video
-                src={
-                  type == "CAROUSEL_ALBUM"
-                    ? images[0]?.imgUrl
-                    : postUrl ?? "/assets/shoe2.jpg"
-                }
-                muted
-                autoPlay={false}
-                className={styles.productImg}
-              />
-            )
+          {postUrl || images?.length > 0 ? (
+            <Image
+              src={postUrl != "" ? postUrl : images[0].imgUrl}
+              alt="item"
+              width="450"
+              height="450"
+              className={styles.productImg}
+            />
           ) : (
             <Skeleton count={1} width={"100%"} height={400} />
           )}

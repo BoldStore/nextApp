@@ -56,7 +56,6 @@ function Sales() {
               <td>22/22/22 </td>
               <td>10:00PM</td>
               <td>Delivery Pending</td>
-              <td>#21626791</td>
               <td>
                 <ChevronRight className={styles.icon} />
               </td>
