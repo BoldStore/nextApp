@@ -1,6 +1,11 @@
 .page {
   min-height: 100vh;
 }
+
+.spacing {
+  margin: 1rem 0;
+}
+
 .container {
   width: 80vw;
   display: block;
