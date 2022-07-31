@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { RWebShare } from "react-web-share";
 import React, { useCallback, useState } from "react";
 import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";
@@ -16,6 +17,8 @@ import { auth } from "../../../firebaseConfig";
 import Image from "next/image";
 import { signInAnonymously } from "firebase/auth";
 import * as ActionTypes from "../../../store/ActionTypes";
+import { Button, Menu, MenuItem } from "@material-ui/core";
+import CustomizedMenus from './CustomizedMenu'
 
 function Post({
   id,
@@ -42,6 +45,15 @@ function Post({
   const text = caption?.slice(0, 30);
 
   const notify = () => toast("Product Saved!");
+  const [anchor, setAnchor] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchor(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchor(null);
+  };
 
   const handlePayment = useCallback(async () => {
     if (orders.isLoading) {
@@ -62,6 +74,7 @@ function Post({
 
   return (
     <div className={styles.postContainer}>
+        <div className={styles.postHeader}>
       <Link
         href={
           profile?.data?.data?.username == storeName
@@ -70,7 +83,6 @@ function Post({
         }
         passHref={true}
       >
-        <div className={styles.postHeader}>
           <div className={styles.userInfo}>
             {storeUrl ? (
               <Avatar
@@ -129,9 +141,65 @@ function Post({
               </p>
             </div>
           </div>
-          <MoreHorizIcon className={styles.moreIcon} />
-        </div>
       </Link>
+      {/* <CustomizedMenus></CustomizedMenus> */}
+          <Button aria-controls = "simple-menu" aria-haspopup="true" onClick={handleClick}>
+            <MoreHorizIcon className={styles.moreIcon} />
+            </Button>
+      {/* <Menu
+        id="basic-menu"
+        anchorEl={anchor}
+        open={Boolean(anchor)}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+        >
+        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <Link
+                   href={
+                    profile?.data?.data?.username == storeName
+                    ? `/profile`
+                    : `/store/${storeName}`
+                    }
+                    passHref={true}
+                >
+                <MenuItem onClick={handleClose}> Visit Store</MenuItem>
+                </Link>
+      </Menu> */}
+
+            <Menu id="menu"
+              anchorEl={anchor}
+              keepMounted
+              open={Boolean(anchor)}
+              onClose={handleClose}>
+                <RWebShare
+              data={{
+                text: `Hey, checkout this amazing store ${storeName} on Bold.`,
+                url: `https://www.boldstore.in/product/${storeUrl}`,
+                title: `${storeName} on Bold`,
+              }}
+              className={styles.share}
+              style={{ color: "var(--black) !important" }}
+              onClick={() => console.log("Shared successfully!")}
+            >
+              <MenuItem onClick={handleClose}> Share</MenuItem>
+            </RWebShare>
+                
+                <MenuItem onClick={()=>{notify() ; handleClose();}}> Save</MenuItem>
+                <Link
+                   href={
+                    profile?.data?.data?.username == storeName
+                    ? `/profile`
+                    : `/store/${storeName}`
+                    }
+                    passHref={true}
+                >
+                <MenuItem onClick={handleClose}> Visit Store</MenuItem>
+                </Link>
+              </Menu>
+        </div>
       <Link href={`/product/${id}`} passHref={true}>
         <div
           className={styles.imageCover}

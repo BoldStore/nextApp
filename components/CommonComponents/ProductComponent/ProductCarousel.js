@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import styles from "./styles.module.css";
-import Image from "next/image";
+
 function ProductCarousel({ product }) {
-  const [video, setVideo] = useState(false);
+  
   const [videoBig, setVideoBig] = useState(false);
   const [displayUrl, setDisplayUrl] = useState(
     product?.product?.images

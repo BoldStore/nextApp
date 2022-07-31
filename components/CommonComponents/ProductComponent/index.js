@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";
-import Image from "next/image";
 import { Bookmark, Send } from "react-feather";
 import BoldButton from "../BoldButton";
 import { RWebShare } from "react-web-share";
