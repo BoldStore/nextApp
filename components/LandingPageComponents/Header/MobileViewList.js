@@ -86,7 +86,7 @@ function MobileViewList() {
               style={{ margin: "1rem", marginTop: "-0.75rem" }}
             >
               <CornerLeftDown className={styles.icon} />
-              More Link
+              More Links
             </p>
           </AccordionSummary>
           <AccordionDetails sx={{ padding: "0rem", paddingLeft: "1rem" }}>
