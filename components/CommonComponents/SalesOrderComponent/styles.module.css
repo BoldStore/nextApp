@@ -1,0 +1,247 @@
+.productContainer {
+    display: flex;
+    align-items: flex-start;
+    color: white;
+    padding: 1rem;
+    width: 90%;
+    margin: 6rem auto 0px;
+    gap: 2rem;
+}
+
+.pContainer {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: space-between;
+    flex-direction: column;
+}
+
+.innerContainerA {
+    flex: 1 1 0.5;
+    border: 2px solid white;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+}
+  
+.nameLocation {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+  
+.nameLocation p {
+    font-size: 0.8rem;
+    margin: 0;
+    margin-bottom: 2px;
+    cursor: pointer;
+}
+  
+.productInfo {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+  
+.productImg {
+    border-radius: 1rem;
+    object-fit: contain;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.4s;
+    width: 100%;
+    max-width: 700px;
+    min-width: 40vw;
+    margin-right: 2rem;
+}
+  
+.icon {
+    cursor: pointer;
+    margin-right: 0.75rem;
+}
+  
+.icon:hover {
+    color: var(--lightGrey);
+}
+  
+.priceContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+  
+.priceContainer p {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+  
+.mobileContainer {
+    display: none;
+}
+  
+.carouselFlex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.imagesFlex {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    max-height: 550px;
+    overflow-y: scroll;
+    padding-right: 1rem;
+}
+  
+.imagesFlex::-webkit-scrollbar {
+    width: 0px;
+}
+  
+.bigImg {
+    width: 70%;
+    border-radius: 0.5rem;
+    object-fit: contain;
+    height: auto;
+    cursor: pointer;
+    max-height: 550px;
+}
+  
+.smallImg {
+    margin-bottom: 1rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    object-fit: contain;
+    height: auto;
+    cursor: pointer;
+}
+  
+  .userInfoMobile {
+    display: none;
+}
+  
+@media (max-width: 1450px) {
+    .productContainer {
+      margin-top: 5rem;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .productInfo {
+      margin-left: 1rem;
+    }
+    .productImg {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 30vw;
+      object-fit: contain;
+      border-radius: 1rem;
+      height: auto;
+    }
+    .bigImg,
+    .imagesFlex {
+      max-height: 400px;
+    }
+}
+  
+@media (max-width: 850px) {
+    .productContainer {
+      flex-direction: column;
+      width: 100%;
+    }
+    .productInfo {
+      width: 100%;
+      margin-top: 1rem;
+      margin-left: 0rem;
+    }
+    .mobileContainer {
+      display: block;
+      margin-top: 5rem;
+    }
+    .productImg {
+      object-fit: contain;
+      height: 100%;
+      width: 100%;
+    }
+    .carouselFlex {
+      flex-direction: row;
+      margin-bottom: -2rem;
+    }
+    .bigImg {
+      max-height: auto;
+      max-width: 100vw;
+      width: 100%;
+      object-fit: contain;
+    }
+    .imagesFlex {
+      flex-direction: column;
+      margin-top: 1rem;
+      margin-bottom: 0rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .imagesFlex::-webkit-scrollbar {
+      height: 0px;
+    }
+    .smallImg {
+      max-width: 100px;
+      margin-right: 1rem;
+    }
+    .userInfo {
+      display: none;
+    }
+    .userInfoMobile {
+      display: flex;
+      align-items: center;
+      padding-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 550px) {
+    .bigImg {
+      object-fit: cover;
+    }
+    .carouselFlex {
+      flex-direction: column;
+    }
+    .imagesFlex {
+      flex-direction: row;
+    }
+  
+    .productName {
+      margin-top: 2rem !important;
+      margin-bottom: 1rem;
+    }
+}
+  
+
+.innerContainerB {
+    flex: 1 1 0.5;
+    /* border: 2px solid white; */
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.orderDetails {
+  border-bottom: 1px solid #2f3336;
+  padding: 1rem;
+}
+
+.paymentDetails {
+  border-bottom: 1px solid #2f3336;
+  padding: 1rem;
+}
+
+.shiprocketDetails {
+  border-bottom: 1px solid #2f3336;
+  padding: 1rem;
+}

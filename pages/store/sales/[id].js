@@ -1,7 +1,16 @@
-import React from "react";
+import { useRouter } from "next/router";
+import Header from "../../../components/StoreComponents/Header/index";
+import SalesOrderComponent from "../../../components/CommonComponents/SalesOrderComponent/index";
 
 function SalesPage() {
-  return <div>SalesPage</div>;
+  const router = useRouter();
+
+  return (
+    <div>
+      <Header />
+      <SalesOrderComponent />
+    </div>
+  )
 }
 
 export default SalesPage;
