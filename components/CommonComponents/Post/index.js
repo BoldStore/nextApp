@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { RWebShare } from "react-web-share";
+import SimpleDialogDemo from './Dialogue';
 import React, { useCallback, useState } from "react";
 import styles from "./styles.module.css";
 import Avatar from "@mui/material/Avatar";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+// import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { toast } from "react-toastify";
 import { Bookmark } from "react-feather";
 import BoldButton from "../BoldButton";
@@ -45,14 +45,14 @@ function Post({
   const text = caption?.slice(0, 30);
 
   const notify = () => toast("Product Saved!");
-  const [anchor, setAnchor] = React.useState(null);
+  const [anchor, setAnchor] = useState(false);
 
   const handleClick = (event) => {
     setAnchor(event.currentTarget);
   };
 
   const handleClose = () => {
-    setAnchor(null);
+    setAnchor(false);
   };
 
   const handlePayment = useCallback(async () => {
@@ -142,10 +142,28 @@ function Post({
             </div>
           </div>
       </Link>
-      {/* <CustomizedMenus></CustomizedMenus> */}
-          <Button aria-controls = "simple-menu" aria-haspopup="true" onClick={handleClick}>
+        {/* <CustomizedMenus></CustomizedMenus> */}
+
+        <SimpleDialogDemo profile = {profile} save={notify} storeName={storeName} storeUrl={storeUrl}></SimpleDialogDemo>
+      {/* <div className={styles.dropdown}> */}
+      {/* <Button aria-controls = "simple-menu" aria-haspopup="true" onClick={handleClick}>
             <MoreHorizIcon className={styles.moreIcon} />
-            </Button>
+            </Button> */}
+        {/* <div className={styles.dropdown_content} styes={{display : anchor ? "none" : "block" }}>
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+      </div> */}
+          
+{/*             
+          <div className={styles.dropdownContent}>
+            <div className={styles.dropdownItem}></div>
+          </div> */}
+   
+   
+   
+   
       {/* <Menu
         id="basic-menu"
         anchorEl={anchor}
@@ -169,7 +187,7 @@ function Post({
                 </Link>
       </Menu> */}
 
-            <Menu id="menu"
+            {/* <Menu id="menu"
               anchorEl={anchor}
               keepMounted
               open={Boolean(anchor)}
@@ -198,7 +216,7 @@ function Post({
                 >
                 <MenuItem onClick={handleClose}> Visit Store</MenuItem>
                 </Link>
-              </Menu>
+              </Menu> */}
         </div>
       <Link href={`/product/${id}`} passHref={true}>
         <div
